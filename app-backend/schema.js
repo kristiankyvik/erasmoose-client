@@ -1,14 +1,31 @@
 
 const schema = `
-type Contributor {   
-  name: String!
-  location: String!
+type University {   
+  _id: String
+  name: String
+  votes: Int
+  url: String
+  country: String
+  createdAt: String
+  city: String
+  times_rank: Int
+  website: String
+  size: String
+  academics: String
+  sport: String  
+  social: String  
+  party: String
 }
 
-#returns list of contributors
+type Meta {   
+  count: Int
+}
+
 type Query {
-  getContributorFeed : [Contributor]
-}`;
+  allUnis(first: Int, skip: Int) : [University]
+  _allUnisMeta: Meta
+}
+`;
 
 // eslint-disable-next-line import/prefer-default-export
 export { schema };
