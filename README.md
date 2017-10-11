@@ -1,37 +1,32 @@
-# Serverless GraphQL
+# Unirank (beta)
 
-This starter kit is an opinionated set of tools combined to help you get started building a Serverless application with an GraphQL endpoint and deploy them to production in minutes.
+Unirank is a tool that enables you too choose the right erasmus destination. Get an overview over:
+  - all european erasmus university destinations
+  - how students rank their experience 
+  - a wide variety of metrics
+ 
+**DEMO**: [unirank](https://unirank.now.sh/)
 
-This example uses the following technologies:
+# Technology Stack
 
-- Frontend
-	- Apollo Client
-	- React
+The webapp is implemented with the following technologies:
+  - **Backend**: a serverless app employing GraphSql, contained by a AWS Lambda instance that comunicates with a MongoDB database through a REST API
+  - **Frontend**: a react app, employing the [next.js](https://zeit.co/blog/next) framework
 
-- Backend
-	- Serverless
-	- AWS Lambda & AWS API Gateway
-	- Apollo Lambda Server
-	- Serverless Webpack
-	- Serverless Offline
-
-## System Architecture
-
-![serverless application architecture v2](https://user-images.githubusercontent.com/1587005/30748634-c155b978-9f65-11e7-99d1-ebe7dafd0d6b.png)
+Both parts of the application are hosted separately, and communicate using the Apollo GraphSql Client.
 
 ## Setup
 
 You need to have Node 6 or higher installed.
-
 ```
 npm install -g serverless
 npm install -g yarn
 ```
 
-Configure your AWS keys. Here you can find a [2min walkthrough](https://www.youtube.com/watch?v=mRkUnA3mEt4) how to do retrieve the keys.
-
+# Get Started
+To get started, clone the project:
 ```
-sls config credentials --provider aws --key <your_aws_access_key> --secret <your_aws_secret_key>
+git clone https://github.com/kristiankyvik/unirank.git
 ```
 
 Install Dependencies (FrontEnd and BackEnd)
@@ -39,7 +34,7 @@ Install Dependencies (FrontEnd and BackEnd)
 cd app-backend
 yarn install
 cd ../app-client
-yarn install
+npm install
 ```
 
 Test Locally - Use Apollo Lambda Server
@@ -54,7 +49,7 @@ yarn run start-server-lambda:offline
 ```
 # Start Client http://localhost:3000
 cd app-client
-yarn start
+npm run dev
 ```
 
 OR
@@ -65,30 +60,28 @@ cd app-backend
 yarn run start-client-local
 ```
 
-## Setup for Production
+# Deploy
 
-Use live data from the development environment. You need to make sure you have access to your deployed lambda functions. This works only after you deployed it to production.
+Configure your AWS keys. Here you can find a [2min walkthrough](https://www.youtube.com/watch?v=mRkUnA3mEt4) how to do retrieve the keys.
 
+```
+sls config credentials --provider aws --key <your_aws_access_key> --secret <your_aws_secret_key>
+```
+
+Then run the following command:
 ```
 cd app-backend
 yarn run deploy-server-lambda-prod
 ```
-
-![deploy feedback](https://cloud.githubusercontent.com/assets/223045/19171420/6e271150-8bd1-11e6-9b49-e9fa88cac379.png)
 
 ## Directory Layout
 
 ```bash
 .
 ├── /app-client/                     # React Client with Apollo Integration
-│   ├── /public/                     # front End Utils
-│   │   ├── /index.html              # main html file to render react app
-│   │   ├── /...                     # front end metadata
-│   ├── /src/                        # react app code logic
-│   │   ├── /componenets/            # react componenets
-│   │   ├── /App.js                  # react application logic
-│   │   ├── /index.js                # react dom render
-│   │   ├── /...                     # etc.
+│   ├── /pages/                      # fpages
+│   ├── /components                  # react components
+│   ├── /.next                       # fNext JS  config files
 │   ├── /package.json                # react app dependencies
 ├── /app-backend/                    # Server Backend with Apollo Integration
 │   ├── /handler.js                  # AWS Lambda - Apollo Lambda Server
