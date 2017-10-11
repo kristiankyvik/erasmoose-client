@@ -1,28 +1,13 @@
-require('babel-core/register');
-require('babel-polyfill');
-
+require('request'); // needed to force webpack to load request lib
 const rp = require('request-promise');
-// Connect to database
-// const mongoUtil = require('./mongoUtil');
-const API_KEY = 'iZWzn7_nZs_fdPr0GloRQJMAch859a_1';
+
+const API_KEY = process.env.MLAB_API_KEY;
 const API_URL = 'https://api.mlab.com/api/1/databases/unirank/collections/universities';
 
 const prepare = (o) => {
   o._id = o._id["$oid"];
   return o;
 };
-
-// eslint-disable-next-line import/prefer-default-export
-// export const resolvers = {
-//   Query: {
-//     allUnis: async (whot, opts) => {
-//       return (await mongoUtil.getCollection('universities')).find().limit(opts.first).toArray();
-//     },
-//     _allUnisMeta: async () => {
-//       return { count: (await mongoUtil.getCollection('universities')).count() };
-//     },
-//   },
-// };
 
 // eslint-disable-next-line import/prefer-default-export
 export const resolvers = {
@@ -35,6 +20,8 @@ export const resolvers = {
         },
         qs: {
           l: opts.first,
+          sk: opts.skip,
+          s: { priority: "name" },
           apiKey: API_KEY,
         },
         json: true, // Automatically parses the JSON string in the response
@@ -43,6 +30,9 @@ export const resolvers = {
     _allUnisMeta: () => {
       return rp({
         uri: API_URL,
+        transform: (body, response, resolveWithFullResponse) => {
+          return { count: body };
+        },
         qs: {
           c: true,
           apiKey: API_KEY,

@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start-client-local": "cd ../app-client/ && npm start",
-    "start-server-lambda:offline": "env-cmd ../config/security.env.local serverless offline start",
+    "start-server-lambda:offline": "env-cmd ../config/security.env.local serverless -s dev offline start",
     "deploy-server-lambda-prod": "serverless --stage=production deploy",
     "lint": "eslint . --cache"
   },
@@ -22,7 +22,8 @@
     "graphql-tools": "^1.0.0",
     "mongodb": "^2.2.31",
     "request": "^2.83.0",
-    "request-promise": "^4.2.2"
+    "request-promise": "^4.2.2",
+    "serverless-delete-loggroups": "^0.3.1"
   },
   "devDependencies": {
     "aws-sdk": "^2.4.8",

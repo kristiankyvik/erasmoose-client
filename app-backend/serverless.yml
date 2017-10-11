@@ -7,11 +7,14 @@ provider:
   runtime: nodejs6.10
   stage: dev
   region: us-east-1
+  environment:
+    MLAB_API_KEY: ${file(./serverless.env.yml):${opt:stage}.MLAB_API_KEY}
+    HOME: /tmp
 
 plugins:
   - serverless-offline
   - serverless-webpack
-
+  - serverless-delete-loggroups
 custom:
   serverless-offline:
     port: 4000

@@ -9,14 +9,16 @@ function UniList ({ data: { loading, error, allUnis, _allUnisMeta }, loadMorePos
   if (allUnis && allUnis.length) {
     const areMorePosts = allUnis.length < _allUnisMeta.count
     return (
-      <section>
-        <div style={{ width: 1080 }} className="flex flex-wrap">
-          {allUnis.map((uni, index) =>
-            <Card 
-              key={uni.name}
-              uni={uni}
-            />
-          )}
+      <section className="tc">
+        <div className="flex justify-center">
+          <div style={{ width: 1080 }} className="flex flex-wrap">
+            {allUnis.map((uni, index) =>
+              <Card 
+                key={uni.name}
+                uni={uni}
+              />
+            )}
+          </div>
         </div>
         {areMorePosts ? <button onClick={() => loadMorePosts()}> {loading ? 'Loading...' : 'Show More'} </button> : ''}
         <style jsx>{`

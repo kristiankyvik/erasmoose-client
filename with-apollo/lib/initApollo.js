@@ -9,8 +9,6 @@ if (!process.browser) {
 }
 
 function create (initialState) {
-  console.log(process.env.NODE_ENV,process.env.PROD_SERVER_URL);
-
   return new ApolloClient({
     initialState,
     ssrMode: !process.browser, // Disables forceFetch on the server (so queries are only run once)
