@@ -7,7 +7,7 @@
     "url": "git@github.com:serverless/serverless-graphql-apollo.git"
   },
   "scripts": {
-    "start-client-local": "cd ../app-client/ && npm start",
+    "start-client-local": "cd ../app-client/ && npm run dev",
     "start-server-lambda:offline": "env-cmd ../config/security.env.local serverless -s dev offline start",
     "deploy-server-lambda-prod": "serverless --stage=production deploy",
     "lint": "eslint . --cache"
