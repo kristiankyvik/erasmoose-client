@@ -4,8 +4,8 @@ require('babel-core/register');
 require('babel-polyfill');
 
 // Connect to database
-const mongoUtil = require('./mongoUtil');
-mongoUtil.getCollection('setup');
+// const mongoUtil = require('./mongoUtil');
+// mongoUtil.getCollection('setup');
 
 // Import Graphsql utils
 import { makeExecutableSchema } from 'graphql-tools';
