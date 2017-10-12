@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start-client-local": "cd ../app-client/ && npm run dev",
-    "start-server-lambda:offline": "env-cmd ../config/security.env.local serverless -s dev offline start",
+    "start-server-lambda:offline": "env SLS_DEBUG=true GRAPHQL_ENDPOINT=/graphql CLIENT_URL=http://localhost:3000 serverless -s dev offline start",
     "deploy-server-lambda-prod": "serverless --stage=production deploy",
     "lint": "eslint . --cache"
   },

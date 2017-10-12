@@ -10,6 +10,7 @@ provider:
   environment:
     MLAB_API_KEY: ${file(./serverless.env.yml):${opt:stage}.MLAB_API_KEY}
     HOME: /tmp
+    SLS_DEBUG: true
 
 plugins:
   - serverless-offline
