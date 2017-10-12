@@ -36,6 +36,6 @@ jobs:
       # - run: yarn test
 
       # deploy backend to aws!
-      export AWS_ACCESS_KEY_ID=<your-key-here>
-      export AWS_SECRET_ACCESS_KEY=<your-secret-key-here>
+      # export AWS_ACCESS_KEY_ID=<your-key-here>
+      # export AWS_SECRET_ACCESS_KEY=<your-secret-key-here>
       - run: yarn run deploy-server-lambda-prod
