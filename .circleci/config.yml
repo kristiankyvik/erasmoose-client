@@ -33,7 +33,5 @@ jobs:
       # FRONTEND STUFF
       - run: cd app-client && npm install
 
-      - run: cd app-client && now deploy --public --token=$NOW_TOKEN
-
-      - run: cd app-client && npm run cli-deploy
+      - run: cd app-client && now deploy --public --token=$NOW_TOKEN -e SERVER_URL=$SERVER_URL
 
