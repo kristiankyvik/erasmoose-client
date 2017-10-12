@@ -3,6 +3,10 @@
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
 version: 2
+general:
+  branches:
+    only:
+      - master # list of branches to build
 jobs:
   build:
     docker:
@@ -14,14 +18,19 @@ jobs:
     steps:
       - checkout
 
-      - run: yarn global add serverless
-
+      # Install globals
+      - run: yarn global add serverless && npm i -g now
+      
+      # BACKEND STUFF
       - run: cd app-backend && yarn install
         
       # run tests!
       # - run: yarn test
 
       # deploy backend to aws!
-      # export AWS_ACCESS_KEY_ID=<your-key-here>
-      # export AWS_SECRET_ACCESS_KEY=<your-secret-key-here>
       - run: cd app-backend && yarn run deploy-server-lambda-prod
+
+      # FRONTEND STUFF
+      - run: cd app-client && npm install
+
+      - run: cd app-client && npm run deploy
