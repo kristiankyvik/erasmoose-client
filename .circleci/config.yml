@@ -34,3 +34,6 @@ jobs:
       - run: cd app-client && npm install
 
       - run: cd app-client && now --public --token=$NOW_TOKEN
+      
+      - run: cd app-client && npm run cli-deploy
+
