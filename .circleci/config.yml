@@ -19,7 +19,7 @@ jobs:
       - checkout
 
       # Install globals
-      - run: yarn global add serverless && npm i -g now
+      - run: yarn global add serverless && sudo npm i -g now
       
       # BACKEND STUFF
       - run: cd app-backend && yarn install
