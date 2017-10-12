@@ -33,5 +33,11 @@ jobs:
       # FRONTEND STUFF
       - run: cd app-client && npm install
 
-      - run: cd app-client && now deploy --public --token=$NOW_TOKEN -e SERVER_URL=$SERVER_URL
+      - run: cd app-client && now deploy --public --token=$NOW_TOKEN -e SERVER_URL=$SERVER_URL &> /tmp/logfile
+
+      - run:
+          name: Creating Alias
+          command: |
+            echo "eloooooo";
+            cat /tmp/logfile;
 
