@@ -21,11 +21,11 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: cd app-backend
+      # - run: cd app-backend
 
-      - run: yarn global add serverless
+      - run: cd app-backend && yarn global add serverless
 
-      - run: yarn install
+      - run: cd app-backend && yarn install
 
       - save_cache:
           paths:
@@ -38,6 +38,4 @@ jobs:
       # deploy backend to aws!
       # export AWS_ACCESS_KEY_ID=<your-key-here>
       # export AWS_SECRET_ACCESS_KEY=<your-secret-key-here>
-      - run: cd app-backend
-
-      - run: yarn run deploy-server-lambda-prod
+      - run: cd app-backend && yarn run deploy-server-lambda-prod
