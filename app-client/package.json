@@ -5,7 +5,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "deploy": "now --public"
+    "deploy": "now --public --token=process.env.NOW_TOKEN"
   },
   "dependencies": {
     "dotenv": "^4.0.0",
