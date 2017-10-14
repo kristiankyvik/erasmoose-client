@@ -33,8 +33,11 @@ class Unis extends React.Component {
     document.removeEventListener("keydown", this._handleGlobalKeyPress, false);
   }
 
-  _handleCardClick = (e) => {
-    this.setState({ showModal: true });
+  _handleCardClick = (e, index) => {
+    this.setState({ 
+      showModal: true,
+      index
+    });
   }
 
   _handleModalLeftClick = (e) => {
@@ -70,7 +73,7 @@ class Unis extends React.Component {
               <Card 
                 key={uni.name}
                 uni={uni}
-                _handleCardClick={this._handleCardClick}
+                _handleCardClick={(evt) => this._handleCardClick(evt, index)}
               />
             )}
           </div>
