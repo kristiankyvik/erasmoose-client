@@ -8,6 +8,7 @@ npm-debug.log
 .webpack
 # eslint cache
 .eslintcache
+.next
 
 # vim
 *.swp

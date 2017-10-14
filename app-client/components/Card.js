@@ -3,7 +3,7 @@ import PostUpvoter from './PostUpvoter'
 export default (props) => (
 	<div 
 		className="ma2 shadow-4 bg-white flex flex-column tc ur-card" 
-		style={{ "backgroundImage": `url("${props.uni.url}")` }} 
+		style={{ "backgroundImage": `url("https://source.unsplash.com/254x156/?${props.uni.url}&city&sig=${props.uni._id}")` }} 
 		data-index={props.index}
 		onClick={props._handleCardClick}
 	>
@@ -18,7 +18,7 @@ export default (props) => (
 		  	style={{ "flex": 1 }} 
 		  	className="b tr f7 robot0"
 		  >
-		    <span >Rank: </span>{props.uni.rank}{3}
+		    <span >Rank: </span>{props.uni.times_rank}{3}
 		  </div>
 		</div>
 

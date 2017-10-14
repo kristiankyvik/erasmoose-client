@@ -1,13 +1,67 @@
 import { gql, graphql } from 'react-apollo'
 import ErrorMessage from './ErrorMessage'
 import Card from './Card'
+import Modal from './Modal'
+import React from 'react';
 
 const POSTS_PER_PAGE = 20
 
 function UniList ({ data: { loading, error, allUnis, _allUnisMeta }, loadMorePosts }) {
   if (error) return <ErrorMessage message='Error loading entries.' />
   if (allUnis && allUnis.length) {
-    const areMorePosts = allUnis.length < _allUnisMeta.count
+    return (
+      <Unis _allUnisMeta={_allUnisMeta} allUnis={allUnis} loading={loading} />
+    )
+  }
+  return <div>Loading</div>
+}
+
+class Unis extends React.Component {
+  constructor(props) {
+    super(props);
+    this.searchInput = null;
+    this.modal = null;
+    this.state = {
+      data: [],
+      allData: [],
+      showModal: false,
+      index: 0
+    };
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this._handleGlobalKeyPress, false);
+  }
+
+  _handleCardClick = (e) => {
+    this.setState({ showModal: true });
+  }
+
+  _handleModalLeftClick = (e) => {
+    const index = this.state.index <= 0 ? allUnis.length - 1 : this.state.index - 1;     
+    this.setState({ index: index });
+  }
+
+  _handleModalRightClick = (e) => {
+    const index = this.state.index >= allUnis.length ? 0 : this.state.index + 1;     
+    this.setState({ index: index });
+  }
+
+  _handleModalCloseClick = (e) => {
+    this.setState({ showModal: false });
+  }
+
+  _handleGlobalKeyPress = (e) => {
+    if (!this.state.showModal) return;
+    if (e.keyCode === 37) {
+      this._handleModalLeftClick();
+    } else if (e.keyCode === 39) {
+      this._handleModalRightClick();
+    }
+  }
+  render() {
+    const { allUnis, _allUnisMeta, loading } = this.props;
+    const areMorePosts = allUnis.length < _allUnisMeta.count;
     return (
       <section className="tc">
         <div className="flex justify-center">
@@ -16,11 +70,21 @@ function UniList ({ data: { loading, error, allUnis, _allUnisMeta }, loadMorePos
               <Card 
                 key={uni.name}
                 uni={uni}
+                _handleCardClick={this._handleCardClick}
               />
             )}
           </div>
         </div>
         {areMorePosts ? <button onClick={() => loadMorePosts()}> {loading ? 'Loading...' : 'Show More'} </button> : ''}
+        <Modal 
+          ref={(el) => { this.modal = el; }}
+          showModal={this.state.showModal}
+          uni={allUnis[this.state.index]}
+          _handleModalRightClick={this._handleModalRightClick}
+          _handleModalLeftClick={this._handleModalLeftClick}
+          _handleModalCloseClick={this._handleModalCloseClick}
+          _handleGlobalClick={this._handleGlobalClick}
+        />
         <style jsx>{`
           section {
             padding-bottom: 20px;
@@ -62,7 +126,6 @@ function UniList ({ data: { loading, error, allUnis, _allUnisMeta }, loadMorePos
       </section>
     )
   }
-  return <div>Loading</div>
 }
 
 const allUnis = gql`
@@ -73,6 +136,7 @@ const allUnis = gql`
       votes
       url
       website
+      country
     },
     _allUnisMeta {
       count
