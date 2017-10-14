@@ -10,7 +10,7 @@ function UniList ({ data: { loading, error, allUnis, _allUnisMeta }, loadMorePos
   if (error) return <ErrorMessage message='Error loading entries.' />
   if (allUnis && allUnis.length) {
     return (
-      <Unis _allUnisMeta={_allUnisMeta} allUnis={allUnis} loading={loading} />
+      <Unis _allUnisMeta={_allUnisMeta} allUnis={allUnis} loading={loading} loadMorePosts={loadMorePosts} />
     )
   }
   return <div>Loading</div>
@@ -60,7 +60,7 @@ class Unis extends React.Component {
     }
   }
   render() {
-    const { allUnis, _allUnisMeta, loading } = this.props;
+    const { allUnis, _allUnisMeta, loading, loadMorePosts } = this.props;
     const areMorePosts = allUnis.length < _allUnisMeta.count;
     return (
       <section className="tc">
