@@ -30,8 +30,8 @@ class Modal extends React.Component {
 			<div 
 				className={"backModal fixed z-1 flex content-center justify-center items-center"}
 			> 
-				<div className={"relative modal flex shadow-3" }>
-					<div className="flex tc items-stretch">
+				<div className={"relative modal vh-100 vh-75-l w-100 w-90-l flex shadow-3" }>
+					<div className="flex tc flex-column flex-row-l items-stretch-l">
 
 						<div 
 							className="flex flex-4 bg-img"
@@ -39,9 +39,9 @@ class Modal extends React.Component {
 						>
 						
 						</div>
-						<div className="flex flex-5 flex-column pa4 tl">
-							<div className="f2 b tc">{this.props.uni.name}</div>
-							<div className="f4 pb3 i playfair tc">{this.props.uni.website}</div>
+						<div className="flex flex-5 flex-column pa4 tl f7">
+							<div className="f3 b tc">{this.props.uni.name}</div>
+							<div className="f6 pb3 i playfair tc">{this.props.uni.website}</div>
 							<p> 
 								Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
 							</p> 
@@ -50,57 +50,69 @@ class Modal extends React.Component {
 							</p> 
 							<div className="bb" style={{ "borderColor": "#dce0e0" }}></div>
 
-							<div className="flex flex-column pv3">
+							<div className="flex flex-column pv2">
 								<div className="flex pv2">
-									<div className="flex w-50 data-row">
-										<i className="fa fa-map-marker flex w-10" aria-hidden="true"></i> <div className="flex w-80">Barcelona, Spain <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
+									<div className="flex w-100 w-50-m data-row">
+										<i className="fa fa-map-marker flex w-10" aria-hidden="true"></i>
+										<div className="flex w-80">Barcelona, Spain <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
 									</div>
-									<div className="flex w-50 data-row">
-										<i className="fa fa-map-marker flex w-10" aria-hidden="true"></i> <div className="flex w-80">Acamedics <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
+									<div className="flex w-100 w-50-m data-row">
+										<i className="fa fa-map-marker flex w-10" aria-hidden="true"></i>
+										<div className="flex w-80">Acamedics <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
 									</div>
 								</div>
 								<div className="flex pv2">
-									<div className="flex w-50 data-row">
-										<i className="fa fa-building flex w-10" aria-hidden="true"></i> <div className="flex w-80">Infraestructure <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
+									<div className="flex w-100 w-50-m data-row">
+										<i className="fa fa-building flex w-10" aria-hidden="true"></i>
+										<div className="flex w-80">Infraestructure <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
 									</div>
-									<div className="flex w-50 data-row">
-										<i className="fa fa-futbol-o flex w-10" aria-hidden="true"></i> <div className="flex w-80">Sports <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
+									<div className="flex w-100 w-50-m data-row">
+										<i className="fa fa-futbol-o flex w-10" aria-hidden="true"></i>
+										<div className="flex w-80">Sports <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
 									</div>
 								</div>
 								<div className="flex pv2">
-									<div className="flex w-50 data-row">
-										<i className="fa fa-balance-scale flex w-10" aria-hidden="true"></i> <div className="flex w-80">Gender ratio <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
+									<div className="flex w-100 w-50-m data-row">
+										<i className="fa fa-balance-scale flex w-10" aria-hidden="true"></i>
+										<div className="flex w-80">Gender ratio <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
 									</div>
-									<div className="flex w-50 data-row">
-										<i className="fa fa-beer flex w-10" aria-hidden="true"></i> <div className="flex w-80">Beer Index <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
+									<div className="flex w-100 w-50-m data-row">
+										<i className="fa fa-beer flex w-10" aria-hidden="true"></i>
+										<div className="flex w-80">Beer Index <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
 									</div>
 								</div>			
 							</div>
 
 							<div className="bb" style={{ "borderColor": "#dce0e0" }}></div>
-							<div className="flex flex-column pv3">
+							<div className="flex flex-column pv2">
 								<div className="flex pv2">
-									<div className="flex w-50 data-row">
-										<i className="fa fa-money flex w-10" aria-hidden="true"></i> <div className="flex w-80">Cost of living <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
+									<div className="flex w-100 w-50-m data-row">
+										<i className="fa fa-money flex w-10" aria-hidden="true"></i>
+										<div className="flex w-80">Cost of living <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
 									</div>
-									<div className="flex w-50 data-row">
-										<i className="fa fa-sun-o flex w-10" aria-hidden="true"></i> <div className="flex w-80">Weather <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
+									<div className="flex w-100 w-50-m data-row">
+										<i className="fa fa-sun-o flex w-10" aria-hidden="true"></i>
+										<div className="flex w-80">Weather <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
 									</div>
 								</div>
 								<div className="flex pv2">
-									<div className="flex w-50 data-row">
-										<i className="fa fa-suitcase flex w-10" aria-hidden="true"></i> <div className="flex w-80">Travel Opportunities <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
+									<div className="flex w-100 w-50-m data-row">
+										<i className="fa fa-suitcase flex w-10" aria-hidden="true"></i>
+										<div className="flex w-80">Travel Opportunities <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
 									</div>
-									<div className="flex w-50 data-row">
-										<i className="fa fa-tint flex w-10" aria-hidden="true"></i> <div className="flex w-80">Tinder Ecosystem <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
+									<div className="flex w-100 w-50-m data-row">
+										<i className="fa fa-tint flex w-10" aria-hidden="true"></i>
+										<div className="flex w-80">Tinder Ecosystem <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
 									</div>
 								</div>
 								<div className="flex pv2">
-									<div className="flex w-50 data-row">
-										<i className="fa fa-clock-o flex w-10" aria-hidden="true"></i> <div className="flex w-80">Work Load <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
+									<div className="flex w-100 w-50-m data-row">
+										<i className="fa fa-clock-o flex w-10" aria-hidden="true"></i>
+										<div className="flex w-80">Work Load <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
 									</div>
-									<div className="flex w-50 data-row">
-										<i className="fa fa-language flex w-10" aria-hidden="true"></i> <div className="flex w-80">Langauges <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
+									<div className="flex w-100 w-50-m data-row">
+										<i className="fa fa-language flex w-10" aria-hidden="true"></i>
+										<div className="flex w-80">Langauges <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
 									</div>
 								</div>								
 							</div>
@@ -129,7 +141,12 @@ class Modal extends React.Component {
 			    		display: flex;
 			    	}
 			    	.flex-4 {
-			    		flex: 4;
+			    		flex: 2;
+			    	}
+			    	@media screen and (min-width: 60em) {
+			    		.flex-4 {
+			    			flex: 4;
+			    		}
 			    	}
 			    	.flex-5 {
 			    		flex: 5;
@@ -147,8 +164,6 @@ class Modal extends React.Component {
 			        margin: 0 auto;
 			      }
 			      .modal {
-			      	height: 85vh;
-			      	width: 90vw;
 			      	background-color: white;
 			      }
 			      .controls {

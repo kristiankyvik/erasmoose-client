@@ -13,7 +13,7 @@ export default ({ children }) => (
         color: #22BAD9;
       }
       p {
-        font-size: 14px;
+        font-size: 12px;
         line-height: 24px;
       }
       article {
