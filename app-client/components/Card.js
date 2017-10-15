@@ -3,7 +3,7 @@ import PostUpvoter from './PostUpvoter'
 export default (props) => (
 	<div 
 		className="ma2 shadow-4 bg-white flex flex-column tc ur-card" 
-		style={{ "backgroundImage": `url("/static/swiss.jpg")` }} 
+		style={{ "backgroundImage": `url("/static/${props.uni._id}.jpg")` }} 
 		data-index={props.index}
 		onClick={props._handleCardClick}
 	>

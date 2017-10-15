@@ -65,12 +65,6 @@ class Unis extends React.Component {
   render() {
     const { allUnis, _allUnisMeta, loading, loadMorePosts } = this.props;
     const areMorePosts = allUnis.length < _allUnisMeta.count;
-    console.log(JSON.stringify(allUnis.map((u) => {
-      return { 
-        _id: u._id, 
-        url: `https://source.unsplash.com/254x156/?${u.country}&${u.name}&sig=${u._id}`,
-      };
-    })));
     return (
       <section className="tc">
         <div className="flex justify-center">
