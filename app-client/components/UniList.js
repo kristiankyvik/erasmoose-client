@@ -29,6 +29,10 @@ class Unis extends React.Component {
     };
   }
 
+  componentDidMount() {
+    document.addEventListener("keydown", this._handleGlobalKeyPress, false);
+  }
+
   componentWillUnmount() {
     document.removeEventListener("keydown", this._handleGlobalKeyPress, false);
   }

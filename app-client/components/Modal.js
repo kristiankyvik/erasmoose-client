@@ -35,7 +35,7 @@ class Modal extends React.Component {
 
 						<div 
 							className="flex flex-4 bg-img"
-							style={{ "backgroundImage": `url("${this.props.uni.url}")` }} 
+							style={{ "backgroundImage": `url("/static/${this.props.uni._id}.jpg")` }} 
 						>
 						
 						</div>
