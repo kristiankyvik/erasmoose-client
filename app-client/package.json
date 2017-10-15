@@ -5,7 +5,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "deploy": "now deploy --public"
+    "deploy": "now deploy -e ENV=production"
   },
   "dependencies": {
     "dotenv": "^4.0.0",
