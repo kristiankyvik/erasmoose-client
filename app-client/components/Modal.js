@@ -119,11 +119,11 @@ class Modal extends React.Component {
 						</div>
 
 						<div className="controls absolute flex f1">
-							<div className="flex left" onClick={this.props._handleModalLeftClick}>
-								<i className="fa fa-angle-left" aria-hidden="true"></i>
+							<div className="flex left z-0">
+								<i className="fa fa-angle-left z-1" aria-hidden="true" onClick={this.props._handleModalLeftClick}></i>
 							</div>
-							<div className="flex right justify-end f1" onClick={this.props._handleModalRightClick}>
-								<i className="fa fa-angle-right" aria-hidden="true"></i>
+							<div className="flex right justify-end f1 z-0" >
+								<i className="fa fa-angle-right z-1" aria-hidden="true" onClick={this.props._handleModalRightClick}></i>
 							</div>
 
 						</div>

@@ -30,7 +30,7 @@ function PostUpvoter ({ upvote, votes, _id }) {
 }
 
 const upvoteUniversity = gql`
-  mutation updateUniversity($_id: ID!, $votes: Int) {
+  mutation updateUniversity($_id: String, $votes: Int) {
     updateUniversity(_id: $_id, votes: $votes) {
       _id
       __typename

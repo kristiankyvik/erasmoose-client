@@ -25,6 +25,10 @@ type Query {
   allUnis(first: Int, skip: Int) : [University]
   _allUnisMeta: Meta
 }
+
+type Mutation {
+  updateUniversity(_id: String, votes: Int): University
+}
 `;
 
 // eslint-disable-next-line import/prefer-default-export

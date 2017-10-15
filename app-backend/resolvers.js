@@ -9,6 +9,7 @@ const prepare = (o) => {
   return o;
 };
 
+
 // eslint-disable-next-line import/prefer-default-export
 export const resolvers = {
   Query: {
@@ -35,6 +36,24 @@ export const resolvers = {
         },
         qs: {
           c: true,
+          apiKey: API_KEY,
+        },
+        json: true, // Automatically parses the JSON string in the response
+      });
+    },
+  },
+  Mutation: {
+    updateUniversity: (whot, opts) => {
+      return rp({
+        uri: `${API_URL}/${opts._id}`,
+        method: 'PUT',
+        body: {
+          "$set" : { votes: opts.votes },
+        },
+        transform: (body, response, resolveWithFullResponse) => {
+          return prepare(body);
+        },
+        qs: {
           apiKey: API_KEY,
         },
         json: true, // Automatically parses the JSON string in the response

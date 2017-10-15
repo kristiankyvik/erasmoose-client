@@ -4,7 +4,7 @@ import Card from './Card'
 import Modal from './Modal'
 import React from 'react';
 
-const POSTS_PER_PAGE = 20
+const POSTS_PER_PAGE = 20;
 
 function UniList ({ data: { loading, error, allUnis, _allUnisMeta }, loadMorePosts }) {
   if (error) return <ErrorMessage message='Error loading entries.' />
@@ -65,13 +65,19 @@ class Unis extends React.Component {
   render() {
     const { allUnis, _allUnisMeta, loading, loadMorePosts } = this.props;
     const areMorePosts = allUnis.length < _allUnisMeta.count;
+    console.log(JSON.stringify(allUnis.map((u) => {
+      return { 
+        _id: u._id, 
+        url: `https://source.unsplash.com/254x156/?${u.country}&${u.name}&sig=${u._id}`,
+      };
+    })));
     return (
       <section className="tc">
         <div className="flex justify-center">
           <div style={{ width: 1080 }} className="flex flex-wrap">
             {allUnis.map((uni, index) =>
               <Card 
-                key={uni.name}
+                key={uni._id}
                 uni={uni}
                 _handleCardClick={(evt) => this._handleCardClick(evt, index)}
               />
