@@ -13,6 +13,8 @@ export default ({ pathname }) => (
       <link rel="stylesheet" href="https://unpkg.com/tachyons@4.7.0/css/tachyons.min.css"/>
       <link rel="stylesheet" href="https://unpkg.com/tachyons-flexbox@2.0.5/css/tachyons-flexbox.min.css" />
       <script src="https://use.fontawesome.com/83c3b2a28b.js"></script>
+      <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet"/>
+      <script dangerouslySetInnerHTML={{__html: `(function() { var qs,js,q,s,d=document, gi=d.getElementById, ce=d.createElement, gt=d.getElementsByTagName, id="typef_orm_share", b="https://embed.typeform.com/"; if(!gi.call(d,id)){ js=ce.call(d,"script"); js.id=id; js.src=b+"embed.js"; q=gt.call(d,"script")[0]; q.parentNode.insertBefore(js,q) } })()` }}></script>
     </Head>
     <Link prefetch href='/'>
       <a className={pathname === '/' && 'is-active'}>Home</a>
@@ -22,7 +24,10 @@ export default ({ pathname }) => (
       <a className={pathname === '/about' && 'is-active'}>About</a>
     </Link>
 
-    <style jsx>{`
+    <style jsx global>{`
+       body { 
+         background-color: #fbfbfb;
+       }
       header {
         margin-bottom: 25px;
       }

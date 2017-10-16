@@ -71,6 +71,13 @@ class Unis extends React.Component {
     const areMorePosts = allUnis.length < _allUnisMeta.count;
     return (
       <section className="tc">
+        <a 
+          className="typeform-share button ur-btn mv3" 
+          href="https://kyvikbcn.typeform.com/to/FsuJQm" 
+          data-mode="drawer_right" 
+          target="_blank">
+            Launch me 
+          </a> 
         <div className="flex justify-center">
           <div style={{ width: 1080 }} className="flex flex-wrap">
             {allUnis.map((uni, index) =>
@@ -82,7 +89,7 @@ class Unis extends React.Component {
             )}
           </div>
         </div>
-        {areMorePosts ? <button onClick={() => loadMorePosts()}> {loading ? 'Loading...' : 'Show More'} </button> : ''}
+        {areMorePosts ? <button className="ur-btn" onClick={() => loadMorePosts()}> {loading ? 'Loading...' : 'Show More'} </button> : ''}
         <Modal 
           ref={(el) => { this.modal = el; }}
           showModal={this.state.showModal}
@@ -119,15 +126,33 @@ class Unis extends React.Component {
             margin: 0;
             padding: 0;
           }
-          button:before {
-            align-self: center;
-            border-style: solid;
-            border-width: 6px 4px 0 4px;
-            border-color: #ffffff transparent transparent transparent;
-            content: "";
-            height: 0;
-            margin-right: 5px;
-            width: 0;
+          .ur-btn {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            display: inline-block;
+            cursor: default;
+            background-color: #ED6863;
+            width: auto;
+            height: 45px;
+            line-height: 38px;
+            padding: 5px 20px 0 20px;
+            font-size: 25px;
+            border-radius: 4px;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            text-align: center;
+            font-weight: bold;
+            font-family: "Source Sans Pro",sans-serif;
+            max-width: 610px;
+            overflow: hidden;
+            -moz-transition: background-color ease-out 100ms 0ms;
+            -webkit-transition: background-color ease-out 100ms 0ms;
+            -o-transition: background-color ease-out 100ms 0ms;
+            transition: background-color ease-out 100ms 0ms;
+            color: #8d1510;
+            -webkit-box-shadow: 0 3px 12px 0 rgba(0,0,0,0.1);
+            -moz-box-shadow: 0 3px 12px 0 rgba(0,0,0,0.1);
+            box-shadow: 0 3px 12px 0 rgba(0,0,0,0.1);
           }
         `}</style>
       </section>
