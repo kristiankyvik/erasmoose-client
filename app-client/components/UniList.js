@@ -76,7 +76,7 @@ class Unis extends React.Component {
           href="https://kyvikbcn.typeform.com/to/FsuJQm" 
           data-mode="drawer_right" 
           target="_blank">
-            Launch me 
+            Add review
           </a> 
         <div className="flex justify-center">
           <div style={{ width: 1080 }} className="flex flex-wrap">
