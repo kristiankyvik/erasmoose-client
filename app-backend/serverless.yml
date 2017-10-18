@@ -16,6 +16,7 @@ plugins:
   - serverless-offline
   - serverless-webpack
   - serverless-delete-loggroups
+  - serverless-plugin-warmup
 custom:
   serverless-offline:
     port: 4000
@@ -26,6 +27,7 @@ custom:
 functions:
   graphql:
     handler: handler.graphqlHandler
+    warmup: true
     events:
     - http:
         path: graphql
@@ -34,6 +36,7 @@ functions:
 
   graphiql:
     handler: handler.graphiqlHandler
+    warmup: true
     events:
     - http:
         path: graphiql
