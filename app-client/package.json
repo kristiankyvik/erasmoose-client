@@ -1,5 +1,5 @@
 {
-  "name": "unirank",
+  "name": "erasmoose",
   "version": "2.0.0",
   "scripts": {
     "dev": "next",
@@ -19,7 +19,7 @@
     "react-dom": "^16.0.0"
   },
   "now": {
-    "alias": "unirank"
+    "alias": "www.erasmoose.com"
   },
   "author": "",
   "license": "ISC",
