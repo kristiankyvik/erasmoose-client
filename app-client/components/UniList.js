@@ -77,7 +77,7 @@ class Unis extends React.Component {
           data-mode="drawer_right" 
           target="_blank">
             Add review
-          </a> 
+        </a> 
         <div className="flex justify-center">
           <div style={{ width: 1080 }} className="flex flex-wrap">
             {allUnis.map((uni, index) =>
