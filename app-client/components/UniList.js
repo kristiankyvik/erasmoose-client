@@ -178,6 +178,7 @@ const allUnis = gql`
 
 // The `graphql` wrapper executes a GraphQL query and makes the results
 // available on the `data` prop of the wrapped component (UniList)
+console.log("hello");
 export default graphql(allUnis, {
   options: {
     variables: {

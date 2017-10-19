@@ -1,0 +1,14 @@
+{
+  "name": "with-graphql-request",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "micro"
+  },
+  "dependencies": {
+    "graphql-server-micro": "latest",
+    "micro": "latest",
+    "microrouter": "latest"
+  },
+  "license": "MIT"
+}
