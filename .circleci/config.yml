@@ -38,10 +38,9 @@ jobs:
 
       - run:
           name: Creating Alias
-          background: true
-          sleep: 200
           command: |
             echo "The freshly deployed instance has address:"
             NEW_URL=`cat /tmp/domain`
             echo $NEW_URL
-            now alias --token=$NOW_TOKEN            
+            (sleep 5; now alias --token=$NOW_TOKEN) & 
+                     
