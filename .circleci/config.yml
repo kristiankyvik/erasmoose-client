@@ -36,10 +36,12 @@ jobs:
       - run: cd app-client && now deploy --alias unirank.now.sh -f --token=$NOW_TOKEN -e ENV=production -e SERVER_URL=$SERVER_URL
       # - run: cd app-client && now deploy --token=$NOW_TOKEN -e ENV=production -e SERVER_URL=$SERVER_URL &> /tmp/domain
 
-      # - run:
-      #     name: Creating Alias
-      #     command: |
-      #       echo "The freshly deployed instance has address:"
-      #       NEW_URL=`cat /tmp/domain`
-      #       echo $NEW_URL
-      #       now alias $NEW_URL unirank --token=$NOW_TOKEN            
+      - run:
+          name: Creating Alias
+          background: true
+          sleep: 200
+          command: |
+            echo "The freshly deployed instance has address:"
+            NEW_URL=`cat /tmp/domain`
+            echo $NEW_URL
+            now alias --token=$NOW_TOKEN            
