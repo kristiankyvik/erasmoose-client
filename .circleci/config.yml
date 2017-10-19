@@ -41,7 +41,4 @@ jobs:
             echo "The freshly deployed instance has address:"
             NEW_URL=`cat /tmp/domain`
             echo $NEW_URL
-            now alias $NEW_URL unirank --token=$NOW_TOKEN
-            now scale unirank.now.sh 1
-            
-
+            now alias $NEW_URL unirank --token=$NOW_TOKEN            
