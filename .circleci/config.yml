@@ -24,9 +24,28 @@ jobs:
       # BACKEND STUFF
       - run: cd app-backend && yarn install
         
-      - run: cd app-backend && now deploy --force --token=$NOW_TOKEN -e ENV=production -e MLAB_API_KEY=$MLAB_API_KEY
+      - run: cd app-backend && now deploy --force --token=$NOW_TOKEN -e ENV=production -e MLAB_API_KEY=$MLAB_API_KEY &> /tmp/domain
 
+      - run:
+          name: Creating Alias For app-backend
+          command: |
+            echo "The freshly deployed instance has address:"
+            NEW_URL=`cat /tmp/domain`
+            echo $NEW_URL
+            sleep 200
+            now alias --token=$NOW_TOKEN
+                     
       # FRONTEND STUFF
       - run: cd app-client && npm install
 
-      - run: cd app-client && now deploy --force --token=$NOW_TOKEN -e ENV=production -e SERVER_URL=$SERVER_URL
+      - run: cd app-client && now deploy --force --token=$NOW_TOKEN -e ENV=production -e SERVER_URL=$SERVER_URL &> /tmp/domain
+      
+      - run:
+          name: Creating Alias For app-client
+          command: |
+            echo "The freshly deployed instance has address:"
+            NEW_URL=`cat /tmp/domain`
+            echo $NEW_URL
+            sleep 200
+            now alias --token=$NOW_TOKEN
+                     
