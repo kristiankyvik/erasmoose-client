@@ -28,7 +28,9 @@ jobs:
 
       - run:
           name: Creating Alias For app-backend
+          background: true
           command: |
+            cd app-backend
             echo "The freshly deployed instance has address:"
             NEW_URL=`cat /tmp/domain`
             echo $NEW_URL
@@ -39,10 +41,12 @@ jobs:
       - run: cd app-client && npm install
 
       - run: cd app-client && now deploy --force --token=$NOW_TOKEN -e ENV=production -e SERVER_URL=$SERVER_URL &> /tmp/domain
-      
+
       - run:
           name: Creating Alias For app-client
+          background: true
           command: |
+            cd app-client
             echo "The freshly deployed instance has address:"
             NEW_URL=`cat /tmp/domain`
             echo $NEW_URL
