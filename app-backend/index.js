@@ -9,7 +9,7 @@ const cors = require('micro-cors')();
 const API_KEY = process.env.MLAB_API_KEY;
 const API_URL = 'https://api.mlab.com/api/1/databases/unirank/collections/universities';
 
-console.log(process.env.MLAB_API_KEY);
+console.log(process.env);
 
 const prepare = (o) => {
   o._id = o._id["$oid"];
