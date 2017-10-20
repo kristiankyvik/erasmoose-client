@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "micro -p 4000",
-    "dev": "micro-dev -p 4000"
+    "start": "micro",
+    "dev": "micro-dev -p 4000",
+    "deploy": "now deploy -e ENV=production"
   },
   "dependencies": {
     "dotenv": "^4.0.0",
@@ -15,6 +16,9 @@
     "micro-cors": "@latest",
     "request": "^2.83.0",
     "request-promise": "^4.2.2"
+  },
+  "now": {
+    "alias": "www.api.erasmoose.com"
   },
   "license": "MIT",
   "devDependencies": {
