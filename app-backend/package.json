@@ -14,6 +14,7 @@
     "graphql-tools": "@latest",
     "micro": "@latest",
     "micro-cors": "@latest",
+    "mongodb": "^2.2.33",
     "request": "^2.83.0",
     "request-promise": "^4.2.2"
   },

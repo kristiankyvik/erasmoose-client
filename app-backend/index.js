@@ -5,11 +5,10 @@ const { parse } = require('url')
 const { microGraphql, microGraphiql } = require('graphql-server-micro')
 const { makeExecutableSchema } = require('graphql-tools')
 const cors = require('micro-cors')();
+const { MongoClient } = require('mongodb');
 
 const API_KEY = process.env.MLAB_API_KEY;
 const API_URL = 'https://api.mlab.com/api/1/databases/unirank/collections/universities';
-
-console.log(process.env);
 
 const prepare = (o) => {
   o._id = o._id["$oid"];
@@ -55,64 +54,50 @@ schema {
 }
 `;
 
-const resolvers = {
-  Query: {
-    allUnis: (whot, opts) => {
-      return rp({
-        uri: API_URL,
-        transform: (body, response, resolveWithFullResponse) => {
-          return body.map(prepare);
-        },
-        qs: {
-          l: opts.first,
-          sk: opts.skip,
-          s: { priority: "name" },
-          apiKey: API_KEY,
-        },
-        json: true, // Automatically parses the JSON string in the response
-      });
+let resolvers;
+let schema;
+
+const setup = async () => {
+  const db = await MongoClient.connect(process.env.MLAB_URL);
+
+  resolvers = {
+    Query: {
+      allUnis: async (whot, opts) => {
+        return await db.collection("universities").find(
+          {},
+          {
+            limit: opts.first,
+            skip: opts.skip,
+            sort: { name: 1 },
+          }
+        ).toArray();
+      },
+      _allUnisMeta: async () => {
+        const count = await db.collection("universities").count();
+        return { count };
+      },
     },
-    _allUnisMeta: () => {
-      return rp({
-        uri: API_URL,
-        transform: (body, response, resolveWithFullResponse) => {
-          return { count: body };
+    Mutation: {
+      updateUniversity: async (whot, opts) => {
+        return await db.collection("universities").update({
+          _id: opts._id
         },
-        qs: {
-          c: true,
-          apiKey: API_KEY,
-        },
-        json: true, // Automatically parses the JSON string in the response
-      });
+        {
+          "$set": { votes: opts.votes }
+        });
+      },
     },
-  },
-  Mutation: {
-    updateUniversity: (whot, opts) => {
-      return rp({
-        uri: `${API_URL}/${opts._id}`,
-        method: 'PUT',
-        body: {
-          "$set" : { votes: opts.votes },
-        },
-        transform: (body, response, resolveWithFullResponse) => {
-          return prepare(body);
-        },
-        qs: {
-          apiKey: API_KEY,
-        },
-        json: true, // Automatically parses the JSON string in the response
-      });
-    },
-  },
+  };
+  schema = makeExecutableSchema({
+    typeDefs,
+    resolvers,
+    logger: console,
+  });
 };
 
-const schema = makeExecutableSchema({
-  typeDefs,
-  resolvers,
-  logger: console,
-});
 
-module.exports = cors((req, res) => {
+module.exports = cors( async (req, res) => {
+    setup();
     const url = parse(req.url)
     if(url.pathname === '/graphiql') {
         return microGraphiql({endpointURL: '/'})(req, res)
