@@ -3,12 +3,21 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "micro"
+    "start": "micro -p 4000",
+    "dev": "micro-dev -p 4000"
   },
   "dependencies": {
-    "graphql-server-micro": "latest",
-    "micro": "latest",
-    "microrouter": "latest"
+    "dotenv": "^4.0.0",
+    "graphql": "@latest",
+    "graphql-server-micro": "@latest",
+    "graphql-tools": "@latest",
+    "micro": "@latest",
+    "micro-cors": "@latest",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "micro-dev": "^1.2.3"
+  }
 }
