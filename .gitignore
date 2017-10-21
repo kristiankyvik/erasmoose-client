@@ -13,4 +13,4 @@ npm-debug.log
 # vim
 *.swp
 .env*
-serverless.env.yml
+.next
