@@ -34,6 +34,7 @@ jobs:
             NEW_URL=`cat /tmp/domain`
             echo $NEW_URL
             sleep 45
+            set +e
             now alias --token=$NOW_TOKEN
             echo "y" | now rm api.erasmoose.com --safe --token=$NOW_TOKEN
                      
