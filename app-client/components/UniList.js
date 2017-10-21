@@ -4,7 +4,7 @@ import Card from './Card'
 import Modal from './Modal'
 import React from 'react';
 
-const POSTS_PER_PAGE = 20;
+const POSTS_PER_PAGE = 30;
 
 function UniList ({ data: { loading, error, allUnis, _allUnisMeta }, loadMorePosts }) {
   if (error) return <ErrorMessage message='Error loading entries.' />
