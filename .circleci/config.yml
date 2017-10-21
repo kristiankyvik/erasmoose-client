@@ -33,8 +33,9 @@ jobs:
             echo "The freshly deployed instance has address:"
             NEW_URL=`cat /tmp/domain`
             echo $NEW_URL
-            sleep 60
+            sleep 30
             now alias --token=$NOW_TOKEN
+            now rm www.api.erasmoose.com --safe
                      
       # FRONTEND STUFF
       - run: cd app-client && yarn install
@@ -48,6 +49,6 @@ jobs:
             echo "The freshly deployed instance has address:"
             NEW_URL=`cat /tmp/domain`
             echo $NEW_URL
-            sleep 60
+            sleep 30
             now alias --token=$NOW_TOKEN
-                     
+            now rm www.erasmoose.com --safe
