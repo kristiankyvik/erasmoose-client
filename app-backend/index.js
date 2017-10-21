@@ -56,7 +56,6 @@ let schema;
 let hassetup = false;
 
 const setup = async () => {
-  console.log("####### running setup #######");
 
   const db = await MongoClient.connect(process.env.MLAB_URL);
 
@@ -97,22 +96,16 @@ const setup = async () => {
 };
 
 module.exports = cors( async (req, res) => {
-    console.log("####### checking schema #######");
-    console.log(schema, hassetup);
-    console.log("####### checking schema #######");
-    console.log("the url is", req.url);
 
     if (!hassetup) {
       await setup();
     }
 
-    if (req.url) {
-      console.log("the url is", req.url);
-      const url = parse(req.url)
-      if(url.pathname === '/graphiql') {
-          return microGraphiql({endpointURL: '/'})(req, res)
-      }
-
-      return microGraphql({ schema })(req, res)
+    const url = parse(req.url)
+    if(url.pathname === '/graphiql') {
+        return microGraphiql({endpointURL: '/'})(req, res)
     }
+
+    return microGraphql({ schema })(req, res)
+    
 });
