@@ -101,6 +101,10 @@ const setup = async () => {
 setup();
 
 module.exports = cors( async (req, res) => {
+    console.log("####### checking schema #######");
+    console.log(schema);
+    console.log("####### checking schema #######");
+
 
     const url = parse(req.url)
     if(url.pathname === '/graphiql') {
