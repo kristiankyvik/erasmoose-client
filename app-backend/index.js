@@ -100,6 +100,7 @@ module.exports = cors( async (req, res) => {
     console.log("####### checking schema #######");
     console.log(schema, hassetup);
     console.log("####### checking schema #######");
+    console.log("the url is", req.url);
 
     if (!hassetup) {
       await setup();
