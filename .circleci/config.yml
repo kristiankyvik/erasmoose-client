@@ -24,18 +24,18 @@ jobs:
       # BACKEND STUFF
       - run: cd app-backend && yarn install
         
-      - run: cd app-backend && now deploy --force --token=$NOW_TOKEN -e ENV=production -e MLAB_API_KEY=$MLAB_API_KEY &> /tmp/domain
+      - run: cd app-backend && now alias $(now --force --token=$NOW_TOKEN -e ENV=production -e MLAB_API_KEY=$MLAB_API_KEY) --token=$NOW_TOKEN
+      - run: now rm api.erasmoose.com --safe --token=$NOW_TOKEN
 
-      - run:
-          name: Creating Alias For app-backend
-          command: |
-            cd app-backend
-            echo "The freshly deployed instance has address:"
-            NEW_URL=`cat /tmp/domain`
-            echo $NEW_URL
-            sleep 45
-            now alias --token=$NOW_TOKEN
-            now rm api.erasmoose.com --safe --token=$NOW_TOKEN
+      # - run:
+      #     name: Creating Alias For app-backend
+      #     command: |
+      #       cd app-backend
+      #       echo "The freshly deployed instance has address:"
+      #       NEW_URL=`cat /tmp/domain`
+      #       echo $NEW_URL
+      #       sleep 100
+      #       now alias --token=$NOW_TOKEN
                      
       # FRONTEND STUFF
       - run: cd app-client && yarn install
@@ -49,6 +49,6 @@ jobs:
             echo "The freshly deployed instance has address:"
             NEW_URL=`cat /tmp/domain`
             echo $NEW_URL
-            sleep 45
+            sleep 100
             now alias --token=$NOW_TOKEN
             now rm erasmoose.com --safe --token=$NOW_TOKEN
