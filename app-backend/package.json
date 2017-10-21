@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "micro",
+    "start": "micro -p 4000",
     "dev": "micro-dev -p 4000",
     "deploy": "now deploy -e ENV=production"
   },
