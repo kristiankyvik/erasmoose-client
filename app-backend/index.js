@@ -99,6 +99,17 @@ const setup = async () => {
 setup();
 
 module.exports = cors( async (req, res) => {
+  console.log("#######");
+  console.log("#######");
+  console.log("#######");
+
+  console.log(schema);
+
+  console.log("#######");
+  console.log("#######");
+  console.log("#######");
+  console.log("#######");
+
     const url = parse(req.url)
     if(url.pathname === '/graphiql') {
         return microGraphiql({endpointURL: '/'})(req, res)
