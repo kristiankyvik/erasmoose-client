@@ -33,7 +33,7 @@ jobs:
             echo "The freshly deployed instance has address:"
             NEW_URL=`cat /tmp/domain`
             echo $NEW_URL
-            sleep 120
+            sleep 60
             now alias --token=$NOW_TOKEN
                      
       # FRONTEND STUFF
@@ -48,6 +48,6 @@ jobs:
             echo "The freshly deployed instance has address:"
             NEW_URL=`cat /tmp/domain`
             echo $NEW_URL
-            sleep 120
+            sleep 60
             now alias --token=$NOW_TOKEN
                      
