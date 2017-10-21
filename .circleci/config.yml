@@ -24,9 +24,9 @@ jobs:
       # BACKEND STUFF
       - run: cd app-backend && yarn install
       - run: cd app-backend && now alias $(now --force --token=$NOW_TOKEN -e ENV=production -e MLAB_API_KEY=$MLAB_API_KEY) --token=$NOW_TOKEN
-      - run: yes | now rm api.erasmoose.com --safe --token=$NOW_TOKEN
+      - run: y | now rm api.erasmoose.com --safe --token=$NOW_TOKEN
                      
       # FRONTEND STUFF
       - run: cd app-client && yarn install
       - run: cd app-client && now alias $(now --force --token=$NOW_TOKEN -e ENV=production -e SERVER_URL=$SERVER_URL) --token=$NOW_TOKEN
-      - run: yes | now rm erasmoose.com --safe --token=$NOW_TOKEN
+      - run: y | now rm erasmoose.com --safe --token=$NOW_TOKEN
