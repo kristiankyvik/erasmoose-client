@@ -7,9 +7,6 @@ const { makeExecutableSchema } = require('graphql-tools')
 const cors = require('micro-cors')();
 const { MongoClient } = require('mongodb');
 
-const API_KEY = process.env.MLAB_API_KEY;
-const API_URL = 'https://api.mlab.com/api/1/databases/unirank/collections/universities';
-
 const prepare = (o) => {
   o._id = o._id["$oid"];
   return o;
@@ -56,6 +53,7 @@ schema {
 
 let resolvers;
 let schema;
+let hassetup = false;
 
 const setup = async () => {
   console.log("####### running setup #######");
@@ -95,16 +93,17 @@ const setup = async () => {
     resolvers,
     logger: console,
   });
+  hassetup = true;
 };
-
-
-setup();
 
 module.exports = cors( async (req, res) => {
     console.log("####### checking schema #######");
-    console.log(schema);
+    console.log(schema, hassetup);
     console.log("####### checking schema #######");
 
+    if (!hassetup) {
+      await setup();
+    }
 
     const url = parse(req.url)
     if(url.pathname === '/graphiql') {
