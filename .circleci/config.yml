@@ -35,7 +35,7 @@ jobs:
             echo $NEW_URL
             sleep 45
             now alias --token=$NOW_TOKEN
-            now rm www.api.erasmoose.com --safe --token=$NOW_TOKEN
+            now rm api.erasmoose.com --safe --token=$NOW_TOKEN
                      
       # FRONTEND STUFF
       - run: cd app-client && yarn install
@@ -51,4 +51,4 @@ jobs:
             echo $NEW_URL
             sleep 45
             now alias --token=$NOW_TOKEN
-            now rm www.erasmoose.com --safe --token=$NOW_TOKEN
+            now rm erasmoose.com --safe --token=$NOW_TOKEN
