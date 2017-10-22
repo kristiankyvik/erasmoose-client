@@ -20,7 +20,7 @@
   },
   "now": {
     "name": "api.erasmoose.com",
-    "alias": "www.api.erasmoose.com"
+    "alias": "api.erasmoose.com"
   },
   "license": "MIT",
   "devDependencies": {
