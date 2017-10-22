@@ -1,5 +1,6 @@
 require('dotenv').config()
 require('request'); // needed to force webpack to load request lib
+
 const rp = require('request-promise');
 const { parse } = require('url')
 const { microGraphql, microGraphiql } = require('graphql-server-micro')
