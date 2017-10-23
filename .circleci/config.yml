@@ -20,23 +20,6 @@ jobs:
 
       # Install globals
       - run: sudo npm i -g now --unsafe-perm
-
-      # BACKEND STUFF
-      - run: cd app-backend && yarn install
-        
-      - run: cd app-backend && now deploy --force --token=$NOW_TOKEN -e ENV=production -e MLAB_URL=$MLAB_URL &> /tmp/domain
-
-      - run:
-          name: Creating Alias For app-backend
-          command: |
-            cd app-backend
-            echo "The freshly deployed instance has address:"
-            NEW_URL=`cat /tmp/domain`
-            echo $NEW_URL
-            sleep 45
-            set +e
-            now alias --token=$NOW_TOKEN
-            echo "y" | now rm api.erasmoose.com --safe --token=$NOW_TOKEN
                      
       # FRONTEND STUFF
       - run: cd app-client && yarn install
