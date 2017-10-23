@@ -69,6 +69,7 @@ class Unis extends React.Component {
   render() {
     const { allUnis, _allUnisMeta, loading, loadMorePosts } = this.props;
     const areMorePosts = allUnis.length < _allUnisMeta.count;
+    console.log("LOADING", loading);
     return (
       <section className="tc">
         <div className="flex justify-center">
@@ -80,9 +81,9 @@ class Unis extends React.Component {
                 _handleCardClick={(evt) => this._handleCardClick(evt, index)}
               />
             )}
+            {areMorePosts ? <div className="flex-auto ma2 ur-btn tc justify-center" onClick={() => loadMorePosts()}> {loading ? 'Loading...' : 'Show More'} </div> : ''}
           </div>
         </div>
-        {areMorePosts ? <button className="ur-btn" onClick={() => loadMorePosts()}> {loading ? 'Loading...' : 'Show More'} </button> : ''}
         <Modal 
           ref={(el) => { this.modal = el; }}
           showModal={this.state.showModal}
@@ -145,6 +146,7 @@ const allUnis = gql`
 // available on the `data` prop of the wrapped component (UniList)
 export default graphql(allUnis, {
   options: {
+    notifyOnNetworkStatusChange: true,
     variables: {
       skip: 0,
       first: POSTS_PER_PAGE
