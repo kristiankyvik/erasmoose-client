@@ -8,7 +8,5 @@ export default () => (
       <h2 className="fw1 f3 black-80 mt3 mb4"> We are super gooofuse state of the art patent-pending next level shit Machine Learning! Join the ride.</h2>
     </div>
     </div>
-    <style jsx>{`
-    `}</style>
   </div>
 )
