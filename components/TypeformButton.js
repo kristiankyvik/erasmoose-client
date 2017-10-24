@@ -19,8 +19,6 @@ class TypeformButton extends React.Component {
           target="_blank">
             Add review
         </a> 
-        <style jsx>{`
-        `}</style>
       </div>
     )
   }
