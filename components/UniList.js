@@ -91,7 +91,7 @@ class Unis extends React.Component {
             </div>
           </div>
         </div>
-        <TypeformButton ref={(el) => { this.tfbtn = el; }} />
+        <TypeformButton uniId={this.props.allUnis[this.state.index]._id} ref={(el) => { this.tfbtn = el; }} />
         <Modal 
           ref={(el) => { this.modal = el; }}
           showModal={this.state.showModal}

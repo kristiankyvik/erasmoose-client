@@ -114,8 +114,8 @@ class Modal extends React.Component {
 										<div className="flex w-80">Langauges <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
 									</div>
 								</div>	
-								<div className="flex-auto ma2 ur-btn tc justify-center" onClick={this.props._handleFormClick}> Add Review </div> 							
 							</div>
+							<div className="flex-auto ma2 ur-btn tc justify-center content-center items-center" onClick={this.props._handleFormClick}> Add Review </div> 							
 						</div>
 
 						<div className="controls absolute flex f1">
