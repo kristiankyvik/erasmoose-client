@@ -75,6 +75,7 @@ class Unis extends React.Component {
   render() {
     const { allUnis, _allUnisMeta, loading, loadMorePosts } = this.props;
     const areMorePosts = allUnis.length < _allUnisMeta.count;
+    console.log("lo que le pases", this.props.allUnis[this.state.index]._id);
     return (
       <section className="tc">
         <div className="flex justify-center">
