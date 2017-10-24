@@ -3,6 +3,7 @@ import ErrorMessage from './ErrorMessage'
 import Card from './Card'
 import Modal from './Modal'
 import React from 'react';
+import TypeformButton from '../components/TypeformButton'
 
 const POSTS_PER_PAGE = 32;
 
@@ -21,6 +22,7 @@ class Unis extends React.Component {
     super(props);
     this.searchInput = null;
     this.modal = null;
+    this.tfbtn = null;
     this.state = {
       data: [],
       allData: [],
@@ -58,6 +60,10 @@ class Unis extends React.Component {
     this.setState({ showModal: false });
   }
 
+  _handleFormClick = (e) => {
+    this.tfbtn.launchForm()
+  }
+
   _handleGlobalKeyPress = (e) => {
     if (!this.state.showModal) return;
     if (e.keyCode === 37) {
@@ -69,7 +75,6 @@ class Unis extends React.Component {
   render() {
     const { allUnis, _allUnisMeta, loading, loadMorePosts } = this.props;
     const areMorePosts = allUnis.length < _allUnisMeta.count;
-    console.log("LOADING", loading);
     return (
       <section className="tc">
         <div className="flex justify-center">
@@ -81,9 +86,12 @@ class Unis extends React.Component {
                 _handleCardClick={(evt) => this._handleCardClick(evt, index)}
               />
             )}
-            {areMorePosts ? <div className="flex-auto ma2 ur-btn tc justify-center" onClick={() => loadMorePosts()}> {loading ? 'Loading...' : 'Show More'} </div> : ''}
+            <div className="flex-auto">
+              {areMorePosts ? <div className="flex-auto ma2 ur-btn tc justify-center" onClick={() => loadMorePosts()}> {loading ? 'Loading...' : 'Show More'} </div> : ''}
+            </div>
           </div>
         </div>
+        <TypeformButton ref={(el) => { this.tfbtn = el; }} />
         <Modal 
           ref={(el) => { this.modal = el; }}
           showModal={this.state.showModal}
@@ -92,6 +100,7 @@ class Unis extends React.Component {
           _handleModalLeftClick={this._handleModalLeftClick}
           _handleModalCloseClick={this._handleModalCloseClick}
           _handleGlobalClick={this._handleGlobalClick}
+          _handleFormClick={this._handleFormClick}
         />
         <style jsx>{`
           section {

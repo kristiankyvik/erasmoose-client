@@ -32,7 +32,6 @@ class Modal extends React.Component {
 			> 
 				<div className={"relative modal vh-100 vh-75-l w-100 w-90-l flex shadow-3" }>
 					<div className="flex tc flex-column flex-row-l items-stretch-l">
-
 						<div 
 							className="flex flex-4 bg-img"
 							style={{ "backgroundImage": `url("/static/${this.props.uni._id}.jpg")` }} 
@@ -48,6 +47,7 @@ class Modal extends React.Component {
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
 							</p> 
+
 							<div className="bb" style={{ "borderColor": "#dce0e0" }}></div>
 
 							<div className="flex flex-column pv2">
@@ -82,7 +82,6 @@ class Modal extends React.Component {
 									</div>
 								</div>			
 							</div>
-
 							<div className="bb" style={{ "borderColor": "#dce0e0" }}></div>
 							<div className="flex flex-column pv2">
 								<div className="flex pv2">
@@ -114,7 +113,8 @@ class Modal extends React.Component {
 										<i className="fa fa-language flex w-10" aria-hidden="true"></i>
 										<div className="flex w-80">Langauges <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
 									</div>
-								</div>								
+								</div>	
+								<div className="flex-auto ma2 ur-btn tc justify-center" onClick={this.props._handleFormClick}> Add Review </div> 							
 							</div>
 						</div>
 
