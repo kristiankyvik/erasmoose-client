@@ -75,7 +75,6 @@ class Unis extends React.Component {
   render() {
     const { allUnis, _allUnisMeta, loading, loadMorePosts } = this.props;
     const areMorePosts = allUnis.length < _allUnisMeta.count;
-    console.log("lo que le pases", this.props.allUnis[this.state.index]._id);
     return (
       <section className="tc">
         <div className="flex justify-center">
@@ -92,7 +91,7 @@ class Unis extends React.Component {
             </div>
           </div>
         </div>
-        <TypeformButton uniId={this.props.allUnis[this.state.index]._id} ref={(el) => { this.tfbtn = el; }} />
+        <TypeformButton ghost={true} uniId={this.props.allUnis[this.state.index]._id} ref={(el) => { this.tfbtn = el; }} />
         <Modal 
           ref={(el) => { this.modal = el; }}
           showModal={this.state.showModal}

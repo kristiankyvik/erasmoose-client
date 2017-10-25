@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 class Modal extends React.Component {
 	constructor(props) {
 	  super(props);
+	  this.state = {
+	    tabIndex: 0
+	  };
 	}
 
 	componentDidMount() {
@@ -13,110 +16,104 @@ class Modal extends React.Component {
 		document.removeEventListener('mousedown', this._handleClick, false);
 	}
 
-	_handleClick = (e) => {
-		// const domNode = ReactDOM.findDOMNode(this);
-		// console.log(domNode.find(".modal"));
-		// console.log("hanfldee");
-		// if ((!domNode || !domNode.contains(e.target))) {
-		// 	console.log("is utside");
-		// }
+	_handleTabClick = (i, e) => {
+		this.setState({
+			tabIndex: i
+		});
 	}
 
 	render() {
 		if (!this.props.showModal || !this.props.uni) {
 			return null;
-		} 
+		}
+
+		const i = this.state.tabIndex;
+		const addActive = (n) => { 
+			const ret = i === n ? "active" : "nothing";
+			return ret;
+		};
+		const cards = [
+			<div className="flex flex-auto pa3 flex-column">
+				<div className="flex bb bt b--light-gray bw2">
+					<div className="flex justify-center flex-auto pa3">
+						<img src="https://png.icons8.com/numeric/color/24" title="numeric" width="24" height="24"/> Unirank
+					</div>
+					<div className= "flex justify-center flex-auto pa3">
+						<img src="https://png.icons8.com/location/color/24" title="Location" width="24" height="24"/> Location
+					</div>
+					<div className="flex justify-center flex-auto pa3">
+						Tag1 Tag2 Tag3
+					</div>
+				</div>
+				<div className="flex pa3">
+					<div className="flex flex-auto flex-column">
+						<div>
+							<img className="mr2" src="https://png.icons8.com/medal/color/24" title="Medal" width="24" height="24"/>
+							<span className="f4">
+								Thing number one
+							</span>
+						</div>
+						<div>
+							<img className="mr2" src="https://png.icons8.com/medal/color/24" title="Medal" width="24" height="24"/>
+							<span className="f4">
+								Thing number one
+							</span>
+						</div>
+					</div>
+					<div className="flex flex-auto flex-column">
+						<div>
+							<img className="mr2" src="https://png.icons8.com/medal/color/24" title="Medal" width="24" height="24"/>
+							<span className="f4">
+								Thing number one
+							</span>
+						</div>
+						<div>
+							<img className="mr2" src="https://png.icons8.com/medal/color/24" title="Medal" width="24" height="24"/>
+							<span className="f4">
+								Thing number one
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>,
+			<div>
+				Hola1
+			</div>,
+			<div>
+				Hola2
+			</div>
+		];
 	  return (
 			<div 
 				className={"backModal fixed z-1 flex content-center justify-center items-center"}
 			> 
 				<div className={"relative modal vh-100 vh-75-l w-100 w-90-l flex shadow-3" }>
-					<div className="flex tc flex-column flex-row-l items-stretch-l">
-						<div 
-							className="flex flex-4 bg-img"
-							style={{ "backgroundImage": `url("/static/${this.props.uni._id}.jpg")` }} 
-						>
-						
-						</div>
-						<div className="flex flex-5 flex-column pa4 tl f7">
-							<div className="f3 b tc">{this.props.uni.name}</div>
-							<div className="f6 pb3 i playfair tc">{this.props.uni.website}</div>
-							<p> 
-								Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-							</p> 
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
-							</p> 
-
-							<div className="bb" style={{ "borderColor": "#dce0e0" }}></div>
-
-							<div className="flex flex-column pv2">
-								<div className="flex pv2">
-									<div className="flex w-100 w-50-m data-row">
-										<i className="fa fa-map-marker flex w-10" aria-hidden="true"></i>
-										<div className="flex w-80">Barcelona, Spain <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
+					<div className="flex tc flex-column flex-row-l items-stretch-l stretch">
+							<div 
+								className="flex flex-4 bg-img"
+								style={{ "backgroundImage": `url("/static/${this.props.uni._id}.jpg")` }} 
+							>		
+							</div>
+							<div className="flex flex-5 flex-column pa4 tl f7">
+								<div className="flex">
+									<div className={ addActive(0) + " flex justify-center flex-auto pv2 bw2 b--light-gray pointer bb ttu light-gray"}  onClick={() => this._handleTabClick(0)}>
+										Overview
 									</div>
-									<div className="flex w-100 w-50-m data-row">
-										<i className="fa fa-map-marker flex w-10" aria-hidden="true"></i>
-										<div className="flex w-80">Acamedics <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
+									<div className={ addActive(1) + " flex justify-center flex-auto pv2 bw2 b--light-gray pointer bb ttu light-gray"} onClick={() => this._handleTabClick(1)}>
+											Studies
+									</div>
+									<div className={ addActive(2) + " flex justify-center flex-auto pv2 bw2 b--light-gray pointer bb ttu light-gray"} onClick={() => this._handleTabClick(2)}>
+										Location
 									</div>
 								</div>
-								<div className="flex pv2">
-									<div className="flex w-100 w-50-m data-row">
-										<i className="fa fa-building flex w-10" aria-hidden="true"></i>
-										<div className="flex w-80">Infraestructure <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
-									</div>
-									<div className="flex w-100 w-50-m data-row">
-										<i className="fa fa-futbol-o flex w-10" aria-hidden="true"></i>
-										<div className="flex w-80">Sports <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
-									</div>
-								</div>
-								<div className="flex pv2">
-									<div className="flex w-100 w-50-m data-row">
-										<i className="fa fa-balance-scale flex w-10" aria-hidden="true"></i>
-										<div className="flex w-80">Gender ratio <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
-									</div>
-									<div className="flex w-100 w-50-m data-row">
-										<i className="fa fa-beer flex w-10" aria-hidden="true"></i>
-										<div className="flex w-80">Beer Index <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
-									</div>
+								<div className="f3 b tc pt4">{this.props.uni.name}</div>
+								<div className="f6 pb3 i playfair tc">{this.props.uni.website}</div>
+								<div className="flex flex-auto">
+									{cards[this.state.tabIndex]}
 								</div>			
+								<div className="ma2 ur-btn tc justify-center content-center items-center" onClick={this.props._handleFormClick}> Add Review </div> 							
 							</div>
-							<div className="bb" style={{ "borderColor": "#dce0e0" }}></div>
-							<div className="flex flex-column pv2">
-								<div className="flex pv2">
-									<div className="flex w-100 w-50-m data-row">
-										<i className="fa fa-money flex w-10" aria-hidden="true"></i>
-										<div className="flex w-80">Cost of living <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
-									</div>
-									<div className="flex w-100 w-50-m data-row">
-										<i className="fa fa-sun-o flex w-10" aria-hidden="true"></i>
-										<div className="flex w-80">Weather <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
-									</div>
-								</div>
-								<div className="flex pv2">
-									<div className="flex w-100 w-50-m data-row">
-										<i className="fa fa-suitcase flex w-10" aria-hidden="true"></i>
-										<div className="flex w-80">Travel Opportunities <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
-									</div>
-									<div className="flex w-100 w-50-m data-row">
-										<i className="fa fa-tint flex w-10" aria-hidden="true"></i>
-										<div className="flex w-80">Tinder Ecosystem <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
-									</div>
-								</div>
-								<div className="flex pv2">
-									<div className="flex w-100 w-50-m data-row">
-										<i className="fa fa-clock-o flex w-10" aria-hidden="true"></i>
-										<div className="flex w-80">Work Load <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
-									</div>
-									<div className="flex w-100 w-50-m data-row">
-										<i className="fa fa-language flex w-10" aria-hidden="true"></i>
-										<div className="flex w-80">Langauges <span className="b pl2">4.5</span></div><div className="flex w-10 pr4"><i className="fa fa-pencil hidden pointer" aria-hidden="true"></i></div> 
-									</div>
-								</div>	
-							</div>
-							<div className="flex-auto ma2 ur-btn tc justify-center content-center items-center" onClick={this.props._handleFormClick}> Add Review </div> 							
-						</div>
+
 
 						<div className="controls absolute flex f1">
 							<div className="flex left z-0">
@@ -134,8 +131,15 @@ class Modal extends React.Component {
 				</div>
 			  <style jsx>
 			    {`
+			    	.blue {
+			    		color: #F44A4A;
+			    	}
 			    	.hidden {
 			    		display: none;
+			    	}
+			    	.active {
+			    		border-color: #F44A4A;
+			    		color: #F44A4A;
 			    	}
 			    	.data-row:hover .hidden {
 			    		display: flex;
@@ -177,6 +181,13 @@ class Modal extends React.Component {
 			      	cursor: pointer;
 			      	color: #F44A4A;
 			      	padding: 0 10px
+			      }
+			      .stretch {
+			      	position: absolute;
+			      	left: 0;
+			      	right: 0;
+			      	top: 0;
+			      	bottom: 0;
 			      }
 			    `}
 			  </style>

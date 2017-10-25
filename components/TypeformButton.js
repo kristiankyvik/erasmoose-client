@@ -9,9 +9,8 @@ class TypeformButton extends React.Component {
   }
 
   render() {
-    console.log("unidi", this.props.uniId)
     return (
-      <div className="clip">
+      <div className={this.props.ghost ? "clip" : ""}>
         <a 
           ref={(el) => { this.btn = el; }}
           className="typeform-share button ur-btn mv3" 
