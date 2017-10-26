@@ -27,60 +27,83 @@ class Modal extends React.Component {
 			return null;
 		}
 
+		const tags = [
+			"happy",
+			"relax",
+			"urban",
+			"beach"
+			].map(t => <div classaName="tag ma2 flex f4"> <img src={`https://png.icons8.com/${t}/dotty/24`} title="Location" width="24" height="24"/> {t} </div> ); 
+
 		const i = this.state.tabIndex;
 		const addActive = (n) => { 
 			const ret = i === n ? "active" : "nothing";
 			return ret;
 		};
 		const cards = [
-			<div className="flex flex-auto pa3 flex-column">
-				<div className="flex bb bt b--light-gray bw2">
+			<div className="flex flex-auto pa2 flex-column">
+				<div className="flex bb bt b--light-gray bw1 f4">
 					<div className="flex justify-center flex-auto pa3">
-						<img src="https://png.icons8.com/numeric/color/24" title="numeric" width="24" height="24"/> Unirank
+						<img src="https://png.icons8.com/numeric/dotty/24" title="numeric" width="24" height="24"/> Unirank
 					</div>
 					<div className= "flex justify-center flex-auto pa3">
-						<img src="https://png.icons8.com/location/color/24" title="Location" width="24" height="24"/> Location
+						<img src="https://png.icons8.com/location/dotty/24" title="Location" width="24" height="24"/> Location
 					</div>
 					<div className="flex justify-center flex-auto pa3">
-						Tag1 Tag2 Tag3
+						<img src="https://png.icons8.com/sun/dotty/24" title="sun" width="24" height="24"/> Weather
 					</div>
 				</div>
+				<div className="flex justify-center pv3 f4">
+					{tags}
+				</div>
+				<div className="bb b--light-gray bw1"></div>
+				<div className="flex justify-center pv3 f4 i">
+					"a place to find yourself"
+				</div>
+				<div className="bb b--light-gray bw1"></div>
 				<div className="flex pa3">
 					<div className="flex flex-auto flex-column">
-						<div>
-							<img className="mr2" src="https://png.icons8.com/medal/color/24" title="Medal" width="24" height="24"/>
-							<span className="f4">
+						<div className="f4 flex justify-center">
+							<img className="mr1" src="https://png.icons8.com/medal/dotty/24" title="Medal" width="24" height="24"/>
 								Thing number one
-							</span>
 						</div>
-						<div>
-							<img className="mr2" src="https://png.icons8.com/medal/color/24" title="Medal" width="24" height="24"/>
-							<span className="f4">
+						<div className="f4 flex justify-center">
+							<img className="mr1" src="https://png.icons8.com/medal/dotty/24" title="Medal" width="24" height="24"/>
 								Thing number one
-							</span>
+						</div>
+						<div className="f4 flex justify-center">
+							<img className="mr1" src="https://png.icons8.com/medal/dotty/24" title="Medal" width="24" height="24"/>
+								Thing number one
+						</div>
+						<div className="f4 flex justify-center">
+							<img className="mr1" src="https://png.icons8.com/medal/dotty/24" title="Medal" width="24" height="24"/>
+								Thing number one
 						</div>
 					</div>
 					<div className="flex flex-auto flex-column">
-						<div>
-							<img className="mr2" src="https://png.icons8.com/medal/color/24" title="Medal" width="24" height="24"/>
-							<span className="f4">
+						<div className="f4 flex justify-center">
+							<img className="mr1" src="https://png.icons8.com/medal/dotty/24" title="Medal" width="24" height="24"/>
 								Thing number one
-							</span>
 						</div>
-						<div>
-							<img className="mr2" src="https://png.icons8.com/medal/color/24" title="Medal" width="24" height="24"/>
-							<span className="f4">
+						<div className="f4 flex justify-center">
+							<img className="mr1" src="https://png.icons8.com/medal/dotty/24" title="Medal" width="24" height="24"/>
 								Thing number one
-							</span>
+						</div>
+						<div className="f4 flex justify-center">
+							<img className="mr1" src="https://png.icons8.com/medal/dotty/24" title="Medal" width="24" height="24"/>
+								Thing number one
+						</div>
+						<div className="f4 flex justify-center">
+							<img className="mr1" src="https://png.icons8.com/medal/dotty/24" title="Medal" width="24" height="24"/>
+								Thing number one
 						</div>
 					</div>
 				</div>
 			</div>,
 			<div>
-				Hola1
+				coming soon 
 			</div>,
 			<div>
-				Hola2
+				coming soon
 			</div>
 		];
 	  return (
@@ -94,24 +117,24 @@ class Modal extends React.Component {
 								style={{ "backgroundImage": `url("/static/${this.props.uni._id}.jpg")` }} 
 							>		
 							</div>
-							<div className="flex flex-5 flex-column pa4 tl f7">
+							<div className="flex flex-5 flex-column pa3 tl f7">
 								<div className="flex">
-									<div className={ addActive(0) + " flex justify-center flex-auto pv2 bw2 b--light-gray pointer bb ttu light-gray"}  onClick={() => this._handleTabClick(0)}>
+									<div className={ addActive(0) + " flex justify-center flex-auto pv2 bw1 b--light-gray pointer bb ttu light-gray"}  onClick={() => this._handleTabClick(0)}>
 										Overview
 									</div>
-									<div className={ addActive(1) + " flex justify-center flex-auto pv2 bw2 b--light-gray pointer bb ttu light-gray"} onClick={() => this._handleTabClick(1)}>
-											Studies
+									<div className={ addActive(1) + " flex justify-center flex-auto pv2 bw1 b--light-gray pointer bb ttu light-gray"} onClick={() => this._handleTabClick(1)}>
+											Coming Soon
 									</div>
-									<div className={ addActive(2) + " flex justify-center flex-auto pv2 bw2 b--light-gray pointer bb ttu light-gray"} onClick={() => this._handleTabClick(2)}>
-										Location
+									<div className={ addActive(2) + " flex justify-center flex-auto pv2 bw1 b--light-gray pointer bb ttu light-gray"} onClick={() => this._handleTabClick(2)}>
+										Coming Soon
 									</div>
 								</div>
 								<div className="f3 b tc pt4">{this.props.uni.name}</div>
 								<div className="f6 pb3 i playfair tc">{this.props.uni.website}</div>
 								<div className="flex flex-auto">
 									{cards[this.state.tabIndex]}
-								</div>			
-								<div className="ma2 ur-btn tc justify-center content-center items-center" onClick={this.props._handleFormClick}> Add Review </div> 							
+								</div>
+								<div className="ma2 ur-btn tc justify-center content-center items-center" onClick={this.props._handleFormClick}> Add Review </div>						
 							</div>
 
 
@@ -169,6 +192,8 @@ class Modal extends React.Component {
 			      }
 			      .modal {
 			      	background-color: white;
+			      	max-height: 560px;
+			      	max-width: 900px;
 			      }
 			      .controls {
 			      	left: 0;
