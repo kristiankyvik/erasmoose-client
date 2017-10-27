@@ -81,6 +81,9 @@ export default ({ children }) => (
         background-color: #f29491;
         cursor: pointer;
       }
+      .modalOpen {
+        overflow: hidden;
+      }
     `}</style>
   </main>
 )

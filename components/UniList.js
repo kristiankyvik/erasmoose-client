@@ -37,9 +37,11 @@ class Unis extends React.Component {
 
   componentWillUnmount() {
     document.removeEventListener("keydown", this._handleGlobalKeyPress, false);
+    document.body.classList.remove('modalOpen')
   }
 
   _handleCardClick = (e, index) => {
+    document.body.classList.toggle('modalOpen', true);
     this.setState({ 
       showModal: true,
       index

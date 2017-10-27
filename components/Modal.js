@@ -32,7 +32,7 @@ class Modal extends React.Component {
 			"relax",
 			"urban",
 			"beach"
-			].map(t => <div classaName="tag ma2 flex f4"> <img src={`https://png.icons8.com/${t}/dotty/24`} title="Location" width="24" height="24"/> {t} </div> ); 
+			].map(t => <div className="tag ma2 flex f4" key={t}> <img src={`https://png.icons8.com/${t}/dotty/24`} title="Location" width="24" height="24"/> {t} </div> ); 
 
 		const i = this.state.tabIndex;
 		const addActive = (n) => { 
@@ -107,38 +107,36 @@ class Modal extends React.Component {
 			</div>
 		];
 	  return (
-			<div 
-				className={"backModal fixed z-1 flex content-center justify-center items-center"}
-			> 
-				<div className={"relative modal vh-100 vh-75-l w-100 w-90-l flex shadow-3" }>
-					<div className="flex tc flex-column flex-row-l items-stretch-l stretch">
-							<div 
-								className="flex flex-4 bg-img"
-								style={{ "backgroundImage": `url("/static/${this.props.uni._id}.jpg")` }} 
-							>		
-							</div>
-							<div className="flex flex-5 flex-column pa3 tl f7">
-								<div className="flex">
-									<div className={ addActive(0) + " flex justify-center flex-auto pv2 bw1 b--light-gray pointer bb ttu light-gray"}  onClick={() => this._handleTabClick(0)}>
-										Overview
-									</div>
-									<div className={ addActive(1) + " flex justify-center flex-auto pv2 bw1 b--light-gray pointer bb ttu light-gray"} onClick={() => this._handleTabClick(1)}>
-											Coming Soon
-									</div>
-									<div className={ addActive(2) + " flex justify-center flex-auto pv2 bw1 b--light-gray pointer bb ttu light-gray"} onClick={() => this._handleTabClick(2)}>
+			<div className={"backModal fixed z-1 flex content-center justify-center items-center"}> 
+				<div className={"absolute modal shadow-3 pa2 w-100 w-80-l" }>
+					<div className="flex tc flex-column">
+						<div 
+							className="flex bg-img"
+							style={{ "backgroundImage": `url("/static/${this.props.uni._id}.jpg")` }} 
+						>		
+						</div>
+						<div className="flex flex-column ph1 tl f7">
+							<div className="flex">
+								<div className={ addActive(0) + " flex justify-center flex-auto pv2 bw1 b--light-gray pointer bb ttu light-gray"}  onClick={() => this._handleTabClick(0)}>
+									Overview
+								</div>
+								<div className={ addActive(1) + " flex justify-center flex-auto pv2 bw1 b--light-gray pointer bb ttu light-gray"} onClick={() => this._handleTabClick(1)}>
 										Coming Soon
-									</div>
 								</div>
-								<div className="f3 b tc pt4">{this.props.uni.name}</div>
-								<div className="f6 pb3 i playfair tc">{this.props.uni.website}</div>
-								<div className="flex flex-auto">
-									{cards[this.state.tabIndex]}
+								<div className={ addActive(2) + " flex justify-center flex-auto pv2 bw1 b--light-gray pointer bb ttu light-gray"} onClick={() => this._handleTabClick(2)}>
+									Coming Soon
 								</div>
-								<div className="ma2 ur-btn tc justify-center content-center items-center" onClick={this.props._handleFormClick}> Add Review </div>						
 							</div>
+							<div className="f3 b tc pt4">{this.props.uni.name}</div>
+							<div className="f6 pb3 i playfair tc">{this.props.uni.website}</div>
+							<div className="flex flex-auto">
+								{cards[this.state.tabIndex]}
+							</div>
+							<div className="ma2 ur-btn tc justify-center content-center items-center" onClick={this.props._handleFormClick}> Add Review </div>						
+						</div>
 
 
-						<div className="controls absolute flex f1">
+						<div className="controls absolute flex f1 dh db-l">
 							<div className="flex left z-0">
 								<i className="fa fa-angle-left z-1" aria-hidden="true" onClick={this.props._handleModalLeftClick}></i>
 							</div>
@@ -148,7 +146,7 @@ class Modal extends React.Component {
 
 						</div>
 					</div>
-					<div className="red f2 absolute ph3 right-0 pointer" onClick={this.props._handleModalCloseClick}>
+					<div className="red f2 absolute ph3 right-0 top-0 pointer" onClick={this.props._handleModalCloseClick}>
 						x
 					</div>
 				</div>
@@ -182,22 +180,33 @@ class Modal extends React.Component {
 			    		background-size: cover;
 			    		background-repeat: no-repeat;
 			    		background-position: center center;
+			    		min-height: 40vh;
 			    	}
 			      .backModal {
-			        left: 0;
-			        right: 0;
+			        background: rgba(30,30,30,0.9);
 			        top: 0;
-			        bottom: 0;
-			        margin: 0 auto;
+			        left: 0;
+			        width: 100%;
+			        height: 100%;
+			        overflow-y: scroll;
+			        box-sizing: border-box;
+			        -webkit-overflow-scrolling: touch;
 			      }
 			      .modal {
 			      	background-color: white;
-			      	max-height: 560px;
-			      	max-width: 900px;
+			      	max-width: 920px;
+			      	position: absolute;
+			      	z-index: 9997;
+			      	top: 20px;
+			      	background-position: fixed;
+			      	box-sizing: border-box;
+			      	border-radius: 6px;
+			      	min-height: 90vh;
+			      	margin-bottom: 20px;
 			      }
 			      .controls {
-			      	left: 0;
-			      	right: 0;
+			      	left: -70px;
+			      	right: -70px;
 			      	top: 50%;
 			      	margin: -20px auto 0;
 			      }
