@@ -130,7 +130,7 @@ class Modal extends React.Component {
 							<div className="flex flex-auto">
 								{cards[this.state.tabIndex]}
 							</div>
-							<div className="ma2 ur-btn tc justify-center content-center items-center" onClick={this.props._handleFormClick}> Add Review </div>						
+							<div className="ma2 mh4 ur-btn tc justify-center content-center items-center" onClick={this.props._handleFormClick}> Add Review </div>						
 						</div>
 
 
@@ -207,6 +207,7 @@ class Modal extends React.Component {
 			      	border-radius: 6px;
 			      	min-height: 90vh;
 			      	margin-bottom: 20px;
+			      	margin-left: -460px;
 			      }
 			      .controls {
 			      	left: -70px;
