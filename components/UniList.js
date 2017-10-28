@@ -37,7 +37,6 @@ class Unis extends React.Component {
 
   componentWillUnmount() {
     document.removeEventListener("keydown", this._handleGlobalKeyPress, false);
-    document.body.classList.remove('modalOpen')
   }
 
   _handleCardClick = (e, index) => {
@@ -60,6 +59,7 @@ class Unis extends React.Component {
 
   _handleModalCloseClick = (e) => {
     this.setState({ showModal: false });
+    document.body.classList.remove('modalOpen')
   }
 
   _handleFormClick = (e) => {
