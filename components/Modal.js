@@ -207,7 +207,6 @@ class Modal extends React.Component {
 			      	border-radius: 6px;
 			      	min-height: 90vh;
 			      	margin-bottom: 20px;
-			      	margin-left: -460px;
 			      }
 			      .controls {
 			      	left: -70px;
