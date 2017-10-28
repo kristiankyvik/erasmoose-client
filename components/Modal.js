@@ -40,8 +40,8 @@ class Modal extends React.Component {
 			return ret;
 		};
 		const cards = [
-			<div className="flex flex-auto pa2 flex-column">
-				<div className="flex bb bt b--light-gray bw1 f4">
+			<div className="flex flex-auto pv3 ph4 flex-column">
+				<div className="flex f4 shadow-3 bg-white pa3">
 					<div className="flex justify-center flex-auto pa3">
 						<img src="https://png.icons8.com/numeric/dotty/24" title="numeric" width="24" height="24"/> Unirank
 					</div>
@@ -52,16 +52,14 @@ class Modal extends React.Component {
 						<img src="https://png.icons8.com/sun/dotty/24" title="sun" width="24" height="24"/> Weather
 					</div>
 				</div>
-				<div className="flex justify-center pv3 f4">
+				<div className="flex justify-center pv3 f4 shadow-3 bg-white mt2">
 					{tags}
 				</div>
-				<div className="bb b--light-gray bw1"></div>
-				<div className="flex justify-center pv3 f4 i">
+				<div className="flex justify-center pv3 f4 i shadow-3 bg-white mt2">
 					"a place to find yourself"
 				</div>
-				<div className="bb b--light-gray bw1"></div>
-				<div className="flex pa3">
-					<div className="flex flex-auto flex-column">
+				<div className="flex">
+					<div className="flex flex-auto flex-column shadow-3 bg-white mt2 mr1 pv3">
 						<div className="f4 flex justify-center">
 							<img className="mr1" src="https://png.icons8.com/medal/dotty/24" title="Medal" width="24" height="24"/>
 								Thing number one
@@ -79,7 +77,7 @@ class Modal extends React.Component {
 								Thing number one
 						</div>
 					</div>
-					<div className="flex flex-auto flex-column">
+					<div className="flex flex-auto flex-column shadow-3 bg-white mt2 ml1 pv3">
 						<div className="f4 flex justify-center">
 							<img className="mr1" src="https://png.icons8.com/medal/dotty/24" title="Medal" width="24" height="24"/>
 								Thing number one
@@ -108,22 +106,22 @@ class Modal extends React.Component {
 		];
 	  return (
 			<div className={"backModal fixed z-1 flex content-center justify-center items-center"}> 
-				<div className={"absolute modal shadow-3 pa2 w-100 w-80-l" }>
+				<div className={"absolute modal shadow-3 w-100 w-80-l" }>
 					<div className="flex tc flex-column">
 						<div 
 							className="flex bg-img"
 							style={{ "backgroundImage": `url("/static/${this.props.uni._id}.jpg")` }} 
 						>		
 						</div>
-						<div className="flex flex-column ph1 tl f7">
+						<div className="flex flex-column tl f7">
 							<div className="flex">
-								<div className={ addActive(0) + " flex justify-center flex-auto pv2 bw1 b--light-gray pointer bb ttu light-gray"}  onClick={() => this._handleTabClick(0)}>
+								<div className={ addActive(0) + " flex justify-center flex-auto f5 z-1 pv3 bw1 b--light-gray bg-oj pointer bb ttu light-gray"}  onClick={() => this._handleTabClick(0)}>
 									Overview
 								</div>
-								<div className={ addActive(1) + " flex justify-center flex-auto pv2 bw1 b--light-gray pointer bb ttu light-gray"} onClick={() => this._handleTabClick(1)}>
+								<div className={ addActive(1) + " flex justify-center flex-auto f5 z-1 pv3 bw1 b--light-gray bg-oj pointer bb ttu light-gray"} onClick={() => this._handleTabClick(1)}>
 										Coming Soon
 								</div>
-								<div className={ addActive(2) + " flex justify-center flex-auto pv2 bw1 b--light-gray pointer bb ttu light-gray"} onClick={() => this._handleTabClick(2)}>
+								<div className={ addActive(2) + " flex justify-center flex-auto f5 z-1 pv3 bw1 b--light-gray bg-oj pointer bb ttu light-gray"} onClick={() => this._handleTabClick(2)}>
 									Coming Soon
 								</div>
 							</div>
@@ -162,6 +160,10 @@ class Modal extends React.Component {
 			    		border-color: #F44A4A;
 			    		color: #F44A4A;
 			    	}
+			    	.bg-oj {
+			    		background-color: #ED6863;
+			    		color: white;
+			    	}
 			    	.data-row:hover .hidden {
 			    		display: flex;
 			    	}
@@ -181,6 +183,8 @@ class Modal extends React.Component {
 			    		background-repeat: no-repeat;
 			    		background-position: center center;
 			    		min-height: 40vh;
+			    		border-top-right-radius: 6px;
+			    		border-top-left-radius: 6px;
 			    	}
 			      .backModal {
 			        background: rgba(30,30,30,0.9);
@@ -193,7 +197,7 @@ class Modal extends React.Component {
 			        -webkit-overflow-scrolling: touch;
 			      }
 			      .modal {
-			      	background-color: white;
+			      	background-color: #fbfbfb;
 			      	max-width: 920px;
 			      	position: absolute;
 			      	z-index: 9997;
