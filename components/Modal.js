@@ -115,13 +115,13 @@ class Modal extends React.Component {
 						</div>
 						<div className="flex flex-column tl f7">
 							<div className="flex">
-								<div className={ addActive(0) + " flex justify-center flex-auto f5 z-1 pv3 bw1 b--light-gray bg-oj pointer bb ttu light-gray"}  onClick={() => this._handleTabClick(0)}>
+								<div className={ addActive(0) + " flex justify-center flex-auto f5 z-1 pv3 bw1 b--light-gray pointer bb ttu moon-gray"}  onClick={() => this._handleTabClick(0)}>
 									Overview
 								</div>
-								<div className={ addActive(1) + " flex justify-center flex-auto f5 z-1 pv3 bw1 b--light-gray bg-oj pointer bb ttu light-gray"} onClick={() => this._handleTabClick(1)}>
+								<div className={ addActive(1) + " flex justify-center flex-auto f5 z-1 pv3 bw1 b--light-gray pointer bb ttu moon-gray"} onClick={() => this._handleTabClick(1)}>
 										Coming Soon
 								</div>
-								<div className={ addActive(2) + " flex justify-center flex-auto f5 z-1 pv3 bw1 b--light-gray bg-oj pointer bb ttu light-gray"} onClick={() => this._handleTabClick(2)}>
+								<div className={ addActive(2) + " flex justify-center flex-auto f5 z-1 pv3 bw1 b--light-gray pointer bb ttu moon-gray"} onClick={() => this._handleTabClick(2)}>
 									Coming Soon
 								</div>
 							</div>
@@ -182,7 +182,7 @@ class Modal extends React.Component {
 			    		background-size: cover;
 			    		background-repeat: no-repeat;
 			    		background-position: center center;
-			    		min-height: 40vh;
+			    		min-height: 30vh;
 			    		border-top-right-radius: 6px;
 			    		border-top-left-radius: 6px;
 			    	}
