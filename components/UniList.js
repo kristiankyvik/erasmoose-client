@@ -48,12 +48,12 @@ class Unis extends React.Component {
   }
 
   _handleModalLeftClick = (e) => {
-    const index = this.state.index <= 0 ? allUnis.length - 1 : this.state.index - 1;     
+    const index = this.state.index <= 0 ? this.props.allUnis.length - 1 : this.state.index - 1;     
     this.setState({ index: index });
   }
 
   _handleModalRightClick = (e) => {
-    const index = this.state.index >= allUnis.length ? 0 : this.state.index + 1;     
+    const index = this.state.index >= this.props.allUnis.length ? 0 : this.state.index + 1;     
     this.setState({ index: index });
   }
 
