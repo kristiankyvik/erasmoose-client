@@ -8,15 +8,15 @@ function PostUpvoter ({ upvote, votes, _id }) {
       <style jsx>{`
         button {
           background-color: transparent;
-          border: 1px solid #e4e4e4;
-          color: #fff;
+          border: 1px solid black;
+          color: black;
         }
         button:active {
           background-color: transparent;
         }
         button:before {
           align-self: center;
-          border-color: transparent transparent #fff transparent;
+          border-color: transparent transparent black transparent;
           border-style: solid;
           border-width: 0 4px 6px 4px;
           content: "";
