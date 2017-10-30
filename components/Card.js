@@ -2,20 +2,21 @@ import PostUpvoter from './PostUpvoter'
 
 export default (props) => (
 	<div 
-		className="ma2 shadow-4 bg-white flex flex-column tc ur-card" 
+		className="ma3 shadow-4 bg-white flex flex-column tl ur-card" 
 		
 		data-index={props.index}
 		onClick={props._handleCardClick}
 	>
 		<div
-			className="pt2 ph2 flex top ph2"
+			className="pa3 flex top relative"
 			style={{ "backgroundImage": `url("/static/${props.uni._id}.jpg")` }} 
 		>
+		  <div className="diagonal absolute"></div>
 		  <div 
 		  	style={{ "flex": 1 }} 
-		  	className="b tl f7 robot0"
+		  	className="b tl robot0"
 		  >
-		    <span >UniRank: </span>{props.uni.rank} {1}
+		    <span className="rank pa1"> { props.uni.country }</span>
 		  </div>
 		  <div 
 		  	style={{ "flex": 1 }} 
@@ -25,29 +26,46 @@ export default (props) => (
 		  </div>
 		</div>
 
-		<div className="flex-column flex bottom pt1">
-		  <div className="flex flex-column text pb1 ph2 relative">
+		<div className="flex-column flex bottom pt2">
+			<div id="topes"></div>
+		  <div className="flex flex-column text pb1 pt1 ph3 relative">
 		    <img className="ur-uni-logo absolute" src={`https://logo.clearbit.com/${props.uni.website ? props.uni.website : "uu.nl" }`} />
+
 		    <div className="pv1 f6 fw7">
 		      {props.uni.name}
 		    </div>
-		    <div className="robot0 f6 o-80">
+		    <div className="robot0 f7 o-80">
 		      {props.uni.country}
 		    </div>
-		    <div className="i f5 mt3">
+		    <div className="i f6 mt3 tc">
 		    	Lorem Ipsum was great!
 		    </div>
-		    <div className="f6 mt3">
+		    <div className="f7 mt3 tc">
 		    	Tag 1 Tag 2
 		    </div>
 
 		  </div>
-		  <div className="pb2 pt0 ph2 flex items-end">
+		  <div className="pb3 pt1 ph3 flex items-end">
 		    <div 
 		    	style={{ "flex": 1 }} 
 		    	className="b tl f7 robot0"
 		    >
-		    stars 1 
+      		<div className="star-ratings-css">
+  	    	  <div className="star-ratings-css-top" style={{width: "20%"}}>
+  	    	  	<span>★</span>
+  	    	  	<span>★</span>
+  	    	  	<span>★</span>
+  	    	  	<span>★</span>
+  	    	  	<span>★</span>
+  	    	  </div>
+  	    	  <div className="star-ratings-css-bottom">
+  		    	  <span>★</span>
+  		    	  <span>★</span>
+  		    	  <span>★</span>
+  		    	  <span>★</span>
+  		    	  <span>★</span>
+  	    		</div>
+  	    	</div>
 		    </div>
 		    <a 
 		    	style={{ "flex": 1 }} 
@@ -63,13 +81,42 @@ export default (props) => (
 	  <style jsx>
 	    {`
 	      .ur-card {
-	        height: 256px;
-	        width: 254px;
+	        height: 270px;
+	        width: 230px;
 	        background-size: cover;
 	        -webkit-font-smoothing: antialiased;
 	        font-smoothing: antialiased;
 	        text-rendering: optimizeLegibility;
 	        cursor: pointer;
+	      }
+	      .star-ratings-css {
+	        unicode-bidi: bidi-override;
+	        color: #c5c5c5;
+	        font-size: 15px;
+	        height: 15px;
+	        width: 75px;
+	        position: relative;
+	        padding: 0;
+	        text-shadow: 0px 1px 0 #a2a2a2;
+	      }
+	      .star-ratings-css-top {
+	        color: #F7CA18;
+	        padding: 0;
+	        position: absolute;
+	        z-index: 1;
+	        display: block;
+	        top: 0;
+	        left: 0;
+	        overflow: hidden;
+	      }
+	      .star-ratings-css-bottom {
+	        padding: 0;
+	        display: block;
+	        z-index: 0;
+	      }
+	      .rank {
+	      	background-color: #F44A4A;
+	      	font-size: 9px;
 	      }
 	      .top {
 	        flex: 2;
@@ -81,8 +128,17 @@ export default (props) => (
 	        font-size: 1.5rem;
 	        flex: 2;
 	      }
+	      .diagonal {
+	      	width: 0;
+	      	height: 0;
+	      	border-bottom: 12px solid white;
+	      	border-left: 230px solid transparent;
+	      	bottom: 0;
+	      	left: 0;
+	      	right: 0;
+	      }
 	      .bottom {
-	        flex: 3;
+	        flex: 4;
 					// background: -webkit-linear-gradient( bottom , rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3) 70%, transparent 100%);
 					// background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3) 70%, transparent 100%);
 	      }
@@ -91,9 +147,9 @@ export default (props) => (
 	        font-weight: 600;
 	      }
 	      .ur-uni-logo {
-	        width: 30px;
-	        top: -45px;
-	        left: 50%;
+	      	width: 36px;
+	      	top: -38px;
+	      	right: 10%;
 	        margin-left:-15px;
 	        border-radius: 50%;
 	        border: 2px white solid;

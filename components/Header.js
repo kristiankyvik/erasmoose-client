@@ -32,10 +32,7 @@ export default ({ pathname }) => (
       <a className={pathname === '/about' && 'is-active'}>About</a>
     </Link>
 
-    <style jsx global>{`
-       body { 
-         background-color: #fbfbfb;
-       }
+    <style jsx>{`
       header {
         margin-bottom: 25px;
       }

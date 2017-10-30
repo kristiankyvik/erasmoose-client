@@ -8,9 +8,11 @@ export default ({ children }) => (
       body {
         margin: 0;
         padding: 25px 50px;
+        background-color: #FAFBFB;
       }
       a {
         color: #22BAD9;
+        text-decoration: none;
       }
       p {
         font-size: 12px;

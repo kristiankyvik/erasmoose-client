@@ -80,7 +80,7 @@ class Unis extends React.Component {
     return (
       <section className="tc">
         <div className="flex justify-center">
-          <div style={{ width: 1080 }} className="flex flex-wrap">
+          <div style={{ width: 1080 }} className="flex flex-wrap justify-center">
             {allUnis.map((uni, index) =>
               <Card 
                 key={uni._id}
