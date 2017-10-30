@@ -16,13 +16,12 @@ export default (props) => (
 		  	style={{ "flex": 1 }} 
 		  	className="b tl robot0"
 		  >
-		    <span className="rank pa1"> { props.uni.country }</span>
+		    <span className="rank pa1 ttu"> { props.uni.country }</span>
 		  </div>
 		  <div 
 		  	style={{ "flex": 1 }} 
 		  	className="b tr f7 robot0"
 		  >
-		    <span >Rank: </span>{props.uni.times_rank}{3}
 		  </div>
 		</div>
 
@@ -30,7 +29,9 @@ export default (props) => (
 			<div id="topes"></div>
 		  <div className="flex flex-column text pb1 pt1 ph3 relative">
 		    <img className="ur-uni-logo absolute" src={`https://logo.clearbit.com/${props.uni.website ? props.uni.website : "uu.nl" }`} />
-
+		    <div className="pv1 f7 ttu white">
+		    	<span className="rank b tagged mr1 ph1"> tag1 </span><span className="rank b tagged mr1 ph1"> tag2 </span>
+		    </div>
 		    <div className="pv1 f6 fw7">
 		      {props.uni.name}
 		    </div>
@@ -153,6 +154,11 @@ export default (props) => (
 	        margin-left:-15px;
 	        border-radius: 50%;
 	        border: 2px white solid;
+	      }
+	      .tagged {
+	      	background-color: #22BAD9;
+	      	border-radius: 20px;
+	      	font-size: 10px;
 	      }
 	    `}
 	  </style>
