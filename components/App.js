@@ -30,24 +30,6 @@ export default ({ children }) => (
         display: flex;
         padding: 5px 7px;
       }
-      * {
-        font-family: 'Source Sans Pro', sans-serif;
-      }
-      body {
-        margin: 0;
-        padding: 25px 50px;
-      }
-      a {
-        color: #22BAD9;
-      }
-      p {
-        font-size: 12px;
-        line-height: 24px;
-      }
-      article {
-        margin: 0 auto;
-        max-width: 650px;
-      }
       .ur-btn {
          -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;

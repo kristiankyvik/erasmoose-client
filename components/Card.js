@@ -35,10 +35,11 @@ export default (props) => (
 		    <div className="pt1 f6 fw7">
 		      {props.uni.name}
 		    </div>
-		    <div className="robot0 f7 o-80">
-		      {props.uni.country}
+		    <div className="robot0 f7 o-80 grayish pt1">
+		      <i className="fa fa-map-marker" aria-hidden="true"></i> {props.uni.country}
 		    </div>
 		  </div>
+		  <div className="mt1 separator mh2"></div>
 		  <div className="pb3 pt2 ph3 flex items-end">
 		    <div 
 		    	style={{ "flex": 1 }} 
@@ -59,23 +60,34 @@ export default (props) => (
   		    	  <span>★</span>
   		    	  <span>★</span>
   	    		</div>
+	  	    	<span className="score absolute">(2.1)</span>
   	    	</div>
 		    </div>
-		    <a 
+		    <div 
 		    	style={{ "flex": 1 }} 
-		    	className="b link tr f7 robot0 underline"
-		    	href={props.uni.website}
-		    >
-		   	visit site
-		    </a>
+		      className="b tr f7 robot0 flex justify-end"
+		     >
+		     	<PostUpvoter _id={props.uni._id} votes={props.uni.votes} />
+		   </div>
 		  </div>
 		</div>
 
 
 	  <style jsx>
 	    {`
+	    	.separator {
+	    		border-bottom: 1px solid #D0D8E9; 
+	    	}
+	    	.grayish {
+	    		color:#7E98DC;
+	    	}
+	    	.score {
+	    		top: 0;
+	    		right: -22px;
+	    		color: #F44A4A;
+	    	}
 	      .ur-card {
-	        height: 250px;
+	        height: 260px;
 	        width: 230px;
 	        background-size: cover;
 	        -webkit-font-smoothing: antialiased;
@@ -91,7 +103,6 @@ export default (props) => (
 	        width: 75px;
 	        position: relative;
 	        padding: 0;
-	        text-shadow: 0px 1px 0 #a2a2a2;
 	      }
 	      .star-ratings-css-top {
 	        color: #F7CA18;
@@ -109,7 +120,7 @@ export default (props) => (
 	        z-index: 0;
 	      }
 	      .rank {
-	      	background-color: #F44A4A;
+	      	background-color: #ED6863;
 	      	font-size: 9px;
 	      }
 	      .top {
@@ -120,7 +131,7 @@ export default (props) => (
 	      }
 	      .text {
 	        font-size: 1.5rem;
-	        flex: 2;
+	        flex: 3;
 	      }
 	      .diagonal {
 	      	width: 0;
@@ -132,7 +143,7 @@ export default (props) => (
 	      	right: 0;
 	      }
 	      .bottom {
-	        flex: 2;
+	        flex: 3;
 					// background: -webkit-linear-gradient( bottom , rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3) 70%, transparent 100%);
 					// background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3) 70%, transparent 100%);
 	      }

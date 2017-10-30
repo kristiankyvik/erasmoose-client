@@ -3,20 +3,20 @@ import { gql, graphql } from 'react-apollo'
 
 function PostUpvoter ({ upvote, votes, _id }) {
   return (
-    <button onClick={() => upvote(_id, votes + 1)}>
+    <button  className="self-end" onClick={() => upvote(_id, votes + 1)}>
       {votes}
       <style jsx>{`
         button {
           background-color: transparent;
-          border: 1px solid black;
-          color: black;
+          // border: 1px solid #7E98DC;
+          color: #7E98DC;
         }
         button:active {
           background-color: transparent;
         }
         button:before {
           align-self: center;
-          border-color: transparent transparent black transparent;
+          border-color: transparent transparent #7E98DC transparent;
           border-style: solid;
           border-width: 0 4px 6px 4px;
           content: "";
