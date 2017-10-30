@@ -25,28 +25,21 @@ export default (props) => (
 		  </div>
 		</div>
 
-		<div className="flex-column flex bottom pt2">
+		<div className="flex-column flex bottom pt1">
 			<div id="topes"></div>
 		  <div className="flex flex-column text pb1 pt1 ph3 relative">
 		    <img className="ur-uni-logo absolute" src={`https://logo.clearbit.com/${props.uni.website ? props.uni.website : "uu.nl" }`} />
 		    <div className="pv1 f7 ttu white">
 		    	<span className="rank b tagged mr1 ph1"> tag1 </span><span className="rank b tagged mr1 ph1"> tag2 </span>
 		    </div>
-		    <div className="pv1 f6 fw7">
+		    <div className="pt1 f6 fw7">
 		      {props.uni.name}
 		    </div>
 		    <div className="robot0 f7 o-80">
 		      {props.uni.country}
 		    </div>
-		    <div className="i f6 mt3 tc">
-		    	Lorem Ipsum was great!
-		    </div>
-		    <div className="f7 mt3 tc">
-		    	Tag 1 Tag 2
-		    </div>
-
 		  </div>
-		  <div className="pb3 pt1 ph3 flex items-end">
+		  <div className="pb3 pt2 ph3 flex items-end">
 		    <div 
 		    	style={{ "flex": 1 }} 
 		    	className="b tl f7 robot0"
@@ -82,7 +75,7 @@ export default (props) => (
 	  <style jsx>
 	    {`
 	      .ur-card {
-	        height: 270px;
+	        height: 250px;
 	        width: 230px;
 	        background-size: cover;
 	        -webkit-font-smoothing: antialiased;
@@ -93,7 +86,7 @@ export default (props) => (
 	      .star-ratings-css {
 	        unicode-bidi: bidi-override;
 	        color: #c5c5c5;
-	        font-size: 15px;
+	        font-size: 13px;
 	        height: 15px;
 	        width: 75px;
 	        position: relative;
@@ -139,7 +132,7 @@ export default (props) => (
 	      	right: 0;
 	      }
 	      .bottom {
-	        flex: 4;
+	        flex: 2;
 					// background: -webkit-linear-gradient( bottom , rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3) 70%, transparent 100%);
 					// background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3) 70%, transparent 100%);
 	      }
@@ -149,7 +142,7 @@ export default (props) => (
 	      }
 	      .ur-uni-logo {
 	      	width: 36px;
-	      	top: -38px;
+	      	top: -34px;
 	      	right: 10%;
 	        margin-left:-15px;
 	        border-radius: 50%;
