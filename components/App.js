@@ -3,12 +3,17 @@ export default ({ children }) => (
     {children}
     <style jsx global>{`
       * {
-        font-family: 'Source Sans Pro', sans-serif;
+        // font-family: 'Source Sans Pro', sans-serif;
+        font-family: "futura-pt",sans-serif;
       }
       body {
         margin: 0;
         padding: 25px 50px;
         background-color: #FAFBFB;
+        -webkit-font-smoothing: antialiased;
+        -webkit-font-smoothing: subpixel-antialiased;
+        font-smoothing: antialiased;
+        text-rendering: optimizelegibility;
       }
       a {
         color: #22BAD9;

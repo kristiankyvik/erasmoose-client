@@ -5,7 +5,7 @@ import Modal from './Modal'
 import React from 'react';
 import TypeformButton from '../components/TypeformButton'
 
-const POSTS_PER_PAGE = 32;
+const POSTS_PER_PAGE = 33;
 
 function UniList ({ data: { loading, error, allUnis, _allUnisMeta }, loadMorePosts }) {
   if (error) return <ErrorMessage message='Error loading entries.' />
@@ -85,6 +85,7 @@ class Unis extends React.Component {
               <Card 
                 key={uni._id}
                 uni={uni}
+                index={index + 1}
                 _handleCardClick={(evt) => this._handleCardClick(evt, index)}
               />
             )}
