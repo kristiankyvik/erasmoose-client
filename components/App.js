@@ -73,6 +73,9 @@ export default ({ children }) => (
       .modalOpen {
         overflow: hidden;
       }
+      .max {
+        max-width: 925px;
+      }
     `}</style>
   </main>
 )

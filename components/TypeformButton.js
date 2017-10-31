@@ -13,7 +13,7 @@ class TypeformButton extends React.Component {
       <div className={this.props.ghost ? "clip" : ""}>
         <a 
           ref={(el) => { this.btn = el; }}
-          className="typeform-share button ur-btn mv3" 
+          className="typeform-share button ur-btn mt3 mv1" 
           href={`https://kyvikbcn.typeform.com/to/FsuJQm?id=${this.props.uniId}`}
           data-mode="drawer_right" 
           target="_blank">

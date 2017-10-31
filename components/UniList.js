@@ -89,8 +89,8 @@ class Unis extends React.Component {
                 _handleCardClick={(evt) => this._handleCardClick(evt, index)}
               />
             )}
-            <div className="flex-auto">
-              {areMorePosts ? <div className="flex-auto ma2 ur-btn tc justify-center" onClick={() => loadMorePosts()}> {loading ? 'Loading...' : 'Show More'} </div> : ''}
+            <div className="flex-auto justify-center">
+              {areMorePosts ? <div className="flex-auto ma2 ur-btn tc max justify-center" onClick={() => loadMorePosts()}> {loading ? 'Loading...' : 'Show More'} </div> : ''}
             </div>
           </div>
         </div>

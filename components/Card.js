@@ -69,6 +69,17 @@ export default (props) => (
 	        font-smoothing: antialiased;
 	        text-rendering: optimizeLegibility;
 	        cursor: pointer;
+	        border-radius: 13px;
+	      }
+	      .ur-card::before {
+	      	position: absolute;
+	      	top: 0;
+	      	right: 0;
+	      	left: 0;
+	      	bottom: 0;
+	      	background-color: rgba(0,0,0,0.3);
+	      	content: "";
+	      	border-radius: 13px;
 	      }
 	      .star-ratings-css {
 	        unicode-bidi: bidi-override;
@@ -100,15 +111,6 @@ export default (props) => (
 	        background: -webkit-linear-gradient( top , rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3) 50%, transparent 100%);
 	        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3) 50%, transparent 100%);
 	      }
-	      .ur-card::before {
-	      	position: absolute;
-	      	top: 0;
-	      	right: 0;
-	      	left: 0;
-	      	bottom: 0;
-	      	background-color: rgba(0,0,0,0.3);
-	      	content: "";
-	      }
 	      .text {
 	        font-size: 1.5rem;
 	        flex: 3;
@@ -138,7 +140,7 @@ export default (props) => (
 	      }
 	      .tagged {
 	      	background-color: #22BAD9;
-	      	border-radius: 20px;
+	      	border-radius: 15px;
 	      	font-size: 10px;
 	      }
 	    `}

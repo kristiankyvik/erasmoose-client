@@ -4,11 +4,14 @@ import Submit from '../components/Submit'
 import Hero from '../components/Hero'
 import UniList from '../components/UniList'
 import withData from '../lib/withData'
+import Footer from '../components/Footer'
+
 
 export default withData((props) => (
   <App>
     <Header pathname={props.url.pathname} />
   	<Hero />
     <UniList />
+    <Footer />
   </App>
 ))
