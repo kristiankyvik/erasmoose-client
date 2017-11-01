@@ -5,19 +5,11 @@ import Modal from './Modal'
 import React from 'react';
 import TypeformButton from '../components/TypeformButton'
 
+
 const POSTS_PER_PAGE = 33;
+let SEARCHKEY = 'London'
 
-function UniList ({ data: { loading, error, allUnis, _allUnisMeta }, loadMorePosts }) {
-  if (error) return <ErrorMessage message='Error loading entries.' />
-  if (allUnis && allUnis.length) {
-    return (
-      <Unis _allUnisMeta={_allUnisMeta} allUnis={allUnis} loading={loading} loadMorePosts={loadMorePosts} />
-    )
-  }
-  return <div>Loading</div>
-}
-
-class Unis extends React.Component {
+class UniList extends React.Component {
   constructor(props) {
     super(props);
     this.searchInput = null;
@@ -27,7 +19,7 @@ class Unis extends React.Component {
       data: [],
       allData: [],
       showModal: false,
-      index: 0
+      index: 0,
     };
   }
 
@@ -41,19 +33,19 @@ class Unis extends React.Component {
 
   _handleCardClick = (e, index) => {
     document.body.classList.toggle('modalOpen', true);
-    this.setState({ 
+    this.setState({
       showModal: true,
       index
     });
   }
 
   _handleModalLeftClick = (e) => {
-    const index = this.state.index <= 0 ? this.props.allUnis.length - 1 : this.state.index - 1;     
+    const index = this.state.index <= 0 ? this.props.allUnis.length - 1 : this.state.index - 1;
     this.setState({ index: index });
   }
 
   _handleModalRightClick = (e) => {
-    const index = this.state.index >= this.props.allUnis.length ? 0 : this.state.index + 1;     
+    const index = this.state.index >= this.props.allUnis.length ? 0 : this.state.index + 1;
     this.setState({ index: index });
   }
 
@@ -74,81 +66,110 @@ class Unis extends React.Component {
       this._handleModalRightClick();
     }
   }
+
+  showMoreUnis = (allUnis, fetchMore) => fetchMore({
+    variables: {
+      skip: allUnis.length,
+      // searchKey: 'London'
+    },
+    updateQuery: (previousResult, { fetchMoreResult }) => {
+      if (!fetchMoreResult) {
+        return previousResult
+      }
+      return Object.assign({}, previousResult, {
+        // Append the new posts results to the old one
+        allUnis: [...previousResult.allUnis, ...fetchMoreResult.allUnis]
+      })
+    }
+  })
+
   render() {
-    const { allUnis, _allUnisMeta, loading, loadMorePosts } = this.props;
+    const { loading, error, allUnis, _allUnisMeta, loadMorePosts, fetchMore } = this.props;
     const areMorePosts = allUnis.length < _allUnisMeta.count;
-    return (
-      <section className="tc">
-        <div className="flex justify-center">
-          <div style={{ width: 1080 }} className="flex flex-wrap justify-center">
-            {allUnis.map((uni, index) =>
-              <Card 
-                key={uni._id}
-                uni={uni}
-                index={index + 1}
-                _handleCardClick={(evt) => this._handleCardClick(evt, index)}
-              />
-            )}
-            <div className="flex-auto justify-center">
-              {areMorePosts ? <div className="flex-auto ma2 ur-btn load-btn tc max justify-center" onClick={() => loadMorePosts()}> {loading ? 'Loading...' : 'Show More'} </div> : ''}
+
+    if (error) {
+      return <ErrorMessage message='Error loading entries.' />
+    }
+
+    if (allUnis && allUnis.length) {
+      return (
+        <section className="tc">
+          <div className="flex justify-center">
+            <div style={{ width: 1080 }} className="flex flex-wrap justify-center">
+              {allUnis.map((uni, index) =>
+                <Card
+                  key={uni._id}
+                  uni={uni}
+                  index={index + 1}
+                  _handleCardClick={(evt) => this._handleCardClick(evt, index)}
+                />
+              )}
+              {<div className="flex-auto justify-center">
+                {areMorePosts ? <div className="flex-auto ma2 ur-btn load-btn tc max justify-center" onClick={() => this.showMoreUnis(allUnis, fetchMore)}> {loading ? 'Loading...' : 'Show More'} </div> : ''}
+              </div>}
             </div>
           </div>
-        </div>
-        <TypeformButton ghost={true} uniId={this.props.allUnis[this.state.index]._id} ref={(el) => { this.tfbtn = el; }} />
-        <Modal 
-          ref={(el) => { this.modal = el; }}
-          showModal={this.state.showModal}
-          uni={allUnis[this.state.index]}
-          _handleModalRightClick={this._handleModalRightClick}
-          _handleModalLeftClick={this._handleModalLeftClick}
-          _handleModalCloseClick={this._handleModalCloseClick}
-          _handleGlobalClick={this._handleGlobalClick}
-          _handleFormClick={this._handleFormClick}
-        />
-        <style jsx>{`
-          section {
-            padding-bottom: 20px;
-          }
-          .load-btn {
-            background-color: rgba(0,0,0,0.4);
-            color: white;
-          }
-          .load-btn:hover {
-            background-color: rgba(0,0,0,0.5);
-            color: white;
-          }
-          li {
-            display: block;
-            margin-bottom: 10px;
-          }
-          div {
-            align-items: center;
-            display: flex;
-          }
-          a {
-            font-size: 14px;
-            margin-right: 10px;
-            text-decoration: none;
-            padding-bottom: 0;
-            border: 0;
-          }
-          span {
-            font-size: 14px;
-            margin-right: 5px;
-          }
-          ul {
-            margin: 0;
-            padding: 0;
-          }
-        `}</style>
-      </section>
-    )
+          <TypeformButton ghost={true} uniId={allUnis[this.state.index]._id} ref={(el) => { this.tfbtn = el; }} />
+          <Modal
+            ref={(el) => { this.modal = el; }}
+            showModal={this.state.showModal}
+            uni={allUnis[this.state.index]}
+            _handleModalRightClick={this._handleModalRightClick}
+            _handleModalLeftClick={this._handleModalLeftClick}
+            _handleModalCloseClick={this._handleModalCloseClick}
+            _handleGlobalClick={this._handleGlobalClick}
+            _handleFormClick={this._handleFormClick}
+          />
+          <style jsx>{`
+            section {
+              padding-bottom: 20px;
+            }
+            .load-btn {
+              background-color: rgba(0,0,0,0.4);
+              color: white;
+            }
+            .load-btn:hover {
+              background-color: rgba(0,0,0,0.5);
+              color: white;
+            }
+            li {
+              display: block;
+              margin-bottom: 10px;
+            }
+            div {
+              align-items: center;
+              display: flex;
+            }
+            input {
+              color: black;
+            }
+            a {
+              font-size: 14px;
+              margin-right: 10px;
+              text-decoration: none;
+              padding-bottom: 0;
+              border: 0;
+            }
+            span {
+              font-size: 14px;
+              margin-right: 5px;
+            }
+            ul {
+              margin: 0;
+              padding: 0;
+            }
+          `}</style>
+        </section>
+      )
+    }
+
+    return <div>Loading</div>
   }
 }
 
 const allUnis = gql`
-  query allUnis($first: Int!, $skip: Int!) {
-    allUnis(first: $first, skip: $skip) {
+  query allUnis($first: Int!, $skip: Int!, $searchKey: String) {
+    allUnis(first: $first, skip: $skip, searchKey: $searchKey) {
       _id
       name
       votes
@@ -165,30 +186,19 @@ const allUnis = gql`
 // The `graphql` wrapper executes a GraphQL query and makes the results
 // available on the `data` prop of the wrapped component (UniList)
 export default graphql(allUnis, {
-  options: {
+  options: (ownProps) => ({
     notifyOnNetworkStatusChange: true,
     variables: {
       skip: 0,
-      first: POSTS_PER_PAGE
-    }
-  },
-  props: ({ data }) => ({
-    data,
-    loadMorePosts: () => {
-      return data.fetchMore({
-        variables: {
-          skip: data.allUnis.length
-        },
-        updateQuery: (previousResult, { fetchMoreResult }) => {
-          if (!fetchMoreResult) {
-            return previousResult
-          }
-          return Object.assign({}, previousResult, {
-            // Append the new posts results to the old one
-            allUnis: [...previousResult.allUnis, ...fetchMoreResult.allUnis]
-          })
-        }
-      })
-    }
+      first: POSTS_PER_PAGE,
+      searchKey: ownProps.searchKey
+    },
+  }),
+  props: ({ data: { loading, error, allUnis, _allUnisMeta, fetchMore } }) => ({
+    allUnis,
+    _allUnisMeta,
+    error,
+    loading,
+    fetchMore
   })
 })(UniList)
