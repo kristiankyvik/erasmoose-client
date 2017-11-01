@@ -56,11 +56,13 @@ export default (props) => (
 			<div className="pv2 ph4 flex flex-column items-center">
 				<div className="progress-wrapper tc pb2">
 					<span className='progress-title f4 b'>{"67%"}</span>
-					<Circle className="w-60 pv2 m0a" percent="10" strokeWidth="4" trailWidth="4" strokeColor="#F44A4A" />
+					<Circle className="w-60 pv2 m0a" percent="10" strokeWidth="5
+					" trailWidth="5" strokeColor="#F44A4A" />
 				</div>
 				<Line className="flex pv2" percent="80" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 				<Line className="flex pv2" percent="40" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 				<Line className="flex pv2" percent="67" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+				<Line className="flex pv2" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 			</div>
 		</div>
 
