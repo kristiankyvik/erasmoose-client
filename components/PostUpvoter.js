@@ -4,26 +4,28 @@ import { gql, graphql } from 'react-apollo'
 function PostUpvoter ({ upvote, votes, _id }) {
   return (
     <button onClick={() => upvote(_id, votes + 1)}>
-      {votes}
+      <i className="fa fa-eye mr1" aria-hidden="true"></i> {votes}
       <style jsx>{`
         button {
+          z-index: 1000;
           background-color: transparent;
-          border: 1px solid white;
+          border: 1px solid transparent;
           color: white;
         }
         button:active {
           background-color: transparent;
         }
-        button:before {
-          align-self: center;
-          border-color: transparent transparent #fff transparent;
-          border-style: solid;
-          border-width: 0 4px 6px 4px;
-          content: "";
-          height: 0;
-          margin-right: 5px;
-          width: 0;
-        }
+        // button:before {
+        //   align-self: center;
+        //   z-index: 1000;
+        //   border-color: transparent transparent white transparent;
+        //   border-style: solid;
+        //   border-width: 0 4px 6px 4px;
+        //   content: "";
+        //   height: 0;
+        //   margin-right: 5px;
+        //   width: 0;
+        // }
       `}</style>
     </button>
   )

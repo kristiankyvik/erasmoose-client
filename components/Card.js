@@ -1,4 +1,5 @@
 import PostUpvoter from './PostUpvoter'
+import { Line, Circle } from 'rc-progress';
 
 export default (props) => (
 	<div 
@@ -7,12 +8,11 @@ export default (props) => (
 		data-index={props.index}
 		onClick={props._handleCardClick}
 	>
-		<div className="flex-column flex pt1">
-			<div id="topes"></div>
+		<div className="flex-column flex pt1 card-front">
 		  <div className="flex flex-column text pb1 pt1 ph3 relative">
 		    <img className="ur-uni-logo absolute" src={`https://logo.clearbit.com/${props.uni.website ? props.uni.website : "uu.nl" }`} />
-		    <div className="pv1 f7 ttu white">
-		    	<span className="rank b tagged mr1 ph1"> tag1 </span><span className="rank b tagged mr1 ph1"> tag2 </span>
+		    <div className="pv1 ttu white">
+		    	<span className="tag b tagged mr1"> tag1 </span><span className="tag b tagged mr1"> tag2 </span>
 		    </div>
 		    <div className="pt1 f2 fw7">
 		      {props.uni.name}
@@ -52,14 +52,49 @@ export default (props) => (
 		   </div>
 		  </div>
 		</div>
-
+		<div className="flex-column pt1 dn card-back z-1">
+			<div className="pv2 ph4 flex flex-column items-center">
+				<div className="progress-wrapper tc pb2">
+					<span className='progress-title f4 b'>{"67%"}</span>
+					<Circle className="w-60 pv2 m0a" percent="10" strokeWidth="4" trailWidth="4" strokeColor="#F44A4A" />
+				</div>
+				<Line className="flex pv2" percent="80" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+				<Line className="flex pv2" percent="40" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+				<Line className="flex pv2" percent="67" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+			</div>
+		</div>
 
 	  <style jsx>
 	    {`
+	    	m0a {
+	    		margin: 0 auto;
+	    	}
+	    	.progress-title {
+	    	  position: absolute;
+	    	  top: 50%;
+	    	  left: 50%;
+	    	  transform: translate(-50%, -50%);
+	    	}
+	    	.progress-wrapper {
+	    		position: relative;
+	    	}
+	    	.ur-card:hover {
+	    		justify-content: center;	    		
+	    	}
+	    	.ur-card:hover .card-front {
+	    		display: none;
+	    	}
+	    	.ur-card:hover .card-back {
+	    		display: flex;
+	    	}
 	    	.score {
 	    		top: 0;
 	    		right: -22px;
 	    		color: #F44A4A;
+	    	}
+	    	.tag {
+	    		padding: 2px 5px;
+	    		font-size: 8px;
 	    	}
 	      .ur-card {
 	        height: 310px;
@@ -80,6 +115,9 @@ export default (props) => (
 	      	background-color: rgba(0,0,0,0.3);
 	      	content: "";
 	      	border-radius: 13px;
+	      }
+	      .ur-card:hover::before {
+	      	background-color: rgba(0,0,0,0.6);
 	      }
 	      .star-ratings-css {
 	        unicode-bidi: bidi-override;

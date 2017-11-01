@@ -90,7 +90,7 @@ class Unis extends React.Component {
               />
             )}
             <div className="flex-auto justify-center">
-              {areMorePosts ? <div className="flex-auto ma2 ur-btn tc max justify-center" onClick={() => loadMorePosts()}> {loading ? 'Loading...' : 'Show More'} </div> : ''}
+              {areMorePosts ? <div className="flex-auto ma2 ur-btn load-btn tc max justify-center" onClick={() => loadMorePosts()}> {loading ? 'Loading...' : 'Show More'} </div> : ''}
             </div>
           </div>
         </div>
@@ -108,6 +108,14 @@ class Unis extends React.Component {
         <style jsx>{`
           section {
             padding-bottom: 20px;
+          }
+          .load-btn {
+            background-color: rgba(0,0,0,0.4);
+            color: white;
+          }
+          .load-btn:hover {
+            background-color: rgba(0,0,0,0.5);
+            color: white;
           }
           li {
             display: block;
