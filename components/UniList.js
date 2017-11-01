@@ -103,7 +103,7 @@ class UniList extends React.Component {
                   index={index + 1}
                   _handleCardClick={(evt) => this._handleCardClick(evt, index)}
                 />
-              )}
+                )}
               {<div className="flex-auto justify-center">
                 {areMorePosts ? <div className="flex-auto ma2 ur-btn load-btn tc max justify-center" onClick={() => this.showMoreUnis(allUnis, fetchMore)}> {loading ? 'Loading...' : 'Show More'} </div> : ''}
               </div>}
