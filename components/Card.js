@@ -14,7 +14,7 @@ export default (props) => (
 			    <img 
 			    	className="ur-uni-logo"
 			    	src={`https://logo.clearbit.com/${props.uni.website ? props.uni.website : "uu.nl" }`}
-			    	onError={(e)=>{ e.target.src=`https://ui-avatars.com/api/?name=${props.uni.name.split(" ").join("+")}`}}
+			    	onError={(e)=>{ e.target.src=`https://ui-avatars.com/api/?name=${props.uni.name.split(" ").join("+")}&color=fff&background=F44A4A&font-size=0.4`}}
 			    />
 			    <div className="pv1 ttu white dn">
 			    	<span className="tag b tagged mr1"> tag1 </span><span className="tag b tagged mr1"> tag2 </span>
