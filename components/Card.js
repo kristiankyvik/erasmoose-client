@@ -11,7 +11,11 @@ export default (props) => (
 		<div className="flex-column flex card-front pt3 flex-grow-1">
 		  <div className="flex flex-column text relative pa2 ph3 justify-between">
 		  	<div className="flex flex-column ph2">
-			    <img className="ur-uni-logo" src={`https://logo.clearbit.com/${props.uni.website ? props.uni.website : "uu.nl" }`} />
+			    <img 
+			    	className="ur-uni-logo"
+			    	src={`https://logo.clearbit.com/${props.uni.website ? props.uni.website : "uu.nl" }`}
+			    	onError={(e)=>{ e.target.src=`https://ui-avatars.com/api/?name=${props.uni.name.split(" ").join("+")}`}}
+			    />
 			    <div className="pv1 ttu white dn">
 			    	<span className="tag b tagged mr1"> tag1 </span><span className="tag b tagged mr1"> tag2 </span>
 			    </div>
@@ -19,11 +23,11 @@ export default (props) => (
 			      {props.uni.name}
 			    </div>
 		  	</div>
-		    <div className="f5 pt1 ph2 pb1">
-		      <i className="fa fa-map-marker" aria-hidden="true"></i> {props.uni.country}
+		    <div className="f5 pt1 ph2 pb1 b">
+		      <i className="fa fa-map-marker trans-gray" aria-hidden="true"></i> {props.uni.country}
 		    </div>
 		  </div>
-		  <div className="ph3 pt2 pb2 flex items-end bottom items-center">
+		  <div className="ph3 pt1 pb1 flex items-end bottom items-center">
 		    <div 
 		    	style={{ "flex": 1 }} 
 		    	className="b tl f7 "
@@ -48,7 +52,7 @@ export default (props) => (
 		    </div>
 		    <div 
 		    	style={{ "flex": 1 }} 
-		      className="b tr f7 flex justify-end"
+		      className="b tr f6 flex justify-end"
 		     >
 		     	<PostUpvoter _id={props.uni._id} votes={props.uni.votes} />
 		   </div>
@@ -73,6 +77,9 @@ export default (props) => (
 	    	m0a {
 	    		margin: 0 auto;
 	    	}
+	    	.trans-gray {
+	    		color: rgba(255,255,255,0.6);
+	    	}
 	    	.progress-title {
 	    	  position: absolute;
 	    	  top: 50%;
@@ -93,7 +100,7 @@ export default (props) => (
 	    	}
 	    	.score {
 	    		top: 0;
-	    		right: -22px;
+	    		right: -36px;
 	    		color: #F44A4A;
 	    	}
 	    	.tag {
@@ -101,7 +108,7 @@ export default (props) => (
 	    		font-size: 8px;
 	    	}
 	      .ur-card {
-	        height: 310px;
+	        height: 315px;
 	        width: 285px;
 	        background-size: cover;
 	        -webkit-font-smoothing: antialiased;
@@ -126,8 +133,8 @@ export default (props) => (
 	      .star-ratings-css {
 	        unicode-bidi: bidi-override;
 	        color: #c5c5c5;
-	        font-size: 13px;
-	        height: 15px;
+	        font-size: 14px;
+	        height: 14px;
 	        width: 75px;
 	        position: relative;
 	        padding: 0;

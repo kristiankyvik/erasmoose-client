@@ -7,7 +7,7 @@ function PostUpvoter ({ upvote, votes, _id }) {
       <i className="fa fa-eye mr1" aria-hidden="true"></i> {votes}
       <style jsx>{`
         button {
-          z-index: 1000;
+          z-index: 1;
           background-color: transparent;
           border: 1px solid transparent;
           color: white;
