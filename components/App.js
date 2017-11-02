@@ -8,8 +8,7 @@ export default ({ children }) => (
       }
       body {
         margin: 0;
-        padding: 25px 50px;
-        background-color: #FAFBFB;
+        background-color: white;
         -webkit-font-smoothing: antialiased;
         -webkit-font-smoothing: subpixel-antialiased;
         font-smoothing: antialiased;

@@ -14,7 +14,7 @@ class UniListWithSearch extends React.Component{
 
     render(){
         return (
-            <section className="tc">
+            <section className="tc pv3">
                 <input type="text"
                     value={this.state.search}
                     onChange={this.updateSearch.bind(this)}

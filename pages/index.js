@@ -9,8 +9,8 @@ import Footer from '../components/Footer'
 
 export default withData((props) => (
   <App>
-    <Header pathname={props.url.pathname} />
-  	<Hero />
+    <Header/>
+  	<Hero pathname={props.url.pathname} />
     <UniListWithSearch />
     <Footer />
   </App>
