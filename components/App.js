@@ -19,7 +19,7 @@ export default ({ children }) => (
         text-decoration: none;
       }
       p {
-        font-size: 12px;
+        font-size: 19px;
         line-height: 24px;
       }
       article {

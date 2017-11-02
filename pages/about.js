@@ -1,11 +1,14 @@
 import App from '../components/App'
 import Header from '../components/Header'
+import Hero from '../components/Hero'
+import Footer from '../components/Footer'
 
 export default (props) => (
   <App>
-    <Header pathname={props.url.pathname} />
-    <article>
-      <h1>The Idea Behind This Website</h1>
+    <Header/>
+    <Hero pathname={props.url.pathname} />
+    <article className="">
+      <h1>About Us</h1>
       <p>
         <a href='http://dev.apollodata.com'>Unirank</a> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. 
       </p>
@@ -16,5 +19,6 @@ export default (props) => (
         This example relies on <a href='http://graph.cool'>graphql</a> for its GraphQL backend.
       </p>
     </article>
+    <Footer />
   </App>
 )
