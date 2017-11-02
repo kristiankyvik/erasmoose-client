@@ -70,7 +70,6 @@ class UniList extends React.Component {
   showMoreUnis = (allUnis, fetchMore) => fetchMore({
     variables: {
       skip: allUnis.length,
-      // searchKey: 'London'
     },
     updateQuery: (previousResult, { fetchMoreResult }) => {
       if (!fetchMoreResult) {
@@ -104,10 +103,10 @@ class UniList extends React.Component {
                   _handleCardClick={(evt) => this._handleCardClick(evt, index)}
                 />
                 )}
-              {<div className="flex-auto justify-center">
-                {areMorePosts ? <div className="flex-auto ma2 ur-btn load-btn tc max justify-center" onClick={() => this.showMoreUnis(allUnis, fetchMore)}> {loading ? 'Loading...' : 'Show More'} </div> : ''}
-              </div>}
             </div>
+          </div>
+          <div className="justify-center flex pt4">
+            {areMorePosts ? <div className="btn-new tc max justify-center" onClick={() => this.showMoreUnis(allUnis, fetchMore)}> {loading ? 'Loading...' : 'Show More'} </div> : ''}
           </div>
           <TypeformButton ghost={true} uniId={allUnis[this.state.index]._id} ref={(el) => { this.tfbtn = el; }} />
           <Modal
@@ -123,14 +122,6 @@ class UniList extends React.Component {
           <style jsx>{`
             section {
               padding-bottom: 20px;
-            }
-            .load-btn {
-              background-color: rgba(0,0,0,0.4);
-              color: white;
-            }
-            .load-btn:hover {
-              background-color: rgba(0,0,0,0.5);
-              color: white;
             }
             li {
               display: block;
@@ -157,6 +148,22 @@ class UniList extends React.Component {
             ul {
               margin: 0;
               padding: 0;
+            }
+            .btn-new {
+              display: inline-block;
+              cursor: pointer;
+              margin: 0 auto;
+              padding: .4375em 1.5em .5em;
+              color: #fff;
+              font-size: 1.5em;
+              font-weight: 800;
+              line-height: 1;
+              vertical-align: middle;
+              text-align: center;
+              white-space: nowrap;
+              border: 3px solid transparent;
+              background-color: #333;
+              border-radius: 2.5em;
             }
           `}</style>
         </section>
