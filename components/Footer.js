@@ -11,8 +11,7 @@ export default () => (
 	  	</div>
 	  	<div className="flex items-center ph4">
 	  		<div className="tc">
-		  		<TypeformButton />
-		  		<span className="f7 mt0">Don't find you uni? Be the first to review it</span>
+		  		Made with <i className="fa fa-heart pink" aria-hidden="true"></i> in Liege, Belgium
 	  		</div>
 	  	</div>
 	  	<div className="flex items-center ph4">

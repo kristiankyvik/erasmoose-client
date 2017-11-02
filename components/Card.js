@@ -3,25 +3,27 @@ import { Line, Circle } from 'rc-progress';
 
 export default (props) => (
 	<div 
-		className="ma3 shadow-4 bg-white flex flex-column tl ur-card relative white justify-end" 
+		className="ma3 shadow-4 bg-white flex flex-column tl ur-card relative white" 
 		style={{ "backgroundImage": `url("/static/${props.uni._id}.jpg")` }} 
 		data-index={props.index}
 		onClick={props._handleCardClick}
 	>
-		<div className="flex-column flex pt1 card-front">
-		  <div className="flex flex-column text pb1 pt1 ph3 relative">
-		    <img className="ur-uni-logo absolute" src={`https://logo.clearbit.com/${props.uni.website ? props.uni.website : "uu.nl" }`} />
-		    <div className="pv1 ttu white">
-		    	<span className="tag b tagged mr1"> tag1 </span><span className="tag b tagged mr1"> tag2 </span>
-		    </div>
-		    <div className="pt1 f2 fw7">
-		      {props.uni.name}
-		    </div>
-		    <div className="f6 pt1">
+		<div className="flex-column flex card-front pt3 flex-grow-1">
+		  <div className="flex flex-column text relative pa2 ph3 justify-between">
+		  	<div className="flex flex-column ph2">
+			    <img className="ur-uni-logo" src={`https://logo.clearbit.com/${props.uni.website ? props.uni.website : "uu.nl" }`} />
+			    <div className="pv1 ttu white dn">
+			    	<span className="tag b tagged mr1"> tag1 </span><span className="tag b tagged mr1"> tag2 </span>
+			    </div>
+			    <div className="pt3 f2 fw7">
+			      {props.uni.name}
+			    </div>
+		  	</div>
+		    <div className="f5 pt1 ph2 pb1">
 		      <i className="fa fa-map-marker" aria-hidden="true"></i> {props.uni.country}
 		    </div>
 		  </div>
-		  <div className="pb3 pt2 ph3 flex items-end">
+		  <div className="ph3 pt2 pb2 flex items-end bottom items-center">
 		    <div 
 		    	style={{ "flex": 1 }} 
 		    	className="b tl f7 "
@@ -106,7 +108,7 @@ export default (props) => (
 	        font-smoothing: antialiased;
 	        text-rendering: optimizeLegibility;
 	        cursor: pointer;
-	        border-radius: 13px;
+	        border-radius: 10px;
 	      }
 	      .ur-card::before {
 	      	position: absolute;
@@ -116,7 +118,7 @@ export default (props) => (
 	      	bottom: 0;
 	      	background-color: rgba(0,0,0,0.3);
 	      	content: "";
-	      	border-radius: 13px;
+	      	border-radius: 10px;
 	      }
 	      .ur-card:hover::before {
 	      	background-color: rgba(0,0,0,0.6);
@@ -151,6 +153,11 @@ export default (props) => (
 	        background: -webkit-linear-gradient( top , rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3) 50%, transparent 100%);
 	        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3) 50%, transparent 100%);
 	      }
+	      .bottom {
+	      	border-bottom-right-radius: 12px;
+	      	border-bottom-left-radius:12px;
+	      	background-color: rgba(0, 0, 0, 0.21);
+	      }
 	      .text {
 	        font-size: 1.5rem;
 	        flex: 3;
@@ -170,19 +177,16 @@ export default (props) => (
 	        font-weight: 600;
 	      }
 	      .ur-uni-logo {
-	      	width: 36px;
-	      	top: -34px;
-	      	right: 10%;
-	        margin-left:-15px;
-	        border-radius: 50%;
-	        border: 2px white solid;
-	        display: none;
+	      	width: 45px;
+	  	    border-radius: 50%;
+	  	    // display:none;
 	      }
 	      .tagged {
 	      	background-color: #22BAD9;
 	      	border-radius: 15px;
 	      	font-size: 10px;
 	      }
+	      .flex-grow-1 { -webkit-box-flex: 1; -ms-flex-positive: 1; flex-grow: 1; }
 	    `}
 	  </style>
 	</div>

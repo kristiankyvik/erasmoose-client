@@ -170,7 +170,17 @@ class UniList extends React.Component {
       )
     }
 
-    return <div>Loading</div>
+    return (
+      <div className="pv4">
+        <div className="pt4 pb3 f3">
+          <div className="b">
+            Don't find you uni? 
+          </div>
+          Be the first to review it!
+        </div>
+        <TypeformButton />
+      </div>
+      )
   }
 }
 
