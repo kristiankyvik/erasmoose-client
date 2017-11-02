@@ -174,7 +174,7 @@ class UniList extends React.Component {
       <div className="pv4">
         <div className="pt4 pb3 f3">
           <div className="b">
-            Don't find you uni? 
+            Don't find your uni? 
           </div>
           Be the first to review it!
         </div>
