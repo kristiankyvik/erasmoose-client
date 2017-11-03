@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 export default ({ pathname }) => (
-  <div className="hero f4 fw8 grad-blue">
+  <div className="hero f4 fw8 grad-pink">
     <div className="bar flex items-center">
       <span className="b f4 mr3 flex">
         erasmoose
@@ -37,6 +37,9 @@ export default ({ pathname }) => (
       }
       .grad-blue {
         background-image: linear-gradient( 135deg, #90F7EC 10%, #32CCBC 100%);
+      }
+      .grad-pink {
+        background-image: linear-gradient( 135deg, #FFF6B7 10%, #F6416C 100%);
       }
     `}</style>
   </div>

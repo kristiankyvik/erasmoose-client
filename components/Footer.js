@@ -1,7 +1,7 @@
 import TypeformButton from '../components/TypeformButton'
 
 export default () => (
-  <div className="flex items-stretch justify-around ph5 pt6">
+  <div className="flex items-stretch justify-around ph5 pt6 pb5">
 	  <div className="flex max pa2">
 	  	<div className="flex items-center ph4">
 	  		<div className="tc">

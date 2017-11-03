@@ -18,7 +18,7 @@ class UniList extends React.Component {
     this.state = {
       data: [],
       allData: [],
-      showModal: false,
+      showModal: true,
       index: 0,
     };
   }
@@ -50,8 +50,10 @@ class UniList extends React.Component {
   }
 
   _handleModalCloseClick = (e) => {
-    this.setState({ showModal: false });
-    document.body.classList.remove('modalOpen')
+    if (e.target.classList.contains("backModal") || e.target.classList.contains("close")) {
+      this.setState({ showModal: false });
+      document.body.classList.remove('modalOpen')
+    }
   }
 
   _handleFormClick = (e) => {

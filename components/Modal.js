@@ -1,4 +1,5 @@
 import ReactDOM from 'react-dom';
+import { Line, Circle } from 'rc-progress';
 
 class Modal extends React.Component {
 	constructor(props) {
@@ -17,9 +18,9 @@ class Modal extends React.Component {
 	}
 
 	_handleTabClick = (i, e) => {
-		this.setState({
-			tabIndex: i
-		});
+		// this.setState({
+		// 	tabIndex: i
+		// });
 	}
 
 	render() {
@@ -103,14 +104,16 @@ class Modal extends React.Component {
 				</div>
 			</div>,
 			<div>
-				coming soon 
+				City (coming soon)
 			</div>,
 			<div>
-				coming soon
+				Activities (coming soon)
 			</div>
 		];
 	  return (
-			<div className={"backModal fixed z-1 flex content-center justify-center items-center"}> 
+			<div 
+				className={"backModal fixed z-1 flex content-center justify-center items-center"}
+				onClick={this.props._handleModalCloseClick}> 
 				<div className={"absolute modal shadow-3 w-100 w-80-l" }>
 					<div className="flex tc flex-column">
 						<div 
@@ -120,6 +123,7 @@ class Modal extends React.Component {
 							<div className="absolute z-1 bottom-2 white tc left-0 right-0">
 								<div className="b pt3 f2">{this.props.uni.name}</div>
 								<div className="f3 pb3 i playfair">{this.props.uni.website}</div>
+								<div className="ma2 mh4 ur-btn tc flex justify-center content-center items-center" onClick={this.props._handleFormClick}> Add Review </div>
 							</div>	
 						</div>
 						<div className="flex flex-column tl f7">
@@ -128,86 +132,78 @@ class Modal extends React.Component {
 									Overview
 								</div>
 								<div className={ addActive(1) + " flex justify-center flex-auto f5 b z-1 pv3 bw1 b--light-gray pointer bb ttu moon-gray"} onClick={() => this._handleTabClick(1)}>
-										Coming Soon
+									City (coming soon)
 								</div>
 								<div className={ addActive(2) + " flex justify-center flex-auto f5 b z-1 pv3 bw1 b--light-gray pointer bb ttu moon-gray"} onClick={() => this._handleTabClick(2)}>
-									Coming Soon
+									Activities (coming soon)
 								</div>
 							</div>
 							<div className="flex flex-auto">
 								<div className="flex flex-auto pv4 ph4 flex-column white">
-									<div className="black pb2 pt1">
-										<div className="f3 b">Overview</div>
-										<div className="f4 gray">The main metrics and such</div>
+
+									<div className="black pb0 pt3">
+										<div className="f3 b">The University</div>
+										<div className="f5 gray">The main metrics and such</div>
 									</div>
-									<div className="flex grad-pink modal-card">
-										<div className="flex flex-auto flex-column justify-center mt3 mr2 pv3 white">
-											<div className="f4 flex justify-center">
-													The city
+									<div className="flex black">
+										<div className="flex flex-1 flex-column justify-center modal-card mt3 mr3 pv3 ph3">
+											<div className="progress-wrapper tc justify-center flex pb2">
+												<Circle className="pv2 mr3 w-100" percent="10" strokeWidth="5
+												" trailWidth="5" strokeColor="#F44A4A" />
+												<Circle className="pv2 w-100" percent="10" strokeWidth="5
+												" trailWidth="5" strokeColor="#F44A4A" />
 											</div>
-											<div className="f6 flex justify-center">
-													Thing number one
-											</div>
-											<div className="f6 flex justify-center">
-												hgk kjhkjh kljhlk hkljh kljhlkjh ljhlk hkljhl 
-											</div>
-											<div className="f6 flex justify-center">
-												hgk kjhkjh kljhlk hkljh kljhlkjh ljhlk hkljhl 
-											</div><div className="f6 flex justify-center">
-												hgk kjhkjh kljhlk hkljh kljhlkjh ljhlk hkljhl 
-											</div><div className="f6 flex justify-center">
-												hgk kjhkjh kljhlk hkljh kljhlkjh ljhlk hkljhl 
-											</div><div className="f6 flex justify-center">
-												hgk kjhkjh kljhlk hkljh kljhlkjh ljhlk hkljhl 
-											</div><div className="f6 flex justify-center">
-												hgk kjhkjh kljhlk hkljh kljhlkjh ljhlk hkljhl 
-											</div><div className="f6 flex justify-center">
-												hgk kjhkjh kljhlk hkljh kljhlkjh ljhlk hkljhl 
-											</div><div className="f6 flex justify-center">
-												hgk kjhkjh kljhlk hkljh kljhlkjh ljhlk hkljhl 
-											</div><div className="f6 flex justify-center">
-												hgk kjhkjh kljhlk hkljh kljhlkjh ljhlk hkljhl 
-											</div>
+											<div className="f4 b">City life</div>
+											<Line className="flex pv2" percent="67" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv2" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv2" percent="67" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv2" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 										</div>
-										<div className="flex flex-column justify-center modal-card mt3 ml2 pv3 black">
+										<div className="flex flex-1 flex-column justify-center modal-card mt3 mr2 pv3 ph3">
+											<div className="f4 b">Academics</div>
+											<Line className="flex pv2" percent="80" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv2" percent="40" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv2" percent="67" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<div className="f4 b">Social life</div>
+											<Line className="flex pv2" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv2" percent="80" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv2" percent="40" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<div className="f4 b">Fees life</div>
+											<Line className="flex pv2" percent="67" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv2" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 										</div>
 									</div>
 									<div className="black pb0 pt3">
-										<div className="f3 b">The city</div>
-										<div className="f4 gray">The main metrics and such</div>
+										<div className="f3 b">Latest Reviews</div>
+										<div className="f5 gray">The main metrics and such</div>
 									</div>
-									<div className="flex">
-										<div className="flex flex-auto flex-column shadow-3 justify-center modal-card mt3 mr3 pv3 grad-green">
-											<div className="f4 flex justify-center">
-													Thing number one
+									<div className="flex black">
+										<div className="flex flex-auto review flex-column justify-center modal-card mt3 mr2 pv3 grad-green relative">
+											<div className="i pv3 ph4 tc white f5">
+												"The best uni everrrr! Super international! The place to go if you wanna get turnt!
 											</div>
-											<div className="f4 flex justify-center">
-													Thing number one
+											<div className="b pv3 ph4 tc white f6">
+												4 hours ago
 											</div>
-											<div className="f4 flex justify-center">
-													Thing number one
-											</div>
-											<div className="f4 flex justify-center">
-													Thing number one
-											</div>
+											<button className="absolute bottom-1 right-1 upvote pointer">42</button>
 										</div>
-										<div className="flex flex-auto flex-column shadow-3 justify-center modal-card mt3 mr2 pv3 grad-purple">
-											<div className="f4 flex justify-center">
-													Thing number one
+										<div className="flex flex-auto review flex-column justify-center modal-card mt3 mr2 pv3 grad-blue relative">
+											<div className="i pv3 ph4 tc white f5">
+												"The best uni everrrr! Super international! The place to go if you wanna get turnt!
 											</div>
-											<div className="f4 flex justify-center">
-													Thing number one
+											<div className="b pv3 ph4 tc white f6">
+												4 hours ago
 											</div>
-											<div className="f4 flex justify-center">
-													Thing number one
-											</div>
-											<div className="f4 flex justify-center">
-													Thing number one
-											</div>
+											<button className="absolute bottom-1 right-1 upvote pointer">42</button>
 										</div>
-										<div className="flex flex-auto flex-column justify-center modal-card mt3 f4 tc items-center ml2 pa4 justify-center black grad-pink">
-											Did you attend this university?
-											<div className="ma2 mh4 ur-btn tc flex justify-center content-center items-center" onClick={this.props._handleFormClick}> Add Review </div>
+										<div className="flex flex-auto review flex-column justify-center modal-card mt3 ml2 pv3 grad-purple relative">
+											<div className="i pv3 ph4 tc white f5">
+												"The best uni everrrr! Super international! The place to go if you wanna get turnt!
+											</div>
+											<div className="b pv3 ph4 tc white f6">
+												4 hours ago
+											</div>
+											<button className="absolute bottom-1 right-1 upvote pointer">42</button>
 										</div>
 									</div>
 								</div>
@@ -225,7 +221,7 @@ class Modal extends React.Component {
 
 						</div>
 					</div>
-					<div className="red f2 absolute ph3 right-0 top-0 pointer" onClick={this.props._handleModalCloseClick}>
+					<div className="red f2 absolute ph3 right-0 top-0 pointer close" onClick={this.props._handleModalCloseClick}>
 						x
 					</div>
 				</div>
@@ -233,7 +229,10 @@ class Modal extends React.Component {
 			    {`
 			    	.modal-card {
 			    		border-radius: 12px;
-			    		min-height: 250px;
+			    	}
+			    	.review {
+			    		width: 275px;
+			    		height: 250px;
 			    	}
 			    	.grad-blue {
 			    		background-image: linear-gradient( 135deg, #90F7EC 10%, #32CCBC 100%);
@@ -256,10 +255,24 @@ class Modal extends React.Component {
 			    	.hidden {
 			    		display: none;
 			    	}
+			    	.upvote {
+			    		background-color: transparent;
+			    	}
+			    	.upvote::before {
+			    		-webkit-align-self: center;
+			    		-ms-flex-item-align: center;
+			    		align-self: center;
+			    		border-color: transparent transparent #fff transparent;
+			    		border-style: solid;
+			    		border-width: 0 4px 6px 4px;
+			    		content: "";
+			    		height: 0;
+			    		margin-right: 5px;
+			    		width: 0;
+			    	}
 			    	.active {
 			    		border-color: #F44A4A;
 			    		color: #F44A4A;
-			    		box-shadow: 0 0 5px #F44A4A;
 			    	}
 			    	.bg-oj {
 			    		background-color: #ED6863;
@@ -267,6 +280,9 @@ class Modal extends React.Component {
 			    	}
 			    	.data-row:hover .hidden {
 			    		display: flex;
+			    	}
+			    	.flex-1 {
+			    		flex: 1;
 			    	}
 			    	.flex-4 {
 			    		flex: 2;
