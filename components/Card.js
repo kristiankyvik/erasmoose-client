@@ -13,7 +13,7 @@ export default (props) => (
 		  	<div className="flex flex-column ph2">
 			    <img 
 			    	className="ur-uni-logo"
-			    	src={`https://logo.clearbit.com/${props.uni.website ? props.uni.website : "uu.nl" }`}
+			    	src={`https://logo.clearbit.com/${props.uni.website}`}
 			    	onError={(e)=>{ e.target.src=`https://ui-avatars.com/api/?name=${props.uni.name.split(" ").join("+")}&color=fff&background=F44A4A&font-size=0.4`}}
 			    />
 			    <div className="pv1 ttu white dn">

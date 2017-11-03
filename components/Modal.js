@@ -190,12 +190,13 @@ class Modal extends React.Component {
 											<div className="f5 pv1">Size: <span className="b">Big</span></div>
 											<div className="f5 pv1">Weather (Winter/Spring): <span className="b">16C, 75C</span></div>
 											<div className="f5 pv1">Sunny Days: <span className="b">16C, 75C</span></div>
-											<div className="f5 pv1">Vibes: <span className="b">technology, science</span></div>
 											<div className="f5 pv1">Environment: <span className="b">beach, surf</span></div>
 
 											<div className="f5 pt2">Leisure Activities: </div>
 											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Connectivity: </div>
+											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<div className="f5 pt2">Nightlife: </div>
 											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Cultural Activities: </div>
 											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
