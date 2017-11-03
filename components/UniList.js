@@ -18,7 +18,7 @@ class UniList extends React.Component {
     this.state = {
       data: [],
       allData: [],
-      showModal: false,
+      showModal: true,
       index: 0,
     };
   }
