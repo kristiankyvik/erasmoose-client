@@ -6,11 +6,11 @@ export default ({ pathname }) => (
       <span className="b f4 mr3 flex">
         erasmoose
       </span>
-      <Link className="flex" prefetch href='/'>
+      <Link prefetch href='/'>
         <a className={pathname === '/' && 'is-active'}>Leaderboard</a>
       </Link>
 
-      <Link className="flex" prefetch href='/about'>
+      <Link prefetch href='/about'>
         <a className={pathname === '/about' && 'is-active'}>About</a>
       </Link>
     </div>
