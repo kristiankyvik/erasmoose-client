@@ -39,7 +39,7 @@ class UniListResults extends React.Component {
         return (
           <section className="tc">
             <div className="flex justify-center">
-              <div style={{ width: 1080 }} className="flex flex-wrap justify-center">
+              <div style={{ width: 1080 }} className="flex flex-wrap justify-center animatedFadeIn">
                 {allUnis.map((uni, index) =>
                   <Card
                     key={uni._id}
@@ -54,6 +54,19 @@ class UniListResults extends React.Component {
               {areMorePosts ? <div className="btn-new tc max justify-center" onClick={() => this.showMoreUnis(allUnis, fetchMore)}> {loading ? 'Loading...' : 'Show More'} </div> : ''}
             </div>
             <style jsx>{`
+              @-webkit-keyframes fadein { /* Safari and Chrome */
+                  from {
+                      opacity: 0;
+                  }
+                  to {
+                      opacity: 1;
+                  }
+                }
+                .animatedFadeIn {
+                  align-items: center;
+                  display: flex;
+                  -webkit-animation: fadein 2s;
+                }
               section {
                 padding-bottom: 20px;
               }
