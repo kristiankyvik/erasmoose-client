@@ -1,16 +1,29 @@
+const lodash = require('lodash'); //get lodash librar
+
 import UniList from '../components/UniList'
+
+const DELAY_SEARCH_FOR_UNI_IN_MS = 300;
 
 class UniListWithSearch extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            search: ''
+            searchKeyShownInField: '',
+            searchKey: '',
         };
     }
 
-    updateSearch(event) {
-        this.setState({ search: event.target.value.substr(0,40)});
-    }
+    updateSearch = ((event) => {
+        let searchKey = event.target.value.substr(0, 40);
+
+        this.setState({ searchKeyShownInField: searchKey});
+        this.triggerSearch.call(this, searchKey);
+    });
+
+    triggerSearch = lodash.debounce((searchKey) => {
+        console.log("Search started");
+        this.setState({ searchKey: searchKey });
+    }, DELAY_SEARCH_FOR_UNI_IN_MS);
 
     render(){
         return (
@@ -18,10 +31,10 @@ class UniListWithSearch extends React.Component{
                 <input 
                     className="search-input"
                     type="text"
-                    value={this.state.search}
+                    value={this.state.searchKeyShownInField}
                     onChange={this.updateSearch.bind(this)}
                 />
-                <UniList searchKey={this.state.search} />
+                <UniList searchKey={this.state.searchKey} />
                 <style jsx>{`
                     .search-input {
                         padding-left: 3em;
