@@ -96,7 +96,7 @@ class UniList extends React.Component {
       return (
         <section className="tc">
           <div className="flex justify-center">
-            <div style={{ width: 1080 }} className="flex flex-wrap justify-center">
+            <div style={{ width: 1080, '-webkit-animation': 'fadein 2s'}} className="flex flex-wrap justify-center">
               {allUnis.map((uni, index) =>
                 <Card
                   key={uni._id}
@@ -122,6 +122,14 @@ class UniList extends React.Component {
             _handleFormClick={this._handleFormClick}
           />
           <style jsx>{`
+            @-webkit-keyframes fadein { /* Safari and Chrome */
+              from {
+                  opacity:0;
+              }
+              to {
+                  opacity:1;
+              }
+            }
             section {
               padding-bottom: 20px;
             }
