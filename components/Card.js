@@ -22,7 +22,7 @@ export default (props) => (
 		  		<Img 
 		  			src={[
 		  		    `https://logo.clearbit.com/${props.uni.website}`,
-		  		    `https://ui-avatars.com/api/?name=${props.uni.name.split(" ").join("+")}&color=fff&background=F44A4A&length=3&font-size=0.43`
+		  		    `https://ui-avatars.com/api/?name=${props.uni.name.split(" ").join("+")}&color=fff&background=F44A4A&length=2&font-size=0.43`
 		  		 ]}
 		  		 loader={UniLogoFallback}
 		  		 style={{ width: "45px", borderRadius: "50%" }}
