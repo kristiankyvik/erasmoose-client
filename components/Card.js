@@ -1,6 +1,14 @@
 import PostUpvoter from './PostUpvoter'
 import { Line, Circle } from 'rc-progress';
+import Img from 'react-image'
 
+const UniLogoFallback = (
+	<div 
+		className="logo-fallback"
+		style={{ height: "45px", width: "45px", borderRadius: "50%", backgroundColor: "gray" }}
+	>
+	</div>
+);
 export default (props) => (
 	<div 
 		className="ma3 shadow-4 bg-white flex flex-column tl ur-card relative white" 
@@ -11,11 +19,14 @@ export default (props) => (
 		<div className="flex-column flex card-front pt3 flex-grow-1">
 		  <div className="flex flex-column text relative pa2 ph3 justify-between">
 		  	<div className="flex flex-column ph2">
-			    <img 
-			    	className="ur-uni-logo"
-			    	src={`https://logo.clearbit.com/${props.uni.website}`}
-			    	onError={(e)=>{ e.target.src=`https://ui-avatars.com/api/?name=${props.uni.name.split(" ").join("+")}&color=fff&background=F44A4A&font-size=0.4`}}
-			    />
+		  		<Img 
+		  			src={[
+		  		    `https://logo.clearbit.com/${props.uni.website}`,
+		  		    `https://ui-avatars.com/api/?name=${props.uni.name.split(" ").join("+")}&color=fff&background=F44A4A&length=3&font-size=0.43`
+		  		 ]}
+		  		 loader={UniLogoFallback}
+		  		 style={{ width: "45px", borderRadius: "50%" }}
+		  		 />
 			    <div className="pv1 ttu white dn">
 			    	<span className="tag b tagged mr1"> tag1 </span><span className="tag b tagged mr1"> tag2 </span>
 			    </div>
@@ -32,7 +43,7 @@ export default (props) => (
 		    	style={{ "flex": 1 }} 
 		    	className="b tl f7 "
 		    >
-      		<div className="star-ratings-css mh1">
+      		<div className="star-ratings-css">
   	    	  <div className="star-ratings-css-top" style={{width: "20%"}}>
   	    	  	<span>★</span>
   	    	  	<span>★</span>
