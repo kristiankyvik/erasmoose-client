@@ -150,9 +150,9 @@ class Modal extends React.Component {
 										<div className="flex flex-1 flex-column justify-center modal-card mt3 mr3 pv3 ph3">
 											<div className="progress-wrapper tc justify-center flex pb2">
 												<Circle className="pv2 mr3 w-100" percent="10" strokeWidth="5
-												" trailWidth="5" strokeColor="#F44A4A" />
-												<Circle className="pv2 w-100" percent="10" strokeWidth="5
-												" trailWidth="5" strokeColor="#F44A4A" />
+												" trailWidth="5" strokeColor="#F44A4A" initialAnimate={true}  />
+												<Circle className="pv2 w-100" percent="90" strokeWidth="5
+												" trailWidth="5" strokeColor="#F44A4A" initialAnimate={true}  />
 											</div>
 											<div className="f4 b">Uni life</div>
 											<div className="f5 pv1">Ranking (Int/Nat): <span className="b">200/233</span></div>
@@ -160,7 +160,7 @@ class Modal extends React.Component {
 											<div className="f5 pv1">Flagship areas: <span className="b">technology, science</span></div>
 											<div className="f5 pv1">Languages: <span className="b">Spanish, German</span></div>
 											<div className="f5 pt2">Workload: </div>
-											<Line className="flex pv1" percent="67" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv1" percent="67" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9"/>
 											<div className="f5 pt2">International Orientation: </div>
 											<Line className="flex pv1" percent="67" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Tuition Fees: </div>

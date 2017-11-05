@@ -202,7 +202,6 @@ export default class UniList extends React.Component {
   }
 
   _handleCardClick = (e, index, uni) => {
-    console.log(e, index, uni);
     document.body.classList.toggle('modalOpen', true);
     this.setState({
       showModal: true,

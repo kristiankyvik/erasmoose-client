@@ -9,6 +9,8 @@ export default () => (
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta charSet="utf-8" />
+      <title> Erasmoose | erasmus universities ranking </title>
+      <meta name="description" content="Erasmoose is a ranking of erasmus universities. We help you choose between european universities.">
       <link rel="stylesheet" href="https://unpkg.com/tachyons@4.7.0/css/tachyons.min.css"/>
       <link rel="stylesheet" href="https://unpkg.com/tachyons-flexbox@2.0.5/css/tachyons-flexbox.min.css" />
       <script src="https://use.typekit.net/nym1duy.js"></script>
