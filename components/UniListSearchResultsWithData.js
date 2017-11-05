@@ -1,5 +1,5 @@
 import { gql, graphql } from 'react-apollo'
-import UniListResults from './UniListResults'
+import UniListSearchResults from './UniListSearchResults'
 
 const POSTS_PER_PAGE = 33;
 
@@ -37,4 +37,4 @@ export default graphql(allUnis, {
         loading,
         fetchMore
     })
-})(UniListResults);
+})(UniListSearchResults);

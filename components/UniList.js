@@ -1,10 +1,10 @@
 import ErrorMessage from './ErrorMessage'
 import Modal from './Modal'
 import React from 'react';
-import UniListResultsWithData from './UniListResultsWithData'
+import UniListSearchResultsWithData from './UniListSearchResultsWithData'
 
 const lodash = require('lodash'); //get lodash librar
-const DELAY_SEARCH_FOR_UNI_IN_MS = 400;
+const DELAY_SEARCH_FOR_UNI_IN_MS = 300;
 
 export default class UniList extends React.Component {
   constructor(props) {
@@ -75,7 +75,7 @@ export default class UniList extends React.Component {
     return (
       <section className="tc">
 
-        <UniListResultsWithData
+        <UniListSearchResultsWithData
           triggerSearchInDB={this.triggerSearchInDB} //function triggering a change in searchKey 
           searchKey={this.state.searchKey} //searchKey needed for graphql call, if changed new call to db is executed
           _handleCardClick={this._handleCardClick}
