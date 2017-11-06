@@ -1,3 +1,4 @@
+import Router from 'next/router';
 
 export default class Search extends React.Component {
   constructor(props) {
@@ -9,12 +10,27 @@ export default class Search extends React.Component {
   }
 
   componentDidMount() {
+    if (this.props.liveFilter) {
+      this.setState({ searchKey: this.props.query.q });      
+      this.props.triggerSearchInDB(this.props.query.q);
+    }
+
     this.searchInput.focus();
   }
 
-  updateSearch(event) {
-    const searchKey = event.target.value.substr(0,40);
+  keyPress(e){
+     if(e.keyCode == 13 && !this.props.liveFilter) {
+        Router.push({
+          pathname: '/search',
+          query: { q: e.target.value }
+        })
+     }
+  }
+
+  handleChange(e) {
+    const searchKey = e.target.value.substr(0,40);
     this.setState({ searchKey });
+    if (!this.props.liveFilter) return;
     this.props.triggerSearchInDB(searchKey);
   }
 
@@ -22,14 +38,15 @@ export default class Search extends React.Component {
     const { loading } = this.props;
     return (
       <div>
-        <div className={ `searchInput relative tc pv5 ${loading ? "searching" : ""}`} >
+        <div className={ `searchInput relative tc ${loading ? "searching" : ""}`} >
           <input 
             ref={(el) => { this.searchInput = el; }}
             className="search-input mv3 m0a"
             placeholder="Search..."
             type="text"
             value={this.state.searchKey}
-            onChange={this.updateSearch.bind(this)}
+            onChange={this.handleChange.bind(this)}
+            onKeyDown={this.keyPress.bind(this)}
             style={{backgroundImage: `url("./static/search.svg")`, backgroundRepeat: "no-repeat", backgroundPositionY: "50%", backgroundPositionX: "1em", backgroundSize: "1em"}}
         />
           <img src="./static/loader.svg" className="loader absolute" />
@@ -40,7 +57,7 @@ export default class Search extends React.Component {
               right: 50%;
               margin-right: -233px;
               display: none;
-              top: 76px;
+              top: 10px;
             }
             .searchInput.searching .loader {
               display: block;
@@ -55,18 +72,23 @@ export default class Search extends React.Component {
               font-size: 1.5em;
               display: inline-block;
               width: 500px;
-              border-color: #09f;
+              // border-color: transparent;
               padding: .7em .75em;
               padding-left: 3em;
               font-size: 1.45em;
               font-family: "Avenir Next W01", "Avenir Next", "Avenir", helvetica, arial, sans-serif;
-              color: #333;
-              border: 0.25em solid #eee;
-              border-radius: 0.5em;
+              // color: #333;
+              // border: 0.25em solid #eee;
+              //border-radius: 0.5em;
               background: white;
               box-sizing: border-box;
               -webkit-appearance: none;
               -webkit-tap-highlight-color: transparent;
+              border-width:0px;
+              border:none;
+            }
+            *:focus {
+                outline: none;
             }
             .search-input:focus {
               border-color: #22BAD9;

@@ -26,7 +26,6 @@ class UniListResults extends React.Component {
     })
 
     render() {
-        console.log("Results: ",this.props);
         const { loading, error, allUnis, _allUnisMeta, loadMorePosts, fetchMore, _handleCardClick} = this.props;
         const areMorePosts = allUnis.length < _allUnisMeta.count;
 

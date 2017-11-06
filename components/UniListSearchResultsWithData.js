@@ -27,7 +27,7 @@ export default graphql(allUnis, {
         variables: {
             skip: 0,
             first: POSTS_PER_PAGE,
-            searchKey: ownProps.searchKey
+            searchKey: ownProps.liveFilter ? ownProps.searchKey : ""
         },
     }),
     props: ({ data: { loading, error, allUnis, _allUnisMeta, fetchMore } }) => ({

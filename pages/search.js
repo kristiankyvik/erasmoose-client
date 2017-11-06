@@ -10,7 +10,7 @@ export default withData((props) => (
   <App>
     <Header/>
   	<Hero pathname={props.url.pathname} />
-    <UniList liveFilter={false}/>
+    <UniList query={props.url.query} liveFilter={true}/>
     <Footer />
   </App>
 ))

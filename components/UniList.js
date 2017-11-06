@@ -76,8 +76,10 @@ export default class UniList extends React.Component {
       <section className="tc">
 
         <UniListSearchResultsWithData
+          query={this.props.query}
           triggerSearchInDB={this.triggerSearchInDB} //function triggering a change in searchKey 
           searchKey={this.state.searchKey} //searchKey needed for graphql call, if changed new call to db is executed
+          liveFilter={this.props.liveFilter} 
           _handleCardClick={this._handleCardClick}
         />
 
