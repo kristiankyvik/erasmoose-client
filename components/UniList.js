@@ -2,6 +2,7 @@ import ErrorMessage from './ErrorMessage'
 import Modal from './Modal'
 import React from 'react';
 import UniListSearchResultsWithData from './UniListSearchResultsWithData'
+import TypeformButton from './TypeformButton'
 
 const lodash = require('lodash'); //get lodash librar
 const DELAY_SEARCH_FOR_UNI_IN_MS = 300;
@@ -43,7 +44,7 @@ export default class UniList extends React.Component {
   }, DELAY_SEARCH_FOR_UNI_IN_MS);
 
   _handleModalLeftClick = (e) => {
-    const index = this.state.index <= 0 ? this.state.unisLength - 1 : this.state.index - 1;
+    const index = this.state.index - 1 <= 0 ? this.state.uniNum - 1 : this.state.index - 1;
     this.setState({ 
       index: index,
       uni: this.state.allUnis[index]
@@ -51,7 +52,7 @@ export default class UniList extends React.Component {
   }
 
   _handleModalRightClick = (e) => {
-    const index = this.state.index >= this.state.unisLength ? 0 : this.state.index + 1;
+    const index = this.state.index + 1 >= this.state.uniNum ? 0 : this.state.index + 1;
     this.setState({ 
       index: index,
       uni: this.state.allUnis[index]
@@ -89,9 +90,11 @@ export default class UniList extends React.Component {
   render() {
     return (
       <section className="tc">
-
+        { this.state.allUnis[0] ? <TypeformButton ghost={true} uniId={this.state.allUnis[this.state.index]._id} ref={(el) => { this.tfbtn = el; }} /> : null }
         <UniListSearchResultsWithData
+          index={this.state.index}
           query={this.props.query}
+          pathname={this.props.pathname}
           triggerSearchInDB={this.triggerSearchInDB} //function triggering a change in searchKey 
           searchKey={this.state.searchKey} //searchKey needed for graphql call, if changed new call to db is executed
           liveFilter={this.props.liveFilter} 

@@ -26,7 +26,9 @@ class UniListResults extends React.Component {
     })
 
     render() {
-        const { loading, error, allUnis, _allUnisMeta, loadMorePosts, fetchMore, _handleCardClick} = this.props;
+        if (this.props.allUnis  === undefined) return <div>Loading</div>
+
+        const { loading, index, error, allUnis, _allUnisMeta, loadMorePosts, fetchMore, _handleCardClick} = this.props;
         const areMorePosts = allUnis.length < _allUnisMeta.count && allUnis.length > 33;
 
         if (error) return <ErrorMessage message='Error loading entries.' />
@@ -37,7 +39,7 @@ class UniListResults extends React.Component {
                         <div style={{ width: 1080 }} className="flex flex-wrap justify-center">
                             {allUnis.map((uni, index) =>
                                 <Card
-                                    key={uni._id}
+                                    key={uni.name}
                                     uni={uni}
                                     index={index + 1}
                                     _handleCardClick={(evt) => _handleCardClick(evt, index, allUnis[index])}
@@ -50,21 +52,21 @@ class UniListResults extends React.Component {
                     </div>
                     <style jsx>{`
                         section {
-                        padding-bottom: 20px;
+                            padding-bottom: 20px;
                         }
                         .m0a {
-                        margin: 0 auto;
+                            margin: 0 auto;
                         }
                         li {
-                        display: block;
-                        margin-bottom: 10px;
+                            display: block;
+                            margin-bottom: 10px;
                         }
                         div {
-                        align-items: center;
-                        display: flex;
+                            align-items: center;
+                            display: flex;
                         }
                         input {
-                        color: black;
+                            color: black;
                         }
                         a {
                         font-size: 14px;

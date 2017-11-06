@@ -5,33 +5,33 @@ export default class Search extends React.Component {
     super(props);
     this.searchInput = null;
     this.state = {
-      searchKey: ""
+      searchKey: this.props.query ? this.props.query.q : ""
     };
   }
 
   componentDidMount() {
-    if (this.props.liveFilter) {
-      this.setState({ searchKey: this.props.query.q });      
-      this.props.triggerSearchInDB(this.props.query.q);
-    }
-
     this.searchInput.focus();
   }
 
   keyPress(e){
-     if(e.keyCode == 13 && !this.props.liveFilter) {
-        Router.push({
-          pathname: '/search',
-          query: { q: e.target.value }
-        })
-     }
+   if(e.keyCode == 13 && !this.props.liveFilter) {
+      Router.push({
+        pathname: '/search',
+        query: { q: e.target.value }
+      })
+   }
   }
 
   handleChange(e) {
-    const searchKey = e.target.value.substr(0,40);
+    const searchKey = e.target.value;
     this.setState({ searchKey });
     if (!this.props.liveFilter) return;
     this.props.triggerSearchInDB(searchKey);
+    Router.push(
+      `/search?q=${searchKey}`,
+      `/search?q=${searchKey}`,
+      { shallow: true }
+    );
   }
 
   render() {

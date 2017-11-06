@@ -2,7 +2,6 @@ import ErrorMessage from './ErrorMessage'
 import Card from './Card'
 import Search from './Search'
 import React from 'react';
-import TypeformButton from './TypeformButton'
 import UniListResults from './UniListResults'
 
 class UniListSearchResults extends React.Component {
@@ -11,7 +10,7 @@ class UniListSearchResults extends React.Component {
   }
 
   componentWillUpdate() {
-    if (this.props.allUnis.length != this.props.uniNum) {
+    if (this.props.allUnis && (this.props.allUnis.length != this.props.uniNum)) {
       this.props.setUniNum(this.props.allUnis.length);
       this.props.setAllUnis(this.props.allUnis);
     }

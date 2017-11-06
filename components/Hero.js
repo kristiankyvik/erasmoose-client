@@ -41,6 +41,10 @@ export default ({ pathname }) => (
       a {
         margin-right: 15px;
         text-decoration: none;
+        color: rgba(0, 0, 0, 0.41);
+      }
+      a:hover {
+        color: black;
       }
       .is-active {
         color: black;
