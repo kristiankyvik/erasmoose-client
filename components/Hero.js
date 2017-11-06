@@ -1,11 +1,11 @@
 import Link from 'next/link'
 
 export default ({ pathname }) => (
-  <div className="hero f4 fw8">
+  <div className="hero f4 fw8 grad-pink">
     <div className="bar flex items-center">
       <Link prefetch href='/'>
         <a className={pathname === '/' && 'is-active'}>
-          <span className="b f4 mr3 flex">
+          <span className="b f4 flex">
             erasmoose
           </span>
         </a>
@@ -43,13 +43,13 @@ export default ({ pathname }) => (
         text-decoration: none;
       }
       .is-active {
-        color: rgba(34, 186, 217, 0.4);
+        color: black;
       }
       .grad-blue {
         background-image: linear-gradient( 135deg, #90F7EC 10%, #32CCBC 100%);
       }
       .grad-pink {
-        background-image: linear-gradient( 135deg, #FFF6B7 10%, #F6416C 100%);
+        background-image: linear-gradient( to bottom, rgb(34, 186, 217) 10%, #F3F6FA 100%);
       }
     `}</style>
   </div>

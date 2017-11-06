@@ -72,24 +72,22 @@ export default class Search extends React.Component {
               font-size: 1.5em;
               display: inline-block;
               width: 500px;
-              // border-color: transparent;
+              border-color: #eee;
               padding: .7em .75em;
               padding-left: 3em;
               font-size: 1.45em;
               font-family: "Avenir Next W01", "Avenir Next", "Avenir", helvetica, arial, sans-serif;
-              // color: #333;
-              // border: 0.25em solid #eee;
-              //border-radius: 0.5em;
+              color: #333;
+              border: 0.25em solid #eee;
+              border-radius: 0.5em;
               background: white;
               box-sizing: border-box;
               -webkit-appearance: none;
               -webkit-tap-highlight-color: transparent;
-              border-width:0px;
-              border:none;
+              // border-width:0px;
+              // border:none;
             }
-            *:focus {
-                outline: none;
-            }
+
             .search-input:focus {
               border-color: #22BAD9;
               outline-width: 0;

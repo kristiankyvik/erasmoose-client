@@ -15,7 +15,7 @@ export default ({ children }) => (
         text-rendering: optimizelegibility;
       }
       a {
-        color: #22BAD9;
+        color: black;
         text-decoration: none;
       }
       p {
