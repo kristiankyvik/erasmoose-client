@@ -15,7 +15,7 @@ export default class Search extends React.Component {
   updateSearch(event) {
     const searchKey = event.target.value.substr(0,40);
     this.setState({ searchKey });
-    this.props.upateSearchParent(searchKey);
+    this.props.triggerSearchInDB(searchKey);
   }
 
   render() {

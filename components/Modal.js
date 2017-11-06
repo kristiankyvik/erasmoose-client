@@ -146,15 +146,30 @@ class Modal extends React.Component {
 										<div className="f3 b">The University</div>
 										<div className="f5 gray">The main metrics and such</div>
 									</div>
+
+									<div className="flex black">
+										<div className="f4 b"> Uni </div>
+										<div className="progress-wrapper tc justify-center flex pb2">
+											<Circle className="pv2 mr3 w-100" percent="50" strokeWidth="5
+												" trailWidth="5" strokeColor="#F44A4A" initialAnimate={true} />
+										</div>
+										<div className="f4 b"> Cost </div>
+										<div className="progress-wrapper tc justify-center flex pb2">
+											<Circle className="pv2 mr3 w-100" percent="80" strokeWidth="5
+												" trailWidth="5" strokeColor="#F44A4A" initialAnimate={true} />
+										</div>
+										<div className="f4 b"> City </div>
+										<div className="progress-wrapper tc justify-center flex pb2">
+											<Circle className="pv2 mr3 w-100" percent="20" strokeWidth="5
+												" trailWidth="5" strokeColor="#F44A4A" initialAnimate={true} />
+										</div>
+								  	</div>
+
 									<div className="flex black">
 										<div className="flex flex-1 flex-column justify-center modal-card mt3 mr3 pv3 ph3">
-											<div className="progress-wrapper tc justify-center flex pb2">
-												<Circle className="pv2 mr3 w-100" percent="10" strokeWidth="5
-												" trailWidth="5" strokeColor="#F44A4A" initialAnimate={true}  />
-												<Circle className="pv2 w-100" percent="90" strokeWidth="5
-												" trailWidth="5" strokeColor="#F44A4A" initialAnimate={true}  />
-											</div>
-											<div className="f4 b">Uni life</div>
+											<div className="f4 b">Uni</div>
+											{/* Uni */}
+											{/* ---------------------------------- */}
 											<div className="f5 pv1">Ranking (Int/Nat): <span className="b">200/233</span></div>
 											<div className="f5 pv1">Size: <span className="b">20000 students</span></div>
 											<div className="f5 pv1">Flagship areas: <span className="b">technology, science</span></div>
@@ -183,18 +198,14 @@ class Modal extends React.Component {
 											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 										</div>
 										<div className="flex flex-1 flex-column justify-center modal-card mt3 mr2 pv3 ph3">
-											<div className="progress-wrapper tc justify-center flex pb2">
-												<Circle className="pv2 mr3 w-100" percent="10" strokeWidth="5
-												" trailWidth="5" strokeColor="#F44A4A" />
-												<Circle className="pv2 w-100" percent="10" strokeWidth="5
-												" trailWidth="5" strokeColor="#F44A4A" />
-											</div>
+											{/* City */}
+											{/* ---------------------------------- */}
 											<div className="f4 b">City</div>
 											<div className="f5 pv1">Size: <span className="b">Big</span></div>
 											<div className="f5 pv1">Weather (Winter/Spring): <span className="b">16C, 75C</span></div>
 											<div className="f5 pv1">Sunny Days: <span className="b">16C, 75C</span></div>
 											<div className="f5 pv1">Environment: <span className="b">beach, surf</span></div>
-
+											<div className="f5 pv1">Vibes: <span className="b">Hipster</span></div>
 											<div className="f5 pt2">Leisure Activities: </div>
 											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Connectivity: </div>
@@ -203,9 +214,9 @@ class Modal extends React.Component {
 											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Cultural Activities: </div>
 											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											{/* Cost */}
+											{/* ---------------------------------- */}
 											<div className="f4 b pt2">Student Cost of life</div>
-											<div className="f5 pt2">Overall Cost: </div>
-											<Line className="flex pv2" percent="67" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Beer: </div>
 											<Line className="flex pv2" percent="67" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Nightlife: </div>
