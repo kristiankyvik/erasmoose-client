@@ -7,7 +7,14 @@ import UniListResults from './UniListResults'
 
 class UniListSearchResults extends React.Component {
   constructor(props) {
-      super(props);
+    super(props);
+  }
+
+  componentWillUpdate() {
+    if (this.props.allUnis.length != this.props.uniNum) {
+      this.props.setUniNum(this.props.allUnis.length);
+      this.props.setAllUnis(this.props.allUnis);
+    }
   }
 
   render() {

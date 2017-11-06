@@ -24,7 +24,7 @@ export default ({ pathname }) => (
           <div className="fw6">
             Ranked.
           </div></h1>
-        <h2 className="fw1 f3 black-80 mt3 mb4"> Ranking european universities.</h2>
+        <h2 className="fw1 f3 black-80 mt3 mb4"> Ranking of european universities.</h2>
       </div>
     </div>
 

@@ -15,7 +15,9 @@ export default class UniList extends React.Component {
       showModal: false,
       index: 0,
       searchKey: "",
-      uni: null
+      uni: null,
+      uniNum: 0,
+      allUnis: []
     };
   }
 
@@ -37,18 +39,23 @@ export default class UniList extends React.Component {
   }
 
   triggerSearchInDB = lodash.debounce((searchKey) => {
-    console.log("Search started...");
     this.setState({ searchKey: searchKey });
   }, DELAY_SEARCH_FOR_UNI_IN_MS);
 
   _handleModalLeftClick = (e) => {
-    const index = this.state.index <= 0 ? this.props.allUnis.length - 1 : this.state.index - 1;
-    this.setState({ index: index });
+    const index = this.state.index <= 0 ? this.state.unisLength - 1 : this.state.index - 1;
+    this.setState({ 
+      index: index,
+      uni: this.state.allUnis[index]
+    });
   }
 
   _handleModalRightClick = (e) => {
-    const index = this.state.index >= this.props.allUnis.length ? 0 : this.state.index + 1;
-    this.setState({ index: index });
+    const index = this.state.index >= this.state.unisLength ? 0 : this.state.index + 1;
+    this.setState({ 
+      index: index,
+      uni: this.state.allUnis[index]
+    });
   }
 
   _handleModalCloseClick = (e) => {
@@ -71,6 +78,14 @@ export default class UniList extends React.Component {
     }
   }
 
+  setUniNum(uniNum) {
+    this.setState({uniNum});
+  }
+
+  setAllUnis(allUnis) {
+    this.setState({allUnis});
+  }
+
   render() {
     return (
       <section className="tc">
@@ -81,6 +96,9 @@ export default class UniList extends React.Component {
           searchKey={this.state.searchKey} //searchKey needed for graphql call, if changed new call to db is executed
           liveFilter={this.props.liveFilter} 
           _handleCardClick={this._handleCardClick}
+          setUniNum={(n) => this.setUniNum(n)}
+          setAllUnis={(n) => this.setAllUnis(n)}
+          uniNum={this.state.uniNum}
         />
 
         <Modal
