@@ -285,8 +285,8 @@ class Modal extends React.Component {
 						}
 						.inside-circle {
 			    	  position: absolute;
-			    	  top: 47%;
-			    	  left: 47%;
+			    	  top: 50%;
+			    	  left: 50%;
 			    	  transform: translate(-50%, -50%);
 			    	}
 			    	.modal-card {
