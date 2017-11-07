@@ -1,11 +1,15 @@
+
+
 import Router from 'next/router';
+
+const lodash = require('lodash'); //get lodash librar
 
 export default class Search extends React.Component {
   constructor(props) {
     super(props);
     this.searchInput = null;
     this.state = {
-      searchKey: this.props.query ? this.props.query.q : ""
+      searchKey : lodash.get(this.props.query,'q','')
     };
   }
 
@@ -24,8 +28,10 @@ export default class Search extends React.Component {
 
   handleChange(e) {
     const searchKey = e.target.value;
-    this.setState({ searchKey });
+    this.setState({searchKey: searchKey});
+    
     if (!this.props.liveFilter) return;
+
     this.props.triggerSearchInDB(searchKey);
     Router.push(
       `/search?q=${searchKey}`,
@@ -35,7 +41,18 @@ export default class Search extends React.Component {
   }
 
   render() {
-    const { loading } = this.props;
+    const { loading, query } = this.props;
+
+    //ATTENTION: ugly bug fix. When clicking on 'search' Link after having searched for uni, 
+    //           all unis are displayed, even if the searchBox shows the previously typed searchKey.
+    //           The following lines fix that.
+
+    let searchKey = this.state.searchKey;
+    let isQueryEmptyButSearchKeyNot = lodash.isEmpty(query) && searchKey !== '';
+    let isQueryDefined = !!query;
+
+    if (isQueryDefined && isQueryEmptyButSearchKeyNot) searchKey = ''; 
+
     return (
       <div>
         <div className={ `searchInput relative tc ${loading ? "searching" : ""}`} >
@@ -44,7 +61,7 @@ export default class Search extends React.Component {
             className="search-input mv3 m0a"
             placeholder="Search..."
             type="text"
-            value={this.state.searchKey}
+            value={searchKey}
             onChange={this.handleChange.bind(this)}
             onKeyDown={this.keyPress.bind(this)}
             style={{backgroundImage: `url("./static/search.svg")`, backgroundRepeat: "no-repeat", backgroundPositionY: "50%", backgroundPositionX: "1em", backgroundSize: "1em"}}
