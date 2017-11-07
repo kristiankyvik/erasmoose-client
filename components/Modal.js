@@ -141,42 +141,26 @@ class Modal extends React.Component {
 							<div className="flex flex-auto">
 								<div className="flex flex-auto pv4 ph4 flex-column white">
 
-									<div className="black pb0 pt3">
-										<div className="f3 b">The University</div>
-										<div className="f5 gray">The main metrics and such</div>
-									</div>
-
-									<div className="flex black">
-										<div className="f4 b"> Uni </div>
-										<div className="progress-wrapper tc justify-center flex pb2">
-											<Circle className="pv2 mr3 w-100" percent="50" strokeWidth="5
-												" trailWidth="5" strokeColor="#F44A4A" initialAnimate={true} />
-										</div>
-										<div className="f4 b"> Cost </div>
-										<div className="progress-wrapper tc justify-center flex pb2">
-											<Circle className="pv2 mr3 w-100" percent="80" strokeWidth="5
-												" trailWidth="5" strokeColor="#F44A4A" initialAnimate={true} />
-										</div>
-										<div className="f4 b"> City </div>
-										<div className="progress-wrapper tc justify-center flex pb2">
-											<Circle className="pv2 mr3 w-100" percent="20" strokeWidth="5
-												" trailWidth="5" strokeColor="#F44A4A" initialAnimate={true} />
-										</div>
-								  	</div>
-
+									{/* Uni */}
+									{/* ---------------------------------- */}
+									<div className="f4 b black tc pt3">Uni</div>
 									<div className="flex black">
 										<div className="flex flex-1 flex-column justify-center modal-card mt3 mr3 pv3 ph3">
-											<div className="f4 b">Uni</div>
-											{/* Uni */}
-											{/* ---------------------------------- */}
-											<div className="f5 pv1">Ranking (Int/Nat): <span className="b">200/233</span></div>
-											<div className="f5 pv1">Size: <span className="b">20000 students</span></div>
-											<div className="f5 pv1">Flagship areas: <span className="b">technology, science</span></div>
+											<div className="f4 b circle flex">
+												<span className='inside-circle'>{"67/100"}</span>
+												<Circle className="pv2 mr3 w-100" percent="67" strokeWidth="5
+													" trailWidth="5" strokeColor="#F44A4A" />
+											</div>
+											<div className="f5 pv1">Ranking (Int/Nat): <span className="b">Coming soon</span></div>
+											<div className="f5 pv1">Size: <span className="b">20000 Students</span></div>
+											<div className="f5 pv1">Flagship Areas: <span className="b">Technology, Science</span></div>
 											<div className="f5 pv1">Languages: <span className="b">Spanish, German</span></div>
 											<div className="f5 pt2">Workload: </div>
-											<Line className="flex pv1" percent="67" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9"/>
+											<Line className="flex pv1" percent="67" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">International Orientation: </div>
 											<Line className="flex pv1" percent="67" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+										</div>
+										<div className="flex flex-1 flex-column justify-center modal-card mt3 mr3 pv3 ph3">
 											<div className="f5 pt2">Tuition Fees: </div>
 											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Accomodation: </div>
@@ -185,24 +169,31 @@ class Modal extends React.Component {
 											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Location: </div>
 											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
-											<div className="f5 pt2">Gender Ratio: </div>
-											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<div className="f5 pt2">Gender Ratio (Women/Men): </div>
+											<Line className="flex pv1" percent="45" strokeWidth="3" trailWidth="3" strokeColor="#ff69b4" trailColor="#0000FF"/>
 											<div className="f5 pt2">Research Opportunities: </div>
 											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
-											<div className="f5 pt2">Job/intership Opportunities: </div>
+											<div className="f5 pt2">Job/Internship Opportunities: </div>
 											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
-											<div className="f5 pt2">Organization and clubs: </div>
+											<div className="f5 pt2">Organization and Studend Clubs: </div>
 											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Student Parties: </div>
 											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 										</div>
+									</div>
+									{/* City */}
+									{/* ---------------------------------- */}
+									<div className="f4 b black pt3 tc ">City</div>
+									<div className="flex black">
 										<div className="flex flex-1 flex-column justify-center modal-card mt3 mr2 pv3 ph3">
-											{/* City */}
-											{/* ---------------------------------- */}
-											<div className="f4 b">City</div>
+											<div className="f4 b circle flex">
+												<span className='inside-circle'>{"67/100"}</span>
+												<Circle className="pv2 mr3 w-100" percent="67" strokeWidth="5
+													" trailWidth="5" strokeColor="#F44A4A" />
+											</div>
 											<div className="f5 pv1">Size: <span className="b">Big</span></div>
 											<div className="f5 pv1">Weather (Winter/Spring): <span className="b">16C, 75C</span></div>
-											<div className="f5 pv1">Sunny Days: <span className="b">16C, 75C</span></div>
+											<div className="f5 pv1">Sunny Days: <span className="b">175</span></div>
 											<div className="f5 pv1">Environment: <span className="b">beach, surf</span></div>
 											<div className="f5 pv1">Vibes: <span className="b">Hipster</span></div>
 											<div className="f5 pt2">Leisure Activities: </div>
@@ -211,26 +202,34 @@ class Modal extends React.Component {
 											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Nightlife: </div>
 											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+										</div>
+										<div className="flex flex-1 flex-column justify-center modal-card mt3 mr2 pv3 ph3">
 											<div className="f5 pt2">Cultural Activities: </div>
 											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											{/* Cost */}
 											{/* ---------------------------------- */}
-											<div className="f4 b pt2">Student Cost of life</div>
-											<div className="f5 pt2">Beer: </div>
-											<Line className="flex pv2" percent="67" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
-											<div className="f5 pt2">Nightlife: </div>
-											<Line className="flex pv2" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
-											<div className="f5 pt2">Food: </div>
-											<Line className="flex pv2" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<div className="f5 b pt4">Student Cost of life</div>
+											<div className="f5 pv1">Monthly Cost: <span className="b">500 €/m</span></div>
 											<div className="f5 pt2">Rent: </div>
+											<Line className="flex pv2" percent="67" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<div className="f5 pt2">Beer in a Pub: </div>
+											<Line className="flex pv2" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<div className="f5 pt2">Entry fee Club: </div>
+											<Line className="flex pv2" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<div className="f5 pt2">Coffee: </div>
+											<Line className="flex pv2" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<div className="f5 pt2">Kebap: </div>
+											<Line className="flex pv2" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<div className="f5 pt2">Meal in Cantine: </div>
 											<Line className="flex pv2" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 										</div>
 									</div>
-									<div className="black pb0 pt3">
+
+									<div className="black pb0 pt3 dn">
 										<div className="f3 b">Latest Reviews</div>
 										<div className="f5 gray">The main metrics and such</div>
 									</div>
-									<div className="flex black">
+									<div className="flex black dn">
 										<div className="flex flex-auto review flex-column justify-center modal-card mt3 mr2 pv3 grad-green relative">
 											<div className="i pv3 ph4 tc white f5">
 												"The best uni everrrr! Super international! The place to go if you wanna get turnt!
@@ -279,14 +278,24 @@ class Modal extends React.Component {
 					</div>
 				</div>
 			  <style jsx>
-			    {`
+					{`
+						.circle {
+							position: relative;
+							padding-bottom: 10px;
+						}
+						.inside-circle {
+			    	  position: absolute;
+			    	  top: 47%;
+			    	  left: 47%;
+			    	  transform: translate(-50%, -50%);
+			    	}
 			    	.modal-card {
 			    		border-radius: 12px;
 			    	}
 			    	.review {
 			    		width: 275px;
 			    		height: 250px;
-			    	}
+						}
 			    	.grad-blue {
 			    		background-image: linear-gradient( 135deg, #90F7EC 10%, #32CCBC 100%);
 			    	}

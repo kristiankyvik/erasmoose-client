@@ -23,7 +23,6 @@ const allUnis = gql`
 // available on the `data` prop of the wrapped component (UniList)
 export default graphql(allUnis, {
     options: (ownProps) => ({
-      kjlk: console.log(ownProps),
       notifyOnNetworkStatusChange: true,
       variables: {
           skip: 0,
