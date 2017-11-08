@@ -12,7 +12,7 @@ export default class UniList extends React.Component {
     this.modal = null;
     this.tfbtn = null;
     this.state = {
-      showModal: false,
+      showModal: true,
       index: 0,
       searchKey: "",
       uni: null,
