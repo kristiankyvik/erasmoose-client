@@ -14,7 +14,6 @@ export default class Search extends React.Component {
   }
 
   componentDidMount() {
-    this.searchInput.focus();
   }
 
   keyPress(e){

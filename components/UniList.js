@@ -79,11 +79,11 @@ export default class UniList extends React.Component {
   }
 
   setUniNum(uniNum) {
-    this.setState({uniNum});
+    this.setState({ uniNum: uniNum });
   }
 
   setAllUnis(allUnis) {
-    this.setState({allUnis});
+    this.setState({ allUnis: allUnis });
   }
 
   render() {
@@ -101,7 +101,6 @@ export default class UniList extends React.Component {
           setAllUnis={(n) => this.setAllUnis(n)}
           uniNum={this.state.uniNum}
         />
-
         <Modal
           ref={(el) => { this.modal = el; }}
           showModal={this.state.showModal}

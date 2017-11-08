@@ -29,7 +29,7 @@ class UniListResults extends React.Component {
         if (this.props.allUnis  === undefined) return <ErrorMessage message='Error loading entries.' />;
 
         const { loading, index, error, allUnis, _allUnisMeta, loadMorePosts, fetchMore, _handleCardClick} = this.props;
-        const areMorePosts = allUnis.length < _allUnisMeta.count && allUnis.length > 33;
+        const areMorePosts = (allUnis.length < _allUnisMeta.count) && (allUnis.length >= 33);
 
         if (error) return <ErrorMessage message='Error loading entries.' />
         if (allUnis && allUnis.length) {
