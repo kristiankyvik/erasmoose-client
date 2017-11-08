@@ -97,7 +97,7 @@ export default class UniList extends React.Component {
           searchKey={this.state.searchKey} //searchKey needed for graphql call, if changed new call to db is executed
           liveFilter={this.props.liveFilter} 
           _handleCardClick={this._handleCardClick}
-          setUniNum={(n) => this.setUniNum(n)}
+          setUniNum={(n) => this.setUniNum(n)} 
           setAllUnis={(n) => this.setAllUnis(n)}
           uniNum={this.state.uniNum}
         />
