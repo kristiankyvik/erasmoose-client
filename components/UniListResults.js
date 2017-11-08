@@ -26,7 +26,7 @@ class UniListResults extends React.Component {
     })
 
     render() {
-        if (this.props.allUnis  === undefined) return <div>Loading</div>
+        if (this.props.allUnis  === undefined) return <ErrorMessage message='Error loading entries.' />;
 
         const { loading, index, error, allUnis, _allUnisMeta, loadMorePosts, fetchMore, _handleCardClick} = this.props;
         const areMorePosts = allUnis.length < _allUnisMeta.count && allUnis.length > 33;
@@ -35,7 +35,7 @@ class UniListResults extends React.Component {
         if (allUnis && allUnis.length) {
             return (
                 <section className="tc">
-                    <div className="flex justify-center">
+                    <div className="db justify-center">
                         <div style={{ width: 1080 }} className="flex flex-wrap justify-center">
                             {allUnis.map((uni, index) =>
                                 <Card
@@ -60,10 +60,6 @@ class UniListResults extends React.Component {
                         li {
                             display: block;
                             margin-bottom: 10px;
-                        }
-                        div {
-                            align-items: center;
-                            display: flex;
                         }
                         input {
                             color: black;

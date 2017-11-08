@@ -1,5 +1,6 @@
 import ReactDOM from 'react-dom';
 import { Line, Circle } from 'rc-progress';
+import TypeformButton from './TypeformButton'
 
 class Modal extends React.Component {
 	constructor(props) {
@@ -114,6 +115,7 @@ class Modal extends React.Component {
 			<div 
 				className={"backModal fixed z-1 flex content-center justify-center items-center"}
 				onClick={this.props._handleModalCloseClick}> 
+				<TypeformButton ghost={true} uniId={this.props.uni._id} />
 				<div className={"absolute modal shadow-3 w-100 w-80-l" }>
 					<div className="flex tc flex-column">
 						<div 

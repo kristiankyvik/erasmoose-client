@@ -2,7 +2,6 @@ import ErrorMessage from './ErrorMessage'
 import Modal from './Modal'
 import React from 'react';
 import UniListSearchResultsWithData from './UniListSearchResultsWithData'
-import TypeformButton from './TypeformButton'
 
 const lodash = require('lodash'); //get lodash librar
 const DELAY_SEARCH_FOR_UNI_IN_MS = 300;
@@ -90,7 +89,6 @@ export default class UniList extends React.Component {
   render() {
     return (
       <section className="tc">
-        { this.state.allUnis[0] ? <TypeformButton ghost={true} uniId={this.state.allUnis[this.state.index]._id} ref={(el) => { this.tfbtn = el; }} /> : null }
         <UniListSearchResultsWithData
           index={this.state.index}
           query={this.props.query}
