@@ -28,7 +28,6 @@ class UniListSearchResults extends React.Component {
       _handleCardClick,
       liveFilter
     } = this.props;
-
     return (
       <div className="pt4">
         <Search 

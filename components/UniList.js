@@ -2,6 +2,7 @@ import ErrorMessage from './ErrorMessage'
 import Modal from './Modal'
 import React from 'react';
 import UniListSearchResultsWithData from './UniListSearchResultsWithData'
+import TypeformButton from './TypeformButton'
 
 const lodash = require('lodash'); //get lodash librar
 const DELAY_SEARCH_FOR_UNI_IN_MS = 300;
@@ -12,7 +13,7 @@ export default class UniList extends React.Component {
     this.modal = null;
     this.tfbtn = null;
     this.state = {
-      showModal: true,
+      showModal: false,
       index: 0,
       searchKey: "",
       uni: null,
@@ -65,10 +66,6 @@ export default class UniList extends React.Component {
     }
   }
 
-  _handleFormClick = (e) => {
-    this.tfbtn.launchForm()
-  }
-
   _handleGlobalKeyPress = (e) => {
     if (!this.state.showModal) return;
     if (e.keyCode === 37) {
@@ -85,6 +82,7 @@ export default class UniList extends React.Component {
   setAllUnis(allUnis) {
     this.setState({ allUnis: allUnis });
   }
+
 
   render() {
     return (
@@ -109,7 +107,7 @@ export default class UniList extends React.Component {
           _handleModalLeftClick={this._handleModalLeftClick}
           _handleModalCloseClick={this._handleModalCloseClick}
           _handleGlobalClick={this._handleGlobalClick}
-          _handleFormClick={this._handleFormClick}
+          _handleCardClick={ () => this._handleCardClick()}
         />
         <style jsx>{`
           section {

@@ -28,9 +28,8 @@ class UniListResults extends React.Component {
     render() {
         if (this.props.allUnis  === undefined) return <ErrorMessage message='Error loading entries.' />;
 
-        const { loading, index, error, allUnis, _allUnisMeta, loadMorePosts, fetchMore, _handleCardClick} = this.props;
+        const { loading, index, error, allUnis, _allUnisMeta, loadMorePosts, fetchMore, _handleCardClick, _handleFormClick} = this.props;
         const areMorePosts = (allUnis.length < _allUnisMeta.count) && (allUnis.length >= 33);
-
         if (error) return <ErrorMessage message='Error loading entries.' />
         if (allUnis && allUnis.length) {
             return (
@@ -107,7 +106,7 @@ class UniListResults extends React.Component {
             </div>
                 Be the first to review it!
             </div>
-                <TypeformButton />
+            <TypeformButton/>
             </div>
         )
     }
