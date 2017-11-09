@@ -5,7 +5,7 @@ import Footer from '../components/Footer'
 
 export default (props) => (
   <App>
-   <iframe id="typeform-full" width="100%" height="100%" frameborder="0" src="https://kyvikbcn.typeform.com/to/FsuJQm"></iframe> 
+   <iframe id="typeform-full" width="100%" height="100%" frameborder="0" src={`https://kyvikbcn.typeform.com/to/FsuJQm?id=${props.url.query ? props.url.query.id : ""}`}></iframe> 
    <style jsx>{`
     html{ 
       margin: 0;

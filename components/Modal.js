@@ -124,7 +124,7 @@ class Modal extends React.Component {
 							<div className="absolute z-1 bottom-2 white tc left-0 right-0">
 								<div className="b pt3 f2">{this.props.uni.name}</div>
 								<div className="f3 pb3 i playfair">{this.props.uni.website}</div>
-								<TypeformButton className="ma2 mh4 ur-btn tc flex justify-center content-center items-center" />
+								<TypeformButton id={this.props.uni._id} className="ma2 mh4 ur-btn tc flex justify-center content-center items-center" />
 							</div>	
 						</div>
 						<div className="flex flex-column tl f7">
@@ -230,7 +230,7 @@ class Modal extends React.Component {
 										<div className="f3 b">Latest Reviews</div>
 										<div className="f5 gray">The main metrics and such</div>
 									</div>
-									<div className="flex black dn">
+									<div className="dn black">
 										<div className="flex flex-auto review flex-column justify-center modal-card mt3 mr2 pv3 grad-green relative">
 											<div className="i pv3 ph4 tc white f5">
 												"The best uni everrrr! Super international! The place to go if you wanna get turnt!
