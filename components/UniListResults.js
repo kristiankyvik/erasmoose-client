@@ -3,6 +3,7 @@ import Card from './Card'
 import Search from './Search'
 import React from 'react';
 import TypeformButton from '../components/TypeformButton'
+import Loader from '../components/Loader'
 
 class UniListResults extends React.Component {
     constructor(props) {
@@ -26,9 +27,9 @@ class UniListResults extends React.Component {
     })
 
     render() {
-        if (this.props.allUnis  === undefined) return <ErrorMessage message='Error loading entries.' />;
 
         const { loading, index, error, allUnis, _allUnisMeta, loadMorePosts, fetchMore, _handleCardClick, _handleFormClick} = this.props;
+        if (loading) return <Loader />;
         const areMorePosts = (allUnis.length < _allUnisMeta.count) && (allUnis.length >= 33);
         if (error) return <ErrorMessage message='Error loading entries.' />
         if (allUnis && allUnis.length) {

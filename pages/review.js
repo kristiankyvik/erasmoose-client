@@ -6,7 +6,9 @@ import Footer from '../components/Footer'
 export default (props) => (
   <App>
     <Header/>
-    <Hero pathname={props.url.pathname} />
+    <div className="fixed right-0 left-0">
+      <Hero pathname={props.url.pathname} />
+    </div>
     <iframe id="typeform-full" width="100%" height="100%" frameborder="0" src={`https://kyvikbcn.typeform.com/to/FsuJQm?id=${props.url.query ? props.url.query.id : ""}`}></iframe> 
     <style jsx>{`
       html{ 
@@ -18,7 +20,7 @@ export default (props) => (
         position: absolute;
         left:0;
         right:0;
-        bottom:0;
+        bottom:70px;
         top:70px;
         border:0;
       }
