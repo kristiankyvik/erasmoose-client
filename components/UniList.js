@@ -14,7 +14,7 @@ export default class UniList extends React.Component {
     super(props);
     this.modal = null;
     this.tfbtn = null;
-    this.graphql = getGraphql(this.setAllUnis, this.setAllUnisMeta, this.setLoading, this.setThresholdToDefault, this.increaseThreshold, this.setloadingShowMoreButton);
+    this.graphql = getGraphql(this.setAllUnis, this.setAllUnisMeta, this.setLoading, this.setThresholdToDefault, this.increaseThreshold, this.setloadingShowMoreButton, this.setError);
     this.state = {
       showModal: false,
       index: 0,
@@ -24,24 +24,25 @@ export default class UniList extends React.Component {
       _allUnisMeta: [],
       loading: false,
       loadingShowMoreButton: false,
-      threshold: POSTS_PER_PAGE 
+      threshold: POSTS_PER_PAGE,
+      isError: false
     };
   }
 
   setAllUnisMeta = (_allUnisMeta) => {
-    this.setState({ _allUnisMeta})
+    this.setState({ _allUnisMeta});
   }
 
   setLoading = (loading) => {
-    this.setState({ loading })
+    this.setState({ loading });
   }
 
   setloadingShowMoreButton = (loadingShowMoreButton) => {
-    this.setState({ loadingShowMoreButton })
+    this.setState({ loadingShowMoreButton });
   }
 
   setAllUnis = (allUnis) => {
-    this.setState({ allUnis })
+    this.setState({ allUnis });
   }
 
   setUniNum(uniNum) {
@@ -49,11 +50,15 @@ export default class UniList extends React.Component {
   }
 
   setThresholdToDefault = () => {
-    this.setState({ threshold: POSTS_PER_PAGE})
+    this.setState({ threshold: POSTS_PER_PAGE});
+  }
+
+  setError = (isError) => {
+    this.setState({ isError });
   }
 
   increaseThreshold = () => {
-    this.setState({ threshold: this.state.threshold + POSTS_PER_PAGE })
+    this.setState({ threshold: this.state.threshold + POSTS_PER_PAGE });
   }
 
   componentDidMount() {
@@ -92,7 +97,7 @@ export default class UniList extends React.Component {
   _handleModalCloseClick = (e) => {
     if (e.target.classList.contains("backModal") || e.target.classList.contains("close")) {
       this.setState({ showModal: false });
-      document.body.classList.remove('modalOpen')
+      document.body.classList.remove('modalOpen');
     }
   }
 
@@ -123,6 +128,7 @@ export default class UniList extends React.Component {
           _allUnisMeta={this.state._allUnisMeta}
           _handleCardClick={this._handleCardClick}
           threshold={this.state.threshold}
+          isError={this.state.isError}
         />
         <Modal
           ref={(el) => { this.modal = el; }}

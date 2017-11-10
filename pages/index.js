@@ -6,7 +6,7 @@ import UniList from '../components/UniList'
 import withData from '../lib/withData'
 import Footer from '../components/Footer'
 
-export default withData((props) => (
+export default (props) => (
   <App>
   	{/* Typeform snipped */}
     <Header/>
@@ -14,4 +14,4 @@ export default withData((props) => (
     <UniList pathname={props.url.pathname} liveFilter={false}/>
     <Footer />
   </App>
-))
+)

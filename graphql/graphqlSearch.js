@@ -1,19 +1,18 @@
 import { ApolloClient } from 'apollo-client';
 import gql from 'graphql-tag'
 import React from 'react';
-import initApollo from '../lib/initApollo'
+import initApollo from './initApollo'
 
 const lodash = require('lodash'); //get lodash library
 const EXECUTE_SEARCH_ONCE_EVERY = 300;
 
-function getGraphql(setAllUnis, setAllUnisMeta, setLoading, setThresholdToDefault, increaseThreshold, setloadingShowMoreButton){
+function getGraphql(setAllUnis, setAllUnisMeta, setLoading, setThresholdToDefault, increaseThreshold, setloadingShowMoreButton, setError){
 
   const client = initApollo()
   let postsPerPage = 33;
   let searchKeyGlobal = '';
 
   let setUnisSearch = (searchKey) => {
-    console.log("searchKey", searchKey)
     searchKeyGlobal = searchKey
     postsPerPage = 33;
     setLoading(true);
@@ -58,6 +57,10 @@ function getGraphql(setAllUnis, setAllUnisMeta, setLoading, setThresholdToDefaul
         setAllUnisMeta(_allUnisMeta);
         setLoading(loading);
         setloadingShowMoreButton(loading);
+      }, (error) => {
+        setLoading(false);
+        setloadingShowMoreButton(false);
+        setError(true);
       });
     }, EXECUTE_SEARCH_ONCE_EVERY)
 
