@@ -1,5 +1,6 @@
 import ReactDOM from 'react-dom';
 import { Line, Circle } from 'rc-progress';
+import TypeformButton from '../components/TypeformButton'
 
 class Modal extends React.Component {
 	constructor(props) {
@@ -123,7 +124,7 @@ class Modal extends React.Component {
 							<div className="absolute z-1 bottom-2 white tc left-0 right-0">
 								<div className="b pt3 f2">{this.props.uni.name}</div>
 								<div className="f3 pb3 i playfair">{this.props.uni.website}</div>
-								<div className="ma2 mh4 ur-btn tc flex justify-center content-center items-center" onClick={this.props._handleFormClick}> Add Review </div>
+								<TypeformButton id={this.props.uni._id} className="ma2 mh4 ur-btn tc flex justify-center content-center items-center" />
 							</div>	
 						</div>
 						<div className="flex flex-column tl f7">
@@ -143,10 +144,10 @@ class Modal extends React.Component {
 
 									{/* Uni */}
 									{/* ---------------------------------- */}
-									<div className="f4 b black tc pt3">Uni</div>
+									<div className="f3 b black pt3">University Metrics</div>
 									<div className="flex black">
 										<div className="flex flex-1 flex-column justify-center modal-card mt3 mr3 pv3 ph3">
-											<div className="f4 b circle flex">
+											<div className="f4 b circle flex pb4">
 												<span className='inside-circle'>{"67/100"}</span>
 												<Circle className="pv2 mr3 w-100" percent="67" strokeWidth="5
 													" trailWidth="5" strokeColor="#F44A4A" />
@@ -160,7 +161,7 @@ class Modal extends React.Component {
 											<div className="f5 pt2">International Orientation: </div>
 											<Line className="flex pv1" percent="67" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 										</div>
-										<div className="flex flex-1 flex-column justify-center modal-card mt3 mr3 pv3 ph3">
+										<div className="flex flex-1 flex-column justify-end modal-card mt3 mr3 pv3 ph3">
 											<div className="f5 pt2">Tuition Fees: </div>
 											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Accomodation: </div>
@@ -183,10 +184,10 @@ class Modal extends React.Component {
 									</div>
 									{/* City */}
 									{/* ---------------------------------- */}
-									<div className="f4 b black pt3 tc ">City</div>
+									<div className="f3 b black pt3">City Metrics</div>
 									<div className="flex black">
 										<div className="flex flex-1 flex-column justify-center modal-card mt3 mr2 pv3 ph3">
-											<div className="f4 b circle flex">
+											<div className="f4 b circle pb4 flex">
 												<span className='inside-circle'>{"67/100"}</span>
 												<Circle className="pv2 mr3 w-100" percent="67" strokeWidth="5
 													" trailWidth="5" strokeColor="#F44A4A" />
@@ -200,12 +201,12 @@ class Modal extends React.Component {
 											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Connectivity: </div>
 											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<div className="f5 pt2">Cultural Activities: </div>
+											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Nightlife: </div>
 											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 										</div>
-										<div className="flex flex-1 flex-column justify-center modal-card mt3 mr2 pv3 ph3">
-											<div className="f5 pt2">Cultural Activities: </div>
-											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+										<div className="flex flex-1 flex-column justify-end modal-card mt3 mr2 pv3 ph3">
 											{/* Cost */}
 											{/* ---------------------------------- */}
 											<div className="f5 b pt4">Student Cost of life</div>
@@ -229,7 +230,7 @@ class Modal extends React.Component {
 										<div className="f3 b">Latest Reviews</div>
 										<div className="f5 gray">The main metrics and such</div>
 									</div>
-									<div className="flex black dn">
+									<div className="dn black">
 										<div className="flex flex-auto review flex-column justify-center modal-card mt3 mr2 pv3 grad-green relative">
 											<div className="i pv3 ph4 tc white f5">
 												"The best uni everrrr! Super international! The place to go if you wanna get turnt!
@@ -281,7 +282,6 @@ class Modal extends React.Component {
 					{`
 						.circle {
 							position: relative;
-							padding-bottom: 10px;
 						}
 						.inside-circle {
 			    	  position: absolute;

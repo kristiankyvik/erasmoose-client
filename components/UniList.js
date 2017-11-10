@@ -98,10 +98,6 @@ export default class UniList extends React.Component {
     }
   }
 
-  _handleFormClick = (e) => {
-    this.tfbtn.launchForm()
-  }
-
   _handleGlobalKeyPress = (e) => {
     if (!this.state.showModal) return;
     if (e.keyCode === 37) {
@@ -131,7 +127,6 @@ export default class UniList extends React.Component {
           _handleCardClick={this._handleCardClick}
           threshold={this.state.threshold}
         />
-
         <Modal
           ref={(el) => { this.modal = el; }}
           showModal={this.state.showModal}
@@ -140,7 +135,7 @@ export default class UniList extends React.Component {
           _handleModalLeftClick={this._handleModalLeftClick}
           _handleModalCloseClick={this._handleModalCloseClick}
           _handleGlobalClick={this._handleGlobalClick}
-          _handleFormClick={this._handleFormClick}
+          _handleCardClick={ () => this._handleCardClick()}
         />
         <style jsx>{`
           section {

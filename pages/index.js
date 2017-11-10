@@ -8,6 +8,7 @@ import Footer from '../components/Footer'
 
 export default withData((props) => (
   <App>
+  	{/* Typeform snipped */}
     <Header/>
   	<Hero pathname={props.url.pathname} />
     <UniList pathname={props.url.pathname} liveFilter={false}/>

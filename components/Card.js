@@ -74,7 +74,7 @@ export default class Card extends React.Component {
 				   </div>
 				  </div>
 				</div>
-				<div className="flex-column pt1 dn card-back z-1">
+				<div className="flex-column pt1 dn card-back absolute z-1">
 					<div className="pv2 ph4 flex flex-column items-center">
 						<div className="progress-wrapper tc pb2">
 							<span className='progress-title f4 b'>{"67%"}</span>
@@ -109,7 +109,7 @@ export default class Card extends React.Component {
 			    		justify-content: center;	    		
 			    	}
 			    	.ur-card:hover .card-front {
-			    		display: none;
+			    		visibility: hidden;
 			    	}
 			    	.ur-card:hover .card-back {
 			    		display: flex;
@@ -124,7 +124,7 @@ export default class Card extends React.Component {
 			    		font-size: 8px;
 			    	}
 			      .ur-card {
-			        height: 315px;
+			      	min-height: 315px;
 			        width: 285px;
 			        background-size: cover;
 			        -webkit-font-smoothing: antialiased;

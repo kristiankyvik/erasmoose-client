@@ -20,12 +20,12 @@ class Search extends React.Component {
   }
 
   keyPress(e){
-   if(e.keyCode == 13 && !this.props.liveFilter) {
+    if(e.keyCode == 13 && !this.props.liveFilter) {
       Router.push({
         pathname: '/search',
         query: { q: e.target.value }
       })
-   }
+    }
   }
 
   handleChange(e) {

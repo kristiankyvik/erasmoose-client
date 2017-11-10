@@ -1,8 +1,9 @@
 import Link from 'next/link'
+import TypeformButton from '../components/TypeformButton'
 
 export default ({ pathname }) => (
   <div className="hero f4 fw8 grad-pink">
-    <div className="bar flex items-center">
+    <div className="bar flex items-center relative">
       <Link prefetch href='/'>
         <a className={pathname === '/' && 'is-active'}>
           <span className="b f4 flex">
@@ -25,6 +26,9 @@ export default ({ pathname }) => (
             Ranked.
           </div></h1>
         <h2 className="fw1 f3 black-80 mt3 mb4"> Ranking of european universities.</h2>
+        <div className="">
+          <TypeformButton/>
+        </div>
       </div>
     </div>
 

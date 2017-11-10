@@ -3,6 +3,7 @@ import Card from './Card'
 import Search from './Search'
 import React from 'react';
 import TypeformButton from '../components/TypeformButton'
+import Loader from '../components/Loader'
 
 class UniListResults extends React.Component {
     constructor(props) {
@@ -10,15 +11,14 @@ class UniListResults extends React.Component {
     }
 
     render() {
-        if (this.props.allUnis  === undefined) return <div>Loading</div>
-
         const { index, _handleCardClick, allUnis, _allUnisMeta} = this.props;
         const areMorePosts = (allUnis.length === this.props.threshold) && (allUnis.length < _allUnisMeta.count);
 
+        if (this.props.loading) return <Loader />;
         if (allUnis && allUnis.length) {
             return (
                 <section className="tc">
-                    <div className="flex justify-center">
+                    <div className="db justify-center">
                         <div style={{ width: 1080 }} className="flex flex-wrap justify-center">
                             {allUnis.map((uni, index) =>
                                 <Card
@@ -43,10 +43,6 @@ class UniListResults extends React.Component {
                         li {
                             display: block;
                             margin-bottom: 10px;
-                        }
-                        div {
-                            align-items: center;
-                            display: flex;
                         }
                         input {
                             color: black;
@@ -86,21 +82,16 @@ class UniListResults extends React.Component {
                 </section>
             )
         }
-        if(!this.props.loading){
-            return (
-                <div className="" style={{ color: "rgb(152, 149, 149)" }}>
-                    <div className="pt4 pb3 f3">
-                        <div className="">
-                            Don't find your uni?
-                </div>
-                    Be the first to review it!
-                </div>
-                    <TypeformButton />
-                </div>
-            )
-        }
         return (
-            <div> Loading...</div> //This needs better style
+            <div className="" style={{ color: "rgb(152, 149, 149)" }}>
+                <div className="pt4 pb3 f3">
+                    <div className="">
+                        Don't find your uni?
+            </div>
+                Be the first to review it!
+            </div>
+                <TypeformButton />
+            </div>
         )
     }
 }
