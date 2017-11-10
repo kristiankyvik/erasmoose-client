@@ -9,29 +9,12 @@ class UniListResults extends React.Component {
         super(props);
     }
 
-    showMoreUnis = (allUnis, fetchMore) => fetchMore({
-        variables: {
-            skip: allUnis.length,
-        },
-
-        updateQuery: (previousResult, { fetchMoreResult }) => {
-            if (!fetchMoreResult) {
-                return previousResult
-            }
-            return Object.assign({}, previousResult, {
-                // Append the new posts results to the old one
-                allUnis: [...previousResult.allUnis, ...fetchMoreResult.allUnis]
-            })
-        }
-    })
-
     render() {
         if (this.props.allUnis  === undefined) return <div>Loading</div>
 
-        const { loading, index, error, allUnis, _allUnisMeta, loadMorePosts, fetchMore, _handleCardClick} = this.props;
-        const areMorePosts = allUnis.length < _allUnisMeta.count && allUnis.length > 33;
+        const { index, _handleCardClick, allUnis, _allUnisMeta} = this.props;
+        const areMorePosts = (allUnis.length === this.props.threshold) && (allUnis.length < _allUnisMeta.count);
 
-        if (error) return <ErrorMessage message='Error loading entries.' />
         if (allUnis && allUnis.length) {
             return (
                 <section className="tc">
@@ -48,7 +31,7 @@ class UniListResults extends React.Component {
                         </div>
                     </div>
                     <div className="justify-center flex pt4">
-                        {areMorePosts ? <div className="btn-new tc max justify-center" onClick={() => this.showMoreUnis(allUnis, fetchMore)}> {loading ? 'Loading...' : 'Show More'} </div> : ''}
+                        {areMorePosts ? <div className="btn-new tc max justify-center" onClick={() => this.props.graphql.setUnisLoadMore()}> {this.props.loading ? 'Loading...' : 'Show More'} </div> : ''}
                     </div>
                     <style jsx>{`
                         section {
@@ -103,16 +86,21 @@ class UniListResults extends React.Component {
                 </section>
             )
         }
+        if(!this.props.loading){
+            return (
+                <div className="" style={{ color: "rgb(152, 149, 149)" }}>
+                    <div className="pt4 pb3 f3">
+                        <div className="">
+                            Don't find your uni?
+                </div>
+                    Be the first to review it!
+                </div>
+                    <TypeformButton />
+                </div>
+            )
+        }
         return (
-            <div className="" style={{ color: "rgb(152, 149, 149)" }}>
-                <div className="pt4 pb3 f3">
-                    <div className="">
-                        Don't find your uni?
-            </div>
-                Be the first to review it!
-            </div>
-                <TypeformButton />
-            </div>
+            <div> Loading...</div> //This needs better style
         )
     }
 }
