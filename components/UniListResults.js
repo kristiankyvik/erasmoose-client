@@ -14,7 +14,10 @@ class UniListResults extends React.Component {
         const { index, _handleCardClick, allUnis, _allUnisMeta} = this.props;
         const areMorePosts = (allUnis.length === this.props.threshold) && (allUnis.length < _allUnisMeta.count);
 
-        if (this.props.loading) return <Loader />;
+        const { loading, index, error, allUnis, _allUnisMeta, loadMorePosts, fetchMore, _handleCardClick, _handleFormClick} = this.props;
+        if (!allUnis && loading) return <Loader />;
+        const areMorePosts = (allUnis.length < _allUnisMeta.count) && (allUnis.length >= 33);
+        if (error) return <ErrorMessage message='Error loading entries.' />
         if (allUnis && allUnis.length) {
             return (
                 <section className="tc">
