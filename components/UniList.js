@@ -1,25 +1,64 @@
 import ErrorMessage from './ErrorMessage'
 import Modal from './Modal'
 import React from 'react';
-import UniListSearchResultsWithData from './UniListSearchResultsWithData'
 import TypeformButton from './TypeformButton'
+import Card from './Card'
+import Search from './Search'
+import UniListResults from './UniListResults'
+import getGraphql from '../graphql/graphqlSearch';
 
-const lodash = require('lodash'); //get lodash librar
-const DELAY_SEARCH_FOR_UNI_IN_MS = 300;
+const POSTS_PER_PAGE = 33; //has to be equal like the one in graphqlSearch.js 
 
 export default class UniList extends React.Component {
   constructor(props) {
     super(props);
     this.modal = null;
     this.tfbtn = null;
+    this.graphql = getGraphql(this.setAllUnis, this.setAllUnisMeta, this.setLoading, this.setThresholdToDefault, this.increaseThreshold, this.setloadingShowMoreButton, this.setError);
     this.state = {
       showModal: false,
       index: 0,
-      searchKey: "",
       uni: null,
       uniNum: 0,
-      allUnis: []
+      allUnis: [],
+      _allUnisMeta: [],
+      loading: false,
+      loadingShowMoreButton: false,
+      threshold: POSTS_PER_PAGE,
+      isError: false
     };
+  }
+
+  setAllUnisMeta = (_allUnisMeta) => {
+    this.setState({ _allUnisMeta});
+  }
+
+  setLoading = (loading) => {
+    this.setState({ loading });
+  }
+
+  setloadingShowMoreButton = (loadingShowMoreButton) => {
+    this.setState({ loadingShowMoreButton });
+  }
+
+  setAllUnis = (allUnis) => {
+    this.setState({ allUnis });
+  }
+
+  setUniNum(uniNum) {
+    this.setState({ uniNum });
+  }
+
+  setThresholdToDefault = () => {
+    this.setState({ threshold: POSTS_PER_PAGE});
+  }
+
+  setError = (isError) => {
+    this.setState({ isError });
+  }
+
+  increaseThreshold = () => {
+    this.setState({ threshold: this.state.threshold + POSTS_PER_PAGE });
   }
 
   componentDidMount() {
@@ -38,10 +77,6 @@ export default class UniList extends React.Component {
       uni: uni
     });
   }
-
-  triggerSearchInDB = lodash.debounce((searchKey) => {
-    this.setState({ searchKey: searchKey });
-  }, DELAY_SEARCH_FOR_UNI_IN_MS);
 
   _handleModalLeftClick = (e) => {
     const index = this.state.index - 1 <= 0 ? this.state.uniNum - 1 : this.state.index - 1;
@@ -62,7 +97,7 @@ export default class UniList extends React.Component {
   _handleModalCloseClick = (e) => {
     if (e.target.classList.contains("backModal") || e.target.classList.contains("close")) {
       this.setState({ showModal: false });
-      document.body.classList.remove('modalOpen')
+      document.body.classList.remove('modalOpen');
     }
   }
 
@@ -75,29 +110,25 @@ export default class UniList extends React.Component {
     }
   }
 
-  setUniNum(uniNum) {
-    this.setState({ uniNum: uniNum });
-  }
-
-  setAllUnis(allUnis) {
-    this.setState({ allUnis: allUnis });
-  }
-
-
   render() {
     return (
       <section className="tc">
-        <UniListSearchResultsWithData
-          index={this.state.index}
+        <Search
+          liveFilter={this.props.liveFilter}
+          setUnisSearch={this.graphql.setUnisSearch}
           query={this.props.query}
-          pathname={this.props.pathname}
-          triggerSearchInDB={this.triggerSearchInDB} //function triggering a change in searchKey 
-          searchKey={this.state.searchKey} //searchKey needed for graphql call, if changed new call to db is executed
-          liveFilter={this.props.liveFilter} 
+          loading={this.state.loading}
+        />
+        <UniListResults
+          loading={this.state.loading}
+          loadingShowMoreButton={this.state.loadingShowMoreButton}
+          index={this.state.index}
+          graphql={this.graphql}
+          allUnis={this.state.allUnis}
+          _allUnisMeta={this.state._allUnisMeta}
           _handleCardClick={this._handleCardClick}
-          setUniNum={(n) => this.setUniNum(n)} 
-          setAllUnis={(n) => this.setAllUnis(n)}
-          uniNum={this.state.uniNum}
+          threshold={this.state.threshold}
+          isError={this.state.isError}
         />
         <Modal
           ref={(el) => { this.modal = el; }}

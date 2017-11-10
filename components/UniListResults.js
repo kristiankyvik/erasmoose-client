@@ -10,28 +10,15 @@ class UniListResults extends React.Component {
         super(props);
     }
 
-    showMoreUnis = (allUnis, fetchMore) => fetchMore({
-        variables: {
-            skip: allUnis.length,
-        },
-
-        updateQuery: (previousResult, { fetchMoreResult }) => {
-            if (!fetchMoreResult) {
-                return previousResult
-            }
-            return Object.assign({}, previousResult, {
-                // Append the new posts results to the old one
-                allUnis: [...previousResult.allUnis, ...fetchMoreResult.allUnis]
-            })
-        }
-    })
-
     render() {
 
-        const { loading, index, error, allUnis, _allUnisMeta, loadMorePosts, fetchMore, _handleCardClick, _handleFormClick} = this.props;
-        if (!allUnis && loading) return <Loader />;
+        const { loading, index, allUnis, _allUnisMeta, loadMorePosts, fetchMore, _handleCardClick, _handleFormClick, isError} = this.props;
         const areMorePosts = (allUnis.length < _allUnisMeta.count) && (allUnis.length >= 33);
-        if (error) return <ErrorMessage message='Error loading entries.' />
+
+        if (loading) return <Loader />;
+        
+        if (isError) return <ErrorMessage message='Error loading entries.' />;
+
         if (allUnis && allUnis.length) {
             return (
                 <section className="tc">
@@ -48,7 +35,7 @@ class UniListResults extends React.Component {
                         </div>
                     </div>
                     <div className="justify-center flex pt4">
-                        {areMorePosts ? <div className="btn-new tc max justify-center" onClick={() => this.showMoreUnis(allUnis, fetchMore)}> {loading ? 'Loading...' : 'Show More'} </div> : ''}
+                        {(areMorePosts || this.props.loadingShowMoreButton) ? <div className="btn-new tc max justify-center" onClick={() => this.props.graphql.setUnisLoadMore()}> {this.props.loadingShowMoreButton ? 'Loading...' : 'Show More'} </div> : ''}
                     </div>
                     <style jsx>{`
                         section {
@@ -107,7 +94,7 @@ class UniListResults extends React.Component {
             </div>
                 Be the first to review it!
             </div>
-            <TypeformButton/>
+                <TypeformButton />
             </div>
         )
     }
