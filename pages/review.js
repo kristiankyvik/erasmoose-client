@@ -9,7 +9,7 @@ export default (props) => (
     <div className="fixed right-0 left-0">
       <Hero pathname={props.url.pathname} />
     </div>
-    <iframe id="typeform-full" width="100%" height="100%" frameborder="0" src={`https://kyvikbcn.typeform.com/to/FsuJQm?id=${props.url.query ? props.url.query.id : ""}`}></iframe> 
+    <iframe id="typeform-full" width="100%" height="100%" frameBorder="0" src={`https://kyvikbcn.typeform.com/to/FsuJQm${props.url.query ? `?id=${props.url.query.id}` : ""}`}></iframe> 
     <style jsx>{`
       html{ 
         margin: 0;
