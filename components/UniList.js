@@ -14,7 +14,7 @@ export default class UniList extends React.Component {
     super(props);
     this.modal = null;
     this.tfbtn = null;
-    this.graphql = getGraphql(this.setAllUnis, this.setAllUnisMeta, this.setLoading, this.setThresholdToDefault, this.increaseThreshold);
+    this.graphql = getGraphql(this.setAllUnis, this.setAllUnisMeta, this.setLoading, this.setThresholdToDefault, this.increaseThreshold, this.setloadingShowMoreButton);
     this.state = {
       showModal: false,
       index: 0,
@@ -23,7 +23,8 @@ export default class UniList extends React.Component {
       allUnis: [],
       _allUnisMeta: [],
       loading: false,
-      threshold: POSTS_PER_PAGE //has to be equal to 
+      loadingShowMoreButton: false,
+      threshold: POSTS_PER_PAGE 
     };
   }
 
@@ -33,6 +34,10 @@ export default class UniList extends React.Component {
 
   setLoading = (loading) => {
     this.setState({ loading })
+  }
+
+  setloadingShowMoreButton = (loadingShowMoreButton) => {
+    this.setState({ loadingShowMoreButton })
   }
 
   setAllUnis = (allUnis) => {
@@ -50,13 +55,6 @@ export default class UniList extends React.Component {
   increaseThreshold = () => {
     this.setState({ threshold: this.state.threshold + POSTS_PER_PAGE })
   }
-
-  // componentWillUpdate() {
-  //   if (this.state.allUnis && (this.state.allUnis.length != this.state.uniNum)) {
-  //     //this.setUniNum(this.state.uniNum);
-  //     //this.setAllUnis(this.state.allUnis);
-  //   }
-  // }
 
   componentDidMount() {
     document.addEventListener("keydown", this._handleGlobalKeyPress, false);
@@ -110,8 +108,6 @@ export default class UniList extends React.Component {
   render() {
     return (
       <section className="tc">
-        { this.state.allUnis[0] ? <TypeformButton ghost={true} uniId={this.state.allUnis[this.state.index]._id} ref={(el) => { this.tfbtn = el; }} /> : null }
-        
         <Search
           liveFilter={this.props.liveFilter}
           setUnisSearch={this.graphql.setUnisSearch}
@@ -120,6 +116,7 @@ export default class UniList extends React.Component {
         />
         <UniListResults
           loading={this.state.loading}
+          loadingShowMoreButton={this.state.loadingShowMoreButton}
           index={this.state.index}
           graphql={this.graphql}
           allUnis={this.state.allUnis}

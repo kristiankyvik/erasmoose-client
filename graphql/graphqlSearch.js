@@ -6,7 +6,7 @@ import initApollo from '../lib/initApollo'
 const lodash = require('lodash'); //get lodash library
 const EXECUTE_SEARCH_ONCE_EVERY = 300;
 
-function getGraphql(setAllUnis, setAllUnisMeta, setLoading, setThresholdToDefault, increaseThreshold){
+function getGraphql(setAllUnis, setAllUnisMeta, setLoading, setThresholdToDefault, increaseThreshold, setloadingShowMoreButton){
 
   const client = initApollo()
   let postsPerPage = 33;
@@ -23,7 +23,7 @@ function getGraphql(setAllUnis, setAllUnisMeta, setLoading, setThresholdToDefaul
 
   let setUnisLoadMore = () => { //It should be possible to do this better with fetchMore, but does not work atm
     postsPerPage += 33;
-    setLoading(true);
+    setloadingShowMoreButton(true);
     increaseThreshold();
     setUnis(searchKeyGlobal);
 
@@ -57,6 +57,7 @@ function getGraphql(setAllUnis, setAllUnisMeta, setLoading, setThresholdToDefaul
         setAllUnis(allUnis);
         setAllUnisMeta(_allUnisMeta);
         setLoading(loading);
+        setloadingShowMoreButton(loading);
       });
     }, EXECUTE_SEARCH_ONCE_EVERY)
 

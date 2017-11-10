@@ -31,7 +31,7 @@ class UniListResults extends React.Component {
                         </div>
                     </div>
                     <div className="justify-center flex pt4">
-                        {areMorePosts ? <div className="btn-new tc max justify-center" onClick={() => this.props.graphql.setUnisLoadMore()}> {this.props.loading ? 'Loading...' : 'Show More'} </div> : ''}
+                        {(areMorePosts || this.props.loadingShowMoreButton) ? <div className="btn-new tc max justify-center" onClick={() => this.props.graphql.setUnisLoadMore()}> {this.props.loadingShowMoreButton ? 'Loading...' : 'Show More'} </div> : ''}
                     </div>
                     <style jsx>{`
                         section {
