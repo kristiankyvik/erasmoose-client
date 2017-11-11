@@ -40,7 +40,7 @@ export default class Card extends React.Component {
 					    </div>
 				  	</div>
 				    <div className="f5 pt1 ph2 pb1 b">
-				      <i className="fa fa-map-marker trans-gray" aria-hidden="true"></i> {this.props.uni.country}
+				      <i className="fa fa-map-marker trans-gray" aria-hidden="true"></i> {this.props.uni.city_name}
 				    </div>
 				  </div>
 				  <div className="ph3 pt1 pb1 flex items-end bottom items-center">
@@ -105,15 +105,15 @@ export default class Card extends React.Component {
 			    	.progress-wrapper {
 			    		position: relative;
 			    	}
-			    	.ur-card:hover {
-			    		justify-content: center;	    		
-			    	}
-			    	.ur-card:hover .card-front {
-			    		visibility: hidden;
-			    	}
-			    	.ur-card:hover .card-back {
-			    		display: flex;
-			    	}
+			    	// .ur-card:hover {
+			    	// 	justify-content: center;	    		
+			    	// }
+			    	// .ur-card:hover .card-front {
+			    	// 	visibility: hidden;
+			    	// }
+			    	// .ur-card:hover .card-back {
+			    	// 	display: flex;
+			    	// }
 			    	.score {
 			    		top: 0;
 			    		right: -36px;

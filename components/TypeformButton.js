@@ -10,7 +10,7 @@ class TypeformButton extends React.Component {
       <div className={this.props.ghost ? "clip" : ""} >
         <a 
           className="button ur-btn mt3 mv1" 
-          href={`/review?id=${this.props.id ? this.props.id : ''}`}
+          href={`/review${ this.props.id ? `?id=${this.props.id}&cityid=${this.props.cityid}` : ''}`}
           target="_blank">
             Add review
         </a> 

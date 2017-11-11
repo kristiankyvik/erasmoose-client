@@ -25,8 +25,24 @@ class Modal extends React.Component {
 	}
 
 	render() {
-		if (!this.props.showModal || !this.props.uni) {
+		console.log("MODAL PROPS", this.props);
+
+		if (!this.props.showModal || !this.props.uni || !this.props.city ) {
 			return null;
+		}
+
+		const { city } = this.props;
+
+		const setProgProp = (v) => {
+			if (v) {
+				return v/5*100;
+			}
+			return 0
+		}
+
+
+		const showProps = (v) => {
+			return v.join(' ');
 		}
 
 		const tags = [
@@ -124,7 +140,7 @@ class Modal extends React.Component {
 							<div className="absolute z-1 bottom-2 white tc left-0 right-0">
 								<div className="b pt3 f2">{this.props.uni.name}</div>
 								<div className="f3 pb3 i playfair">{this.props.uni.website}</div>
-								<TypeformButton id={this.props.uni._id} className="ma2 mh4 ur-btn tc flex justify-center content-center items-center" />
+								<TypeformButton id={this.props.uni._id} cityid={this.props.uni.city_id} className="ma2 mh4 ur-btn tc flex justify-center content-center items-center" />
 							</div>	
 						</div>
 						<div className="flex flex-column tl f7">
@@ -152,34 +168,31 @@ class Modal extends React.Component {
 												<Circle className="pv2 mr3 w-100" percent="67" strokeWidth="5
 													" trailWidth="5" strokeColor="#F44A4A" />
 											</div>
+											<div className="f5 pv1">Country: <span className="b">{city.country}</span></div>
 											<div className="f5 pv1">Ranking (Int/Nat): <span className="b">Coming soon</span></div>
-											<div className="f5 pv1">Size: <span className="b">20000 Students</span></div>
 											<div className="f5 pv1">Flagship Areas: <span className="b">Technology, Science</span></div>
 											<div className="f5 pv1">Languages: <span className="b">Spanish, German</span></div>
+											<div className="f5 pt2">Tuition Fees: <span className="b">{city.fees ? city.fees : "coming soon"}</span> </div>
 											<div className="f5 pt2">Workload: </div>
-											<Line className="flex pv1" percent="67" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv1" percent={setProgProp(city.workload)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">International Orientation: </div>
-											<Line className="flex pv1" percent="67" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv1" percent={setProgProp(city.int_orientation)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 										</div>
 										<div className="flex flex-1 flex-column justify-end modal-card mt3 mr3 pv3 ph3">
-											<div className="f5 pt2">Tuition Fees: </div>
-											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
-											<div className="f5 pt2">Accomodation: </div>
-											<Line className="flex pv1" percent="67" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Openness: </div>
-											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv1" percent={setProgProp(city.openness)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Location: </div>
-											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv1" percent={setProgProp(city.travel_options)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Gender Ratio (Women/Men): </div>
-											<Line className="flex pv1" percent="45" strokeWidth="3" trailWidth="3" strokeColor="#ff69b4" trailColor="#0000FF"/>
+											<Line className="flex pv1" percent={setProgProp(city.female_percentage)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Research Opportunities: </div>
-											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv1" percent={setProgProp(city.opportunities)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Job/Internship Opportunities: </div>
-											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
-											<div className="f5 pt2">Organization and Studend Clubs: </div>
-											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv1" percent={setProgProp(city.opportunities)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<div className="f5 pt2">Organization and Student Clubs: </div>
+											<Line className="flex pv1" percent={setProgProp(city.clubs)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Student Parties: </div>
-											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv1" percent={setProgProp(city.party)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 										</div>
 									</div>
 									{/* City */}

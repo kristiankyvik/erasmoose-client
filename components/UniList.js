@@ -14,101 +14,31 @@ export default class UniList extends React.Component {
     this.tfbtn = null;
     this.state = {
       showModal: false,
-      index: 0,
       searchKey: "",
-      uni: null,
-      uniNum: 0,
-      allUnis: []
+      city_id: "",
     };
   }
 
-  componentDidMount() {
-    document.addEventListener("keydown", this._handleGlobalKeyPress, false);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener("keydown", this._handleGlobalKeyPress, false);
-  }
-
-  _handleCardClick = (e, index, uni) => {
-    document.body.classList.toggle('modalOpen', true);
-    this.setState({
-      showModal: true,
-      index,
-      uni: uni
-    });
+  setCityId(city_id) {
+    this.setState({city_id});
   }
 
   triggerSearchInDB = lodash.debounce((searchKey) => {
     this.setState({ searchKey: searchKey });
   }, DELAY_SEARCH_FOR_UNI_IN_MS);
 
-  _handleModalLeftClick = (e) => {
-    const index = this.state.index - 1 <= 0 ? this.state.uniNum - 1 : this.state.index - 1;
-    this.setState({ 
-      index: index,
-      uni: this.state.allUnis[index]
-    });
-  }
-
-  _handleModalRightClick = (e) => {
-    const index = this.state.index + 1 >= this.state.uniNum ? 0 : this.state.index + 1;
-    this.setState({ 
-      index: index,
-      uni: this.state.allUnis[index]
-    });
-  }
-
-  _handleModalCloseClick = (e) => {
-    if (e.target.classList.contains("backModal") || e.target.classList.contains("close")) {
-      this.setState({ showModal: false });
-      document.body.classList.remove('modalOpen')
-    }
-  }
-
-  _handleGlobalKeyPress = (e) => {
-    if (!this.state.showModal) return;
-    if (e.keyCode === 37) {
-      this._handleModalLeftClick();
-    } else if (e.keyCode === 39) {
-      this._handleModalRightClick();
-    }
-  }
-
-  setUniNum(uniNum) {
-    this.setState({ uniNum: uniNum });
-  }
-
-  setAllUnis(allUnis) {
-    this.setState({ allUnis: allUnis });
-  }
-
-
   render() {
     return (
       <section className="tc">
         <UniListSearchResultsWithData
-          index={this.state.index}
           query={this.props.query}
           pathname={this.props.pathname}
           triggerSearchInDB={this.triggerSearchInDB} //function triggering a change in searchKey 
           searchKey={this.state.searchKey} //searchKey needed for graphql call, if changed new call to db is executed
-          liveFilter={this.props.liveFilter} 
-          _handleCardClick={this._handleCardClick}
-          setUniNum={(n) => this.setUniNum(n)} 
-          setAllUnis={(n) => this.setAllUnis(n)}
-          uniNum={this.state.uniNum}
+          city_id={this.state.city_id}
+          setCityId={(i) => this.setCityId(i)}
         />
-        <Modal
-          ref={(el) => { this.modal = el; }}
-          showModal={this.state.showModal}
-          uni={this.state.uni}
-          _handleModalRightClick={this._handleModalRightClick}
-          _handleModalLeftClick={this._handleModalLeftClick}
-          _handleModalCloseClick={this._handleModalCloseClick}
-          _handleGlobalClick={this._handleGlobalClick}
-          _handleCardClick={ () => this._handleCardClick()}
-        />
+
         <style jsx>{`
           section {
             padding-bottom: 20px;
