@@ -17,6 +17,7 @@ const allUnis = gql`
       int_orientation
       workload
       fees
+      uni_rating
       opportunities
       openness
       clubs
@@ -46,7 +47,7 @@ const allUnis = gql`
       }
       activities
       travel_options
-      student_rating
+      city_rating
       rent_cost
       beer_cost
       coffee_cost
