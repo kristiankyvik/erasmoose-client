@@ -64,7 +64,7 @@ export default class Card extends React.Component {
 				    	className="b tl f7 "
 				    >
 		      		<div className="star-ratings-css">
-		  	    	  <div className="star-ratings-css-top" style={{width: "20%"}}>
+		  	    	  <div className="star-ratings-css-top" style={{width: setProgProp(this.props.uni.uni_rating) }}>
 		  	    	  	<span>★</span>
 		  	    	  	<span>★</span>
 		  	    	  	<span>★</span>
@@ -78,7 +78,7 @@ export default class Card extends React.Component {
 		  		    	  <span>★</span>
 		  		    	  <span>★</span>
 		  	    		</div>
-			  	    	<span className="score absolute">(2.1)</span>
+			  	    	<span className="score absolute">{this.props.uni.uni_rating ? `(${this.props.uni.uni_rating})` : null}</span>
 		  	    	</div>
 				    </div>
 				    <div 
@@ -130,7 +130,7 @@ export default class Card extends React.Component {
 			    	}
 			    	.score {
 			    		top: 0;
-			    		right: -36px;
+			    		right: -20px;
 			    		color: #F44A4A;
 			    	}
 			    	.tag {
