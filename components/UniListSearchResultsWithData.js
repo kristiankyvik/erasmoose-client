@@ -57,11 +57,11 @@ const allUnis = gql`
       if_you_like
       reviews_count
       danceclub_cost
+      leisure
     },
   }
 `
 
-  
 
 // The `graphql` wrapper executes a GraphQL query and makes the results
 // available on the `data` prop of the wrapped component (UniList)

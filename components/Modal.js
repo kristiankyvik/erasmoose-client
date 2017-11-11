@@ -2,6 +2,35 @@ import ReactDOM from 'react-dom';
 import { Line, Circle } from 'rc-progress';
 import TypeformButton from '../components/TypeformButton'
 
+
+const round = (v) =>  {
+	if (v) {
+		return Number((v).toFixed(0));		
+	}
+}
+
+const setProgProp = (v) => {
+	if (v) {
+		return round(v/5 * 100);
+	}
+	return 0
+}
+
+const setCostProgProp = (v, max) => {
+	if (v) {
+		return round(v/max*100);
+	}
+	return 0
+}
+
+const showProps = (v) => {
+	return v.join(' ');
+}
+
+const getTopProps = (a) => {
+	return a.map((v) => v.name).join(", ");
+}
+
 class Modal extends React.Component {
 	constructor(props) {
 	  super(props);
@@ -32,18 +61,6 @@ class Modal extends React.Component {
 		}
 
 		const { city, uni } = this.props;
-
-		const setProgProp = (v) => {
-			if (v) {
-				return v/5*100;
-			}
-			return 0
-		}
-
-
-		const showProps = (v) => {
-			return v.join(' ');
-		}
 
 		const tags = [
 			"happy",
@@ -170,9 +187,9 @@ class Modal extends React.Component {
 											</div>
 											<div className="f5 pv1">Country: <span className="b">{uni.country}</span></div>
 											<div className="f5 pv1">Ranking (Int/Nat): <span className="b">Coming soon</span></div>
-											<div className="f5 pv1">Flagship Areas: <span className="b">Technology, Science</span></div>
-											<div className="f5 pv1">Languages: <span className="b">Spanish, German</span></div>
-											<div className="f5 pt2">Tuition Fees: <span className="b">{uni.fees ? uni.fees + " €" : "coming soon"}</span> </div>
+											<div className="f5 pv1">Flagship Areas: <span className="b">{getTopProps(uni.main_disciplines)}</span></div>
+											<div className="f5 pv1">Languages: <span className="b">{getTopProps(uni.languages)}</span></div>
+											<div className="f5 pt2">Tuition Fees: <span className="b">{uni.fees ? round(uni.fees) + " €" : "coming soon"}</span> </div>
 											<div className="f5 pt2">Workload: </div>
 											<Line className="flex pv1" percent={setProgProp(uni.workload)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">International Orientation: </div>
@@ -195,47 +212,40 @@ class Modal extends React.Component {
 									</div>
 									{/* City */}
 									{/* ---------------------------------- */}
-									<div className="f3 b black pt3">City Metrics</div>
+									<div className="f3 b black pt3">{city.name} City Metrics</div>
 									<div className="flex black">
 										<div className="flex flex-1 flex-column justify-center modal-card mt3 mr2 pv3 ph3">
 											<div className="f4 b circle pb4 flex">
-												<span className='inside-circle'>{"67/100"}</span>
-												<Circle className="pv2 mr3 w-100" percent="67" strokeWidth="5
+												<span className='inside-circle'>{`${setProgProp(city.city_rating)}/100`}</span>
+												<Circle className="pv2 mr3 w-100" percent={setProgProp(city.city_rating)} strokeWidth="5
 													" trailWidth="5" strokeColor="#F44A4A" />
 											</div>
-											<div className="f5 pv1">Size: <span className="b">Big</span></div>
-											<div className="f5 pv1">Weather (Winter/Spring): <span className="b">16C, 75C</span></div>
-											<div className="f5 pv1">Sunny Days: <span className="b">175</span></div>
-											<div className="f5 pv1">Environment: <span className="b">beach, surf</span></div>
-											<div className="f5 pv1">Vibes: <span className="b">Hipster</span></div>
+											<div className="f5 pv1">Size: <span className="b">coming soon</span></div>
+											<div className="f5 pv1">Weather (Winter/Spring): <span className="b">coming soon</span></div>
+											<div className="f5 pv1">Sunny Days: <span className="b">coming soon</span></div>
+											<div className="f5 pv1">Vibes: <span className="b">{getTopProps(city.vibes)}</span></div>
 											<div className="f5 pt2">Leisure Activities: </div>
-											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
-											<div className="f5 pt2">Connectivity: </div>
-											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv1" percent={setProgProp(city.leisure)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Travel Options: </div>
 											<Line className="flex pv1" percent={setProgProp(city.travel_options)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Cultural Activities: </div>
-											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
-											<div className="f5 pt2">Nightlife: </div>
-											<Line className="flex pv1" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv1" percent={setProgProp(city.culture)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 										</div>
 										<div className="flex flex-1 flex-column justify-end modal-card mt3 mr2 pv3 ph3">
 											{/* Cost */}
 											{/* ---------------------------------- */}
 											<div className="f5 b pt4">Student Cost of life</div>
-											<div className="f5 pv1">Monthly Cost: <span className="b">500 €/m</span></div>
+											<div className="f5 pv1">Monthly Cost: <span className="b">{round(city.monthly_cost)} €/m</span></div>
 											<div className="f5 pt2">Rent: </div>
-											<Line className="flex pv2" percent="67" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv2" percent={setCostProgProp(city.rent_cost, 800)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Beer in a Pub: </div>
-											<Line className="flex pv2" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
-											<div className="f5 pt2">Entry fee Club: </div>
-											<Line className="flex pv2" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv2" percent={setCostProgProp(city.beer_cost, 8)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Coffee: </div>
-											<Line className="flex pv2" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
-											<div className="f5 pt2">Kebap: </div>
-											<Line className="flex pv2" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
-											<div className="f5 pt2">Meal in Cantine: </div>
-											<Line className="flex pv2" percent="17" strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv2" percent={setCostProgProp(city.coffee_cost, 8)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<div className="f5 pt2">Kebab: </div>
+											<Line className="flex pv2" percent={setCostProgProp(city.kebab_cost, 10)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<div className="f5 pt2">Entry fee Club: </div>
+											<Line className="flex pv2" percent={setCostProgProp(city.danceclub_cost, 30)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 										</div>
 									</div>
 

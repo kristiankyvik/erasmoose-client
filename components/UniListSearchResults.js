@@ -47,6 +47,7 @@ class UniListSearchResults extends React.Component {
       index: index,
       uni: this.props.allUnis[index]
     });
+    this.props.setCityId(this.props.allUnis[index].city_id);
   }
 
   _handleModalRightClick = (e) => {
@@ -56,6 +57,8 @@ class UniListSearchResults extends React.Component {
       index: index,
       uni: this.props.allUnis[index]
     });
+    this.props.setCityId(this.props.allUnis[index].city_id);
+
   }
 
   _handleModalCloseClick = (e) => {

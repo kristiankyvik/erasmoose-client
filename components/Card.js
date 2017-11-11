@@ -9,11 +9,26 @@ const UniLogoFallback = (
 	>
 	</div>
 );
+
+const round = (v) =>  {
+	if (v) {
+		return Number((v).toFixed(0));		
+	}
+}
+
+const setProgProp = (v) => {
+	if (v) {
+		return round(v/5 * 100);
+	}
+	return 0
+}
+
 export default class Card extends React.Component {
 	constructor(props) {
 	  super(props);
 	}
 	render() {
+		console.log("PROPS CARD", this.props);
 		return (
 			<div 
 				className="ma3 shadow-4 bg-white flex flex-column tl ur-card relative white" 
@@ -77,14 +92,13 @@ export default class Card extends React.Component {
 				<div className="flex-column pt1 dn card-back absolute z-1">
 					<div className="pv2 ph4 flex flex-column items-center">
 						<div className="progress-wrapper tc pb2">
-							<span className='progress-title f4 b'>{"67%"}</span>
-							<Circle className="w-60 pv2 m0a" percent="10" strokeWidth="5
+							<span className='progress-title f4 b'>{`${setProgProp(this.props.uni.uni_rating)}/100`}</span>
+							<Circle className="w-60 pv2 m0a" percent={setProgProp(this.props.uni.uni_rating)} strokeWidth="5
 							" trailWidth="5" strokeColor="#F44A4A" />
 						</div>
-						<Line className="flex pv2" percent={10} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
-						<Line className="flex pv2" percent={80} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
-						<Line className="flex pv2" percent={230} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
-						<Line className="flex pv2" percent={50} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+						<div className="b f4">
+							{this.props.uni.reviews_count ? this.props.uni.reviews_count + " Reviews" : " No Reviews :("}
+						</div>
 					</div>
 				</div>
 
@@ -105,15 +119,15 @@ export default class Card extends React.Component {
 			    	.progress-wrapper {
 			    		position: relative;
 			    	}
-			    	// .ur-card:hover {
-			    	// 	justify-content: center;	    		
-			    	// }
-			    	// .ur-card:hover .card-front {
-			    	// 	visibility: hidden;
-			    	// }
-			    	// .ur-card:hover .card-back {
-			    	// 	display: flex;
-			    	// }
+			    	.ur-card:hover {
+			    		justify-content: center;	    		
+			    	}
+			    	.ur-card:hover .card-front {
+			    		visibility: hidden;
+			    	}
+			    	.ur-card:hover .card-back {
+			    		display: flex;
+			    	}
 			    	.score {
 			    		top: 0;
 			    		right: -36px;
