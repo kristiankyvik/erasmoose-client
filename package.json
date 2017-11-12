@@ -12,6 +12,7 @@
     "dotenv-webpack": "^1.5.4",
     "graphql": "^0.9.3",
     "isomorphic-fetch": "^2.2.1",
+    "modernizr": "^3.5.0",
     "next": "latest",
     "progressbar.js": "^1.0.1",
     "prop-types": "^15.5.8",

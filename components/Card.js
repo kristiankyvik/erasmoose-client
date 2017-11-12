@@ -64,7 +64,7 @@ export default class Card extends React.Component {
 				    	className="b tl f7 "
 				    >
 		      		<div className="star-ratings-css">
-		  	    	  <div className="star-ratings-css-top" style={{width: setProgProp(this.props.uni.uni_rating) }}>
+		  	    	  <div className="star-ratings-css-top" style={{width: `${setProgProp(this.props.uni.uni_rating)}%` }}>
 		  	    	  	<span>★</span>
 		  	    	  	<span>★</span>
 		  	    	  	<span>★</span>
@@ -119,6 +119,9 @@ export default class Card extends React.Component {
 			    	.progress-wrapper {
 			    		position: relative;
 			    	}
+			      .ur-card:hover::before {
+			      	background-color: rgba(0,0,0,0.6);
+			      }
 			    	.ur-card:hover {
 			    		justify-content: center;	    		
 			    	}
@@ -157,15 +160,12 @@ export default class Card extends React.Component {
 			      	content: "";
 			      	border-radius: 10px;
 			      }
-			      .ur-card:hover::before {
-			      	background-color: rgba(0,0,0,0.6);
-			      }
 			      .star-ratings-css {
 			        unicode-bidi: bidi-override;
 			        color: #c5c5c5;
 			        font-size: 14px;
 			        height: 14px;
-			        width: 75px;
+			        width: 70px;
 			        position: relative;
 			        padding: 0;
 			      }
