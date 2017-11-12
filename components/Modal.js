@@ -13,14 +13,14 @@ const setProgProp = (v) => {
 	if (v) {
 		return round(v/5 * 100);
 	}
-	return 0
+	return 0;
 }
 
 const setCostProgProp = (v, max) => {
 	if (v) {
 		return round(v/max*100);
 	}
-	return 0
+	return 0;
 }
 
 const showProps = (v) => {
