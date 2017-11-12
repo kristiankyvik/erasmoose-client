@@ -96,10 +96,10 @@ class Modal extends React.Component {
 								<div className={ addActive(0) + " flex justify-center flex-auto f5 b z-1 pv3 bw1 b--light-gray pointer bb ttu moon-gray"}  onClick={() => this._handleTabClick(0)}>
 									Overview
 								</div>
-								<div className={ addActive(1) + " flex justify-center flex-auto f5 b z-1 pv3 bw1 b--light-gray pointer bb ttu moon-gray"} onClick={() => this._handleTabClick(1)}>
+								<div className={ addActive(1) + " dn flex-l justify-center flex-auto f5 b z-1 pv3 bw1 b--light-gray pointer bb ttu moon-gray"} onClick={() => this._handleTabClick(1)}>
 									City (coming soon)
 								</div>
-								<div className={ addActive(2) + " flex justify-center flex-auto f5 b z-1 pv3 bw1 b--light-gray pointer bb ttu moon-gray"} onClick={() => this._handleTabClick(2)}>
+								<div className={ addActive(2) + " dn flex-l justify-center flex-auto f5 b z-1 pv3 bw1 b--light-gray pointer bb ttu moon-gray"} onClick={() => this._handleTabClick(2)}>
 									Activities (coming soon)
 								</div>
 							</div>
@@ -109,7 +109,7 @@ class Modal extends React.Component {
 									{/* Uni */}
 									{/* ---------------------------------- */}
 									<div className="f3 b black pt3">University Metrics</div>
-									<div className="flex black">
+									<div className="flex flex-column flex-row-l black">
 										<div className="flex flex-1 flex-column justify-center modal-card mt3 mr3 pv3 ph3">
 											<div className="f4 b circle flex pb4">
 												<span className='inside-circle'>{`${setProgProp(uni.uni_rating)}/100`}</span>
@@ -144,7 +144,7 @@ class Modal extends React.Component {
 									{/* City */}
 									{/* ---------------------------------- */}
 									<div className="f3 b black pt3">{city.name} City Metrics</div>
-									<div className="flex black">
+									<div className="flex flex-column flex-row-l black">
 										<div className="flex flex-1 flex-column justify-center modal-card mt3 mr2 pv3 ph3">
 											<div className="f4 b circle pb4 flex">
 												<span className='inside-circle'>{`${setProgProp(city.city_rating)}/100`}</span>
