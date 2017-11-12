@@ -1,4 +1,3 @@
-import PostUpvoter from './PostUpvoter'
 import { Line, Circle } from 'rc-progress';
 import Img from 'react-image'
 
@@ -29,10 +28,11 @@ export default class Card extends React.Component {
 	}
 	render() {
 		console.log("PROPS CARD", this.props);
+		const {uni} = this.props;
 		return (
 			<div 
 				className="ma3 shadow-4 bg-white flex flex-column tl ur-card relative white" 
-				style={{ "backgroundImage": `url("/static/${this.props.uni._id}.jpg")` }} 
+				style={{ "backgroundImage": `url("/static/${uni._id}.jpg")` }} 
 				data-index={this.props.index}
 				onClick={this.props._handleCardClick}
 			>
@@ -41,8 +41,8 @@ export default class Card extends React.Component {
 				  	<div className="flex flex-column ph2">
 				  		<Img 
 				  			src={[
-				  		    `https://logo.clearbit.com/${this.props.uni.website}`,
-				  		    `https://ui-avatars.com/api/?name=${this.props.uni.name.split(" ").join("+")}&color=fff&background=F44A4A&length=2&font-size=0.43`
+				  		    `https://logo.clearbit.com/${uni.website}`,
+				  		    `https://ui-avatars.com/api/?name=${uni.name.split(" ").join("+")}&color=fff&background=F44A4A&length=2&font-size=0.43`
 				  		 ]}
 				  		 loader={UniLogoFallback}
 				  		 style={{ width: "45px", borderRadius: "50%" }}
@@ -51,20 +51,20 @@ export default class Card extends React.Component {
 					    	<span className="tag b tagged mr1"> tag1 </span><span className="tag b tagged mr1"> tag2 </span>
 					    </div>
 					    <div className="pt3 f2 fw7">
-					      {this.props.uni.name}
+					      {uni.name}
 					    </div>
 				  	</div>
 				    <div className="f5 pt1 ph2 pb1 b">
-				      <i className="fa fa-map-marker trans-gray" aria-hidden="true"></i> {this.props.uni.city_name}
+				      <i className="fa fa-map-marker trans-gray" aria-hidden="true"></i> {uni.city_name}
 				    </div>
 				  </div>
-				  <div className="ph3 pt1 pb1 flex items-end bottom items-center">
+				  <div className="ph3 pv2 flex items-end bottom items-center">
 				    <div 
 				    	style={{ "flex": 1 }} 
 				    	className="b tl f7 "
 				    >
 		      		<div className="star-ratings-css">
-		  	    	  <div className="star-ratings-css-top" style={{width: `${setProgProp(this.props.uni.uni_rating)}%` }}>
+		  	    	  <div className="star-ratings-css-top" style={{width: `${setProgProp(uni.uni_rating)}%` }}>
 		  	    	  	<span>★</span>
 		  	    	  	<span>★</span>
 		  	    	  	<span>★</span>
@@ -78,26 +78,26 @@ export default class Card extends React.Component {
 		  		    	  <span>★</span>
 		  		    	  <span>★</span>
 		  	    		</div>
-			  	    	<span className="score absolute">{this.props.uni.uni_rating ? `(${this.props.uni.uni_rating})` : null}</span>
+			  	    	<span className="score absolute">{uni.uni_rating ? `(${uni.uni_rating})` : null}</span>
 		  	    	</div>
 				    </div>
 				    <div 
 				    	style={{ "flex": 1 }} 
 				      className="b tr f6 flex justify-end"
 				     >
-				     	<PostUpvoter _id={this.props.uni._id} votes={this.props.uni.votes} />
+				     	<i className="fa fa-user mr1" aria-hidden="true"></i> {uni.reviews_count}
 				   </div>
 				  </div>
 				</div>
 				<div className="flex-column pt1 dn card-back absolute z-1">
 					<div className="pv2 ph4 flex flex-column items-center">
 						<div className="progress-wrapper tc pb2">
-							<span className='progress-title f4 b'>{`${setProgProp(this.props.uni.uni_rating)}/100`}</span>
-							<Circle className="w-60 pv2 m0a" percent={setProgProp(this.props.uni.uni_rating)} strokeWidth="5
+							<span className='progress-title f4 b'>{`${setProgProp(uni.uni_rating)}/100`}</span>
+							<Circle className="w-60 pv2 m0a" percent={setProgProp(uni.uni_rating)} strokeWidth="5
 							" trailWidth="5" strokeColor="#F44A4A" />
 						</div>
 						<div className="b f4">
-							{this.props.uni.reviews_count ? this.props.uni.reviews_count + " Reviews" : " No Reviews :("}
+							{uni.reviews_count ? uni.reviews_count + " Reviews" : " No Reviews :("}
 						</div>
 					</div>
 				</div>
