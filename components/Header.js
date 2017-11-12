@@ -12,6 +12,7 @@ export default () => (
       <title>  Erasmus universities Ranking  | erasmoose.com </title>
       <meta name="description" content="Erasmoose is a ranking of erasmus universities. We help you choose between european universities." />
       <link rel="stylesheet" href="https://unpkg.com/tachyons@4.7.0/css/tachyons.min.css"/>
+      <link rel='shortcut icon' type='image/x-icon' href='/static/favicon.ico'/>
       <link rel="stylesheet" href="https://unpkg.com/tachyons-flexbox@2.0.5/css/tachyons-flexbox.min.css" />
       <script src="https://use.typekit.net/nym1duy.js"></script>
       <script dangerouslySetInnerHTML={{ __html: 'try{Typekit.load({ async: false });}catch(e){}' }} />

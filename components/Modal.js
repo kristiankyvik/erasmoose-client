@@ -74,81 +74,12 @@ class Modal extends React.Component {
 			const ret = i === n ? "active" : "nothing";
 			return ret;
 		};
-		const cards = [
-			<div className="flex flex-auto pv3 ph4 flex-column">
-				<div className="flex">
-					<div className="flex flex-auto flex-column shadow-3 justify-center modal-card mt3 mr3 pv3">
-						<div className="f4 flex justify-center">
-								Thing number one
-						</div>
-						<div className="f4 flex justify-center">
-								Thing number one
-						</div>
-						<div className="f4 flex justify-center">
-								Thing number one
-						</div>
-						<div className="f4 flex justify-center">
-								Thing number one
-						</div>
-					</div>
-					<div className="flex flex-auto flex-column shadow-3 justify-center modal-card mt3 ml2 pv3">
-						<div className="f4 flex justify-center">
-								Thing number one
-						</div>
-						<div className="f4 flex justify-center">
-								Thing number one
-						</div>
-						<div className="f4 flex justify-center">
-								Thing number one
-						</div>
-						<div className="f4 flex justify-center">
-								Thing number one
-						</div>
-					</div>
-				</div>
-				<div className="flex">
-					<div className="flex flex-auto flex-column shadow-3 justify-center modal-card mt3 mr3 pv3">
-						<div className="f4 flex justify-center">
-								Thing number one
-						</div>
-						<div className="f4 flex justify-center">
-								Thing number one
-						</div>
-						<div className="f4 flex justify-center">
-								Thing number one
-						</div>
-						<div className="f4 flex justify-center">
-								Thing number one
-						</div>
-					</div>
-					<div className="flex flex-auto flex-column shadow-3 justify-center modal-card mt3 ml2 pv3">
-						<div className="f4 flex justify-center">
-								Thing number one
-						</div>
-						<div className="f4 flex justify-center">
-								Thing number one
-						</div>
-						<div className="f4 flex justify-center">
-								Thing number one
-						</div>
-						<div className="f4 flex justify-center">
-								Thing number one
-						</div>
-					</div>
-				</div>
-			</div>,
-			<div>
-				City (coming soon)
-			</div>,
-			<div>
-				Activities (coming soon)
-			</div>
-		];
+
 	  return (
 			<div 
 				className={"backModal fixed z-1 flex content-center justify-center items-center"}
 				onClick={this.props._handleModalCloseClick}> 
-				<div className={"absolute modal shadow-3 w-100 w-80-l" }>
+				<div className={"absolute modal top-0 top-1-l mb0 mb1-l shadow-3 w-100 w-80-l" }>
 					<div className="flex tc flex-column">
 						<div 
 							className="flex bg-img"
@@ -190,12 +121,12 @@ class Modal extends React.Component {
 											<div className="f5 pv1">Flagship Areas: <span className="b">{getTopProps(uni.main_disciplines)}</span></div>
 											<div className="f5 pv1">Languages: <span className="b">{getTopProps(uni.languages)}</span></div>
 											<div className="f5 pt2">Tuition Fees: <span className="b">{uni.fees ? round(uni.fees) + " €" : "coming soon"}</span> </div>
+										</div>
+										<div className="flex flex-1 flex-column justify-end modal-card mt3 mr3 pv3 ph3">
 											<div className="f5 pt2">Workload: </div>
 											<Line className="flex pv1" percent={setProgProp(uni.workload)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">International Orientation: </div>
 											<Line className="flex pv1" percent={setProgProp(uni.int_orientation)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
-										</div>
-										<div className="flex flex-1 flex-column justify-end modal-card mt3 mr3 pv3 ph3">
 											<div className="f5 pt2">Openness: </div>
 											<Line className="flex pv1" percent={setProgProp(uni.openness)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Gender Ratio (Women/Men): </div>
@@ -285,8 +216,6 @@ class Modal extends React.Component {
 								</div>
 							</div>					
 						</div>
-
-
 						<div className="controls absolute flex f1 dh db-l">
 							<div className="flex left z-0">
 								<i className="fa fa-angle-left z-1" aria-hidden="true" onClick={this.props._handleModalLeftClick}></i>
@@ -294,10 +223,9 @@ class Modal extends React.Component {
 							<div className="flex right justify-end f1 z-0" >
 								<i className="fa fa-angle-right z-1" aria-hidden="true" onClick={this.props._handleModalRightClick}></i>
 							</div>
-
 						</div>
 					</div>
-					<div className="red f2 absolute ph3 right-0 top-0 pointer close" onClick={this.props._handleModalCloseClick}>
+					<div className="red f1 z-1 absolute ph3 right-0 top-0 pointer close" onClick={this.props._handleModalCloseClick}>
 						x
 					</div>
 				</div>
@@ -412,12 +340,10 @@ class Modal extends React.Component {
 			      	max-width: 920px;
 			      	position: absolute;
 			      	z-index: 9997;
-			      	top: 20px;
 			      	background-position: fixed;
 			      	box-sizing: border-box;
 			      	border-radius: 6px;
 			      	min-height: 90vh;
-			      	margin-bottom: 20px;
 			      }
 			      .controls {
 			      	left: -70px;
