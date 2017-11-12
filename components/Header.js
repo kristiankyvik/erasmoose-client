@@ -4,7 +4,6 @@ import Head from 'next/head'
 // <link rel="stylesheet" href="./node_modules/tachyons/css/tachyons.min.css" />
 // <link rel="stylesheet" href="./node_modules/tachyons-flexbox/css/tachyons-flexbox.min.css" />
 export default () => (
-
   <header>
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -17,6 +16,7 @@ export default () => (
       <script src="https://use.typekit.net/nym1duy.js"></script>
       <script dangerouslySetInnerHTML={{ __html: 'try{Typekit.load({ async: false });}catch(e){}' }} />
       <script src="https://use.fontawesome.com/83c3b2a28b.js"></script>
+      <script src="static/modernizr.js"></script>
       <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet"/>
       <script async src="https://www.googletagmanager.com/gtag/js?id=UA-66664421-3"></script>
       {/* GA snippet */}
