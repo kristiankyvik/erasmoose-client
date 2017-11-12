@@ -216,7 +216,7 @@ class Modal extends React.Component {
 								</div>
 							</div>					
 						</div>
-						<div className="controls absolute flex f1 dh db-l">
+						<div className="dn flex-l controls absolute f1">
 							<div className="flex left z-0">
 								<i className="fa fa-angle-left z-1" aria-hidden="true" onClick={this.props._handleModalLeftClick}></i>
 							</div>
