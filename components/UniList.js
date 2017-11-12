@@ -31,6 +31,7 @@ export default class UniList extends React.Component {
     return (
       <section className="tc">
         <UniListSearchResultsWithData
+          liveFilter={this.props.liveFilter} 
           query={this.props.query}
           pathname={this.props.pathname}
           triggerSearchInDB={this.triggerSearchInDB} //function triggering a change in searchKey 
