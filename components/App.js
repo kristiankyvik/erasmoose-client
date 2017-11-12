@@ -75,6 +75,20 @@ export default ({ children }) => (
       .max {
         max-width: 925px;
       }
+
+      // GLOBAL CARD STYLES
+      .no-touchevents .ur-card:hover::before {
+        background-color: rgba(0,0,0,0.6);
+      }
+      .no-touchevents .ur-card:hover {
+        justify-content: center;          
+      }
+      .no-touchevents .ur-card:hover .card-front {
+        visibility: hidden;
+      }
+      .no-touchevents .ur-card:hover .card-back {
+        display: flex;
+      }
     `}</style>
   </main>
 )

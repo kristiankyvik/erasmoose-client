@@ -27,7 +27,6 @@ export default class Card extends React.Component {
 	  super(props);
 	}
 	render() {
-		console.log("PROPS CARD", this.props);
 		const {uni} = this.props;
 		return (
 			<div 
@@ -97,7 +96,7 @@ export default class Card extends React.Component {
 							" trailWidth="5" strokeColor="#F44A4A" />
 						</div>
 						<div className="b f4">
-							{uni.reviews_count ? uni.reviews_count + " Reviews" : " No Reviews :("}
+							{uni.reviews_count ? uni.reviews_count + " Reviews" : " No Reviews" } 
 						</div>
 					</div>
 				</div>
@@ -118,18 +117,6 @@ export default class Card extends React.Component {
 			    	}
 			    	.progress-wrapper {
 			    		position: relative;
-			    	}
-			      .ur-card:hover::before {
-			      	background-color: rgba(0,0,0,0.6);
-			      }
-			    	.ur-card:hover {
-			    		justify-content: center;	    		
-			    	}
-			    	.ur-card:hover .card-front {
-			    		visibility: hidden;
-			    	}
-			    	.ur-card:hover .card-back {
-			    		display: flex;
 			    	}
 			    	.score {
 			    		top: 0;
