@@ -23,9 +23,9 @@ export default ({ pathname }) => (
             Ranked.
           </div></h1>
         <h2 className="fw1 f3 black-80 mt3 mb4"> Ranking of european universities.</h2>
-        <div className="">
+        {/* <div className="">
           <TypeformButton/>
-        </div>
+        </div> */}
       </div>
     </div>
 
