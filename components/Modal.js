@@ -86,8 +86,8 @@ class Modal extends React.Component {
 							style={{ "backgroundImage": `url("/static/${this.props.uni._id}.jpg")` }} 
 						>	
 							<div className="absolute z-1 bottom-2 white tc left-0 right-0">
-								<div className="b pt3 f2">{this.props.uni.name}</div>
-								<div className="f3 pb3 i playfair">{this.props.uni.website}</div>
+								<div className="b pt3 f3 f2-l">{this.props.uni.name}</div>
+								<div className="f4 f3-l pb3 i playfair">{this.props.uni.website}</div>
 								<TypeformButton id={this.props.uni._id} cityid={this.props.uni.city_id} className="ma2 mh4 ur-btn tc flex justify-center content-center items-center" />
 							</div>	
 						</div>
