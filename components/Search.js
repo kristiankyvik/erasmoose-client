@@ -85,7 +85,8 @@ export default class Search extends React.Component {
             .search-input {
               font-size: 1.5em;
               display: inline-block;
-              width: 500px;
+              max-width: 500px;
+              width: 90%;
               border-color: #eee;
               padding: .7em .75em;
               padding-left: 3em;
@@ -98,8 +99,6 @@ export default class Search extends React.Component {
               box-sizing: border-box;
               -webkit-appearance: none;
               -webkit-tap-highlight-color: transparent;
-              // border-width:0px;
-              // border:none;
             }
 
             .search-input:focus {

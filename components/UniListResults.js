@@ -36,7 +36,7 @@ class UniListResults extends React.Component {
             return (
                 <section className="tc">
                     <div className="db justify-center">
-                        <div style={{ width: 1080 }} className="flex flex-wrap justify-center">
+                        <div style={{ maxWidth: 1080 }} className="flex flex-wrap justify-center">
                             {allUnis.map((uni, index) =>
                                 <Card
                                     key={uni.name}

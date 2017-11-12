@@ -312,9 +312,6 @@ class Modal extends React.Component {
 			    	  left: 50%;
 			    	  transform: translate(-50%, -50%);
 			    	}
-			    	.modal-card {
-			    		border-radius: 12px;
-			    	}
 			    	.review {
 			    		width: 275px;
 			    		height: 250px;

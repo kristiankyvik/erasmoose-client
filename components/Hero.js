@@ -14,9 +14,6 @@ export default ({ pathname }) => (
       <Link prefetch href='/search'>
         <a className={pathname === '/search' && 'is-active'}>Search</a>
       </Link>
-      <Link prefetch href='/about'>
-        <a className={pathname === '/about' && 'is-active'}>About</a>
-      </Link>
     </div>
     <div className={`cover bg-left bg-center-l ${pathname === '/' ? "" : "dn"}`}>
       <div className="ph3 pv4 w-60-l m0a">
