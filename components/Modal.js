@@ -108,7 +108,7 @@ class Modal extends React.Component {
 
 									{/* Uni */}
 									{/* ---------------------------------- */}
-									<div className="f3 b black pt3">University Metrics</div>
+									<div className="f3 b black pt3 tc tl-l">University Metrics</div>
 									<div className="flex flex-column flex-row-l black">
 										<div className="flex flex-1 flex-column justify-center modal-card mt3 mr3 pv3 ph3">
 											<div className="f4 b circle flex pb4">
@@ -143,7 +143,7 @@ class Modal extends React.Component {
 									</div>
 									{/* City */}
 									{/* ---------------------------------- */}
-									<div className="f3 b black pt3">{city.name} City Metrics</div>
+									<div className="f3 b black pt3 tc tl-l">{city.name} City Metrics</div>
 									<div className="flex flex-column flex-row-l black">
 										<div className="flex flex-1 flex-column justify-center modal-card mt3 mr2 pv3 ph3">
 											<div className="f4 b circle pb4 flex">

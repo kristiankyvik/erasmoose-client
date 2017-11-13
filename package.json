@@ -10,6 +10,7 @@
   "dependencies": {
     "dotenv": "^4.0.0",
     "dotenv-webpack": "^1.5.4",
+    "eslint": "^4.11.0",
     "graphql": "^0.9.3",
     "isomorphic-fetch": "^2.2.1",
     "next": "latest",
