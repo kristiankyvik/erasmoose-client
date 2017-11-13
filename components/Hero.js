@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import LogIn from './FacebookLogIn'
 import TypeformButton from '../components/TypeformButton'
 
 export default ({ pathname }) => (
@@ -14,6 +15,10 @@ export default ({ pathname }) => (
       <Link prefetch href='/search'>
         <a className={pathname === '/search' && 'is-active'}>Search</a>
       </Link>
+    </div>
+    <div>
+      <LogIn/>
+      
     </div>
     <div className={`cover bg-left bg-center-l ${pathname === '/' ? "" : "dn"}`}>
       <div className="ph3 pv4 w-60-l m0a">

@@ -18,7 +18,7 @@ function Submit ({ createPost }) {
     }
 
     createPost(title, url)
-
+    
     // reset form
     e.target.elements.title.value = ''
     e.target.elements.url.value = ''

@@ -1,6 +1,6 @@
 import Router from 'next/router';
 
-const lodash = require('lodash'); //get lodash librar
+const lodash = require('lodash'); //get lodash library
 
 export default class Search extends React.Component {
   constructor(props) {
