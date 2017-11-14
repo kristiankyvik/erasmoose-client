@@ -5,6 +5,7 @@ import Hero from '../components/Hero'
 import UniList from '../components/UniList'
 import withData from '../lib/withData'
 import Footer from '../components/Footer'
+import FeedbackWidget from '../components/FeedbackWidget'
 
 export default withData((props) => (
   <App>
@@ -13,5 +14,6 @@ export default withData((props) => (
   	<Hero pathname={props.url.pathname} />
     <UniList pathname={props.url.pathname} liveFilter={false}/>
     <Footer />
+    <FeedbackWidget />
   </App>
 ))

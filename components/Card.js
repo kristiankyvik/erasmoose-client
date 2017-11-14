@@ -30,7 +30,7 @@ export default class Card extends React.Component {
 		const {uni} = this.props;
 		return (
 			<div 
-				className="ma3 shadow-4 bg-white flex flex-column tl ur-card relative white" 
+				className="ma3 shadow-4 bg-white flex flex-column tl ur-card relative white animated-background" 
 				style={{ "backgroundImage": `url("/static/${uni._id}.jpg")` }} 
 				data-index={this.props.index}
 				onClick={this.props._handleCardClick}

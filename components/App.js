@@ -76,6 +76,21 @@ export default ({ children }) => (
         max-width: 925px;
       }
 
+      .btn-new {
+        display: inline-block;
+        cursor: pointer;
+        padding: .4375em 1.5em .5em;
+        color: #fff;
+        font-size: 1.4em;
+        font-weight: 800;
+        line-height: 1;
+        vertical-align: middle;
+        text-align: center;
+        white-space: nowrap;
+        border: 3px solid transparent;
+        border-radius: 2.5em;
+      }
+
       // GLOBAL CARD STYLES
       .no-touchevents .ur-card:hover::before {
         background-color: rgba(0,0,0,0.6);
@@ -89,6 +104,33 @@ export default ({ children }) => (
       .no-touchevents .ur-card:hover .card-back {
         display: flex;
       }
+
+      @keyframes placeHolderShimmer{
+        0%{
+          background-position: -468px 0
+        }
+        100%{
+          background-position: 468px 0
+        }
+      }
+
+      .m0a {
+        margin: 0 auto;
+      }
+
+      // .animated-background {
+      //   animation-duration: 3s;
+      //   animatiounin-fill-mode: forwards;
+      //   animation-iteration-count: infinite;
+      //   animation-name: placeHolderShimmer;
+      //   animation-timing-function: linear;
+      //   background: #f6f7f8;
+      //   background: linear-gradient(to right, #eeeeee 15%, #dddddd 30%, #eeeeee 15%);
+      //   background-size: 800px 104px;
+      //   height: 96px;
+      //   position: relative;
+      // }
+
     `}</style>
   </main>
 )

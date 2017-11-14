@@ -62,6 +62,9 @@ class UniListResults extends React.Component {
                             display: block;
                             margin-bottom: 10px;
                         }
+                        .btn-new {
+                            background-color: #333;
+                        }
                         input {
                             color: black;
                         }
@@ -79,22 +82,6 @@ class UniListResults extends React.Component {
                         ul {
                         margin: 0;
                         padding: 0;
-                        }
-                        .btn-new {
-                        display: inline-block;
-                        cursor: pointer;
-                        margin: 0 auto;
-                        padding: .4375em 1.5em .5em;
-                        color: #fff;
-                        font-size: 1.5em;
-                        font-weight: 800;
-                        line-height: 1;
-                        vertical-align: middle;
-                        text-align: center;
-                        white-space: nowrap;
-                        border: 3px solid transparent;
-                        background-color: #333;
-                        border-radius: 2.5em;
                         }
                     `}</style>
                 </section>

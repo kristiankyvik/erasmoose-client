@@ -2,6 +2,7 @@ import App from '../components/App'
 import Header from '../components/Header'
 import Hero from '../components/Hero'
 import Footer from '../components/Footer'
+import FeedbackWidget from '../components/FeedbackWidget'
 
 export default (props) => (
   <App>
@@ -25,5 +26,6 @@ export default (props) => (
         border:0;
       }
     `}</style>
+    <FeedbackWidget />
   </App>
 )
