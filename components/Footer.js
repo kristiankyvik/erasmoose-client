@@ -11,7 +11,7 @@ export default () => (
 	  	</div>
 	  	<div className="flex items-center ph4">
 	  		<div className="tc">
-		  		Made with <i className="fa fa-heart pink" aria-hidden="true"></i> in Liege, Belgium
+		  		Made with <i className="fa fa-heart pink" aria-hidden="true"></i> in Aachen, Germany
 	  		</div>
 	  	</div>
 	  	<div className="flex items-center ph4">
