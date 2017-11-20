@@ -31,7 +31,7 @@ export default class Card extends React.Component {
 		return (
 			<div 
 				className="ma3 shadow-4 bg-white flex flex-column tl ur-card relative white animated-background" 
-				style={{ "backgroundImage": `url("/static/${uni._id}.jpg")` }} 
+				style={{ "backgroundImage": `url("https://s3.eu-central-1.amazonaws.com/erasmoose/${uni._id}.jpg")` }} 
 				data-index={this.props.index}
 				onClick={this.props._handleCardClick}
 			>

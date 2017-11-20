@@ -83,7 +83,7 @@ class Modal extends React.Component {
 					<div className="flex tc flex-column">
 						<div 
 							className="flex bg-img"
-							style={{ "backgroundImage": `url("/static/${this.props.uni._id}.jpg")` }} 
+							style={{ "backgroundImage": `url("https://s3.eu-central-1.amazonaws.com/erasmoose/${this.props.uni._id}.jpg")` }} 
 						>	
 							<div className="absolute z-1 bottom-2 white tc left-0 right-0">
 								<div className="b pt3 f3 f2-l">{this.props.uni.name}</div>
