@@ -77,14 +77,14 @@ export default class Card extends React.Component {
 		  		    	  <span>★</span>
 		  		    	  <span>★</span>
 		  	    		</div>
-			  	    	<span className="score absolute">{uni.uni_rating ? `(${uni.uni_rating})` : null}</span>
+			  	    	<span className="score absolute">({uni.reviews_count})</span>
 		  	    	</div>
 				    </div>
 				    <div 
 				    	style={{ "flex": 1 }} 
 				      className="b tr f6 flex justify-end"
 				     >
-				     	<i className="fa fa-user mr1" aria-hidden="true"></i> {uni.reviews_count}
+				     	<i className="fa fa-hashtag mr1" aria-hidden="true"></i>{this.props.index}
 				   </div>
 				  </div>
 				</div>
