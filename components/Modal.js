@@ -121,10 +121,11 @@ class Modal extends React.Component {
 											<div className="f5 pv1">Flagship Areas: <span className="b">{getTopProps(uni.main_disciplines)}</span></div>
 											<div className="f5 pv1">Languages: <span className="b">{getTopProps(uni.languages)}</span></div>
 											<div className="f5 pt2">Tuition Fees: <span className="b">{uni.fees ? round(uni.fees) + " €" : "coming soon"}</span> </div>
+											<div className="f5 pt2">Weekly Hours of Work: <span className="b">{uni.weekly_hours ? round(uni.weekly_hours) + " hours" : "coming soon"}</span> </div>
 										</div>
 										<div className="flex flex-1 flex-column justify-end modal-card mt3 mr3 pv3 ph3">
-											<div className="f5 pt2">Workload: </div>
-											<Line className="flex pv1" percent={setProgProp(uni.workload)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<div className="f5 pt2">Difficulty: </div>
+											<Line className="flex pv1" percent={setProgProp(uni.difficulty)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">International Orientation: </div>
 											<Line className="flex pv1" percent={setProgProp(uni.int_orientation)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Openness: </div>
@@ -154,13 +155,18 @@ class Modal extends React.Component {
 											<div className="f5 pv1">Size: <span className="b">coming soon</span></div>
 											<div className="f5 pv1">Weather (Winter/Spring): <span className="b">coming soon</span></div>
 											<div className="f5 pv1">Sunny Days: <span className="b">coming soon</span></div>
-											<div className="f5 pv1">Vibes: <span className="b">{getTopProps(city.vibes)}</span></div>
-											<div className="f5 pt2">Leisure Activities: </div>
-											<Line className="flex pv1" percent={setProgProp(city.leisure)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<div className="f5 pt2">Student Friendliness: </div>
+											<Line className="flex pv1" percent={setProgProp(city.culture)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Travel Options: </div>
 											<Line className="flex pv1" percent={setProgProp(city.travel_options)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
-											<div className="f5 pt2">Cultural Activities: </div>
+											<div className="f5 pt2">Cultural Offering: </div>
 											<Line className="flex pv1" percent={setProgProp(city.culture)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<div className="f5 pt2">Nightlife: </div>
+											<Line className="flex pv1" percent={setProgProp(city.nightlife)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<div className="f5 pt2">Gastronomy: </div>
+											<Line className="flex pv1" percent={setProgProp(city.gastronomy)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<div className="f5 pt2">Sports: </div>
+											<Line className="flex pv1" percent={setProgProp(city.sports)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 										</div>
 										<div className="flex flex-1 flex-column justify-end modal-card mt3 mr2 pv3 ph3">
 											{/* Cost */}

@@ -15,7 +15,8 @@ const allUnis = gql`
       city_name
       city_id
       int_orientation
-      workload
+      difficulty
+      weekly_hours
       fees
       uni_rating
       opportunities
@@ -48,6 +49,7 @@ const allUnis = gql`
       activities
       travel_options
       city_rating
+      culture
       rent_cost
       beer_cost
       coffee_cost
@@ -57,6 +59,10 @@ const allUnis = gql`
       if_you_like
       reviews_count
       danceclub_cost
+      student_friendliness
+      nightlife
+      gastronomy
+      sports
       leisure
     },
   }
