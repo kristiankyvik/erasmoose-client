@@ -13,7 +13,7 @@ export default withData((props) => (
     <Header/>
   	<Hero pathname={props.url.pathname} />
     <UniList pathname={props.url.pathname} liveFilter={false}/>
-    <Footer />
+    <Footer/>
     <FeedbackWidget />
   </App>
 ))

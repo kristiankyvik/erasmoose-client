@@ -1,4 +1,6 @@
 import TypeformButton from '../components/TypeformButton'
+import ReviewCounter from './ReviewCounter' 
+
 
 export default () => (
   <div className="flex items-stretch justify-around ph5 pt6 pb5">
@@ -13,13 +15,12 @@ export default () => (
 	  		<div className="tc">
 		  		Made with <i className="fa fa-heart pink" aria-hidden="true"></i> in Aachen, Germany
 	  		</div>
+				<ReviewCounter />
 	  	</div>
-	  	<div className="flex items-center ph4">
-	  		<div className="tc">
-		  		<div className="f6">Universities Reviewed so far: </div>
-		  		<span className="b f3">239</span>
-	  		</div>
-	  	</div>
+			
 	  </div>
   </div>
 )
+
+
+
