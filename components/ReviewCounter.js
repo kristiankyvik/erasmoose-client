@@ -8,14 +8,23 @@ function countReviews(data) {
    const reviews = data.allUnisWithReview.map(elm => elm.reviews_count).reduce((agg, cur) => (agg + cur))
   
   return (
-    <div className="flex items-center ph4">
-      <div className="tc">
-        <div className="f6">Universities Reviewed so far: </div>
-        <span className="b f3">{ unisReviewed }</span>
+    <div className="flex pr4 flex-column pl5">
+      <div className="flex items-center f6 b pb1">
+        METRICS:
       </div>
-      <div className="tc">
-        <div className="f6">Total Reviews so far: </div>
-        <span className="b f3">{ reviews }</span>
+      <div className="flex flex-column pl2">
+        <div className="tl">
+          <span className="b f6">
+            <i className="fa fa-university mr1" aria-hidden="true"></i>
+            { unisReviewed } unis
+          </span>
+        </div>
+        <div className="tl">
+          <span className="b f6">
+            <i className="fa fa-user mr2" aria-hidden="true"></i>
+            { reviews } reviews
+          </span>
+        </div>
       </div>
     </div>
   );
