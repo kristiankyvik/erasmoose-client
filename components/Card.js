@@ -51,11 +51,11 @@ export default class Card extends React.Component {
 					    <div className="pv1 ttu white dn">
 					    	<span className="tag b tagged mr1"> tag1 </span><span className="tag b tagged mr1"> tag2 </span>
 					    </div>
-					    <div className="pt3 f2 fw7">
+					    <div className="pt3 f2 fw7 text-shadow">
 					      {uni.name}
 					    </div>
 				  	</div>
-				    <div className="f5 pt1 ph2 pb1 b">
+				    <div className="f5 pt1 ph2 pb1 b text-shadow">
 				      <i className="fa fa-map-marker trans-gray" aria-hidden="true"></i> {uni.city_name}
 				    </div>
 				  </div>

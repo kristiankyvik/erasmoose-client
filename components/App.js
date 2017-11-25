@@ -118,6 +118,10 @@ export default ({ children }) => (
         margin: 0 auto;
       }
 
+      .text-shadow {
+        text-shadow: 1px 1px 0 rgba(0,0,0,0.35);
+      }
+
       // .animated-background {
       //   animation-duration: 3s;
       //   animatiounin-fill-mode: forwards;
