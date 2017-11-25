@@ -1,5 +1,6 @@
 import { Line, Circle } from 'rc-progress';
 import Img from 'react-image'
+const _ = require('lodash'); //get lodash library
 
 const UniLogoFallback = (
 	<div 
@@ -28,7 +29,9 @@ export default class Card extends React.Component {
 	}
 	render() {
 		const { uni, city} = this.props;
-		const overallRating = (uni.uni_rating.value + city.city_rating.value) / 2;
+		console.log("Look",uni.uni_rating.value);
+		console.log("Look2",city);
+		const overallRating = (_.get(uni,'uni_rating.value',0) + _.get(city,'city_rating.value',0)) / 2;
 		return (
 			<div 
 				className="ma3 shadow-4 bg-white flex flex-column tl ur-card relative white animated-background" 
@@ -78,7 +81,7 @@ export default class Card extends React.Component {
 		  		    	  <span>★</span>
 		  		    	  <span>★</span>
 		  	    		</div>
-								<span className="score absolute">({uni.uni_rating.count})</span>
+								<span className="score absolute">({_.get(uni,'uni_rating.count',0)})</span>
 		  	    	</div>
 				    </div>
 				    <div 
@@ -97,7 +100,7 @@ export default class Card extends React.Component {
 							" trailWidth="5" strokeColor="#F44A4A" />
 						</div>
 						<div className="b f4">
-							{uni.uni_rating.count ? uni.uni_rating.count + " Reviews" : " No Reviews" } 
+							{_.get(uni, 'uni_rating.count', 0) ? _.get(uni, 'uni_rating.count', 0) + " Reviews" : " No Reviews" } 
 						</div>
 					</div>
 				</div>

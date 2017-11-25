@@ -1,5 +1,5 @@
 import TypeformButton from '../components/TypeformButton'
-import ReviewCounter from './ReviewCounter' 
+// import ReviewCounter from './ReviewCounter' 
 
 
 export default () => (
@@ -15,7 +15,6 @@ export default () => (
 	  		<div className="tc">
 		  		Made with <i className="fa fa-heart pink" aria-hidden="true"></i> in Aachen, Germany
 	  		</div>
-				<ReviewCounter />
 	  	</div>
 			
 	  </div>
