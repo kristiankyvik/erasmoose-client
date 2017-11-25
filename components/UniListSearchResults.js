@@ -93,7 +93,7 @@ class UniListSearchResults extends React.Component {
     console.log("PROPS", this.props);
 
     return (
-      <div className="pt4">
+      <div className="">
         <Search 
           liveFilter={liveFilter}
           triggerSearchInDB={triggerSearchInDB}

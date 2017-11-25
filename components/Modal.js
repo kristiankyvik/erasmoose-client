@@ -1,6 +1,8 @@
 import ReactDOM from 'react-dom';
 import { Line, Circle } from 'rc-progress';
 import TypeformButton from '../components/TypeformButton'
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+
 const _ = require('lodash'); //get lodash library
 
 
@@ -60,13 +62,6 @@ class Modal extends React.Component {
 
 		const { city, uni } = this.props;
 
-		const tags = [
-			"happy",
-			"relax",
-			"urban",
-			"beach"
-			].map(t => <div className="tag ma2 flex f4" key={t}> <img src={`https://png.icons8.com/${t}/dotty/24`} title="Location" width="24" height="24"/> {t} </div> ); 
-
 		const i = this.state.tabIndex;
 		const addActive = (n) => { 
 			const ret = i === n ? "active" : "nothing";
@@ -89,19 +84,13 @@ class Modal extends React.Component {
 								<TypeformButton id={this.props.uni._id} cityid={this.props.uni.city_id} className="ma2 mh4 ur-btn tc flex justify-center content-center items-center" />
 							</div>	
 						</div>
-						<div className="flex flex-column tl f7">
-							<div className="flex">
-								<div className={ addActive(0) + " flex justify-center flex-auto f5 b z-1 pv3 bw1 b--light-gray pointer bb ttu moon-gray"}  onClick={() => this._handleTabClick(0)}>
-									Overview
-								</div>
-								<div className={ addActive(1) + " dn flex-l justify-center flex-auto f5 b z-1 pv3 bw1 b--light-gray pointer bb ttu moon-gray"} onClick={() => this._handleTabClick(1)}>
-									City (coming soon)
-								</div>
-								<div className={ addActive(2) + " dn flex-l justify-center flex-auto f5 b z-1 pv3 bw1 b--light-gray pointer bb ttu moon-gray"} onClick={() => this._handleTabClick(2)}>
-									Activities (coming soon)
-								</div>
-							</div>
-							<div className="flex flex-auto">
+						<Tabs className="flex flex-column tl f7 no-pad" selectedTabClassName="active">
+							<TabList className="flex">
+								<Tab className="flex justify-center flex-auto f5 b z-1 pv3 bw1 b--light-gray pointer bb ttu moon-gray">Overview</Tab>
+								<Tab className="flex justify-center flex-auto f5 b z-1 pv3 bw1 b--light-gray pointer bb ttu moon-gray">City</Tab>
+								<Tab disabled className="flex justify-center flex-auto f5 b z-1 pv3 bw1 b--light-gray pointer bb ttu moon-gray">Activities</Tab>
+							</TabList>
+							<TabPanel className="flex flex-auto">
 								<div className="flex flex-auto pv4 ph4 flex-column white">
 
 									{/* Uni */}
@@ -140,6 +129,45 @@ class Modal extends React.Component {
 											<Line className="flex pv1" percent={setProgProp(_.get(uni,'party.value',0))} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 										</div>
 									</div>
+
+									<div className="black pb0 pt3">
+										<div className="f3 b">Latest Reviews</div>
+										<div className="f5 gray">The main metrics and such</div>
+									</div>
+									<div className="flex black">
+										<div className="flex flex-auto review flex-column justify-center modal-card mt3 mr2 pv3 grad-green relative">
+											<div className="i pv3 ph4 tc white f5">
+												"The best uni everrrr! Super international! The place to go if you wanna get turnt!
+											</div>
+											<div className="b pv3 ph4 tc white f6">
+												4 hours ago
+											</div>
+											<button className="absolute bottom-1 right-1 upvote pointer">42</button>
+										</div>
+										<div className="flex flex-auto review flex-column justify-center modal-card mt3 ml2 mr2 pv3 grad-blue relative">
+											<div className="i pv3 ph4 tc white f5">
+												"The best uni everrrr! Super international! The place to go if you wanna get turnt!
+											</div>
+											<div className="b pv3 ph4 tc white f6">
+												4 hours ago
+											</div>
+											<button className="absolute bottom-1 right-1 upvote pointer">42</button>
+										</div>
+										<div className="flex flex-auto review flex-column justify-center modal-card mt3 ml2 pv3 grad-purple relative">
+											<div className="i pv3 ph4 tc white f5">
+												"The best uni everrrr! Super international! The place to go if you wanna get turnt!
+											</div>
+											<div className="b pv3 ph4 tc white f6">
+												4 hours ago
+											</div>
+											<button className="absolute bottom-1 right-1 upvote pointer">42</button>
+										</div>
+									</div>
+								</div>
+							</TabPanel>	
+							<TabPanel className="flex flex-auto">
+								<div className="flex flex-auto pv4 ph4 flex-column white">
+
 									{/* City */}
 									{/* ---------------------------------- */}
 									<div className="f3 b black pt3 tc tl-l">{city.name} City Metrics</div>
@@ -184,11 +212,11 @@ class Modal extends React.Component {
 										</div>
 									</div>
 
-									<div className="black pb0 pt3 dn">
+									<div className="black pb0 pt3">
 										<div className="f3 b">Latest Reviews</div>
 										<div className="f5 gray">The main metrics and such</div>
 									</div>
-									<div className="dn black">
+									<div className="flex black">
 										<div className="flex flex-auto review flex-column justify-center modal-card mt3 mr2 pv3 grad-green relative">
 											<div className="i pv3 ph4 tc white f5">
 												"The best uni everrrr! Super international! The place to go if you wanna get turnt!
@@ -198,7 +226,7 @@ class Modal extends React.Component {
 											</div>
 											<button className="absolute bottom-1 right-1 upvote pointer">42</button>
 										</div>
-										<div className="flex flex-auto review flex-column justify-center modal-card mt3 mr2 pv3 grad-blue relative">
+										<div className="flex flex-auto review flex-column justify-center modal-card mt3 ml2 mr2 pv3 grad-blue relative">
 											<div className="i pv3 ph4 tc white f5">
 												"The best uni everrrr! Super international! The place to go if you wanna get turnt!
 											</div>
@@ -218,8 +246,8 @@ class Modal extends React.Component {
 										</div>
 									</div>
 								</div>
-							</div>					
-						</div>
+							</TabPanel>				
+						</Tabs>
 						<div className="dn flex-l controls absolute f1">
 							<div className="flex left z-0">
 								<i className="fa fa-angle-left z-1" aria-hidden="true" onClick={this.props._handleModalLeftClick}></i>
@@ -283,10 +311,6 @@ class Modal extends React.Component {
 			    		height: 0;
 			    		margin-right: 5px;
 			    		width: 0;
-			    	}
-			    	.active {
-			    		border-color: #F44A4A;
-			    		color: #F44A4A;
 			    	}
 			    	.bg-oj {
 			    		background-color: #ED6863;

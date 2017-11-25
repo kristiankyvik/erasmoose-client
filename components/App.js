@@ -76,6 +76,13 @@ export default ({ children }) => (
         max-width: 925px;
       }
 
+      .no-pad ul{
+        padding: 0!important;
+      }
+      .active {
+        border-color: #F44A4A;
+        color: #F44A4A;
+      }
       .btn-new {
         display: inline-block;
         cursor: pointer;
