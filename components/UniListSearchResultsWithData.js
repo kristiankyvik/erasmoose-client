@@ -14,16 +14,46 @@ const allUnis = gql`
       country
       city_name
       city_id
-      int_orientation
-      difficulty
-      weekly_hours
-      fees
-      uni_rating
-      opportunities
-      openness
-      clubs
-      party
-      female_percentage
+      int_orientation {
+        value
+        count
+      }
+      difficulty {
+        value
+        count
+      }
+      weekly_hours {
+        value
+        count
+      }
+      fees {
+        value
+        count
+      }
+      uni_rating {
+        value
+        count
+      }
+      opportunities {
+        value
+        count
+      }
+      openness {
+        value
+        count
+      }
+      clubs {
+        value
+        count
+      }
+      party {
+        value
+        count
+      }
+      female_percentage {
+        value
+        count
+      }
       reviews_count
       languages {
         name
@@ -47,22 +77,64 @@ const allUnis = gql`
         count
       }
       activities
-      travel_options
-      city_rating
-      culture
-      rent_cost
-      beer_cost
-      coffee_cost
-      kebab_cost
-      monthly_cost
-      culture
+      travel_options{
+        value
+        count
+      }
+      city_rating{
+        value
+        count
+      }
+      culture{
+        value
+        count
+      }
+      rent_cost{
+        value
+        count
+      }
+      beer_cost{
+        value
+        count
+      }
+      coffee_cost{
+        value
+        count
+      }
+      kebab_cost{
+        value
+        count
+      }
+      monthly_cost{
+        value
+        count
+      }
+      culture{
+        value
+        count
+      }
       if_you_like
       reviews_count
-      danceclub_cost
-      student_friendliness
-      nightlife
-      gastronomy
-      sports
+      danceclub_cost{
+        value
+        count
+      }
+      student_friendliness{
+        value
+        count
+      }
+      nightlife{
+        value
+        count
+      }
+      gastronomy{
+        value
+        count
+      }
+      sports{
+        value
+        count
+      }
       leisure
     },
   }

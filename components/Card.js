@@ -1,5 +1,6 @@
 import { Line, Circle } from 'rc-progress';
 import Img from 'react-image'
+const _ = require('lodash'); //get lodash library
 
 const UniLogoFallback = (
 	<div 
@@ -27,7 +28,10 @@ export default class Card extends React.Component {
 	  super(props);
 	}
 	render() {
-		const {uni} = this.props;
+		const { uni, city} = this.props;
+		console.log("Look",uni.uni_rating.value);
+		console.log("Look2",city);
+		const overallRating = (_.get(uni,'uni_rating.value',0) + _.get(city,'city_rating.value',0)) / 2;
 		return (
 			<div 
 				className="ma3 shadow-4 bg-white flex flex-column tl ur-card relative white animated-background" 
@@ -63,7 +67,7 @@ export default class Card extends React.Component {
 				    	className="b tl f7 "
 				    >
 		      		<div className="star-ratings-css">
-		  	    	  <div className="star-ratings-css-top" style={{width: `${setProgProp(uni.uni_rating)}%` }}>
+								<div className="star-ratings-css-top" style={{ width: `${setProgProp(overallRating)}%` }}>
 		  	    	  	<span>★</span>
 		  	    	  	<span>★</span>
 		  	    	  	<span>★</span>
@@ -77,7 +81,7 @@ export default class Card extends React.Component {
 		  		    	  <span>★</span>
 		  		    	  <span>★</span>
 		  	    		</div>
-			  	    	<span className="score absolute">({uni.reviews_count})</span>
+								<span className="score absolute">({_.get(uni,'uni_rating.count',0)})</span>
 		  	    	</div>
 				    </div>
 				    <div 
@@ -91,12 +95,12 @@ export default class Card extends React.Component {
 				<div className="flex-column pt1 dn card-back absolute z-1">
 					<div className="pv2 ph4 flex flex-column items-center">
 						<div className="progress-wrapper tc pb2">
-							<span className='progress-title f4 b'>{`${setProgProp(uni.uni_rating)}/100`}</span>
-							<Circle className="w-60 pv2 m0a" percent={setProgProp(uni.uni_rating)} strokeWidth="5
+							<span className='progress-title f4 b'>{`${setProgProp(overallRating)}/100`}</span>
+							<Circle className="w-60 pv2 m0a" percent={setProgProp(overallRating)} strokeWidth="5
 							" trailWidth="5" strokeColor="#F44A4A" />
 						</div>
 						<div className="b f4">
-							{uni.reviews_count ? uni.reviews_count + " Reviews" : " No Reviews" } 
+							{_.get(uni, 'uni_rating.count', 0) ? _.get(uni, 'uni_rating.count', 0) + " Reviews" : " No Reviews" } 
 						</div>
 					</div>
 				</div>
