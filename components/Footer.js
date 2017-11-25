@@ -11,7 +11,7 @@ export default () => (
 		  		<span className="b f6">React, Next.js, Graphql</span>
 	  		</div>
 	  	</div>
-	  	<div className="flex items-center ph4">
+	  	<div className="flex items-center ph2 ph4-l">
 	  		<div className="tc">
 		  		Made with <i className="fa fa-heart pink" aria-hidden="true"></i> in Aachen, Germany
 	  		</div>

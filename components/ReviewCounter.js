@@ -3,7 +3,7 @@ import { gql, graphql } from 'react-apollo'
 
 function countReviews(data) {
   return (
-    <div className="flex pr4 flex-column pl5">
+    <div className="flex pr4 flex-column ph3 pl5-l">
       <div className="flex items-center f6 b pb1">
         METRICS:
       </div>
