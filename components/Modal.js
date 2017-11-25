@@ -112,34 +112,34 @@ class Modal extends React.Component {
 									<div className="flex flex-column flex-row-l black">
 										<div className="flex flex-1 flex-column justify-center modal-card mt3 mr3 pv3 ph3">
 											<div className="f4 b circle flex pb4">
-												<span className='inside-circle'>{`${setProgProp(uni.uni_rating)}/100`}</span>
-												<Circle className="pv2 mr3 w-100" percent={setProgProp(uni.uni_rating)} strokeWidth="5
+												<span className='inside-circle'>{`${setProgProp(uni.uni_rating.value)}/100`}</span>
+												<Circle className="pv2 mr3 w-100" percent={setProgProp(uni.uni_rating.value)} strokeWidth="5
 													" trailWidth="5" strokeColor="#F44A4A" />
 											</div>
 											<div className="f5 pv1">Country: <span className="b">{uni.country}</span></div>
 											<div className="f5 pv1">Ranking (Int/Nat): <span className="b">Coming soon</span></div>
 											<div className="f5 pv1">Flagship Areas: <span className="b">{getTopProps(uni.main_disciplines)}</span></div>
 											<div className="f5 pv1">Languages: <span className="b">{getTopProps(uni.languages)}</span></div>
-											<div className="f5 pt2">Tuition Fees: <span className="b">{uni.fees ? round(uni.fees) + " €" : "coming soon"}</span> </div>
-											<div className="f5 pt2">Weekly Hours of Work: <span className="b">{uni.weekly_hours ? round(uni.weekly_hours) + " hours" : "coming soon"}</span> </div>
+											<div className="f5 pt2">Tuition Fees: <span className="b">{uni.fees ? round(uni.fees.value) + " €" : "coming soon"}</span> </div>
+											<div className="f5 pt2">Weekly Hours of Work: <span className="b">{uni.weekly_hours ? round(uni.weekly_hours.value) + " hours" : "coming soon"}</span> </div>
 										</div>
 										<div className="flex flex-1 flex-column justify-end modal-card mt3 mr3 pv3 ph3">
 											<div className="f5 pt2">Difficulty: </div>
-											<Line className="flex pv1" percent={setProgProp(uni.difficulty)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv1" percent={setProgProp(uni.difficulty.value)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">International Orientation: </div>
-											<Line className="flex pv1" percent={setProgProp(uni.int_orientation)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv1" percent={setProgProp(uni.int_orientation.value)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Openness: </div>
-											<Line className="flex pv1" percent={setProgProp(uni.openness)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv1" percent={setProgProp(uni.openness.value)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Gender Ratio (Women/Men): </div>
-											<Line className="flex pv1" percent={uni.female_percentage} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv1" percent={uni.female_percentage.value} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Research Opportunities: </div>
-											<Line className="flex pv1" percent={setProgProp(uni.opportunities)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv1" percent={setProgProp(uni.opportunities.value)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Job/Internship Opportunities: </div>
-											<Line className="flex pv1" percent={setProgProp(uni.opportunities)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv1" percent={setProgProp(uni.opportunities.value)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Organization and Student Clubs: </div>
-											<Line className="flex pv1" percent={setProgProp(uni.clubs)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv1" percent={setProgProp(uni.clubs.value)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Student Parties: </div>
-											<Line className="flex pv1" percent={setProgProp(uni.party)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv1" percent={setProgProp(uni.party.value)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 										</div>
 									</div>
 									{/* City */}
@@ -148,41 +148,41 @@ class Modal extends React.Component {
 									<div className="flex flex-column flex-row-l black">
 										<div className="flex flex-1 flex-column justify-center modal-card mt3 mr2 pv3 ph3">
 											<div className="f4 b circle pb4 flex">
-												<span className='inside-circle'>{`${setProgProp(city.city_rating)}/100`}</span>
-												<Circle className="pv2 mr3 w-100" percent={setProgProp(city.city_rating)} strokeWidth="5
+												<span className='inside-circle'>{`${setProgProp(city.city_rating.value)}/100`}</span>
+												<Circle className="pv2 mr3 w-100" percent={setProgProp(city.city_rating.value)} strokeWidth="5
 													" trailWidth="5" strokeColor="#F44A4A" />
 											</div>
 											<div className="f5 pv1">Size: <span className="b">coming soon</span></div>
 											<div className="f5 pv1">Weather (Winter/Spring): <span className="b">coming soon</span></div>
 											<div className="f5 pv1">Sunny Days: <span className="b">coming soon</span></div>
 											<div className="f5 pt2">Student Friendliness: </div>
-											<Line className="flex pv1" percent={setProgProp(city.culture)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv1" percent={setProgProp(city.student_friendliness.value)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Travel Options: </div>
-											<Line className="flex pv1" percent={setProgProp(city.travel_options)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv1" percent={setProgProp(city.travel_options.value)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Cultural Offering: </div>
-											<Line className="flex pv1" percent={setProgProp(city.culture)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv1" percent={setProgProp(city.culture.value)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Nightlife: </div>
-											<Line className="flex pv1" percent={setProgProp(city.nightlife)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv1" percent={setProgProp(city.nightlife.value)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Gastronomy: </div>
-											<Line className="flex pv1" percent={setProgProp(city.gastronomy)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv1" percent={setProgProp(city.gastronomy.value)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Sports: </div>
-											<Line className="flex pv1" percent={setProgProp(city.sports)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv1" percent={setProgProp(city.sports.value)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 										</div>
 										<div className="flex flex-1 flex-column justify-end modal-card mt3 mr2 pv3 ph3">
 											{/* Cost */}
 											{/* ---------------------------------- */}
 											<div className="f5 b pt4">Student Cost of life</div>
-											<div className="f5 pv1">Monthly Cost: <span className="b">{round(city.monthly_cost)} €/m</span></div>
+											<div className="f5 pv1">Monthly Cost: <span className="b">{round(city.monthly_cost.value)} €/m</span></div>
 											<div className="f5 pt2">Rent: </div>
-											<Line className="flex pv2" percent={setCostProgProp(city.rent_cost, 800)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv2" percent={setCostProgProp(city.rent_cost.value, 800)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Beer in a Pub: </div>
-											<Line className="flex pv2" percent={setCostProgProp(city.beer_cost, 8)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv2" percent={setCostProgProp(city.beer_cost.value, 8)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Coffee: </div>
-											<Line className="flex pv2" percent={setCostProgProp(city.coffee_cost, 8)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv2" percent={setCostProgProp(city.coffee_cost.value, 8)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Kebab: </div>
-											<Line className="flex pv2" percent={setCostProgProp(city.kebab_cost, 10)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv2" percent={setCostProgProp(city.kebab_cost.value, 10)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 											<div className="f5 pt2">Entry fee Club: </div>
-											<Line className="flex pv2" percent={setCostProgProp(city.danceclub_cost, 30)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
+											<Line className="flex pv2" percent={setCostProgProp(city.danceclub_cost.value, 30)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 										</div>
 									</div>
 
