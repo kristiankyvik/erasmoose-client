@@ -65,7 +65,7 @@ class FeedbackWidget extends React.Component {
           .feedbackWidgetModal {
             bottom: 62px;
             max-width: 480px;
-            right: 19px;
+            right: 15px;
             bottom: 84px;
             height: auto;
             padding: 32px 34px;

@@ -32,13 +32,13 @@ export default class Card extends React.Component {
 		const overallRating = _.get(uni,'overall_rating',0);
 		return (
 			<div 
-				className="ma3 shadow-4 bg-white flex flex-column tl ur-card relative white animated-background" 
+				className="ma2 shadow-4 bg-white flex flex-column tl ur-card relative white animated-background" 
 				style={{ "backgroundImage": `url("https://s3.eu-central-1.amazonaws.com/erasmoose/${uni._id}.jpg")` }} 
 				data-index={this.props.index}
 				onClick={this.props._handleCardClick}
 			>
-				<div className="flex-column flex card-front pt3 flex-grow-1">
-				  <div className="flex flex-column text relative pa2 ph3 justify-between">
+				<div className="flex-column flex card-front pt2 flex-grow-1">
+				  <div className="flex flex-column text relative pa2 ph2 justify-between">
 				  	<div className="flex flex-column ph2">
 				  		<Img 
 				  			src={[
@@ -46,20 +46,20 @@ export default class Card extends React.Component {
 				  		    `https://ui-avatars.com/api/?name=${uni.name.split(" ").join("+")}&color=fff&background=F44A4A&length=2&font-size=0.43`
 				  		 ]}
 				  		 loader={UniLogoFallback}
-				  		 style={{ width: "45px", borderRadius: "50%" }}
+				  		 style={{ width: "40px", borderRadius: "50%" }}
 				  		 />
 					    <div className="pv1 ttu white dn">
 					    	<span className="tag b tagged mr1"> tag1 </span><span className="tag b tagged mr1"> tag2 </span>
 					    </div>
-					    <div className="pt3 f2 fw7 text-shadow">
+					    <div className="pt3 f4 f3-l fw7 text-shadow">
 					      {uni.name}
 					    </div>
 				  	</div>
-				    <div className="f5 pt1 ph2 pb1 b text-shadow">
+				    <div className="f6 f5-l pt1 ph2 pb1 b text-shadow">
 				      <i className="fa fa-map-marker trans-gray" aria-hidden="true"></i> {uni.city_name}
 				    </div>
 				  </div>
-				  <div className="ph3 pv2 flex items-end bottom items-center">
+				  <div className="ph2 pv2 flex items-end bottom items-center">
 				    <div 
 				    	style={{ "flex": 1 }} 
 				    	className="b tl f7 "
@@ -84,7 +84,7 @@ export default class Card extends React.Component {
 				    </div>
 				    <div 
 				    	style={{ "flex": 1 }} 
-				      className="b tr f6 flex justify-end"
+				      className="b tr f6 flex justify-end z-1"
 				     >
 				     	<i className="fa fa-hashtag mr1" aria-hidden="true"></i>{this.props.index}
 				   </div>
@@ -93,11 +93,11 @@ export default class Card extends React.Component {
 				<div className="flex-column pt1 dn card-back absolute z-1">
 					<div className="pv2 ph4 flex flex-column items-center">
 						<div className="progress-wrapper tc pb2">
-							<span className='progress-title f4 b'>{`${setProgProp(overallRating)}/100`}</span>
+							<span className='progress-title f5 b'>{`${setProgProp(overallRating)}/100`}</span>
 							<Circle className="w-60 pv2 m0a" percent={setProgProp(overallRating)} strokeWidth="5
 							" trailWidth="5" strokeColor="#F44A4A" />
 						</div>
-						<div className="b f4">
+						<div className="b f5">
 							{_.get(uni, 'uni_rating.count', 0) ? _.get(uni, 'uni_rating.count', 0) + " Reviews" : " No Reviews" } 
 						</div>
 					</div>
@@ -123,15 +123,15 @@ export default class Card extends React.Component {
 			    	.score {
 			    		top: 0;
 			    		right: -20px;
-			    		color: #F44A4A;
+			    		color: #fff;
 			    	}
 			    	.tag {
 			    		padding: 2px 5px;
 			    		font-size: 8px;
 			    	}
 			      .ur-card {
-			      	min-height: 315px;
-			        width: 285px;
+			      	min-height: 215px;
+			        width: 215px;
 			        background-size: cover;
 			        -webkit-font-smoothing: antialiased;
 			        font-smoothing: antialiased;
