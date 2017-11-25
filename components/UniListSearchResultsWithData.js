@@ -14,6 +14,7 @@ const allUnis = gql`
       country
       city_name
       city_id
+      overall_rating
       int_orientation {
         value
         count

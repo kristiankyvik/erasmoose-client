@@ -28,10 +28,8 @@ export default class Card extends React.Component {
 	  super(props);
 	}
 	render() {
-		const { uni, city} = this.props;
-		console.log("Look",uni.uni_rating.value);
-		console.log("Look2",city);
-		const overallRating = (_.get(uni,'uni_rating.value',0) + _.get(city,'city_rating.value',0)) / 2;
+		const { uni} = this.props;
+		const overallRating = _.get(uni,'overall_rating',0);
 		return (
 			<div 
 				className="ma3 shadow-4 bg-white flex flex-column tl ur-card relative white animated-background" 

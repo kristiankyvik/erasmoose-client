@@ -28,7 +28,8 @@ class UniListResults extends React.Component {
 
     render() {
 
-        const { loading, index, error, allUnis, _allUnisMeta, loadMorePosts, fetchMore, _handleCardClick, _handleFormClick, getCity} = this.props;
+        const { loading, index, error, allUnis, _allUnisMeta, loadMorePosts, fetchMore, _handleCardClick, _handleFormClick, city} = this.props;
+        console.log("Yo look at the city", this.props);
         if (error) return <ErrorMessage message='Error loading entries.' />
         if (!allUnis && loading) return <Loader />;
         const areMorePosts = (allUnis.length < _allUnisMeta.count) && (allUnis.length >= 33);
@@ -41,7 +42,6 @@ class UniListResults extends React.Component {
                                 <Card
                                     key={uni.name}
                                     uni={uni}
-                                    city={getCity}
                                     index={index + 1}
                                     _handleCardClick={(evt) => _handleCardClick(evt, index, allUnis[index])}
                                 />
