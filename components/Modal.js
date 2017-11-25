@@ -42,6 +42,7 @@ class Modal extends React.Component {
 
 	componentDidMount() {
 		document.addEventListener('mousedown', this._handleClick, false);
+		document.body.classList.toggle('modalOpen', true);
 	}
 
 	componentWillUnmount() {
@@ -56,10 +57,6 @@ class Modal extends React.Component {
 
 	render() {
 		console.log("MODAL PROPS", this.props);
-
-		if (!this.props.showModal || !this.props.uni || !this.props.city ) {
-			return null;
-		}
 
 		const { city, uni } = this.props;
 
@@ -87,8 +84,8 @@ class Modal extends React.Component {
 							style={{ "backgroundImage": `url("https://s3.eu-central-1.amazonaws.com/erasmoose/${this.props.uni._id}.jpg")` }} 
 						>	
 							<div className="absolute z-1 bottom-2 white tc left-0 right-0">
-								<div className="b pt3 f3 f2-l">{this.props.uni.name}</div>
-								<div className="f4 f3-l pb3 i playfair">{this.props.uni.website}</div>
+								<div className="b pt3 f3 f2-l text-shadow">{this.props.uni.name}</div>
+								<div className="f4 f3-l pb3 i playfair text-shadow">{this.props.uni.website}</div>
 								<TypeformButton id={this.props.uni._id} cityid={this.props.uni.city_id} className="ma2 mh4 ur-btn tc flex justify-center content-center items-center" />
 							</div>	
 						</div>

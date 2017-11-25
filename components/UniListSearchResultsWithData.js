@@ -1,7 +1,7 @@
 import { gql, graphql } from 'react-apollo'
 import UniListSearchResults from './UniListSearchResults'
 
-const POSTS_PER_PAGE = 33;
+const POSTS_PER_PAGE = 52;
 
 const allUnis = gql`
   query allUnis($first: Int!, $skip: Int!, $searchKey: String, $city_id: String!) {

@@ -33,7 +33,6 @@ class UniListSearchResults extends React.Component {
   _handleCardClick = (e, index, uni) => {
     console.log("cardCLick", e, index, uni);
     this.props.setCityId(uni.city_id);
-    document.body.classList.toggle('modalOpen', true);
     this.setState({
       showModal: true,
       index,
@@ -113,17 +112,19 @@ class UniListSearchResults extends React.Component {
             _handleCardClick={this._handleCardClick}
            />
         </div>
-        <Modal
-          ref={(el) => { this.modal = el; }}
-          showModal={this.state.showModal}
-          uni={this.state.uni}
-          city={this.props.getCity}
-          _handleModalRightClick={this._handleModalRightClick}
-          _handleModalLeftClick={this._handleModalLeftClick}
-          _handleModalCloseClick={this._handleModalCloseClick}
-          _handleGlobalClick={this._handleGlobalClick}
-          _handleCardClick={this._handleCardClick}
-        />
+        { 
+          (!this.state.showModal || !this.state.uni || !this.props.getCity ) ? null : (<Modal
+              ref={(el) => { this.modal = el; }}
+              showModal={this.state.showModal}
+              uni={this.state.uni}
+              city={this.props.getCity}
+              _handleModalRightClick={this._handleModalRightClick}
+              _handleModalLeftClick={this._handleModalLeftClick}
+              _handleModalCloseClick={this._handleModalCloseClick}
+              _handleGlobalClick={this._handleGlobalClick}
+              _handleCardClick={this._handleCardClick}
+            />)
+        }
       </div>
     )
   }
