@@ -2,6 +2,7 @@ import React from 'react'
 import { gql, graphql } from 'react-apollo'
 
 function countReviews(data) {
+  if (data.loading) return null;
   return (
     <div className="flex pr4 flex-column ph3 pl5-l">
       <div className="flex items-center f6 b pb1">

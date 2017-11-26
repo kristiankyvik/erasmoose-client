@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom';
 import { Line, Circle } from 'rc-progress';
 import TypeformButton from '../components/TypeformButton'
+import Reviews from '../components/Reviews'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 const _ = require('lodash'); //get lodash library
@@ -86,7 +87,7 @@ class Modal extends React.Component {
 						</div>
 						<Tabs className="flex flex-column tl f7 no-pad" selectedTabClassName="active">
 							<TabList className="flex">
-								<Tab className="flex justify-center flex-auto f5 b z-1 pv3 bw1 b--light-gray pointer bb ttu moon-gray">Overview</Tab>
+								<Tab className="flex justify-center flex-auto f5 b z-1 pv3 bw1 b--light-gray pointer bb ttu moon-gray">University</Tab>
 								<Tab className="flex justify-center flex-auto f5 b z-1 pv3 bw1 b--light-gray pointer bb ttu moon-gray">City</Tab>
 								<Tab disabled className="flex justify-center flex-auto f5 b z-1 pv3 bw1 b--light-gray pointer bb ttu moon-gray">Activities</Tab>
 							</TabList>
@@ -129,40 +130,7 @@ class Modal extends React.Component {
 											<Line className="flex pv1" percent={setProgProp(_.get(uni,'party.value',0))} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 										</div>
 									</div>
-
-									<div className="black pb0 pt3">
-										<div className="f3 b">Latest Reviews</div>
-										<div className="f5 gray">The main metrics and such</div>
-									</div>
-									<div className="flex black">
-										<div className="flex flex-auto review flex-column justify-center modal-card mt3 mr2 pv3 grad-green relative">
-											<div className="i pv3 ph4 tc white f5">
-												"The best uni everrrr! Super international! The place to go if you wanna get turnt!
-											</div>
-											<div className="b pv3 ph4 tc white f6">
-												4 hours ago
-											</div>
-											<button className="absolute bottom-1 right-1 upvote pointer">42</button>
-										</div>
-										<div className="flex flex-auto review flex-column justify-center modal-card mt3 ml2 mr2 pv3 grad-blue relative">
-											<div className="i pv3 ph4 tc white f5">
-												"The best uni everrrr! Super international! The place to go if you wanna get turnt!
-											</div>
-											<div className="b pv3 ph4 tc white f6">
-												4 hours ago
-											</div>
-											<button className="absolute bottom-1 right-1 upvote pointer">42</button>
-										</div>
-										<div className="flex flex-auto review flex-column justify-center modal-card mt3 ml2 pv3 grad-purple relative">
-											<div className="i pv3 ph4 tc white f5">
-												"The best uni everrrr! Super international! The place to go if you wanna get turnt!
-											</div>
-											<div className="b pv3 ph4 tc white f6">
-												4 hours ago
-											</div>
-											<button className="absolute bottom-1 right-1 upvote pointer">42</button>
-										</div>
-									</div>
+									<Reviews university_id={uni._id}/>
 								</div>
 							</TabPanel>	
 							<TabPanel className="flex flex-auto">
@@ -211,40 +179,7 @@ class Modal extends React.Component {
 											<Line className="flex pv2" percent={setCostProgProp(_.get(city,'danceclub_cost.value',0), 30)} strokeWidth="3" trailWidth="3" strokeColor="#22BAD9" />
 										</div>
 									</div>
-
-									<div className="black pb0 pt3">
-										<div className="f3 b">Latest Reviews</div>
-										<div className="f5 gray">The main metrics and such</div>
-									</div>
-									<div className="flex black">
-										<div className="flex flex-auto review flex-column justify-center modal-card mt3 mr2 pv3 grad-green relative">
-											<div className="i pv3 ph4 tc white f5">
-												"The best uni everrrr! Super international! The place to go if you wanna get turnt!
-											</div>
-											<div className="b pv3 ph4 tc white f6">
-												4 hours ago
-											</div>
-											<button className="absolute bottom-1 right-1 upvote pointer">42</button>
-										</div>
-										<div className="flex flex-auto review flex-column justify-center modal-card mt3 ml2 mr2 pv3 grad-blue relative">
-											<div className="i pv3 ph4 tc white f5">
-												"The best uni everrrr! Super international! The place to go if you wanna get turnt!
-											</div>
-											<div className="b pv3 ph4 tc white f6">
-												4 hours ago
-											</div>
-											<button className="absolute bottom-1 right-1 upvote pointer">42</button>
-										</div>
-										<div className="flex flex-auto review flex-column justify-center modal-card mt3 ml2 pv3 grad-purple relative">
-											<div className="i pv3 ph4 tc white f5">
-												"The best uni everrrr! Super international! The place to go if you wanna get turnt!
-											</div>
-											<div className="b pv3 ph4 tc white f6">
-												4 hours ago
-											</div>
-											<button className="absolute bottom-1 right-1 upvote pointer">42</button>
-										</div>
-									</div>
+									<Reviews city_id={city._id}/>
 								</div>
 							</TabPanel>				
 						</Tabs>
@@ -272,25 +207,7 @@ class Modal extends React.Component {
 			    	  left: 50%;
 			    	  transform: translate(-50%, -50%);
 			    	}
-			    	.review {
-			    		width: 275px;
-			    		height: 250px;
-						}
-			    	.grad-blue {
-			    		background-image: linear-gradient( 135deg, #90F7EC 10%, #32CCBC 100%);
-			    	}
-			    	.grad-pink {
-			    		background-image: linear-gradient( 135deg, #FFF6B7 10%, #F6416C 100%);
-			    	}
-			    	.grad-purple {
-			    		background-image: linear-gradient( 135deg, #CE9FFC 10%, #7367F0 100%);
-			    	}
-			    	.grad-green {
-			    		background-image: linear-gradient( 135deg, #ABDCFF 10%, #0396FF 100%);
-			    	}
-			    	.grad-orange {
-				    	background-image: linear-gradient( 135deg, #FCCF31 10%, #F55555 100%);
-			    	}
+
 			    	.blue {
 			    		color: #F44A4A;
 			    	}
