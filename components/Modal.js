@@ -180,7 +180,9 @@ class Modal extends React.Component {
 									</div>
 									<Reviews city_id={city._id}/>
 								</div>
-							</TabPanel>				
+							</TabPanel>
+							<TabPanel>		
+							</TabPanel>						
 						</Tabs>
 						<div className="dn flex-l controls absolute f1">
 							<div className="flex left z-0">
