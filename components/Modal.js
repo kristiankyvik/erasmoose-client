@@ -1,9 +1,8 @@
 import ReactDOM from 'react-dom';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { Line, Circle } from 'rc-progress';
 import TypeformButton from '../components/TypeformButton'
 import Reviews from '../components/Reviews'
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-
 const _ = require('lodash'); //get lodash library
 
 
