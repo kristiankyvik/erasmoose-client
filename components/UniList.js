@@ -29,7 +29,7 @@ export default class UniList extends React.Component {
 
   render() {
     return (
-      <section className="tc">
+      <section className="tc pt5">
         <UniListSearchResultsWithData
           liveFilter={this.props.liveFilter} 
           query={this.props.query}

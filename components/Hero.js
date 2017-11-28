@@ -11,18 +11,18 @@ export default ({ pathname }) => (
           </span>
         </a>
       </Link>
-      <Link prefetch href='/search'>
+      <Link prefetch href='/search' className=''>
         <a className={pathname === '/search' && 'is-active'}>Search</a>
       </Link>
     </div>
     <div className={`cover bg-left bg-center-l ${pathname === '/' ? "" : "dn"}`}>
-      <div className="ph3 pv4 w-60-l m0a">
-        <h1 className="f2 f1-l fw2 black-90 mb0 lh-title">
+      <div className="ph1 pv4 w-80-l m0a">
+        <h1 className="fw2 hero-text mb0 lh-title">
           Erasmus universities.
           <div className="fw6">
             Ranked.
           </div></h1>
-        <h2 className="fw1 f3 black-80 mt3 mb4"> Ranking of european universities.</h2>
+        <h2 className="fw5 lblue f3 black-80 mt3 mb4"> Ranking of european universities.</h2>
         {/* <div className="">
           <TypeformButton/>
         </div> */}
@@ -30,14 +30,22 @@ export default ({ pathname }) => (
     </div>
 
     <style jsx>{`
+      .hero-text {
+        font-size: 3em;
+      }
       .m0a {
         margin: 0 auto;
       }
       .hero {
         padding: 25px 50px;
+        color: #003945;
+        background-color: #fff;
       }
       header {
         margin-bottom: 25px;
+      }
+      .lblue {
+        color: #1EC4BC;
       }
       a {
         margin-right: 15px;
@@ -49,12 +57,6 @@ export default ({ pathname }) => (
       }
       .is-active {
         color: black;
-      }
-      .grad-blue {
-        background-image: linear-gradient( 135deg, #90F7EC 10%, #32CCBC 100%);
-      }
-      .grad-pink {
-        background-image: linear-gradient( to bottom, rgb(34, 186, 217) 10%, #F3F6FA 100%);
       }
     `}</style>
   </div>

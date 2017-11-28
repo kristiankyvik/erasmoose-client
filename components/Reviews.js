@@ -13,10 +13,10 @@ function reviews(data) {
 	    	{
 	    		data.getReviews.map((review) => (
 	    			<div className="flex flex-auto review flex-column justify-center modal-card mt3 mr2 pv3 grad-green relative pt3" key={review._id}>
-			    		<div className="i pv3 ph4 tc white f5 review-text">
+			    		<div className="i pv3 ph4 tc f5 review-text">
 			    			{review.uni_review}
 			    		</div>
-			    		<div className="b pv3 ph4 tc white f6">
+			    		<div className="pv3 ph4 tc f6">
 			    			{review.date_submit}
 			    		</div>
 			    		<button className="absolute bottom-1 right-1 upvote pointer">42</button>
@@ -28,6 +28,9 @@ function reviews(data) {
 			    	.review {
 			    		width: 275px;
 			    		height: 250px;
+			    		border: 1px solid #ededee;
+			    		color: #4f5057;
+			    		max-width: 50%;
 						}
 						.review-text {
 							height: 210px;
@@ -41,21 +44,21 @@ function reviews(data) {
 						::-webkit-scrollbar-thumb {
 						    background: #FF0000;
 						}
-			    	.grad-blue {
-			    		background-image: linear-gradient( 135deg, #90F7EC 10%, #32CCBC 100%);
-			    	}
-			    	.grad-pink {
-			    		background-image: linear-gradient( 135deg, #FFF6B7 10%, #F6416C 100%);
-			    	}
-			    	.grad-purple {
-			    		background-image: linear-gradient( 135deg, #CE9FFC 10%, #7367F0 100%);
-			    	}
-			    	.grad-green {
-			    		background-image: linear-gradient( 135deg, #ABDCFF 10%, #0396FF 100%);
-			    	}
-			    	.grad-orange {
-				    	background-image: linear-gradient( 135deg, #FCCF31 10%, #F55555 100%);
-			    	}
+			    	// .grad-blue {
+			    	// 	background-image: linear-gradient( 135deg, #90F7EC 10%, #32CCBC 100%);
+			    	// }
+			    	// .grad-pink {
+			    	// 	background-image: linear-gradient( 135deg, #FFF6B7 10%, #F6416C 100%);
+			    	// }
+			    	// .grad-purple {
+			    	// 	background-image: linear-gradient( 135deg, #CE9FFC 10%, #7367F0 100%);
+			    	// }
+			    	// .grad-green {
+			    	// 	background-image: linear-gradient( 135deg, #ABDCFF 10%, #0396FF 100%);
+			    	// }
+			    	// .grad-orange {
+				    // 	background-image: linear-gradient( 135deg, #FCCF31 10%, #F55555 100%);
+			    	// }
 	  	    `}
 	  	  </style>
 	    </div>
