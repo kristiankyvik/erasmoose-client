@@ -9,10 +9,10 @@ function reviews(data) {
 	  		<div className="f3 b">Latest Reviews</div>
 	  		<div className="f5 gray">The main metrics and such</div>
 	  	</div>
-
+	  	<div className="flex black">
 	    	{
 	    		data.loading ? (
-	    			<div className="flex black">
+	    			<div className="flex">
 		    			<div className="review modal-card animated-background relative">
 				    		<div className="absolute w1 top-0 bottom-0 background-masker"></div>
 				    		<div className="absolute w1 top-0 bottom-0 right-0 background-masker"></div>
@@ -39,7 +39,6 @@ function reviews(data) {
 			    		</div>
 	    			</div>
 	    		) : data.getReviews.map((review) => (
-	    			<div className="flex black">
 		    			<div className="flex flex-auto review flex-column justify-center modal-card mt3 mr2 pv3 grad-green relative pt3" key={review._id}>
 				    		<div className="i pv3 ph4 f5 review-text">
 				    			{data.university_id ? review.uni_review : review.city_review}
@@ -48,10 +47,10 @@ function reviews(data) {
 				    			{review.date_submit}
 				    		</div>
 				    		<button className="absolute bottom-1 right-1 bluish pointer">42</button>
-			    		</div>
-	    			</div>)
+			    		</div>)
 		    	)
 	    	}
+	    	</div>
 	  	  <style jsx>
 	  			{`
 			    	.review {
