@@ -148,7 +148,7 @@ class Modal extends React.Component {
 									{/* ---------------------------------- */}
 									<div className="f3 b black pt3 tc tl-l">{city.name} City Metrics</div>
 									<div className="flex flex-column flex-row-l black">
-										<div className="flex flex-1 flex-column justify-center modal-card mt3 mr2 pv3 ph3">
+										<div className="flex flex-1 flex-column justify-end modal-card mt3 mr2 pv3 ph3">
 											<div className="f4 b circle pb4 flex">
 												<span className='inside-circle'>{`${setProgProp(_.get(city,'city_rating.value',0))}/100`}</span>
 												<Circle className="pv2 mr3 w-100" percent={setProgProp(_.get(city,'city_rating.value',0))} strokeWidth="5
@@ -157,34 +157,21 @@ class Modal extends React.Component {
 											<div className="f5 pv1">Size: <span className="b">coming soon</span></div>
 											<div className="f5 pv1">Weather (Winter/Spring): <span className="b">coming soon</span></div>
 											<div className="f5 pv1">Sunny Days: <span className="b">coming soon</span></div>
-											<div className="f7 b pt2 ttu">Student Friendliness: </div>
-											<Line className="flex pv1" percent={setProgProp(_.get(city,'student_friendliness.value',0))} strokeWidth="3" trailWidth="3" strokeColor="#25d6c9" />
-											<div className="f7 b pt2 ttu">Travel Options: </div>
-											<Line className="flex pv1" percent={setProgProp(_.get(city,'travel_options.value',0))} strokeWidth="3" trailWidth="3" strokeColor="#25d6c9" />
-											<div className="f7 b pt2 ttu">Cultural Offering: </div>
-											<Line className="flex pv1" percent={setProgProp(_.get(city,'culture.value',0))} strokeWidth="3" trailWidth="3" strokeColor="#25d6c9" />
-											<div className="f7 b pt2 ttu">Nightlife: </div>
-											<Line className="flex pv1" percent={setProgProp(_.get(city,'nightlife.value',0))} strokeWidth="3" trailWidth="3" strokeColor="#25d6c9" />
-											<div className="f7 b pt2 ttu">Gastronomy: </div>
-											<Line className="flex pv1" percent={setProgProp(_.get(city,'gastronomy.value',0))} strokeWidth="3" trailWidth="3" strokeColor="#25d6c9" />
-											<div className="f7 b pt2 ttu">Sports: </div>
-											<Line className="flex pv1" percent={setProgProp(_.get(city,'sports.value',0))} strokeWidth="3" trailWidth="3" strokeColor="#25d6c9" />
+											<div className="f5 pv1 pb2">Monthly Cost: <span className="b">{round(_.get(city,'monthly_cost.value',0))} €/m</span></div>
+											<ProgressBar name="Student Friendliness" value={setProgProp(_.get(city,'student_friendliness.value',0))} icon="difficulty"/>
+											<ProgressBar name="Travel Options" value={setProgProp(_.get(city,'travel_options.value',0))} icon="plane"/>
+											<ProgressBar name="Cultural Offering" value={setProgProp(_.get(city,'culture.value',0))} icon="culture"/>
 										</div>
 										<div className="flex flex-1 flex-column justify-end modal-card mt3 mr2 pv3 ph3">
-											{/* Cost */}
-											{/* ---------------------------------- */}
+											<ProgressBar name="Nightlife" value={setProgProp(_.get(city,'nightlife.value',0))} icon="nightlife"/>
+											<ProgressBar name="Gastronomy" value={setProgProp(_.get(city,'gastronomy.value',0))} icon="gastronomy"/>
+											<ProgressBar name="Sports" value={setProgProp(_.get(city,'sports.value',0))} icon="sports"/>
 											<div className="f5 b pt4">Student Cost of life</div>
-											<div className="f5 pv1">Monthly Cost: <span className="b">{round(_.get(city,'monthly_cost.value',0))} €/m</span></div>
-											<div className="f7 b pt2 ttu">Rent: </div>
-											<Line className="flex pv2" percent={setCostProgProp(_.get(city,'rent_cost.value',0), 800)} strokeWidth="3" trailWidth="3" strokeColor="#25d6c9" />
-											<div className="f7 b pt2 ttu">Beer in a Pub: </div>
-											<Line className="flex pv2" percent={setCostProgProp(_.get(city,'beer_cost.value',0), 8)} strokeWidth="3" trailWidth="3" strokeColor="#25d6c9" />
-											<div className="f7 b pt2 ttu">Coffee: </div>
-											<Line className="flex pv2" percent={setCostProgProp(_.get(city,'coffee_cost.value',0), 8)} strokeWidth="3" trailWidth="3" strokeColor="#25d6c9" />
-											<div className="f7 b pt2 ttu">Kebab: </div>
-											<Line className="flex pv2" percent={setCostProgProp(_.get(city,'kebab_cost.value',0), 10)} strokeWidth="3" trailWidth="3" strokeColor="#25d6c9" />
-											<div className="f7 b pt2 ttu">Entry fee Club: </div>
-											<Line className="flex pv2" percent={setCostProgProp(_.get(city,'danceclub_cost.value',0), 30)} strokeWidth="3" trailWidth="3" strokeColor="#25d6c9" />
+											<ProgressBar name="Rent" cost={_.get(city,'rent_cost.value',0)} value={setCostProgProp(_.get(city,'rent_cost.value',0), 800)} icon="rent"/>
+											<ProgressBar name="Beer in a Pub" cost={_.get(city,'rent_cost.value',0)} value={setCostProgProp(_.get(city,'beer_cost.value',0), 10)} icon="beer"/>
+											<ProgressBar name="Coffee" cost={_.get(city,'rent_cost.value',0)} value={setCostProgProp(_.get(city,'coffee_cost.value',0), 10)} icon="cafe"/>
+											<ProgressBar name="Kebab" cost={_.get(city,'rent_cost.value',0)} value={setCostProgProp(_.get(city,'kebab_cost.value',0), 15)} icon="burger"/>
+											<ProgressBar name="Entry fee Club" cost={_.get(city,'rent_cost.value',0)} value={setCostProgProp(_.get(city,'danceclub_cost.value',0), 30)} icon="music"/>
 										</div>
 									</div>
 									<Reviews city_id={city._id}/>
