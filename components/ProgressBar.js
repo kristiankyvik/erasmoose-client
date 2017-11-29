@@ -13,7 +13,7 @@ export default ({ name, value, icon, cost }) => (
 					{name}:
 				</div>
 				<div className="flex">
-					{cost}{cost !== undefined ? "€" : "%" }
+					{cost !== undefined ? cost +  " €" : value + " %"}
 				</div>
 			</div>
 			<Line className="flex pv1" percent={value} strokeWidth="3" trailWidth="3" strokeColor="#25d6c9" />

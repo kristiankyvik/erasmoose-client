@@ -51,23 +51,14 @@ class Modal extends React.Component {
 		document.removeEventListener('mousedown', this._handleClick, false);
 	}
 
-	_handleTabClick = (i, e) => {
-		// this.setState({
-		// 	tabIndex: i
-		// });
+	_handleTabClick (i, li, e) {
+		const tabs = ["uni_id", "city_id"];
+		console.log(i, li, e);
 	}
 
 	render() {
-		console.log("MODAL PROPS", this.props);
-
 		const { city, uni } = this.props;
-
 		const i = this.state.tabIndex;
-		const addActive = (n) => { 
-			const ret = i === n ? "active" : "nothing";
-			return ret;
-		};
-
 	  return (
 			<div 
 				className={"backModal fixed z-1 flex content-center justify-center items-center"}
@@ -84,7 +75,7 @@ class Modal extends React.Component {
 								<TypeformButton id={this.props.uni._id} cityid={this.props.uni.city_id} className="ma2 mh4 ur-btn tc flex justify-center content-center items-center" />
 							</div>	
 						</div>
-						<Tabs className="flex flex-column tl f7 no-pad" selectedTabClassName="active">
+						<Tabs onSelect={(i, li, e) => this._handleTabClick(i, li, e)} className="flex flex-column tl f7 no-pad" selectedTabClassName="active">
 							<TabList className="flex">
 								<Tab className="flex justify-center flex-auto f5 b z-1 pv3 bw1 b--light-gray pointer bb ttu moon-gray">University</Tab>
 								<Tab className="flex justify-center flex-auto f5 b z-1 pv3 bw1 b--light-gray pointer bb ttu moon-gray">City</Tab>
@@ -131,7 +122,7 @@ class Modal extends React.Component {
 											<ProgressBar name="difficulty" value={setProgProp(_.get(uni,'difficulty.value',0))} icon="difficulty"/>
 											<ProgressBar name="International Orientation" value={setProgProp(_.get(uni,'int_orientation.value',0))} icon="globe"/>
 											<ProgressBar name="Openness" value={setProgProp(_.get(uni,'openness.value',0))} icon="open"/>
-											<ProgressBar name="Gender Ratio (Women/Men)" value={_.get(uni,'female_percentage.value',0)} icon="gender"/>
+											<ProgressBar name="Gender Ratio (Women/Men)" value={round(_.get(uni,'female_percentage.value',0))} icon="gender"/>
 											<ProgressBar name="Research Opportunities" value={setProgProp(_.get(uni,'opportunities.value',0))} icon="research"/>
 											<ProgressBar name="Job/Internship Opportunities" value={setProgProp(_.get(uni,'opportunities.value',0))} icon="job"/>
 											<ProgressBar name="Organizations and Student Clubs" value={setProgProp(_.get(uni,'clubs.value',0))} icon="club"/>
@@ -157,7 +148,7 @@ class Modal extends React.Component {
 											<div className="f5 pv1">Size: <span className="b">coming soon</span></div>
 											<div className="f5 pv1">Weather (Winter/Spring): <span className="b">coming soon</span></div>
 											<div className="f5 pv1">Sunny Days: <span className="b">coming soon</span></div>
-											<div className="f5 pv1 pb2">Monthly Cost: <span className="b">{round(_.get(city,'monthly_cost.value',0))} €/m</span></div>
+											<div className="f5 pt1 pb3">Monthly Cost: <span className="b">{round(_.get(city,'monthly_cost.value',0))} €/m</span></div>
 											<ProgressBar name="Student Friendliness" value={setProgProp(_.get(city,'student_friendliness.value',0))} icon="difficulty"/>
 											<ProgressBar name="Travel Options" value={setProgProp(_.get(city,'travel_options.value',0))} icon="plane"/>
 											<ProgressBar name="Cultural Offering" value={setProgProp(_.get(city,'culture.value',0))} icon="culture"/>
@@ -167,11 +158,11 @@ class Modal extends React.Component {
 											<ProgressBar name="Gastronomy" value={setProgProp(_.get(city,'gastronomy.value',0))} icon="gastronomy"/>
 											<ProgressBar name="Sports" value={setProgProp(_.get(city,'sports.value',0))} icon="sports"/>
 											<div className="f5 b pt4">Student Cost of life</div>
-											<ProgressBar name="Rent" cost={_.get(city,'rent_cost.value',0)} value={setCostProgProp(_.get(city,'rent_cost.value',0), 800)} icon="rent"/>
-											<ProgressBar name="Beer in a Pub" cost={_.get(city,'rent_cost.value',0)} value={setCostProgProp(_.get(city,'beer_cost.value',0), 10)} icon="beer"/>
-											<ProgressBar name="Coffee" cost={_.get(city,'rent_cost.value',0)} value={setCostProgProp(_.get(city,'coffee_cost.value',0), 10)} icon="cafe"/>
-											<ProgressBar name="Kebab" cost={_.get(city,'rent_cost.value',0)} value={setCostProgProp(_.get(city,'kebab_cost.value',0), 15)} icon="burger"/>
-											<ProgressBar name="Entry fee Club" cost={_.get(city,'rent_cost.value',0)} value={setCostProgProp(_.get(city,'danceclub_cost.value',0), 30)} icon="music"/>
+											<ProgressBar name="Rent" cost={round(_.get(city,'rent_cost.value',0))} value={setCostProgProp(_.get(city,'rent_cost.value',0), 800)} icon="rent"/>
+											<ProgressBar name="Beer in a Pub" cost={round(_.get(city,'beer_cost.value',0))} value={setCostProgProp(_.get(city,'beer_cost.value',0), 10)} icon="beer"/>
+											<ProgressBar name="Coffee" cost={round(_.get(city,'coffee_cost.value',0))} value={setCostProgProp(_.get(city,'coffee_cost.value',0), 10)} icon="cafe"/>
+											<ProgressBar name="Kebab" cost={round(_.get(city,'kebab_cost.value',0))} value={setCostProgProp(_.get(city,'kebab_cost.value',0), 15)} icon="burger"/>
+											<ProgressBar name="Entry fee Club" cost={round(_.get(city,'danceclub_cost.value',0))} value={setCostProgProp(_.get(city,'danceclub_cost.value',0), 30)} icon="music"/>
 										</div>
 									</div>
 									<Reviews city_id={city._id}/>

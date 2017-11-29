@@ -2,25 +2,54 @@ import React from 'react'
 import { gql, graphql } from 'react-apollo'
 
 function reviews(data) {
-	if (data.loading || data.getReviews <= 0) return null;
+	console.log("DATA", data);
   return (
   	<div>
 	  	<div className="black pb0 pt3">
 	  		<div className="f3 b">Latest Reviews</div>
 	  		<div className="f5 gray">The main metrics and such</div>
 	  	</div>
-	    <div className="flex black">
+
 	    	{
-	    		data.getReviews.map((review) => (
-	    			<div className="flex flex-auto review flex-column justify-center modal-card mt3 mr2 pv3 grad-green relative pt3" key={review._id}>
-			    		<div className="i pv3 ph4 tc f5 review-text">
-			    			{review.uni_review}
+	    		data.loading ? (
+	    			<div className="flex black">
+		    			<div className="review modal-card animated-background relative">
+				    		<div className="absolute w1 top-0 bottom-0 background-masker"></div>
+				    		<div className="absolute w1 top-0 bottom-0 right-0 background-masker"></div>
+				    		<div className="absolute h1 top-0 right-0 left-0 background-masker"></div>
+				    		<div className="absolute h1 bottom-0 right-0 left-0 background-masker"></div>
+				    		<div className="absolute bottom-1 right-2 w2 h2 background-masker"></div>
+				    		<div className="absolute bottom-1 left-2 right-4 w4 h2 background-masker"></div>
 			    		</div>
-			    		<div className="pv3 ph4 tc f6">
-			    			{review.date_submit}
+		    			<div className="review modal-card animated-background relative">
+				    		<div className="absolute w1 top-0 bottom-0 background-masker"></div>
+				    		<div className="absolute w1 top-0 bottom-0 right-0 background-masker"></div>
+				    		<div className="absolute h1 top-0 right-0 left-0 background-masker"></div>
+				    		<div className="absolute h1 bottom-0 right-0 left-0 background-masker"></div>
+				    		<div className="absolute bottom-1 right-2 w2 h2 background-masker"></div>
+				    		<div className="absolute bottom-1 left-2 right-4 w4 h2 background-masker"></div>
 			    		</div>
-			    		<button className="absolute bottom-1 right-1 upvote pointer">42</button>
-		    		</div>)
+		    			<div className="review modal-card animated-background relative">
+				    		<div className="absolute w1 top-0 bottom-0 background-masker"></div>
+				    		<div className="absolute w1 top-0 bottom-0 right-0 background-masker"></div>
+				    		<div className="absolute h1 top-0 right-0 left-0 background-masker"></div>
+				    		<div className="absolute h1 bottom-0 right-0 left-0 background-masker"></div>
+				    		<div className="absolute bottom-1 right-2 w2 h2 background-masker"></div>
+				    		<div className="absolute bottom-1 left-2 right-4 w4 h2 background-masker"></div>
+			    		</div>
+	    			</div>
+	    		) : data.getReviews.map((review) => (
+	    			<div className="flex black">
+		    			<div className="flex flex-auto review flex-column justify-center modal-card mt3 mr2 pv3 grad-green relative pt3" key={review._id}>
+				    		<div className="i pv3 ph4 f5 review-text">
+				    			{data.university_id ? review.uni_review : review.city_review}
+				    		</div>
+				    		<div className="pv3 ph4 tc f6">
+				    			{review.date_submit}
+				    		</div>
+				    		<button className="absolute bottom-1 right-1 bluish pointer">42</button>
+			    		</div>
+	    			</div>)
 		    	)
 	    	}
 	  	  <style jsx>
@@ -30,7 +59,7 @@ function reviews(data) {
 			    		height: 250px;
 			    		border: 1px solid #ededee;
 			    		color: #4f5057;
-			    		max-width: 50%;
+			    		max-width: 33%;
 						}
 						.review-text {
 							height: 210px;
@@ -38,30 +67,17 @@ function reviews(data) {
 						}
 						::-webkit-scrollbar {
 						    width: 0px;  /* remove scrollbar space */
-						    background: transparent;  /* optional: just make scrollbar invisible */
+						    background: #FF0000;  /* optional: just make scrollbar invisible */
 						}
 						/* optional: show position indicator in red */
 						::-webkit-scrollbar-thumb {
 						    background: #FF0000;
 						}
-			    	// .grad-blue {
-			    	// 	background-image: linear-gradient( 135deg, #90F7EC 10%, #32CCBC 100%);
-			    	// }
-			    	// .grad-pink {
-			    	// 	background-image: linear-gradient( 135deg, #FFF6B7 10%, #F6416C 100%);
-			    	// }
-			    	// .grad-purple {
-			    	// 	background-image: linear-gradient( 135deg, #CE9FFC 10%, #7367F0 100%);
-			    	// }
-			    	// .grad-green {
-			    	// 	background-image: linear-gradient( 135deg, #ABDCFF 10%, #0396FF 100%);
-			    	// }
-			    	// .grad-orange {
-				    // 	background-image: linear-gradient( 135deg, #FCCF31 10%, #F55555 100%);
-			    	// }
+						.bluish {
+							background-color: #25d6c9;
+						}
 	  	    `}
 	  	  </style>
-	    </div>
     </div>
   );
 }

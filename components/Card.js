@@ -32,7 +32,7 @@ export default class Card extends React.Component {
 		const overallRating = _.get(uni,'overall_rating',0);
 		return (
 			<div 
-				className="ma2 shadow-4 bg-white flex flex-column tl ur-card relative white animated-background" 
+				className="ma2 shadow-4 bg-white flex flex-column tl ur-card relative white" 
 				style={{ "backgroundImage": `url("https://s3.eu-central-1.amazonaws.com/erasmoose/${uni._id}.jpg")` }} 
 				data-index={this.props.index}
 				onClick={this.props._handleCardClick}
