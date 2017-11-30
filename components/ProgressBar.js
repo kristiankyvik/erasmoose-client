@@ -20,7 +20,7 @@ export default ({ name, value, icon, cost }) => (
 		</div>
 		<style jsx>{`
 			.icon-wrapper {
-				background-color: #25d6c9;
+				// background-color: #25d6c9;
 			}
 			.flex-1 {
 				flex: 1;

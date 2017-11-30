@@ -167,7 +167,6 @@ export default ({ children }) => (
         background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
         -webkit-background-size: 800px 104px;
         background-size: 800px 104px;
-        height: 96px;
         position: relative;
       }
       
