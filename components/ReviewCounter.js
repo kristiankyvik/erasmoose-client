@@ -18,7 +18,7 @@ function countReviews(data) {
         <div className="tl">
           <span className="b f6">
             <i className="fa fa-user mr2" aria-hidden="true"></i>
-            { data._allReviewsMeta.reviewsCount } reviews
+            { data._allReviewsMeta.reviewCount } reviews
           </span>
         </div>
       </div>
@@ -30,7 +30,7 @@ const getUnisWithReview = gql`
   query {
     _allReviewsMeta {
       unisCount
-      reviewsCount
+      reviewCount
     }
   }
 `

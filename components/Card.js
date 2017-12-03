@@ -23,13 +23,17 @@ const setProgProp = (v) => {
 	return 0
 }
 
+const getOverallRating = (uni) => { //TODO: This has to be replaced by a general formula and connected to graphql
+	return _.get(uni, 'uni_recommendation.value', 0);
+}
+
 export default class Card extends React.Component {
 	constructor(props) {
 	  super(props);
 	}
 	render() {
-		const { uni} = this.props;
-		const overallRating = _.get(uni,'overall_rating',0);
+		const { uni } = this.props;
+		const overallRating = getOverallRating(uni)
 		return (
 			<div 
 				className="ma2 shadow-4 bg-white flex flex-column tl ur-card relative white" 
@@ -79,7 +83,7 @@ export default class Card extends React.Component {
 		  		    	  <span>★</span>
 		  		    	  <span>★</span>
 		  	    		</div>
-								<span className="score absolute">({_.get(uni,'uni_rating.count',0)})</span>
+								<span className="score absolute">({_.get(uni,'review_count',0)})</span>
 		  	    	</div>
 				    </div>
 				    <div 
@@ -98,7 +102,7 @@ export default class Card extends React.Component {
 							" trailWidth="5" strokeColor="#F44A4A" />
 						</div>
 						<div className="b f5">
-							{_.get(uni, 'uni_rating.count', 0) ? _.get(uni, 'uni_rating.count', 0) + " Reviews" : " No Reviews" } 
+							{_.get(uni, 'review_count', 0) ? _.get(uni, 'review_count', 0) + " Reviews" : " No Reviews" } 
 						</div>
 					</div>
 				</div>

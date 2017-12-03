@@ -14,7 +14,6 @@ const allUnis = gql`
       country
       city_name
       city_id
-      overall_rating
       int_orientation {
         value
         count
@@ -31,7 +30,7 @@ const allUnis = gql`
         value
         count
       }
-      uni_rating {
+      uni_recommendation {
         value
         count
       }
@@ -55,7 +54,7 @@ const allUnis = gql`
         value
         count
       }
-      reviews_count
+      review_count
       languages {
         name
         count
@@ -82,7 +81,7 @@ const allUnis = gql`
         value
         count
       }
-      city_rating{
+      city_recommendation{
         value
         count
       }
@@ -115,7 +114,7 @@ const allUnis = gql`
         count
       }
       if_you_like
-      reviews_count
+      review_count
       danceclub_cost{
         value
         count

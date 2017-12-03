@@ -28,7 +28,7 @@ class UniListResults extends React.Component {
 
     render() {
 
-        const { loading, index, error, allUnis, _allUnisMeta, loadMorePosts, fetchMore, _handleCardClick, _handleFormClick, city} = this.props;
+        const { loading, index, error, allUnis, _allUnisMeta, loadMorePosts, fetchMore, _handleCardClick, _handleFormClick} = this.props;
         console.log("Yo look at the city", this.props);
         if (error) return <ErrorMessage message='Error loading entries.' />
         if (!allUnis && loading) return <Loader />;

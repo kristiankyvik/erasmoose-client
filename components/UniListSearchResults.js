@@ -4,6 +4,7 @@ import Search from './Search'
 import React from 'react';
 import UniListResults from './UniListResults'
 import Modal from './Modal'
+const _ = require('lodash'); //get lodash librar
 
 class UniListSearchResults extends React.Component {
   constructor(props) {
@@ -40,6 +41,7 @@ class UniListSearchResults extends React.Component {
     });
   }
 
+ 
   _handleModalLeftClick = (e) => {
     const index = this.state.index - 1 <= 0 ? this.props.allUnis.length - 1 : this.state.index - 1;
     this.setState({ 
@@ -89,8 +91,10 @@ class UniListSearchResults extends React.Component {
       getCity
     } = this.props;
 
-    console.log("STATE", this.state);
-    console.log("PROPS", this.props);
+    console.log("City",getCity);
+
+    // console.log("STATE", this.state);
+    // console.log("PROPS", this.props);
 
     return (
       <div className="">

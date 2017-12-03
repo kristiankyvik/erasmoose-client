@@ -56,8 +56,19 @@ class Modal extends React.Component {
 		console.log(i, li, e);
 	}
 
+	getCityRating(city){
+		return _.get(city,'city_recommendation.value')
+	}
+
+	getUniRating(uni) { //TODO: This has to be replaced by a general formula and connected to graphql
+		return _.get(uni, 'uni_recommendation.value', 0);
+	}
+
+
 	render() {
 		const { city, uni } = this.props;
+		const cityRating = this.getCityRating(city);
+		const uniRating = this.getUniRating(uni);
 		const i = this.state.tabIndex;
 	  return (
 			<div 
@@ -90,9 +101,10 @@ class Modal extends React.Component {
 									<div className="flex flex-column flex-row-l black">
 										<div className="flex flex-1 flex-column justify-center modal-card mt3 mr3 pv3 ph3">
 											<div className="f4 b circle flex pb4">
-												<span className='inside-circle'>{`${setProgProp(_.get(uni,'uni_rating.value',0))}/100`}</span>
-												<Circle className="pv2 mr3 w-100" percent={setProgProp(_.get(uni,'uni_rating.value',0))} strokeWidth="5
+												<span className='inside-circle'>{`${setProgProp(uniRating)}/100`}</span>
+												<Circle className="pv2 mr3 w-100" percent={setProgProp(uniRating)} strokeWidth="5
 													" trailWidth="5" strokeColor="#F44A4A" />
+													
 											</div>
 											<div className="f7 pv2 ttu b"> 
 												<i className="fa fa-globe mr1" aria-hidden="true"></i>
@@ -141,8 +153,8 @@ class Modal extends React.Component {
 									<div className="flex flex-column flex-row-l black">
 										<div className="flex flex-1 flex-column justify-end modal-card mt3 mr2 pv3 ph3">
 											<div className="f4 b circle pb4 flex">
-												<span className='inside-circle'>{`${setProgProp(_.get(city,'city_rating.value',0))}/100`}</span>
-												<Circle className="pv2 mr3 w-100" percent={setProgProp(_.get(city,'city_rating.value',0))} strokeWidth="5
+												<span className='inside-circle'>{`${setProgProp(cityRating)}/100`}</span>
+												<Circle className="pv2 mr3 w-100" percent={setProgProp(cityRating)} strokeWidth="5
 													" trailWidth="5" strokeColor="#F44A4A" />
 											</div>
 											<div className="f5 pv1">Size: <span className="b">coming soon</span></div>
