@@ -51,11 +51,6 @@ class Modal extends React.Component {
 		document.removeEventListener('mousedown', this._handleClick, false);
 	}
 
-	_handleTabClick (i, li, e) {
-		const tabs = ["uni_id", "city_id"];
-		console.log(i, li, e);
-	}
-
 	getCityRating(city){
 		return _.get(city,'city_recommendation.value')
 	}
@@ -86,7 +81,7 @@ class Modal extends React.Component {
 								<TypeformButton id={this.props.uni._id} cityid={this.props.uni.city_id} className="ma2 mh4 ur-btn tc flex justify-center content-center items-center" />
 							</div>	
 						</div>
-						<Tabs onSelect={(i, li, e) => this._handleTabClick(i, li, e)} className="flex flex-column tl f7 no-pad" selectedTabClassName="active">
+						<Tabs className="flex flex-column tl f7 no-pad" selectedTabClassName="active">
 							<TabList className="flex">
 								<Tab className="flex justify-center flex-auto f5 b z-1 pv3 bw1 b--light-gray pointer bb ttu moon-gray">University</Tab>
 								<Tab className="flex justify-center flex-auto f5 b z-1 pv3 bw1 b--light-gray pointer bb ttu moon-gray">City</Tab>
@@ -228,10 +223,54 @@ class Modal extends React.Component {
 												<Circle className="pv2 mr3 w-100" percent={setProgProp(cityRating)} strokeWidth="5
 													" trailWidth="5" strokeColor="#F44A4A" />
 											</div>
-											<div className="f5 pv1">Size: <span className="b">coming soon</span></div>
-											<div className="f5 pv1">Weather (Winter/Spring): <span className="b">coming soon</span></div>
-											<div className="f5 pv1">Sunny Days: <span className="b">coming soon</span></div>
-											<div className="f5 pt1 pb3">Monthly Cost: <span className="b">{round(_.get(city,'monthly_cost.value',0))} €/m</span></div>
+
+											<div className="flex items-stretch pv1">
+												<div className="flex items-center justify-center">
+													<div className="flex icon-wrapper br-100 pa1 items-center justify-center">
+														<img src={`./static/icons/population.svg`} className="w2 h2" />
+													</div>
+												</div>
+												<div className="flex flex-column self-stretch flex-1 justify-center pl2">
+													<div className="flex pb1 justify-between">
+														<div className="flex">
+															Size:
+														</div>
+													</div>
+													<span className="f7 ttu b">coming soon</span>
+												</div>
+											</div>
+
+											<div className="flex items-stretch pv1">
+												<div className="flex items-center justify-center">
+													<div className="flex icon-wrapper br-100 pa1 items-center justify-center">
+														<img src={`./static/icons/temperature.svg`} className="w2 h2" />
+													</div>
+												</div>
+												<div className="flex flex-column self-stretch flex-1 justify-center pl2">
+													<div className="flex pb1 justify-between">
+														<div className="flex">
+															Weather (Winter/Spring):
+														</div>
+													</div>
+													<span className="f7 ttu b">coming soon</span>
+												</div>
+											</div>
+
+											<div className="flex items-stretch pv1">
+												<div className="flex items-center justify-center">
+													<div className="flex icon-wrapper br-100 pa1 items-center justify-center">
+														<img src={`./static/icons/bill.svg`} className="w2 h2" />
+													</div>
+												</div>
+												<div className="flex flex-column self-stretch flex-1 justify-center pl2">
+													<div className="flex pb1 justify-between">
+														<div className="flex">
+															Monthly Cost:
+														</div>
+													</div>
+													<span className="f7 ttu b">{round(_.get(city,'monthly_cost.value',0))} €/m</span>
+												</div>
+											</div>
 											<ProgressBar name="Student Friendliness" value={setProgProp(_.get(city,'student_friendliness.value',0))} icon="difficulty"/>
 											<ProgressBar name="Travel Options" value={setProgProp(_.get(city,'travel_options.value',0))} icon="plane"/>
 											<ProgressBar name="Cultural Offering" value={setProgProp(_.get(city,'culture.value',0))} icon="culture"/>
@@ -379,6 +418,10 @@ class Modal extends React.Component {
 			      	right: 0;
 			      	top: 0;
 			      	bottom: 0;
+			      }
+			      .active {
+			          border-color: #F44A4A;
+			          color: #F44A4A;
 			      }
 			    `}
 			  </style>
