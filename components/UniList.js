@@ -20,6 +20,7 @@ export default class UniList extends React.Component {
   }
 
   setCityId(city_id) {
+    console.log("SETTING CITY ID", city_id);
     this.setState({city_id});
   }
 

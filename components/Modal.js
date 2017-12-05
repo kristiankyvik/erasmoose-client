@@ -77,7 +77,10 @@ class Modal extends React.Component {
 						>	
 							<div className="absolute z-1 bottom-2 white tc left-0 right-0">
 								<div className="b pt3 f3 f2-l text-shadow">{this.props.uni.name}</div>
-								<div className="f4 f3-l pb3 i playfair text-shadow">{this.props.uni.website}</div>
+								<div className="f5 pb3">
+									<i className="fa fa-globe mr1" aria-hidden="true"></i>
+									<span className="f4 f3-l pb3 i playfair text-shadow pointer">{this.props.uni.website}</span>
+								</div>
 								<TypeformButton id={this.props.uni._id} cityid={this.props.uni.city_id} className="ma2 mh4 ur-btn tc flex justify-center content-center items-center" />
 							</div>	
 						</div>
