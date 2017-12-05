@@ -104,30 +104,101 @@ class Modal extends React.Component {
 												<span className='inside-circle'>{`${setProgProp(uniRating)}/100`}</span>
 												<Circle className="pv2 mr3 w-100" percent={setProgProp(uniRating)} strokeWidth="5
 													" trailWidth="5" strokeColor="#F44A4A" />
-													
 											</div>
-											<div className="f7 pv2 ttu b"> 
-												<i className="fa fa-globe mr1" aria-hidden="true"></i>
-												Country: <span className="b">{uni.country}</span>
+
+											<div className="flex items-stretch pv1">
+												<div className="flex items-center justify-center">
+													<div className="flex icon-wrapper br-100 pa1 items-center justify-center">
+														<img src={`./static/icons/location.svg`} className="w2 h2" />
+													</div>
+												</div>
+												<div className="flex flex-column self-stretch flex-1 justify-center pl2">
+													<div className="flex pb1 justify-between">
+														<div className="flex">
+															Country
+														</div>
+													</div>
+													<span className="f7 ttu b">{uni.country}</span>
+												</div>
 											</div>
-											<div className="f7 pv2 ttu b">
-												<i className="fa fa-university mr1" aria-hidden="true"></i>
-												Ranking (Int/Nat): <span className="b">Coming soon</span>
+											<div className="flex items-stretch pv1">
+												<div className="flex items-center justify-center">
+													<div className="flex icon-wrapper br-100 pa1 items-center justify-center">
+														<img src={`./static/icons/ranking.svg`} className="w2 h2" />
+													</div>
+												</div>
+												<div className="flex flex-column self-stretch flex-1 justify-center pl2">
+													<div className="flex pb1 justify-between">
+														<div className="flex">
+															Ranking (Int/Nat):
+														</div>
+													</div>
+													<span className="f7 ttu b">Coming soon</span>
+												</div>
 											</div>
-											<div className="f7 pv2 ttu b">
-												<i className="fa fa-flag mr1" aria-hidden="true"></i>
-												Flagship Areas: <span className="b">{getTopProps(uni.main_disciplines)}</span>
+
+											<div className="flex items-stretch pv1">
+												<div className="flex items-center justify-center">
+													<div className="flex icon-wrapper br-100 pa1 items-center justify-center">
+														<img src={`./static/icons/subject.svg`} className="w2 h2" />
+													</div>
+												</div>
+												<div className="flex flex-column self-stretch flex-1 justify-center pl2">
+													<div className="flex pb1 justify-between">
+														<div className="flex">
+															Flagship Areas:
+														</div>
+													</div>
+													<span className="f7 ttu b">{getTopProps(uni.main_disciplines)}</span>
+												</div>
 											</div>
-											<div className="f7 pv2 ttu b">
-												<i className="fa fa-language mr1" aria-hidden="true"></i> Languages: <span className="b">{getTopProps(uni.languages)}</span>
+
+											<div className="flex items-stretch pv1">
+												<div className="flex items-center justify-center">
+													<div className="flex icon-wrapper br-100 pa1 items-center justify-center">
+														<img src={`./static/icons/language.svg`} className="w2 h2" />
+													</div>
+												</div>
+												<div className="flex flex-column self-stretch flex-1 justify-center pl2">
+													<div className="flex pb1 justify-between">
+														<div className="flex">
+															Languages:
+														</div>
+													</div>
+													<span className="f7 ttu b">{getTopProps(uni.languages)}</span>
+												</div>
 											</div>
-											<div className="f7 pv2 ttu b">
-												<i className="fa fa-eur mr1" aria-hidden="true"></i>
-												Tuition Fees: <span className="b">{uni.fees.value ? uni.fees.value + " €" : "coming soon"}</span>
+
+											<div className="flex items-stretch pv1">
+												<div className="flex items-center justify-center">
+													<div className="flex icon-wrapper br-100 pa1 items-center justify-center">
+														<img src={`./static/icons/money.svg`} className="w2 h2" />
+													</div>
+												</div>
+												<div className="flex flex-column self-stretch flex-1 justify-center pl2">
+													<div className="flex pb1 justify-between">
+														<div className="flex">
+															Tuition Fees:
+														</div>
+													</div>
+													<span className="f7 ttu b">{uni.fees.value ? round(uni.fees.value) + " €" : "coming soon"}</span>
+												</div>
 											</div>
-											<div className="f7 pv2 ttu b">
-												<i className="fa fa-clock-o mr1" aria-hidden="true"></i>
-												Weekly Hours of Work: <span className="b">{uni.weekly_hours.value ? round(uni.weekly_hours.value) + " hours" : "coming soon"}</span>
+
+											<div className="flex items-stretch pv1">
+												<div className="flex items-center justify-center">
+													<div className="flex icon-wrapper br-100 pa1 items-center justify-center">
+														<img src={`./static/icons/time.svg`} className="w2 h2" />
+													</div>
+												</div>
+												<div className="flex flex-column self-stretch flex-1 justify-center pl2">
+													<div className="flex pt1 pb1 justify-between">
+														<div className="flex">
+															Weekly Hours of Work:
+														</div>
+													</div>
+													<span className="f7 b">{uni.weekly_hours.value ? round(uni.weekly_hours.value) + " hours" : "coming soon"}</span>
+												</div>
 											</div>
 										</div>
 										<div className="flex flex-1 flex-column justify-end modal-card mt3 mr3 pv3 ph3">
