@@ -91,9 +91,6 @@ class UniListSearchResults extends React.Component {
       getCity
     } = this.props;
 
-    // console.log("STATE", this.state);
-    // console.log("PROPS", this.props);
-
     return (
       <div className="">
         <Search 
@@ -115,8 +112,9 @@ class UniListSearchResults extends React.Component {
            />
         </div>
         { 
-          (!this.state.showModal || !this.state.uni || !getCity ) ? null : (<Modal
+          (!this.state.showModal ) ? null : (<Modal
               ref={(el) => { this.modal = el; }}
+              loading={loading}
               showModal={this.state.showModal}
               uni={this.state.uni}
               city={this.props.getCity}

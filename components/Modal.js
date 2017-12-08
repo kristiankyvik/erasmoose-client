@@ -31,6 +31,7 @@ const showProps = (v) => {
 }
 
 const getTopProps = (a) => {
+	console.log("looooo", a);
 	return a.map((v) => v.name).join(", ");
 }
 
@@ -65,6 +66,7 @@ class Modal extends React.Component {
 		const cityRating = this.getCityRating(city);
 		const uniRating = this.getUniRating(uni);
 		const i = this.state.tabIndex;
+		console.log("LOADING", this.props.loading);
 	  return (
 			<div 
 				className={"backModal fixed z-1 flex content-center justify-center items-center"}
@@ -210,7 +212,7 @@ class Modal extends React.Component {
 											<ProgressBar name="Student Parties" value={setProgProp(_.get(uni,'party.value',0))} icon="party"/>
 										</div>
 									</div>
-									<Reviews university_id={uni._id}/>
+									<Reviews university_id={this.props.loading ? null : uni._id}/>
 								</div>
 							</TabPanel>	
 							<TabPanel className="flex flex-auto">
@@ -218,7 +220,7 @@ class Modal extends React.Component {
 
 									{/* City */}
 									{/* ---------------------------------- */}
-									<div className="f3 b black pt3 tc tl-l">{city.name} City Metrics</div>
+									<div className="f3 b black pt3 tc tl-l">{this.props.loading ? null : city.name} City Metrics</div>
 									<div className="flex flex-column flex-row-l black">
 										<div className="flex flex-1 flex-column justify-end modal-card mt3 mr2 pv3 ph3">
 											<div className="f4 b circle pb4 flex">
@@ -290,7 +292,7 @@ class Modal extends React.Component {
 											<ProgressBar name="Entry fee Club" cost={round(_.get(city,'danceclub_cost.value',0))} value={setCostProgProp(_.get(city,'danceclub_cost.value',0), 30)} icon="music"/>
 										</div>
 									</div>
-									<Reviews city_id={city._id}/>
+									<Reviews city_id={this.props.loading ? null : city._id}/>
 								</div>
 							</TabPanel>
 							<TabPanel>		
