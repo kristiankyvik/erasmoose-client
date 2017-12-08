@@ -44,14 +44,16 @@ export default class Card extends React.Component {
 				<div className="flex-column flex card-front pt2 flex-grow-1">
 				  <div className="flex flex-column text relative pa2 ph2 justify-between">
 				  	<div className="flex flex-column ph2">
-				  		<Img 
-				  			src={[
-				  		    `https://logo.clearbit.com/${uni.website}`,
-				  		    `https://ui-avatars.com/api/?name=${uni.name.split(" ").join("+")}&color=fff&background=F44A4A&length=2&font-size=0.43`
-				  		 ]}
-				  		 loader={UniLogoFallback}
-				  		 style={{ width: "40px", borderRadius: "50%" }}
-				  		 />
+				  		<div className="ur-uni-logo">
+					  		<Img 
+					  			src={[
+					  		    `https://logo.clearbit.com/${uni.website}`,
+					  		    `https://ui-avatars.com/api/?name=${uni.name.split(" ").join("+")}&color=fff&background=F44A4A&length=2&font-size=0.43`
+					  		 ]}
+					  		 loader={UniLogoFallback}
+					  		 style={{ width: "40px", borderRadius: "50%" }}
+					  		 />	
+				  		</div>
 					    <div className="pv1 ttu white dn">
 					    	<span className="tag b tagged mr1"> tag1 </span><span className="tag b tagged mr1"> tag2 </span>
 					    </div>
@@ -97,11 +99,11 @@ export default class Card extends React.Component {
 				<div className="flex-column pt1 dn card-back absolute z-1">
 					<div className="pv2 ph4 flex flex-column items-center">
 						<div className="progress-wrapper tc pb2">
-							<span className='progress-title f5 b'>{`${setProgProp(overallRating)}/100`}</span>
+							<span className='progress-title f7 f5-m b'>{`${setProgProp(overallRating)}/100`}</span>
 							<Circle className="w-60 pv2 m0a" percent={setProgProp(overallRating)} strokeWidth="5
 							" trailWidth="5" strokeColor="#F44A4A" />
 						</div>
-						<div className="b f5">
+						<div className="b f6 f5-m">
 							{_.get(uni, 'review_count', 0) ? _.get(uni, 'review_count', 0) + " Reviews" : " No Reviews" } 
 						</div>
 					</div>
@@ -133,9 +135,12 @@ export default class Card extends React.Component {
 			    		padding: 2px 5px;
 			    		font-size: 8px;
 			    	}
+			      .ur-uni-logo {
+			  	    display: none;
+			      }
 			      .ur-card {
-			      	min-height: 215px;
-			        width: 215px;
+			      	min-height: 140px;
+			        width: 150px;
 			        background-size: cover;
 			        -webkit-font-smoothing: antialiased;
 			        font-smoothing: antialiased;
@@ -153,6 +158,36 @@ export default class Card extends React.Component {
 			      	content: "";
 			      	border-radius: 10px;
 			      }
+
+			    	/* Custom, iPhone Retina */ 
+			    	@media only screen and (min-width : 320px) {
+			    	}
+
+			    	/* Extra Small Devices, Phones */ 
+			    	@media only screen and (min-width : 480px) {
+			    		.ur-card {
+				    		width: 215px;
+				    		min-height: 215px;
+							}
+					    // .ur-uni-logo {
+						   //  display:flex;
+					    // }
+			    	}
+
+			    	/* Small Devices, Tablets */
+			    	@media only screen and (min-width : 768px) {
+
+			    	}
+
+			    	/* Medium Devices, Desktops */
+			    	@media only screen and (min-width : 992px) {
+
+			    	}
+
+			    	/* Large Devices, Wide Screens */
+			    	@media only screen and (min-width : 1200px) {
+
+			    	}
 			      .star-ratings-css {
 			        unicode-bidi: bidi-override;
 			        color: #c5c5c5;
@@ -205,11 +240,6 @@ export default class Card extends React.Component {
 			      .playfair {
 			        font-family: 'Playfair Display', serif;
 			        font-weight: 600;
-			      }
-			      .ur-uni-logo {
-			      	width: 45px;
-			  	    border-radius: 50%;
-			  	    // display:none;
 			      }
 			      .tagged {
 			      	background-color: #22BAD9;
