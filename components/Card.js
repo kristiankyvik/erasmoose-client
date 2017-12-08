@@ -57,11 +57,11 @@ export default class Card extends React.Component {
 					    <div className="pv1 ttu white dn">
 					    	<span className="tag b tagged mr1"> tag1 </span><span className="tag b tagged mr1"> tag2 </span>
 					    </div>
-					    <div className="pt3 f4 f3-l fw7 text-shadow">
+					    <div className="pt3 f5 f4-m f3-l fw7 text-shadow">
 					      {uni.name}
 					    </div>
 				  	</div>
-				    <div className="f6 f5-l pt1 ph2 pb1 b text-shadow">
+				    <div className="f7 f6-m f5-l pt1 ph2 pb1 b text-shadow">
 				      <i className="fa fa-map-marker trans-gray" aria-hidden="true"></i> {uni.city_name}
 				    </div>
 				  </div>
@@ -103,7 +103,7 @@ export default class Card extends React.Component {
 							<Circle className="w-60 pv2 m0a" percent={setProgProp(overallRating)} strokeWidth="5
 							" trailWidth="5" strokeColor="#F44A4A" />
 						</div>
-						<div className="b f6 f5-m">
+						<div className="b f7 f6-m f5-l">
 							{_.get(uni, 'review_count', 0) ? _.get(uni, 'review_count', 0) + " Reviews" : " No Reviews" } 
 						</div>
 					</div>
@@ -140,7 +140,7 @@ export default class Card extends React.Component {
 			      }
 			      .ur-card {
 			      	min-height: 140px;
-			        width: 150px;
+			        width: 40%;
 			        background-size: cover;
 			        -webkit-font-smoothing: antialiased;
 			        font-smoothing: antialiased;
@@ -159,34 +159,14 @@ export default class Card extends React.Component {
 			      	border-radius: 10px;
 			      }
 
-			    	/* Custom, iPhone Retina */ 
-			    	@media only screen and (min-width : 320px) {
-			    	}
-
-			    	/* Extra Small Devices, Phones */ 
 			    	@media only screen and (min-width : 480px) {
 			    		.ur-card {
 				    		width: 215px;
 				    		min-height: 215px;
 							}
-					    // .ur-uni-logo {
-						   //  display:flex;
-					    // }
-			    	}
-
-			    	/* Small Devices, Tablets */
-			    	@media only screen and (min-width : 768px) {
-
-			    	}
-
-			    	/* Medium Devices, Desktops */
-			    	@media only screen and (min-width : 992px) {
-
-			    	}
-
-			    	/* Large Devices, Wide Screens */
-			    	@media only screen and (min-width : 1200px) {
-
+					    .ur-uni-logo {
+						    display: block;
+					    }
 			    	}
 			      .star-ratings-css {
 			        unicode-bidi: bidi-override;

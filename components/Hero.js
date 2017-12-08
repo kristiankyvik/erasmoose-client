@@ -23,9 +23,9 @@ export default ({ pathname }) => (
             Ranked.
           </div></h1>
         <h2 className="fw5 lblue f3 black-80 mt3 mb4"> Ranking of european universities.</h2>
-        {/* <div className="">
-          <TypeformButton/>
-        </div> */}
+          <Link prefetch href='/search' className="ur-btn" > 
+            <a className="ur-btn">Search</a>
+          </Link>
       </div>
     </div>
 
