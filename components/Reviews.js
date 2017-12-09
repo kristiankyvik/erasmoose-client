@@ -1,15 +1,24 @@
 import React from 'react'
 import { gql, graphql } from 'react-apollo'
 import TypeformButton from '../components/TypeformButton'
+import Slider from 'react-slick'
 
 function reviews(props) {
 	const {data, uni} = props;
+	const settings = {
+	  dots: true,
+	  infinite: false,
+	  slidesToShow: 3,
+	  slidesToScroll: 1,
+	  focusOnSelect: true
+	};
   return (
   	<div>
 	  	<div className="black pb0 pt3">
 	  		<div className="f3 b">Latest Reviews</div>
 	  		<div className="f5 gray">The main metrics and such</div>
 	  	</div>
+
 	  	<div className="flex black pt3 justify-between relative">
 	    	{
 	    		data.loading || (!data.loading && data.getReviews.length) <= 0 ? (
@@ -54,17 +63,21 @@ function reviews(props) {
 	    				  </div>
 	    				</div>
 	    			</div>
-	    		) : data.getReviews.map((review) => (
-		    			<div className="flex flex-auto review flex-column justify-center modal-card mr2 pv3 grad-green relative" key={review._id}>
-				    		<div className="i pv3 ph4 f5 review-text">
-				    			{data.university_id ? review.uni_review : review.city_review}
-				    		</div>
-				    		<div className="pv3 ph4 tc f6">
-				    			{review.date_submit}
-				    		</div>
-				    		<button className="absolute bottom-1 right-1 bluish pointer">42</button>
-			    		</div>)
-		    	)
+	    	  ) : <Slider {...settings} className="flex w-100 justify-between">
+		    			{
+		    				data.getReviews.map((review) => (
+		  	    			<div className="flex flex-auto review flex-column justify-center modal-card mr2 pv3 grad-green relative" key={review._id}>
+		  			    		<div className="i pv3 ph4 f5 review-text">
+		  			    			{data.university_id ? review.uni_review : review.city_review}
+		  			    		</div>
+		  			    		<div className="pv3 ph4 tc f6">
+		  			    			{review.date_submit}
+		  			    		</div>
+		  			    		<button className="absolute bottom-1 right-1 bluish pointer">42</button>
+		  		    		</div>)
+			    			)
+		    			}
+			  		</Slider>
 	    	}
 	    	{
 	    		!data.loading && data.getReviews.length <= 0 ? (
@@ -85,6 +98,10 @@ function reviews(props) {
 	    	</div>
 	  	  <style jsx>
 	  			{`
+	  				* {
+	  				  min-height: 0;
+	  				  min-width: 0;
+	  				}
 	  				.no-reviews-bg {
 		  				// background-color: #8080808f;
 	  				}
@@ -95,13 +112,14 @@ function reviews(props) {
 			    	.review {
 			    		border: 1px solid #ededee;
 			    		color: #4f5057;
-			    		max-width: 33%;
-	    			  max-width: 250px;
+			    		max-width: 50%;
+	    			  min-width: 280px;
 	    		    height: 250px;
 	    		    background-color: white;
+	    		    cursor: pointer;
 						}
 						.review-text {
-							height: 210px;
+							height: 182px;
 							overflow-y: scroll;
 						}
 						.h-200 {

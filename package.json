@@ -22,6 +22,7 @@
     "react-dom": "^16.0.0",
     "react-image": "^1.2.0",
     "react-progressbar.js": "^0.2.0",
+    "react-slick": "^0.16.0",
     "react-tabs": "^2.1.1"
   },
   "now": {

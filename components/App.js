@@ -27,6 +27,11 @@ export default ({ children }) => (
         margin: 0 auto;
         max-width: 650px;
       }
+      .slick-next:before, .slick-prev:before {
+        font-size: 20px;
+        line-height: 1;
+        color: #000;
+      }
       button {
         align-items: center;
         background-color: #22BAD9;
