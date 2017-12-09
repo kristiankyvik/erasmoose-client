@@ -409,6 +409,7 @@ class Modal extends React.Component {
 	      	    max-width: 100%;
 	      	    margin-left: 0;
 	      	    border-radius: 0;
+	      	    -webkit-backface-visibility: hidden;
 			      }
 
           	@media only screen and (min-width : 768px) {
