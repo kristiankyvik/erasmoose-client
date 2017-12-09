@@ -17,6 +17,13 @@ function reviews(props) {
 	  		settings: { 
 	  			slidesToShow: 2
 	  		}
+	  	},
+	  	{ 
+	  		breakpoint: 360,
+	  		settings: { 
+	  			slidesToShow: 1,
+	  			centerMode: true
+	  		}
 	  	}
 	  ]
 	};
@@ -31,7 +38,7 @@ function reviews(props) {
 	    	{
 	    		data.loading || (!data.loading && data.getReviews.length) <= 0 ? (
 	    			<div className="flex w-100 justify-between">
-	    				<div className="review-placeholder w-30">
+	    				<div className="review-placeholder w-50 w-30-ns">
 	    				  <div className="h-200 animated-background">
 	    				    <div className="background-masker white-line first"></div>
 									<div className="background-masker white-line second"></div>
@@ -44,7 +51,7 @@ function reviews(props) {
 									<div className="background-masker white-line small-r"></div>
 	    				  </div>
 	    				</div>
-	    				<div className="review-placeholder w-30">
+	    				<div className="review-placeholder w-50 w-30-ns">
 	    				  <div className="h-200 animated-background">
 	    				    <div className="background-masker white-line first"></div>
 									<div className="background-masker white-line second"></div>
@@ -57,7 +64,7 @@ function reviews(props) {
 									<div className="background-masker white-line small-r"></div>
 	    				  </div>
 	    				</div>
-	    				<div className="review-placeholder w-30">
+	    				<div className="review-placeholder w-50 w-30-ns">
 	    				  <div className="h-200 animated-background">
 	    				    <div className="background-masker white-line first"></div>
 									<div className="background-masker white-line second"></div>
