@@ -31,7 +31,6 @@ const showProps = (v) => {
 }
 
 const getTopProps = (a) => {
-	console.log("looooo", a);
 	return a.map((v) => v.name).join(", ");
 }
 
@@ -45,7 +44,6 @@ class Modal extends React.Component {
 
 	componentDidMount() {
 		document.addEventListener('mousedown', this._handleClick, false);
-		document.body.classList.toggle('modalOpen', true);
 	}
 
 	componentWillUnmount() {
@@ -78,7 +76,7 @@ class Modal extends React.Component {
 							style={{ "backgroundImage": `url("https://s3.eu-central-1.amazonaws.com/erasmoose/${this.props.uni._id}.jpg")` }} 
 						>	
 							<div className="absolute z-1 bottom-2 white tc left-0 right-0">
-								<div className="b pt3 f3 f2-l text-shadow">{this.props.uni.name}</div>
+								<div className="b pt4 pt3-l f3 f2-l text-shadow">{this.props.uni.name}</div>
 								<div className="f5 pb3">
 									<i className="fa fa-globe mr1" aria-hidden="true"></i>
 									<span className="f4 f3-l pb3 i playfair text-shadow pointer">{this.props.uni.website}</span>
@@ -394,6 +392,7 @@ class Modal extends React.Component {
 			        overflow-y: scroll;
 			        box-sizing: border-box;
 			        -webkit-overflow-scrolling: touch;
+			        -webkit-transform: translateZ(0);
 			      }
 			      .modal {
 			      	background-color: white;

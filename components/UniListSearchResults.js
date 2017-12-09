@@ -39,6 +39,7 @@ class UniListSearchResults extends React.Component {
       index,
       uni: uni
     });
+    document.body.classList.toggle('modalOpen', true);
   }
 
  
