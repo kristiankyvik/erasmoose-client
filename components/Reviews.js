@@ -10,7 +10,15 @@ function reviews(props) {
 	  infinite: false,
 	  slidesToShow: 3,
 	  slidesToScroll: 1,
-	  focusOnSelect: true
+	  focusOnSelect: true,
+	  responsive: [ 
+	  	{ 
+	  		breakpoint: 500,
+	  		settings: { 
+	  			slidesToShow: 2
+	  		}
+	  	}
+	  ]
 	};
   return (
   	<div>
@@ -113,7 +121,7 @@ function reviews(props) {
 			    		border: 1px solid #ededee;
 			    		color: #4f5057;
 			    		max-width: 50%;
-	    			  min-width: 280px;
+	    			  min-width: 240px;
 	    		    height: 250px;
 	    		    background-color: white;
 	    		    cursor: pointer;
@@ -131,7 +139,7 @@ function reviews(props) {
 						  border-color: #e5e6e9 #dfe0e4 #d0d1d5;
 						  border-radius: 3px;
 						  padding: 25px;
-						  max-width: 250px;
+						  max-width: 20px;
 					    height: 250px;
 					    box-sizing: border-box;
 						}
