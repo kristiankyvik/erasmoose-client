@@ -67,7 +67,7 @@ class Modal extends React.Component {
 		console.log("LOADING", this.props.loading);
 	  return (
 			<div 
-				className={"backModal fixed z-1 flex content-center justify-center items-center"}
+				className={"backModal fixed z-1 db"}
 				onClick={this.props._handleModalCloseClick}> 
 				<div className={"absolute modal top-0 top-1-l mb0 mb1-l shadow-3 w-100 w-80-l" }>
 					<div className="flex tc flex-column">
@@ -387,23 +387,45 @@ class Modal extends React.Component {
 			        background: rgba(30,30,30,0.9);
 			        top: 0;
 			        left: 0;
+			        z-index: 9997;
 			        width: 100%;
 			        height: 100%;
+			        position: fixed;
 			        overflow-y: scroll;
 			        box-sizing: border-box;
 			        -webkit-overflow-scrolling: touch;
-			        -webkit-transform: translateZ(0);
+			        overflow-y: auto;
+			        -webkit-backface-visibility: hidden;
 			      }
 			      .modal {
-			      	background-color: white;
-			      	max-width: 920px;
 			      	position: absolute;
 			      	z-index: 9997;
+			      	background: #f4f4f4;
 			      	background-position: fixed;
 			      	box-sizing: border-box;
-			      	border-radius: 6px;
-			      	min-height: 90vh;
+			      	left: auto;
+	      	    top: 0;
+	      	    width: 100%;
+	      	    max-width: 100%;
+	      	    margin-left: 0;
+	      	    border-radius: 0;
 			      }
+
+          	@media only screen and (min-width : 768px) {
+          		.modal {
+	          		position: absolute;
+	          		z-index: 9997;
+	          		top: 20px;
+	          		left: 50%;
+	          		width: 920px;
+	          		margin-left: -460px;
+	          		border-radius: 6px;
+	          		background: #f4f4f4;
+	          		background-position: fixed;
+	          		box-sizing: border-box;
+          		}
+      			}
+
 			      .controls {
 			      	left: -70px;
 			      	right: -70px;
