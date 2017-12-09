@@ -31,7 +31,7 @@ function reviews(props) {
 	    	{
 	    		data.loading || (!data.loading && data.getReviews.length) <= 0 ? (
 	    			<div className="flex w-100 justify-between">
-	    				<div className="review-placeholder w-33">
+	    				<div className="review-placeholder w-30">
 	    				  <div className="h-200 animated-background">
 	    				    <div className="background-masker white-line first"></div>
 									<div className="background-masker white-line second"></div>
@@ -44,7 +44,7 @@ function reviews(props) {
 									<div className="background-masker white-line small-r"></div>
 	    				  </div>
 	    				</div>
-	    				<div className="review-placeholder w-33">
+	    				<div className="review-placeholder w-30">
 	    				  <div className="h-200 animated-background">
 	    				    <div className="background-masker white-line first"></div>
 									<div className="background-masker white-line second"></div>
@@ -57,7 +57,7 @@ function reviews(props) {
 									<div className="background-masker white-line small-r"></div>
 	    				  </div>
 	    				</div>
-	    				<div className="review-placeholder w-33">
+	    				<div className="review-placeholder w-30">
 	    				  <div className="h-200 animated-background">
 	    				    <div className="background-masker white-line first"></div>
 									<div className="background-masker white-line second"></div>
@@ -139,7 +139,6 @@ function reviews(props) {
 						  border-color: #e5e6e9 #dfe0e4 #d0d1d5;
 						  border-radius: 3px;
 						  padding: 25px;
-						  max-width: 20px;
 					    height: 250px;
 					    box-sizing: border-box;
 						}
