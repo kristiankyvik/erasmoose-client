@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import TypeformButton from '../components/TypeformButton'
 
 export default ({ pathname }) => (
   <div className="hero f4 fw8 grad-pink">

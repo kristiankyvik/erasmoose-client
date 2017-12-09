@@ -1,17 +1,18 @@
 import React from 'react'
 import { gql, graphql } from 'react-apollo'
+import TypeformButton from '../components/TypeformButton'
 
-function reviews(data) {
-	console.log("DATA", data);
+function reviews(props) {
+	const {data, uni} = props;
   return (
   	<div>
 	  	<div className="black pb0 pt3">
 	  		<div className="f3 b">Latest Reviews</div>
 	  		<div className="f5 gray">The main metrics and such</div>
 	  	</div>
-	  	<div className="flex black pt3 justify-between">
+	  	<div className="flex black pt3 justify-between relative">
 	    	{
-	    		data.loading || data.getReviews.length <= 0 ? (
+	    		data.loading || (!data.loading && data.getReviews.length) <= 0 ? (
 	    			<div className="flex w-100 justify-between">
 	    				<div className="review-placeholder w-33">
 	    				  <div className="h-200 animated-background">
@@ -65,17 +66,39 @@ function reviews(data) {
 			    		</div>)
 		    	)
 	    	}
+	    	{
+	    		!data.loading && data.getReviews.length <= 0 ? (
+	    			<div className="absolute top-0 bottom-0 right-0 left-0 flex justify-center items-center z-1 no-reviews-bg">
+	    				<div className="relative flex w-80 tc flex-column bg-white pa4 no-reviews-box">
+	    					<div className=" f5 f4-ns f3-l b tc z-2">
+	    						Sadly, this uni still has no reviews
+	    					</div>
+	    					<div className="f6 f5-ns pt1 pb3">
+	    						Be the first one to add a review
+	    					</div>
+	    					<TypeformButton id={uni._id} cityid={uni.city_id} className="ur-btn tc flex justify-center content-center items-center" />
+	    				</div>
+	    			</div>
+	    		) : null
+	    	}
 	  		    		
-	    	
 	    	</div>
 	  	  <style jsx>
 	  			{`
+	  				.no-reviews-bg {
+		  				// background-color: #8080808f;
+	  				}
+	  				.no-reviews-box {
+	  					border: 1px solid;
+	  					border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+	  				}
 			    	.review {
 			    		border: 1px solid #ededee;
 			    		color: #4f5057;
 			    		max-width: 33%;
 	    			  max-width: 250px;
 	    		    height: 250px;
+	    		    background-color: white;
 						}
 						.review-text {
 							height: 210px;
@@ -98,11 +121,11 @@ function reviews(data) {
 						}
 						::-webkit-scrollbar {
 						    width: 0px;  /* remove scrollbar space */
-						    background: #FF0000;  /* optional: just make scrollbar invisible */
+						    background: #FFF;  /* optional: just make scrollbar invisible */
 						}
 						/* optional: show position indicator in red */
 						::-webkit-scrollbar-thumb {
-						    background: #FF0000;
+						    background: #FFF;
 						}
 						.bluish {
 							background-color: #25d6c9;
@@ -171,5 +194,10 @@ export default graphql(getUnisWithReview, {
     university_id: ownProps.university_id
     },
   }),
-  props: (props) => props.data
+  props: (props) => {
+  	return {
+	  	data: props.data,
+	  	uni: props.ownProps.uni
+  	}
+  }
 })(reviews);

@@ -210,7 +210,7 @@ class Modal extends React.Component {
 											<ProgressBar name="Student Parties" value={setProgProp(_.get(uni,'party.value',0))} icon="party"/>
 										</div>
 									</div>
-									<Reviews university_id={this.props.loading ? null : uni._id}/>
+									<Reviews uni={uni} university_id={this.props.loading ? null : uni._id}/>
 								</div>
 							</TabPanel>	
 							<TabPanel className="flex flex-auto">
@@ -290,7 +290,7 @@ class Modal extends React.Component {
 											<ProgressBar name="Entry fee Club" cost={round(_.get(city,'danceclub_cost.value',0))} value={setCostProgProp(_.get(city,'danceclub_cost.value',0), 30)} icon="music"/>
 										</div>
 									</div>
-									<Reviews city_id={this.props.loading ? null : city._id}/>
+									<Reviews uni={uni} city_id={this.props.loading ? null : city._id}/>
 								</div>
 							</TabPanel>
 							<TabPanel>		
@@ -368,8 +368,6 @@ class Modal extends React.Component {
 			    		background-repeat: no-repeat;
 			    		background-position: center center;
 			    		min-height: 30vh;
-			    		border-top-right-radius: 6px;
-			    		border-top-left-radius: 6px;
 			    		position: relative;
 			    	}
 
@@ -424,6 +422,10 @@ class Modal extends React.Component {
 	          		background: #f4f4f4;
 	          		background-position: fixed;
 	          		box-sizing: border-box;
+          		}
+          		.bg-img {
+          			border-top-right-radius: 6px;
+          			border-top-left-radius: 6px;
           		}
       			}
 
