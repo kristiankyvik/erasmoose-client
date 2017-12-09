@@ -23,6 +23,28 @@ const setProgProp = (v) => {
 	return 0
 }
 
+const getStars = (v) => {
+	const fullStars = Math.floor(v);
+	const leftOverStars = v - Math.floor(v);
+	const starSettings = {
+		full: fullStars + (leftOverStars > 0.75 ? 1 : 0), 
+		half: (leftOverStars <= 0.75) && (leftOverStars > 0.25) ? 1 : 0
+	};
+
+	let stars = [];
+	for(let i= 0; i < starSettings.full; i++) {
+	  stars.push(<i className="fa fa-star" aria-hidden="true"></i>);
+	}
+
+	starSettings.half ? stars.push(<i className="fa fa-star-half-o" aria-hidden="true"></i>) : null;
+
+	for(let i= 0; i < 5 - starSettings.full - starSettings.half; i++) {
+	  stars.push(<i className="fa fa-star-o" aria-hidden="true"></i>);
+	}
+
+	return stars;
+};
+
 const getOverallRating = (uni) => { //TODO: This has to be replaced by a general formula and connected to graphql
 	return _.get(uni, 'uni_recommendation.value', 0);
 }
@@ -68,24 +90,11 @@ export default class Card extends React.Component {
 				  <div className="ph2 pv2 flex items-end bottom items-center">
 				    <div 
 				    	style={{ "flex": 1 }} 
-				    	className="b tl f7 "
+				    	className="b tl f7 z-1"
 				    >
-		      		<div className="star-ratings-css">
-								<div className="star-ratings-css-top" style={{ width: `${setProgProp(overallRating)}%` }}>
-		  	    	  	<span>★</span>
-		  	    	  	<span>★</span>
-		  	    	  	<span>★</span>
-		  	    	  	<span>★</span>
-		  	    	  	<span>★</span>
-		  	    	  </div>
-		  	    	  <div className="star-ratings-css-bottom">
-		  		    	  <span>★</span>
-		  		    	  <span>★</span>
-		  		    	  <span>★</span>
-		  		    	  <span>★</span>
-		  		    	  <span>★</span>
-		  	    		</div>
-								<span className="score absolute">({_.get(uni,'review_count',0)})</span>
+		      		<div className="yellow">
+								{getStars(overallRating)}
+								<span className="score ml1">({_.get(uni,'review_count',0)})</span>
 		  	    	</div>
 				    </div>
 				    <div 
@@ -169,28 +178,7 @@ export default class Card extends React.Component {
 					    }
 			    	}
 			      .star-ratings-css {
-			        unicode-bidi: bidi-override;
-			        color: #c5c5c5;
-			        font-size: 14px;
-			        height: 14px;
-			        width: 70px;
-			        position: relative;
-			        padding: 0;
-			      }
-			      .star-ratings-css-top {
-			        color: #F7CA18;
-			        padding: 0;
-			        position: absolute;
-			        z-index: 1;
-			        display: block;
-			        top: 0;
-			        left: 0;
-			        overflow: hidden;
-			      }
-			      .star-ratings-css-bottom {
-			        padding: 0;
-			        display: block;
-			        z-index: 0;
+			        
 			      }
 			      .top {
 			        flex: 1;
