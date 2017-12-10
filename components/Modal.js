@@ -77,9 +77,9 @@ class Modal extends React.Component {
 						>	
 							<div className="absolute z-1 bottom-2 white tc left-0 right-0">
 								<div className="b pt4 pt3-l f3 f2-l text-shadow">{this.props.uni.name}</div>
-								<div className="f5 pb3">
+								<div className="f5 pb3 pt1">
 									<i className="fa fa-globe mr1" aria-hidden="true"></i>
-									<span className="f4 f3-l pb3 i playfair text-shadow pointer">{this.props.uni.website}</span>
+									<a href={`http://www.${this.props.uni.website}`} target="_blank" className="f4 f3-l pb3 i playfair text-shadow pointer white link">{this.props.uni.website}</a>
 								</div>
 								<TypeformButton id={this.props.uni._id} cityid={this.props.uni.city_id} className="ma2 mh4 ur-btn tc flex justify-center content-center items-center" />
 							</div>	
@@ -410,7 +410,7 @@ class Modal extends React.Component {
 	      	    -webkit-backface-visibility: hidden;
 			      }
 
-          	@media only screen and (min-width : 768px) {
+          	@media only screen and (min-width : 930px) {
           		.modal {
 	          		position: absolute;
 	          		z-index: 9997;

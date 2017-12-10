@@ -82,13 +82,25 @@ function reviews(props) {
 		    			{
 		    				data.getReviews.map((review) => (
 		  	    			<div className="flex flex-auto review flex-column justify-center modal-card mr2 pv3 grad-green relative" key={review._id}>
-		  			    		<div className="i pv3 ph4 f5 review-text">
+		  			    		<div className="pv3 ph4 f5 review-text">
 		  			    			{data.university_id ? review.uni_review : review.city_review}
+		  			    			<div className="i f7 pt3 tr">
+		  			    				{review.date_submit.split(" ")[0]}
+		  			    			</div>
 		  			    		</div>
-		  			    		<div className="pv3 ph4 tc f6">
-		  			    			{review.date_submit}
+		  			    		<div className="pv3 ph4 tc f6 flex justify-between">
+		  			    			<div className="flex flex-1">
+		  			    				X moose found this useful
+		  			    			</div>
+		  			    			<div className="flex flex-1">
+		  			    				<div className="pa1 pointer">
+		  			    					<i className="fa fa-thumbs-o-up" aria-hidden="true"></i>
+		  			    				</div>
+		  			    				<div className="pa1 pointer">
+		  			    					<i className="fa fa-thumbs-o-down" aria-hidden="true"></i>
+		  			    				</div>
+		  			    			</div>
 		  			    		</div>
-		  			    		<button className="absolute bottom-1 right-1 bluish pointer">42</button>
 		  		    		</div>)
 			    			)
 		    			}
@@ -131,7 +143,6 @@ function reviews(props) {
 	    			  min-width: 240px;
 	    		    height: 250px;
 	    		    background-color: white;
-	    		    cursor: pointer;
 						}
 						.review-text {
 							height: 182px;

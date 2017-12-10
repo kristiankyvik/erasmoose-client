@@ -32,6 +32,9 @@ export default ({ children }) => (
         line-height: 1;
         color: #000;
       }
+      .slick-next.slick-disabled:before, .slick-prev.slick-disabled:before {
+        display: none;
+      }
       button {
         align-items: center;
         background-color: #22BAD9;
