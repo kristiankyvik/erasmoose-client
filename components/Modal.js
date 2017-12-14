@@ -4,6 +4,8 @@ import { Line, Circle } from 'rc-progress';
 import TypeformButton from '../components/TypeformButton'
 import ProgressBar from '../components/ProgressBar'
 import Reviews from '../components/Reviews'
+import ModalInfoDiv from '../components/ModalInfoDiv'
+
 const _ = require('lodash'); //get lodash library
 
 const round = (v) =>  {
@@ -103,101 +105,12 @@ class Modal extends React.Component {
 												<Circle className="pv2 mr3 w-100" percent={setProgProp(uniRating)} strokeWidth="5
 													" trailWidth="5" strokeColor="#F44A4A" />
 											</div>
-
-											<div className="flex items-stretch pv1">
-												<div className="flex items-center justify-center">
-													<div className="flex icon-wrapper br-100 pa1 items-center justify-center">
-														<img src={`./static/icons/location.svg`} className="w2 h2" />
-													</div>
-												</div>
-												<div className="flex flex-column self-stretch flex-1 justify-center pl2">
-													<div className="flex pb1 justify-between">
-														<div className="flex">
-															Country
-														</div>
-													</div>
-													<span className="f7 ttu b">{uni.country}</span>
-												</div>
-											</div>
-											<div className="flex items-stretch pv1">
-												<div className="flex items-center justify-center">
-													<div className="flex icon-wrapper br-100 pa1 items-center justify-center">
-														<img src={`./static/icons/ranking.svg`} className="w2 h2" />
-													</div>
-												</div>
-												<div className="flex flex-column self-stretch flex-1 justify-center pl2">
-													<div className="flex pb1 justify-between">
-														<div className="flex">
-															Ranking (Int/Nat):
-														</div>
-													</div>
-													<span className="f7 ttu b">Coming soon</span>
-												</div>
-											</div>
-
-											<div className="flex items-stretch pv1">
-												<div className="flex items-center justify-center">
-													<div className="flex icon-wrapper br-100 pa1 items-center justify-center">
-														<img src={`./static/icons/subject.svg`} className="w2 h2" />
-													</div>
-												</div>
-												<div className="flex flex-column self-stretch flex-1 justify-center pl2">
-													<div className="flex pb1 justify-between">
-														<div className="flex">
-															Flagship Areas:
-														</div>
-													</div>
-													<span className="f7 ttu b">{getTopProps(uni.main_disciplines)}</span>
-												</div>
-											</div>
-
-											<div className="flex items-stretch pv1">
-												<div className="flex items-center justify-center">
-													<div className="flex icon-wrapper br-100 pa1 items-center justify-center">
-														<img src={`./static/icons/language.svg`} className="w2 h2" />
-													</div>
-												</div>
-												<div className="flex flex-column self-stretch flex-1 justify-center pl2">
-													<div className="flex pb1 justify-between">
-														<div className="flex">
-															Languages:
-														</div>
-													</div>
-													<span className="f7 ttu b">{getTopProps(uni.languages)}</span>
-												</div>
-											</div>
-
-											<div className="flex items-stretch pv1">
-												<div className="flex items-center justify-center">
-													<div className="flex icon-wrapper br-100 pa1 items-center justify-center">
-														<img src={`./static/icons/money.svg`} className="w2 h2" />
-													</div>
-												</div>
-												<div className="flex flex-column self-stretch flex-1 justify-center pl2">
-													<div className="flex pb1 justify-between">
-														<div className="flex">
-															Tuition Fees:
-														</div>
-													</div>
-													<span className="f7 ttu b">{uni.fees.value ? round(uni.fees.value) + " €" : "coming soon"}</span>
-												</div>
-											</div>
-
-											<div className="flex items-stretch pv1">
-												<div className="flex items-center justify-center">
-													<div className="flex icon-wrapper br-100 pa1 items-center justify-center">
-														<img src={`./static/icons/time.svg`} className="w2 h2" />
-													</div>
-												</div>
-												<div className="flex flex-column self-stretch flex-1 justify-center pl2">
-													<div className="flex pt1 pb1 justify-between">
-														<div className="flex">
-															Weekly Hours of Work:
-														</div>
-													</div>
-													<span className="f7 b">{uni.weekly_hours.value ? round(uni.weekly_hours.value) + " hours" : "coming soon"}</span>
-												</div>
-											</div>
+											<ModalInfoDiv name='Country' divProperty={uni.country} srcName='./static/icons/location.svg' />
+											<ModalInfoDiv name='Ranking (Int/Nat):' divProperty='Coming soon' srcName='./static/icons/ranking.svg' />
+											<ModalInfoDiv name='Flagship Areas:' divProperty={getTopProps(uni.main_disciplines)} srcName='./static/icons/subject.svg' />
+										  <ModalInfoDiv name='Languages:' divProperty={getTopProps(uni.languages)} srcName='./static/icons/language.svg' />
+											<ModalInfoDiv name='Tuition Fees:' divProperty={uni.fees.value ? round(uni.fees.value) + " €" : "coming soon"} srcName='./static/icons/money.svg' />
+											<ModalInfoDiv name='Weekly Hours of Work:' divProperty={uni.weekly_hours.value ? round(uni.weekly_hours.value) + " hours" : "coming soon"} srcName='./static/icons/time.svg' />
 										</div>
 										<div className="flex flex-1 flex-column justify-end modal-card mt3 mr3 pv3 ph3">
 											<ProgressBar name="difficulty" value={setProgProp(_.get(uni,'difficulty.value',0))} icon="difficulty"/>
@@ -227,53 +140,10 @@ class Modal extends React.Component {
 													" trailWidth="5" strokeColor="#F44A4A" />
 											</div>
 
-											<div className="flex items-stretch pv1">
-												<div className="flex items-center justify-center">
-													<div className="flex icon-wrapper br-100 pa1 items-center justify-center">
-														<img src={`./static/icons/population.svg`} className="w2 h2" />
-													</div>
-												</div>
-												<div className="flex flex-column self-stretch flex-1 justify-center pl2">
-													<div className="flex pb1 justify-between">
-														<div className="flex">
-															Size:
-														</div>
-													</div>
-													<span className="f7 ttu b">coming soon</span>
-												</div>
-											</div>
-
-											<div className="flex items-stretch pv1">
-												<div className="flex items-center justify-center">
-													<div className="flex icon-wrapper br-100 pa1 items-center justify-center">
-														<img src={`./static/icons/temperature.svg`} className="w2 h2" />
-													</div>
-												</div>
-												<div className="flex flex-column self-stretch flex-1 justify-center pl2">
-													<div className="flex pb1 justify-between">
-														<div className="flex">
-															Weather (Winter/Spring):
-														</div>
-													</div>
-													<span className="f7 ttu b">coming soon</span>
-												</div>
-											</div>
-
-											<div className="flex items-stretch pv1">
-												<div className="flex items-center justify-center">
-													<div className="flex icon-wrapper br-100 pa1 items-center justify-center">
-														<img src={`./static/icons/bill.svg`} className="w2 h2" />
-													</div>
-												</div>
-												<div className="flex flex-column self-stretch flex-1 justify-center pl2">
-													<div className="flex pb1 justify-between">
-														<div className="flex">
-															Monthly Cost:
-														</div>
-													</div>
-													<span className="f7 ttu b">{round(_.get(city,'monthly_cost.value',0))} €/m</span>
-												</div>
-											</div>
+											<ModalInfoDiv name='Size:' divProperty='coming soon' srcName='./static/icons/population.svg' />
+											<ModalInfoDiv name='Weather (Winter/Spring):' divProperty='coming soon' srcName='./static/icons/temperature.svg' />
+											<ModalInfoDiv name='Monthly Cost:' divProperty={round(_.get(city, 'monthly_cost.value', 0)) + '€/m'} srcName='./static/icons/bill.svg' />
+											
 											<ProgressBar name="Student Friendliness" value={setProgProp(_.get(city,'student_friendliness.value',0))} icon="difficulty"/>
 											<ProgressBar name="Travel Options" value={setProgProp(_.get(city,'travel_options.value',0))} icon="plane"/>
 											<ProgressBar name="Cultural Offering" value={setProgProp(_.get(city,'culture.value',0))} icon="culture"/>
