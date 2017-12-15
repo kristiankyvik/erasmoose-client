@@ -10,29 +10,32 @@ class UniListResults extends React.Component {
         super(props);
     }
 
-    showMoreUnis = (allUnis, fetchMore) => fetchMore({
-        variables: {
-            skip: allUnis.length,
-        },
-
-        updateQuery: (previousResult, { fetchMoreResult }) => {
-            if (!fetchMoreResult) {
-                return previousResult
+    showMoreUnis = (allUnis, fetchMore) => {
+        console.log("Hallo")
+        console.log(allUnis)
+        return fetchMore({
+            variables: {
+                skip: allUnis.length
+            },
+            updateQuery: (previousResult, { fetchMoreResult }) => {
+                console.log("fetchMore",fetchMoreResult)
+                if (!fetchMoreResult) {
+                    return previousResult
+                }
+                return Object.assign({}, previousResult, {
+                    allUnis: [...previousResult.allUnis, ...fetchMoreResult.allUnis]
+                })
             }
-            return Object.assign({}, previousResult, {
-                // Append the new posts results to the old one
-                allUnis: [...previousResult.allUnis, ...fetchMoreResult.allUnis]
-            })
-        }
-    })
+        });
+    }
 
     render() {
 
-        const { loading, index, error, allUnis, _allUnisMeta, loadMorePosts, fetchMore, _handleCardClick, _handleFormClick} = this.props;
-        console.log("Yo look at the city", this.props);
+        const { loading, index, error, allUnis, _allUnisMeta, loadMorePosts, fetchMore, _handleCardClick, _handleFormClick, postPerPage } = this.props;
+
         if (error) return <ErrorMessage message='Error loading entries.' />
         if (!allUnis && loading) return <Loader />;
-        const areMorePosts = (allUnis.length < _allUnisMeta.count) && (allUnis.length >= 33);
+        const areMorePosts = (allUnis.length < _allUnisMeta.count) && (allUnis.length >= postPerPage);
         if (allUnis && allUnis.length) {
             return (
                 <section className="tc">

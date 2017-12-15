@@ -17,9 +17,7 @@ class UniListSearchResults extends React.Component {
       searchKey: "",
       uni: null,
       uniNum: 0,
-      allUnis: [],
-      city_id: "",
-      city: null,
+      allUnis: []
     };
   }
 
@@ -33,7 +31,6 @@ class UniListSearchResults extends React.Component {
 
   _handleCardClick = (e, index, uni) => {
     console.log("cardCLick", e, index, uni);
-    this.props.setCityId(uni.city_id);
     this.setState({
       showModal: true,
       index,
@@ -49,7 +46,6 @@ class UniListSearchResults extends React.Component {
       index: index,
       uni: this.props.allUnis[index]
     });
-    this.props.setCityId(this.props.allUnis[index].city_id);
   }
 
   _handleModalRightClick = (e) => {
@@ -59,7 +55,6 @@ class UniListSearchResults extends React.Component {
       index: index,
       uni: this.props.allUnis[index]
     });
-    this.props.setCityId(this.props.allUnis[index].city_id);
 
   }
 
@@ -89,7 +84,7 @@ class UniListSearchResults extends React.Component {
       fetchMore,
       triggerSearchInDB,
       liveFilter,
-      getCity
+      postPerPage
     } = this.props;
 
     return (
@@ -109,6 +104,7 @@ class UniListSearchResults extends React.Component {
             loadMorePosts={loadMorePosts}
             fetchMore={fetchMore}
             _handleCardClick={this._handleCardClick}
+            postPerPage={postPerPage}
            />
         </div>
         { 

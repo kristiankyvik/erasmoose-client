@@ -14,14 +14,8 @@ export default class UniList extends React.Component {
     this.tfbtn = null;
     this.state = {
       showModal: false,
-      searchKey: "",
-      city_id: "",
+      searchKey: ""
     };
-  }
-
-  setCityId(city_id) {
-    console.log("SETTING CITY ID", city_id);
-    this.setState({city_id});
   }
 
   triggerSearchInDB = lodash.debounce((searchKey) => {
@@ -37,8 +31,6 @@ export default class UniList extends React.Component {
           pathname={this.props.pathname}
           triggerSearchInDB={this.triggerSearchInDB} //function triggering a change in searchKey 
           searchKey={this.state.searchKey} //searchKey needed for graphql call, if changed new call to db is executed
-          city_id={this.state.city_id}
-          setCityId={(i) => this.setCityId(i)}
         />
 
         <style jsx>{`
