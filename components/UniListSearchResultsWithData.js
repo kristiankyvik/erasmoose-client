@@ -66,6 +66,76 @@ const allUnis = gql`
       cityRating
       uniRating
       overallRating 
+      city {
+        _id
+        name
+        country
+        votes
+        vibes { 
+          name
+          count
+        }
+        activities
+        travel_options{
+          value
+          count
+        }
+        city_recommendation{
+          value
+          count
+        }
+        culture{
+          value
+          count
+        }
+        rent_cost{
+          value
+          count
+        }
+        beer_cost{
+          value
+          count
+        }
+        coffee_cost{
+          value
+          count
+        }
+        kebab_cost{
+          value
+          count
+        }
+        monthly_cost{
+          value
+          count
+        }
+        culture{
+          value
+          count
+        }
+        if_you_like
+        review_count
+        danceclub_cost{
+          value
+          count
+        }
+        student_friendliness{
+          value
+          count
+        }
+        nightlife{
+          value
+          count
+        }
+        gastronomy{
+          value
+          count
+        }
+        sports{
+          value
+          count
+        }
+        leisure
+      }
     },
     _allUnisMeta {
       count

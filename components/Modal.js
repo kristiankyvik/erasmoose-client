@@ -53,7 +53,8 @@ class Modal extends React.Component {
 	}
 
 	render() {
-		const { city, uni } = this.props;
+		const { uni } = this.props;
+		const city = uni.city;
 		const i = this.state.tabIndex;
 		console.log("LOADING", this.props.loading);
 	  return (

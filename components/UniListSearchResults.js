@@ -106,7 +106,6 @@ class UniListSearchResults extends React.Component {
             error={error}
             allUnis={allUnis}
             _allUnisMeta={_allUnisMeta}
-            city={getCity}
             loadMorePosts={loadMorePosts}
             fetchMore={fetchMore}
             _handleCardClick={this._handleCardClick}
@@ -118,7 +117,6 @@ class UniListSearchResults extends React.Component {
               loading={loading}
               showModal={this.state.showModal}
               uni={this.state.uni}
-              city={this.props.getCity}
               _handleModalRightClick={this._handleModalRightClick}
               _handleModalLeftClick={this._handleModalLeftClick}
               _handleModalCloseClick={this._handleModalCloseClick}
