@@ -63,6 +63,9 @@ const allUnis = gql`
         name
         count
       }
+      cityRating
+      uniRating
+      overallRating 
     },
     _allUnisMeta {
       count

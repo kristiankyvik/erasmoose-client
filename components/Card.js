@@ -45,17 +45,12 @@ const getStars = (v) => {
 	return stars;
 };
 
-const getOverallRating = (uni) => { //TODO: This has to be replaced by a general formula and connected to graphql
-	return _.get(uni, 'uni_recommendation.value', 0);
-}
-
 export default class Card extends React.Component {
 	constructor(props) {
 	  super(props);
 	}
 	render() {
 		const { uni } = this.props;
-		const overallRating = getOverallRating(uni)
 		return (
 			<div 
 				className="ma2 shadow-4 bg-white flex flex-column tl ur-card relative white" 
@@ -93,7 +88,7 @@ export default class Card extends React.Component {
 				    	className="b tl f7 z-1"
 				    >
 		      		<div className="yellow">
-								{getStars(overallRating)}
+								{getStars(uni.overallRating)}
 								<span className="score ml1">({_.get(uni,'review_count',0)})</span>
 		  	    	</div>
 				    </div>
@@ -108,8 +103,8 @@ export default class Card extends React.Component {
 				<div className="flex-column pt1 dn card-back absolute z-1">
 					<div className="pv2 ph4 flex flex-column items-center">
 						<div className="progress-wrapper tc pb2">
-							<span className='progress-title f7 f5-m b'>{`${setProgProp(overallRating)}/100`}</span>
-							<Circle className="w-60 pv2 m0a" percent={setProgProp(overallRating)} strokeWidth="5
+							<span className='progress-title f7 f5-m b'>{`${setProgProp(uni.overallRating)}/100`}</span>
+							<Circle className="w-60 pv2 m0a" percent={setProgProp(uni.overallRating)} strokeWidth="5
 							" trailWidth="5" strokeColor="#F44A4A" />
 						</div>
 						<div className="b f7 f6-m f5-l">
