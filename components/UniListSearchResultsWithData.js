@@ -147,11 +147,11 @@ const allUnis = gql`
 // available on the `data` prop of the wrapped component (UniList)
 export default graphql(allUnis, {
     options: (ownProps) => ({
-      notifyOnNetworkStatusChange: false,
+      notifyOnNetworkStatusChange: true,
       variables: {
           skip: 0,
           first: POSTS_PER_PAGE,
-          searchKey: ownProps.pathname == '/' ? ownProps.searchKey : ownProps.query.q ? ownProps.query.q : ""
+          searchKey: ownProps.searchKey
       },
     }),
     props: ({ data: { loading, error, allUnis, _allUnisMeta, fetchMore} }) => ({

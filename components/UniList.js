@@ -30,7 +30,7 @@ export default class UniList extends React.Component {
           query={this.props.query}
           pathname={this.props.pathname}
           triggerSearchInDB={this.triggerSearchInDB} //function triggering a change in searchKey 
-          searchKey={this.state.searchKey} //searchKey needed for graphql call, if changed new call to db is executed
+          searchKey={this.props.pathname == '/' ? this.state.searchKey : lodash.get(this.props.query,'q','')} //searchKey needed for graphql call, if changed new call to db is executed
         />
 
         <style jsx>{`

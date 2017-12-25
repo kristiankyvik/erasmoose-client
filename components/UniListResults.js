@@ -11,8 +11,6 @@ class UniListResults extends React.Component {
     }
 
     showMoreUnis = (allUnis, fetchMore) => {
-        console.log("Hallo")
-        console.log(allUnis)
         return fetchMore({
             variables: {
                 skip: allUnis.length
@@ -43,7 +41,7 @@ class UniListResults extends React.Component {
                         <div style={{ maxWidth: 1080 }} className="flex flex-wrap justify-center">
                             {allUnis.map((uni, index) =>
                                 <Card
-                                    key={uni.name}
+                                    key={uni._id}
                                     uni={uni}
                                     index={index + 1}
                                     _handleCardClick={(evt) => _handleCardClick(evt, index, allUnis[index])}
