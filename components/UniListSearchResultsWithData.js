@@ -4,8 +4,8 @@ import UniListSearchResults from './UniListSearchResults'
 const POSTS_PER_PAGE = 51;
 
 const allUnis = gql`
-  query allUnis($first: Int!, $skip: Int!, $searchKey: String) {
-    allUnis(first: $first, skip: $skip, searchKey: $searchKey) {
+  query allUnis($first: Int!, $skip: Int!, $searchObj: String!) {
+    allUnis(first: $first, skip: $skip, searchObj: $searchObj) {
       _id
       name
       votes
@@ -146,14 +146,16 @@ const allUnis = gql`
 // The `graphql` wrapper executes a GraphQL query and makes the results
 // available on the `data` prop of the wrapped component (UniList)
 export default graphql(allUnis, {
-    options: (ownProps) => ({
-      notifyOnNetworkStatusChange: true,
-      variables: {
+    options: (ownProps) => {      
+      return {
+        notifyOnNetworkStatusChange: true,
+        variables: {
           skip: 0,
           first: POSTS_PER_PAGE,
-          searchKey: ownProps.searchKey
-      },
-    }),
+          searchObj: JSON.stringify(ownProps.searchObj)
+        },
+      };  
+    },
     props: ({ data: { loading, error, allUnis, _allUnisMeta, fetchMore} }) => ({
         allUnis,
         _allUnisMeta,

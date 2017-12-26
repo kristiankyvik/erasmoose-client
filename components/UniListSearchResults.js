@@ -38,7 +38,6 @@ class UniListSearchResults extends React.Component {
     });
     document.body.classList.toggle('modalOpen', true);
   }
-
  
   _handleModalLeftClick = (e) => {
     const index = this.state.index - 1 <= 0 ? this.props.allUnis.length - 1 : this.state.index - 1;
@@ -55,7 +54,6 @@ class UniListSearchResults extends React.Component {
       index: index,
       uni: this.props.allUnis[index]
     });
-
   }
 
   _handleModalCloseClick = (e) => {
@@ -74,6 +72,9 @@ class UniListSearchResults extends React.Component {
     }
   }
 
+  
+
+
   render() {
     const {
       loading,
@@ -82,7 +83,6 @@ class UniListSearchResults extends React.Component {
       _allUnisMeta,
       loadMorePosts,
       fetchMore,
-      triggerSearchInDB,
       liveFilter,
       postPerPage
     } = this.props;
@@ -91,10 +91,15 @@ class UniListSearchResults extends React.Component {
       <div className="">
         <Search 
           liveFilter={liveFilter}
-          triggerSearchInDB={triggerSearchInDB}
+          setSearchKey={this.props.setSearchKey}
           loading={loading}
           query={this.props.query}
         />
+        {/* <UniListFilter //TODO!!!
+          setFilterObj={this.props.setFilterObj}
+          setRankingCity={this.props.setRankingCity}
+          setRankingUni={this.props.setRankingUni} 
+        /> */}
         <div className="flex justify-center pt5">
           <UniListResults 
             loading={loading}

@@ -46,8 +46,9 @@ class UniListResults extends React.Component {
                                     index={index + 1}
                                     _handleCardClick={(evt) => _handleCardClick(evt, index, allUnis[index])}
                                 />
-                            )}
+                            )}                           
                         </div>
+                        
                     </div>
                     <div className="justify-center flex pt4">
                         {areMorePosts ? <div className="btn-new tc max justify-center" onClick={() => this.showMoreUnis(allUnis, fetchMore)}> {loading ? 'Loading...' : 'Show More'} </div> : ''}

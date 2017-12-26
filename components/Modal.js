@@ -56,7 +56,6 @@ class Modal extends React.Component {
 		const { uni } = this.props;
 		const city = uni.city;
 		const i = this.state.tabIndex;
-		console.log("LOADING", this.props.loading);
 	  return (
 			<div 
 				className={"backModal fixed z-1 db"}
@@ -95,6 +94,7 @@ class Modal extends React.Component {
 												<Circle className="pv2 mr3 w-100" percent={setProgProp(uni.uniRating)} strokeWidth="5
 													" trailWidth="5" strokeColor="#F44A4A" />
 											</div>
+											<p data-tip='' data-for='test'></p>
 											<ModalInfoDiv name='Country' divProperty={uni.country} srcName='./static/icons/location.svg' />
 											<ModalInfoDiv name='Ranking (Int/Nat):' divProperty='Coming soon' srcName='./static/icons/ranking.svg' />
 											<ModalInfoDiv name='Flagship Areas:' divProperty={getTopProps(uni.main_disciplines)} srcName='./static/icons/subject.svg' />
@@ -128,6 +128,7 @@ class Modal extends React.Component {
 												<span className='inside-circle'>{`${setProgProp(uni.cityRating)}/100`}</span>
 												<Circle className="pv2 mr3 w-100" percent={setProgProp(uni.cityRating)} strokeWidth="5
 													" trailWidth="5" strokeColor="#F44A4A" />
+												<i class="fa fa-info-circle"></i>
 											</div>
 
 											<ModalInfoDiv name='Size:' divProperty='coming soon' srcName='./static/icons/population.svg' />

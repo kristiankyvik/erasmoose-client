@@ -29,7 +29,7 @@ export default class Search extends React.Component {
     
     if (!this.props.liveFilter) return;
 
-    this.props.triggerSearchInDB(searchKey);
+    this.props.setSearchKey(searchKey);
     Router.push(
       `/search?q=${searchKey}`,
       `/search?q=${searchKey}`,
