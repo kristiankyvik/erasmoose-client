@@ -146,7 +146,7 @@ const allUnis = gql`
 // The `graphql` wrapper executes a GraphQL query and makes the results
 // available on the `data` prop of the wrapped component (UniList)
 export default graphql(allUnis, {
-    options: (ownProps) => {      
+    options: (ownProps) => {  
       return {
         notifyOnNetworkStatusChange: true,
         variables: {
