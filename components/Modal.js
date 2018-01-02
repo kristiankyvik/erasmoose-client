@@ -6,7 +6,11 @@ import ProgressBar from '../components/ProgressBar'
 import Reviews from '../components/Reviews'
 import ModalInfoDiv from '../components/ModalInfoDiv'
 
+
 const _ = require('lodash'); //get lodash library
+
+const cityFormulaDescription = 'The city rating is calculated according to the following formula: (needs formula and I know style is not the best)'
+const uniFormulaDescription = 'The uni rating is calculated according to the following formula: (needs formula and I know style is not the best)' 
 
 const round = (v) =>  {
 	if (v) {
@@ -91,9 +95,14 @@ class Modal extends React.Component {
 										<div className="flex flex-1 flex-column justify-center modal-card mt3 mr3 pv3 ph3">
 											<div className="f4 b circle flex pb4">
 												<span className='inside-circle'>{`${setProgProp(uni.uniRating)}/100`}</span>
+												<span className='info-wrap next-circle'>
+													<span className="fa fa-info-circle"></span>
+													<p className='info-description'> { uniFormulaDescription } </p>	
+												</span>
 												<Circle className="pv2 mr3 w-100" percent={setProgProp(uni.uniRating)} strokeWidth="5
 													" trailWidth="5" strokeColor="#F44A4A" />
 											</div>
+											
 											<p data-tip='' data-for='test'></p>
 											<ModalInfoDiv name='Country' divProperty={uni.country} srcName='./static/icons/location.svg' />
 											<ModalInfoDiv name='Ranking (Int/Nat):' divProperty='Coming soon' srcName='./static/icons/ranking.svg' />
@@ -126,9 +135,12 @@ class Modal extends React.Component {
 										<div className="flex flex-1 flex-column justify-end modal-card mt3 mr2 pv3 ph3">
 											<div className="f4 b circle pb4 flex">
 												<span className='inside-circle'>{`${setProgProp(uni.cityRating)}/100`}</span>
+												<span className='info-wrap next-circle'>
+													<span className="fa fa-info-circle"></span>
+													<p className='info-description'> {cityFormulaDescription} </p>
+												</span>
 												<Circle className="pv2 mr3 w-100" percent={setProgProp(uni.cityRating)} strokeWidth="5
 													" trailWidth="5" strokeColor="#F44A4A" />
-												<i class="fa fa-info-circle"></i>
 											</div>
 
 											<ModalInfoDiv name='Size:' divProperty='coming soon' srcName='./static/icons/population.svg' />
@@ -180,8 +192,27 @@ class Modal extends React.Component {
 			    	  top: 43%;
 			    	  left: 50%;
 			    	  transform: translate(-50%, -50%);
-			    	}
-
+						}
+						.info-wrap:hover .info-description {
+							visibility: visible;
+							opacity: 1;
+						}
+						.next-circle {
+							position: absolute;
+			    	  top: 0%;
+			    	  left: 68%;
+			    	  transform: translate(-50%, -50%);
+						}
+						.info-description {
+							position: absolute;
+							top: 10%;
+							left: 100%;
+							visibility: hidden;
+							opacity: 0;
+							width: 100px;
+							font-size: 10px;
+							line-height: 10px;
+						}
 			    	.blue {
 			    		color: #F44A4A;
 			    	}
