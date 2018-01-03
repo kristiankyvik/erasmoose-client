@@ -16,9 +16,11 @@ export default class UniList extends React.Component {
     this.state = {
       showModal: false,
       searchKey: "",
-      filterObj: [],
-      rankingUni: defaultRankingUni, 
-      rankingCity: defaultRankingCity
+      filterObj: [], //Filter object should contain all countries that will be replaced as array of strings
+      // try out for example ['Spain','France']
+      // can only be used for countries in the beginning but could be changed to other things later on (city, field of study,...)
+      rankingUni: defaultRankingUni, //define the formula that creates the overall uni ranking
+      rankingCity: defaultRankingCity //define the formula that creates the overall city ranking
     };
   }
 

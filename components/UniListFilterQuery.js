@@ -52,14 +52,13 @@ module.exports = {
 
     if (filterObject.length > 0) {
       let countryFilter = {
-        country: {
-          $or: []
-        }
+        $or: []
       }
       filterObject.forEach((country) => {
-        countryFilter.country.$or.add(country);
+        countryFilter.$or.push({country: country});
       });
-      filterArray.add(countryFilter);
+      filterArray.push(countryFilter);
+      console.log(filterArray)
     }
 
     return {
