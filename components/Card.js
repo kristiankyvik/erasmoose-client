@@ -1,6 +1,6 @@
 import { Line, Circle } from 'rc-progress';
 import Img from 'react-image'
-const _ = require('lodash'); //get lodash library
+const _ = require('lodash'); 
 
 const UniLogoFallback = (
 	<div 

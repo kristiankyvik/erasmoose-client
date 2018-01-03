@@ -8,7 +8,7 @@ const source = [
   'USA'
 ];
 
-export default class UniListFilter extends React.Component {
+export default class Filter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

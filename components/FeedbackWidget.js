@@ -116,6 +116,7 @@ class FeedbackWidget extends React.Component {
     )
   }
 }
+
 const sendFeedback = gql`
   mutation sendFeedback($email: String, $message: String) {
     sendFeedback(email: $email, message: $message) {
