@@ -58,7 +58,6 @@ module.exports = {
         countryFilter.$or.push({country: country});
       });
       filterArray.push(countryFilter);
-      console.log(filterArray)
     }
 
     return {

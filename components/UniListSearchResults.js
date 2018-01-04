@@ -4,6 +4,8 @@ import Search from './Search'
 import React from 'react';
 import UniListResults from './UniListResults'
 import Modal from './Modal'
+import Filter from './Filter'
+
 const _ = require('lodash'); //get lodash librar
 
 class UniListSearchResults extends React.Component {
@@ -30,7 +32,6 @@ class UniListSearchResults extends React.Component {
   }
 
   _handleCardClick = (e, index, uni) => {
-    console.log("cardCLick", e, index, uni);
     this.setState({
       showModal: true,
       index,
@@ -49,7 +50,6 @@ class UniListSearchResults extends React.Component {
 
   _handleModalRightClick = (e) => {
     const index = this.state.index + 1 >= this.props.allUnis.length ? 0 : this.state.index + 1;
-    console.log("right",this.state.index,  this.props.allUnis.length);
     this.setState({ 
       index: index,
       uni: this.props.allUnis[index]
@@ -95,11 +95,11 @@ class UniListSearchResults extends React.Component {
           loading={loading}
           query={this.props.query}
         />
-        {/* <Filter //TODO!!!
+        <Filter 
           setFilterObj={this.props.setFilterObj}
           setRankingCity={this.props.setRankingCity}
           setRankingUni={this.props.setRankingUni} 
-        /> */}
+        />
         <div className="flex justify-center pt5">
           <UniListResults 
             loading={loading}
