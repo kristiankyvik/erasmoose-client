@@ -99,6 +99,7 @@ class UniListSearchResults extends React.Component {
           setFilterObj={this.props.setFilterObj}
           setRankingCity={this.props.setRankingCity}
           setRankingUni={this.props.setRankingUni} 
+          loading={loading}
         />
         <div className="flex justify-center pt5">
           <UniListResults 

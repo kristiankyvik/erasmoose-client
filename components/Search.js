@@ -100,7 +100,6 @@ export default class Search extends React.Component {
               -webkit-appearance: none;
               -webkit-tap-highlight-color: transparent;
             }
-
             .search-input:focus {
               border-color: #22BAD9;
               outline-width: 0;
