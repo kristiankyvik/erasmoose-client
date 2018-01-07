@@ -6,12 +6,12 @@ export default class Tag extends React.Component {
   //needs designing!
 
   render() {
-    const { onClick, country } = this.props;
+    const { removeTag, country, index } = this.props;
     return (
         <div>
         <div className="tag flex flex-auto">
           <div className="country-div"> {country} </div>
-            <div className="x" onClick={onClick}> { 'x '} </div>
+          <div className="x" onClick={() => removeTag(index)}> { 'x '} </div>
           </div>
           <style jsx>
             {`

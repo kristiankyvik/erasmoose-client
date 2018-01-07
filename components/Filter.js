@@ -1,67 +1,13 @@
 
 import Autocomplete from 'react-autocomplete'
 import Tag from './Tag'
+import { gql, graphql } from 'react-apollo'
 
-const countries = [ //could be replaced by graphql call in the future
-  'Albania',
-  'Andorra',
-  'Armenia',
-  'Austria',
-  'Azerbaijan',
-  'Belarus',
-  'Belgium',
-  'Bosnia and Herzegovina',
-  'Bulgaria',
-  'Croatia',
-  'Cyprus',
-  'Czech Republic',
-  'Denmark',
-  'Estonia',
-  'Finland',
-  'France',
-  'Georgia',
-  'Germany',
-  'Greece',
-  'Hungary',
-  'Iceland',
-  'Ireland',
-  'Italy',
-  'Kazakhstan',
-  'Kosovo',
-  'Latvia',
-  'Liechtenstein',
-  'Lithuania',
-  'Luxembourg',
-  'Macedonia',
-  'Malta',
-  'Moldova',
-  'Monaco',
-  'Montenegro',
-  'Netherlands',
-  'Norway',
-  'Poland',
-  'Portugal',
-  'Romania',
-  'Russia',
-  'San Marino',
-  'Serbia',
-  'Slovakia',
-  'Slovenia',
-  'Spain',
-  'Sweden',
-  'Switzerland',
-  'Turkey',
-  'Ukraine',
-  'United Kingdom',
-  'Vatican'
-];
-
-export default class Filter extends React.Component {
+class Filter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
         value: '',
-        countries: countries,
         taggedCountries: []
     };
   }
@@ -75,18 +21,19 @@ export default class Filter extends React.Component {
     this.props.setFilterObj(this.state.taggedCountries);
   }
 
-  removeCountry = (e) => {
-    const value = e.target.innerHTML;
+  removeTag = (index) => {
     let countries = this.state.taggedCountries;
 
-    countries.splice(countries.indexOf(value), 1);
+    countries.splice(index, 1);
     this.setState({ taggedCountries: countries});
     this.props.setFilterObj(this.state.taggedCountries);
   }
 
   getItems = (value) => {
     const regex = new RegExp(value,'ig')
-    return this.state.countries.filter((country) => country.match(regex));
+    return this.props.distinctCountries
+      .filter((country) => country.match(regex))
+      .filter((country) => (this.state.taggedCountries.indexOf(country) == -1)).sort();
   }
 
   render(){
@@ -96,11 +43,12 @@ export default class Filter extends React.Component {
           {this.state.taggedCountries.length === 0 ? 'Show all countries' : ''}
         </div>
         <div>
-          {this.state.taggedCountries.map((country) =>
+          {this.state.taggedCountries.map((country, index) =>
             <Tag
               key={country}
               country={country}
-              onClick={this.removeCountry}
+              index={index}
+              removeTag={this.removeTag}
             />
           )}
         </div>
@@ -162,6 +110,19 @@ export default class Filter extends React.Component {
     );
   }
 }
+
+const countryList = gql`
+  query {
+    distinctCountries
+  }
+`
+
+export default graphql(countryList, {
+  options: {
+    notifyOnNetworkStatusChange: true
+  },
+  props: ({ data: { distinctCountries}}) => ({distinctCountries})
+})(Filter);
 
 
   

@@ -72,9 +72,6 @@ class UniListSearchResults extends React.Component {
     }
   }
 
-  
-
-
   render() {
     const {
       loading,
