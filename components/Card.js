@@ -40,6 +40,7 @@ const getStars = (v) => {
 
 	for(let i= 0; i < 5 - starSettings.full - starSettings.half; i++) {
 	  stars.push(<i key={5+i} className="fa fa-star-o" aria-hidden="true"></i>);
+
 	}
 
 	return stars;
