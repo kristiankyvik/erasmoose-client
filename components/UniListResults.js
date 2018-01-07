@@ -33,7 +33,7 @@ class UniListResults extends React.Component {
 
         if (error) return <ErrorMessage message='Error loading entries.' />
         if (!allUnis && loading) return <Loader />;
-        const areMorePosts = (allUnis.length < _allUnisMeta.count) && (allUnis.length >= postPerPage);
+        const areMorePosts = (allUnis.length < _allUnisMeta.count) && (allUnis.length % postPerPage == 0);
         if (allUnis && allUnis.length) {
             return (
                 <section className="tc">
