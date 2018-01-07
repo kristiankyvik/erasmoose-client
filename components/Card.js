@@ -1,6 +1,6 @@
 import { Line, Circle } from 'rc-progress';
 import Img from 'react-image'
-const _ = require('lodash'); //get lodash library
+const _ = require('lodash'); 
 
 const UniLogoFallback = (
 	<div 
@@ -36,10 +36,10 @@ const getStars = (v) => {
 	  stars.push(<i key={i} className="fa fa-star" aria-hidden="true"></i>);
 	}
 
-	starSettings.half ? stars.push(<i key={10} className="fa fa-star-half-o" aria-hidden="true"></i>) : null;
+	starSettings.half ? stars.push(<i key={-1} className="fa fa-star-half-o" aria-hidden="true"></i>) : null;
 
 	for(let i= 0; i < 5 - starSettings.full - starSettings.half; i++) {
-	  stars.push(<i key={5 + i} className="fa fa-star-o" aria-hidden="true"></i>);
+	  stars.push(<i key={5+i} className="fa fa-star-o" aria-hidden="true"></i>);
 	}
 
 	return stars;

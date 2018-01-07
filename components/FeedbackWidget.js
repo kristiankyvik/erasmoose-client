@@ -1,14 +1,6 @@
 import Router from 'next/router';
 import { gql, graphql } from 'react-apollo'
 
-const sendFeedback = gql`
-  mutation sendFeedback($email: String, $message: String) {
-    sendFeedback(email: $email, message: $message) {
-      ok   
-    }
-  }
-`
-
 class FeedbackWidget extends React.Component {
   constructor(props) {
     super(props);
@@ -125,11 +117,19 @@ class FeedbackWidget extends React.Component {
   }
 }
 
+const sendFeedback = gql`
+  mutation sendFeedback($email: String, $message: String) {
+    sendFeedback(email: $email, message: $message) {
+      ok   
+    }
+  }
+`
 
 export default graphql(sendFeedback, {
   props: ({ ownProps, mutate }) => ({
     send: (email, message) => mutate({
-      variables: { email, message }
-    })
+        variables: { email, message }
+      }
+    )
   })
 })(FeedbackWidget)
