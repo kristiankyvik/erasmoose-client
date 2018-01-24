@@ -4,7 +4,7 @@ import Search from './Search'
 import React from 'react';
 import UniListResults from './UniListResults'
 import Modal from './Modal'
-import Filter from './Filter'
+import Filters from './Filters'
 
 const _ = require('lodash'); //get lodash librar
 
@@ -92,13 +92,13 @@ class UniListSearchResults extends React.Component {
           loading={loading}
           query={this.props.query}
         />
-        <Filter 
+        <Filters
           setFilterObj={this.props.setFilterObj}
           setRankingCity={this.props.setRankingCity}
           setRankingUni={this.props.setRankingUni} 
           loading={loading}
         />
-        <div className="flex justify-center pt5">
+        <div className="flex justify-center pt3">
           <UniListResults 
             loading={loading}
             error={error}

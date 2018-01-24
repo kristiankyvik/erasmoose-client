@@ -56,7 +56,7 @@ export default class Search extends React.Component {
           <input 
             ref={(el) => { this.searchInput = el; }}
             className="search-input mv3 m0a"
-            placeholder="Search..."
+            placeholder="Search by city or uni..."
             type="text"
             value={searchKey}
             onChange={this.handleChange.bind(this)}
