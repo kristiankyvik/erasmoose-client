@@ -15,10 +15,7 @@ export default class Filters extends React.Component {
           setRankingUni={this.props.setRankingUni} 
           loading={this.props.loading}
         />
-        <style jsx>{`
-          section {
-          }
-        `}</style>
+
       </section>
     )
   }
