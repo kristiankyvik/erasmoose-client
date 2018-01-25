@@ -16,7 +16,11 @@ export default class UniList extends React.Component {
     this.state = {
       showModal: false,
       searchKey: "",
-      filterObj: [], //Filter object should contain all countries that will be replaced as array of strings
+      filterObj: {
+        countries: [],
+        languages: [],
+        areas: [],
+      }, //Filter object should contain all countries that will be replaced as array of strings
       // try out for example ['Spain','France']
       // can only be used for countries in the beginning but could be changed to other things later on (city, field of study,...)
       rankingUni: defaultRankingUni, //define the formula that creates the overall uni ranking
@@ -24,9 +28,16 @@ export default class UniList extends React.Component {
     };
   }
 
-  setFilterObj = lodash.debounce((filterObj) => {
-    this.setState({ filterObj: filterObj})
+  setFilterObj = lodash.debounce((selectedItems, dropdown) => {
+    console.log("locoo", selectedItems, dropdown);
+    const filterObjTemp = {...this.state.filterObj}
+    filterObjTemp[dropdown] = selectedItems;
+    this.setState({filterObj: filterObjTemp})
   }, DELAY_SEARCH_FOR_UNI_IN_MS);
+  
+  // setFilterObj = lodash.debounce((filterObj) => {
+  //   this.setState({ filterObj: filterObj})
+  // }, DELAY_SEARCH_FOR_UNI_IN_MS);
 
   setSearchKey = lodash.debounce((searchKey) => {
     this.setState({ searchKey: searchKey });
@@ -45,7 +56,9 @@ export default class UniList extends React.Component {
   }
 
   createSearchObj = (searchKey, filterObject, rankingUni, rankingCity) => {
+    console.log("filterObjs", filterObject, "searchKey", searchKey);
     return joinUniCity.concat(getFilterResults(filterObject, searchKey)).concat(getRankingUniCity(rankingUni, rankingCity));
+
   }
 
   render() {

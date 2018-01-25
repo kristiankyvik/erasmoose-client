@@ -9,17 +9,15 @@ class Filter extends React.Component {
     this.state = {
         value: '',
         taggedCountries: [],
-        showFilters: false
+        showFilters: true
     };
   }
 
-  selectCountry = (value) => {
+  selectDropdown = (dropdown, value) => {
     this.setState({value: ''});
     let taggedCountries = this.state.taggedCountries;
     taggedCountries.push(value);
-
-    this.setState({ taggedCountries });
-    this.props.setFilterObj(this.state.taggedCountries);
+    this.props.setFilterObj(this.state.taggedCountries, dropdown);
   }
 
   removeTag = (index) => {
@@ -57,7 +55,7 @@ class Filter extends React.Component {
           getItemValue={(item) => item}
           items={this.getItems(this.state.value)}
           value={this.state.value}
-          onSelect={this.selectCountry}
+          onSelect={(val) => this.selectDropdown("country", val)}
           onChange={(event, value) => { this.setState({ value }) }}
           renderInput={(props) => (
             <input 
@@ -81,121 +79,121 @@ class Filter extends React.Component {
         />
         <div className="flex pt3">
           <div className="flex flex-auto flex-column">
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center">
+            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="country">
               <img src='./static/icons/location.svg' className="w2 h2 mr1" />
               Country 
             </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center">
+            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="uniRating">
               <img src='./static/icons/ranking.svg' className="w2 h2 mr1" />
               Ranking 
             </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center">
+            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="main_disciplines">
                <img src='./static/icons/subject.svg' className="w2 h2 mr1" />
                Flagship Areas 
             </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center">
+            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="Languages">
                <img src='./static/icons/language.svg' className="w2 h2 mr1" />
                Languages 
             </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center">
+            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="fees">
                <img src='./static/icons/money.svg' className="w2 h2 mr1" />
                Tuition Fees 
             </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center">
+            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="weekly_hours">
                <img src='./static/icons/time.svg' className="w2 h2 mr1" />
                Weekly Hours of Work 
             </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center">
+            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="difficulty">
               <img src='./static/icons/difficulty.svg' className="w2 h2 mr1" />
               Difficulty
             </div>
           </div>
           <div className="flex flex-auto flex-column">
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center">
+            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="int_orientation">
               <img src='./static/icons/globe.svg' className="w2 h2 mr1" />
               International Orientation 
             </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center">
+            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="openness">
               <img src='./static/icons/open.svg' className="w2 h2 mr1" />
               Openness 
             </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center">
+            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="female_percentage">
               <img src='./static/icons/gender.svg' className="w2 h2 mr1" />
               Gender Ratio (Women/Men) 
             </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center">
+            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="opportunities">
               <img src='./static/icons/research.svg' className="w2 h2 mr1" />
               Research Opportunities 
             </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center">
+            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="opportunities">
               <img src='./static/icons/job.svg' className="w2 h2 mr1" />
               Job Opportunities 
             </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center">
+            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="clubs">
               <img src='./static/icons/club.svg' className="w2 h2 mr1" />
               Organizations/Student Clubs 
             </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center">
+            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="party">
               <img src='./static/icons/party.svg' className="w2 h2 mr1" />
               Student Parties 
             </div>
           </div>
           <div className="flex flex-auto flex-column">
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center">
+            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="">
               <img src='./static/icons/population.svg' className="w2 h2 mr1" />
               Size 
             </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center">
+            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="">
               <img src='./static/icons/temperature.svg' className="w2 h2 mr1" />
               Weather 
             </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center">
+            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="monthly_cost">
               <img src='./static/icons/bill.svg' className="w2 h2 mr1" />
               Monthly Cost 
             </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center">
+            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="student_friendliness">
               <img src='./static/icons/difficulty.svg' className="w2 h2 mr1" />
              Student Friendliness
             </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center">
+            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="travel_options">
               <img src='./static/icons/plane.svg' className="w2 h2 mr1" />
               Travel Options
             </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center">
+            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="culture">
               <img src='./static/icons/culture.svg' className="w2 h2 mr1" />
               Cultural Offering
             </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center">
+            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="nightlife">
               <img src='./static/icons/nightlife.svg' className="w2 h2 mr1" />
               Nightlife
             </div>                   
           </div>
           <div className="flex flex-auto flex-column">
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center">
+            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="gastronomy">
               <img src='./static/icons/gastronomy.svg' className="w2 h2 mr1" />
               Gastronomy
             </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center">
+            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="sports">
               <img src='./static/icons/sports.svg' className="w2 h2 mr1" />
               Sports
             </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center">
+            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="rent_cost">
               <img src='./static/icons/rent.svg' className="w2 h2 mr1" />
               Rent
             </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center">
+            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="beer_cost">
               <img src='./static/icons/beer.svg' className="w2 h2 mr1" />
               Beer in a Pub
             </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center">
+            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="coffee_cost">
               <img src='./static/icons/cafe.svg' className="w2 h2 mr1" />
               Coffee
             </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center">
+            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="kebab_cost">
               <img src='./static/icons/burger.svg' className="w2 h2 mr1" />
               Kebab
             </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center">
+            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="danceclub_cost">
               <img src='./static/icons/music.svg' className="w2 h2 mr1" />
               Entry fee Club
             </div>                   
