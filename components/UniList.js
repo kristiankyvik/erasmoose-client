@@ -17,27 +17,23 @@ export default class UniList extends React.Component {
       showModal: false,
       searchKey: "",
       filterObj: {
-        countries: [],
-        languages: [],
-        areas: [],
-      }, //Filter object should contain all countries that will be replaced as array of strings
-      // try out for example ['Spain','France']
-      // can only be used for countries in the beginning but could be changed to other things later on (city, field of study,...)
+        country: '',
+        language: '',
+        area: '',
+      }, 
       rankingUni: defaultRankingUni, //define the formula that creates the overall uni ranking
       rankingCity: defaultRankingCity //define the formula that creates the overall city ranking
     };
   }
 
-  setFilterObj = lodash.debounce((selectedItems, dropdown) => {
-    console.log("locoo", selectedItems, dropdown);
+  setFilterObj = lodash.debounce((dropdown, value) => {
+    console.log("setFilterObj", value, dropdown);
     const filterObjTemp = {...this.state.filterObj}
-    filterObjTemp[dropdown] = selectedItems;
+    filterObjTemp[dropdown] = value;
     this.setState({filterObj: filterObjTemp})
+    console.log("COJONUDO", this.createSearchObj(this.getSearchKey(), this.state.filterObj, this.state.rankingUni, this.state.rankingCity));
+
   }, DELAY_SEARCH_FOR_UNI_IN_MS);
-  
-  // setFilterObj = lodash.debounce((filterObj) => {
-  //   this.setState({ filterObj: filterObj})
-  // }, DELAY_SEARCH_FOR_UNI_IN_MS);
 
   setSearchKey = lodash.debounce((searchKey) => {
     this.setState({ searchKey: searchKey });
@@ -56,12 +52,12 @@ export default class UniList extends React.Component {
   }
 
   createSearchObj = (searchKey, filterObject, rankingUni, rankingCity) => {
-    console.log("filterObjs", filterObject, "searchKey", searchKey);
     return joinUniCity.concat(getFilterResults(filterObject, searchKey)).concat(getRankingUniCity(rankingUni, rankingCity));
 
   }
 
   render() {
+    console.log("THIS STATE FILTEROBJS CHANGES", this.state.filterObj)
     return (
       <section className="tc pt5">
         <UniListSearchResultsWithData
@@ -74,6 +70,7 @@ export default class UniList extends React.Component {
           setSearchKey={this.setSearchKey} 
           setRankingCity={this.setRankingCity} 
           setRankingUni={this.setRankingUni} 
+          filterObj={this.state.filterObj}
         />
 
         <style jsx>{`

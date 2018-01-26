@@ -1,3 +1,9 @@
+const nameToField = {
+  area: "main_disciplines",
+  language: "languages",
+  country: "country"
+};
+
 module.exports = {
   joinUniCity : [
     {
@@ -60,8 +66,6 @@ module.exports = {
   ],
 
   getFilterResults: (filterObject, searchKey) => {
-    console.log("FilterObject", filterObject);
-
     let filterArray = [
       {
         name: {
@@ -71,20 +75,40 @@ module.exports = {
       }
     ];
 
-
     for (let key in filterObject) {
-      if (filterObject.hasOwnProperty(key)) {
+      console.log(filterObject, key, filterObject[key]);
+      if (filterObject.hasOwnProperty(key) && filterObject[key].length) {
         let dropdown = key;
         let selectedItems = filterObject[dropdown];
-        if (selectedItems.length > 0) {
-           let dropdownFilter = {
+        if (["language", "country", "area"].indexOf(dropdown) > -1) {
+          let dropdownFilter = {
              $or: []
            }
-           selectedItems.forEach((country) => {
-             dropdownFilter.$or.push({country: country});
-           });
-           filterArray.push(dropdownFilter);
-         }
+          let toInsert = {};
+          if (dropdown === "country") {
+            toInsert[nameToField[dropdown]] = selectedItems;
+          } else {
+            toInsert[`${nameToField[dropdown]}.name`] = selectedItems;
+          }
+          dropdownFilter.$or.push(toInsert);
+          filterArray.push(dropdownFilter);
+        }
+        // OTHER TAGS?
+        // if (selectedItems.length > 0) {
+        //    let dropdownFilter = {
+        //      $or: []
+        //    }
+        //    selectedItems.forEach((item) => {
+        //       let toInsert = {};
+        //       if (dropdown === "countries") {
+        //         toInsert["country"] = item;
+        //       } else {
+        //         toInsert[`${dropdown}.name`] = { $in: selectedItems};
+        //       }
+        //       dropdownFilter.$or.push(toInsert);
+        //    });
+        //    filterArray.push(dropdownFilter);
+        //  }
       }
     }
 

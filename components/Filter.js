@@ -1,47 +1,55 @@
-
 import Autocomplete from 'react-autocomplete'
 import Tag from './Tag'
 import { gql, graphql } from 'react-apollo'
+const _ = require('lodash'); 
+
+const remove = (array, element) => {
+    const index = array.indexOf(element);
+    array.splice(index, 1);
+}
 
 class Filter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        value: '',
-        taggedCountries: [],
+        language: '',
+        country: '',
+        area: '',
+        tags: [],
         showFilters: true
     };
   }
 
-  selectDropdown = (dropdown, value) => {
-    this.setState({value: ''});
-    let taggedCountries = this.state.taggedCountries;
-    taggedCountries.push(value);
-    this.props.setFilterObj(this.state.taggedCountries, dropdown);
+  selectDropdown = (dropdown, value, ) => {
+    const newState = {};
+    newState[dropdown] = value;
+    this.setState(newState);
+    this.props.setFilterObj(dropdown, value);
   }
 
-  removeTag = (index) => {
-    let countries = this.state.taggedCountries;
-
-    countries.splice(index, 1);
-    this.setState({ taggedCountries: countries});
-    this.props.setFilterObj(this.state.taggedCountries);
+  removeTag = (o) => {
+    console.log("removeTag", o);
+    const newState = {};
+    newState[o[0]] = "";
+    this.setState(newState);
+    this.props.setFilterObj(o[0], "");
   }
 
   toggleFilters = () => {
-    console.log("SHOWWWW FILTERSSSS")
     this.setState({showFilters: !this.state.showFilters});
   }
 
-  getItems = (value) => {
+  getItems = (value, collection) => {
     const regex = new RegExp(value,'ig')
-    return this.props.distinctCountries
+    return this.props[collection]
       .filter((country) => country.match(regex))
-      .filter((country) => (this.state.taggedCountries.indexOf(country) == -1)).sort();
+      .filter((country) => (this.state.tags.indexOf(country) == -1)).sort();
   }
 
   render(){
-    console.log(this.state.showFilters);
+    const {filterObj} = this.props;
+    const tags = Object.entries(filterObj).filter((o) => o[1].length);
+    console.log("TAGS", tags);
     if (!this.state.showFilters) {
       return (<div className="">
         <div className="underline pointer" onClick={this.toggleFilters}>
@@ -51,32 +59,92 @@ class Filter extends React.Component {
     }
     return (
       <div className="ph5" style={{maxWidth: 980, margin: "0 auto"}}>
-        <Autocomplete
-          getItemValue={(item) => item}
-          items={this.getItems(this.state.value)}
-          value={this.state.value}
-          onSelect={(val) => this.selectDropdown("country", val)}
-          onChange={(event, value) => { this.setState({ value }) }}
-          renderInput={(props) => (
-            <input 
-              className='filter-input m0a' 
-              placeholder='Select country'
-              {...props} 
+        <div className="flex pt3">
+          <div className="flex flex-column">
+            <Autocomplete
+              getItemValue={(item) => item}
+              items={this.getItems(this.state.country, "distinctCountries")}
+              value={this.state.country}
+              onSelect={(val) => this.selectDropdown("country", val)}
+              onChange={(event, country) => { this.setState({ country }) }}
+              renderInput={(props) => (
+                <input 
+                  className='filter-input m0a' 
+                  placeholder='Select country'
+                  {...props} 
+                />
+              )}
+              renderItem={(item, isHighlighted) => (
+                <div
+                  className={`item ${isHighlighted ? 'item-highlighted' : ''}`}
+                  key={item}
+                >{item}</div>
+              )}
+              renderMenu={children => (
+                <div className="menu">
+                  {children}
+                </div>
+              )}
+              wrapperStyle={{ textAlign: 'left' }}
             />
-          )}
-          renderItem={(item, isHighlighted) => (
-            <div
-              className={`item ${isHighlighted ? 'item-highlighted' : ''}`}
-              key={item}
-            >{item}</div>
-          )}
-          renderMenu={children => (
-            <div className="menu">
-              {children}
-            </div>
-          )}
-          wrapperStyle={{ textAlign: 'left' }}
-        />
+          </div>
+          <div className="flex flex-column">
+            <Autocomplete
+              getItemValue={(item) => item}
+              items={this.getItems(this.state.language, "distinctLanguages")}
+              value={this.state.language}
+              onSelect={(val) => {this.selectDropdown("language", val); console.log("kjlklkjlkjkjl", val)}}
+              onChange={(event, language) => { this.setState({ language }) }}
+              renderInput={(props) => (
+                <input 
+                  className='filter-input m0a' 
+                  placeholder='Select language'
+                  {...props} 
+                />
+              )}
+              renderItem={(item, isHighlighted) => (
+                <div
+                  className={`item ${isHighlighted ? 'item-highlighted' : ''}`}
+                  key={item}
+                >{item}</div>
+              )}
+              renderMenu={children => (
+                <div className="menu">
+                  {children}
+                </div>
+              )}
+              wrapperStyle={{ textAlign: 'left' }}
+            />
+          </div>
+          <div className="flex flex-column">
+            <Autocomplete
+              getItemValue={(item) => item}
+              items={this.getItems(this.state.area, "distinctAreas")}
+              value={this.state.area}
+              onSelect={(val) => this.selectDropdown("area", val)}
+              onChange={(event, area) => { this.setState({ area }) }}
+              renderInput={(props) => (
+                <input 
+                  className='filter-input m0a' 
+                  placeholder='Select area'
+                  {...props} 
+                />
+              )}
+              renderItem={(item, isHighlighted) => (
+                <div
+                  className={`item ${isHighlighted ? 'item-highlighted' : ''}`}
+                  key={item}
+                >{item}</div>
+              )}
+              renderMenu={children => (
+                <div className="menu">
+                  {children}
+                </div>
+              )}
+              wrapperStyle={{ textAlign: 'left' }}
+            />
+          </div>
+        </div>
         <div className="flex pt3">
           <div className="flex flex-auto flex-column">
             <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="country">
@@ -202,12 +270,12 @@ class Filter extends React.Component {
         <div className="pv2">
           Here under is where the tags will go
           <div>
-            {this.state.taggedCountries.map((country, index) =>
+            {tags.map((o, index) =>
               <Tag
-                key={country}
-                country={country}
+                key={o[1]}
+                name={o[1]}
                 index={index}
-                removeTag={this.removeTag}
+                removeTag={() => this.removeTag(o)}
               />
             )}
           </div>
@@ -256,17 +324,19 @@ class Filter extends React.Component {
   }
 }
 
-const countryList = gql`
+const dropdownValues = gql`
   query {
     distinctCountries
+    distinctLanguages
+    distinctAreas
   }
 `
 
-export default graphql(countryList, {
+export default graphql(dropdownValues, {
   options: {
     notifyOnNetworkStatusChange: true
   },
-  props: ({ data: { distinctCountries}}) => ({distinctCountries})
+  props: (props) => props.data
 })(Filter);
 
 

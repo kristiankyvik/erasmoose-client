@@ -14,6 +14,7 @@ export default class Filters extends React.Component {
           setRankingCity={this.props.setRankingCity}
           setRankingUni={this.props.setRankingUni} 
           loading={this.props.loading}
+          filterObj={this.props.filterObj}
         />
 
       </section>
