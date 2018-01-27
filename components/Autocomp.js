@@ -14,7 +14,6 @@ export default class Autocomp extends React.Component {
 
   render() {
     const { value, name, setState, selectDropdown, collection, tags } = this.props;
-    console.log('hallooeu',this.props);
     return (
       <div className="flex flex-column">
         <Autocomplete
@@ -22,7 +21,7 @@ export default class Autocomp extends React.Component {
           items={this.getItems(value, collection, tags)}
           value={value}
           onSelect={(val) => selectDropdown(name, val)}
-          onChange={(event, country) => { setState({ country }) }}
+          onChange={(event, item) => { setState({ item }) }}
           renderInput={(props) => (
             <input
               className='filter-input m0a'

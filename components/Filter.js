@@ -1,7 +1,10 @@
 import Tag from './Tag'
 import Autocomp from './Autocomp'
+import FilterIcon from './FilterIcon'
 import { gql, graphql } from 'react-apollo'
-const _ = require('lodash'); 
+const _ = require('lodash');
+
+const { defaultRankingUni, defaultRankingCity } = require('./UniListFilterQuery');
 
 const remove = (array, element) => {
     const index = array.indexOf(element);
@@ -16,9 +19,36 @@ class Filter extends React.Component {
         country: '',
         area: '',
         tags: [],
-        showFilters: true
+        showFilters: true,
+        rankingUni: defaultRankingUni,
+        rankingCity: defaultRankingCity
     };
   }
+
+  setRanking = (nameWrapper, ranking) => {
+    const idx = _.get(this, 'state.' + ranking).indexOf(nameWrapper);
+    let rankingUpdate = _.get(this, 'state.' + ranking);
+
+    if (idx > -1) {
+      rankingUpdate.splice(idx, 1);
+    } else {
+      rankingUpdate.push(nameWrapper);
+    }
+    this.setState({ ranking: rankingUpdate })
+    console.log("Updated " + ranking + " ",rankingUpdate);
+  }
+
+  setRankingUni = (name) => {
+    const nameWrapper = '$' + name + '.value';
+    this.setRanking(nameWrapper, 'rankingUni');
+    this.props.setRankingUni(this.state.rankingUni);
+  }
+
+  setRankingCity = (name) => {
+    const nameWrapper = '$city.' + name + '.value';
+    this.setRanking(nameWrapper, 'rankingCity');
+    this.props.setRankingCity(this.state.rankingCity);
+  } 
 
   selectDropdown = (dropdown, value) => {
     const newState = {};
@@ -39,10 +69,15 @@ class Filter extends React.Component {
     this.setState({showFilters: !this.state.showFilters});
   }
 
+  isActiveInUni = (name) => (this.state.rankingUni.indexOf('$' + name + '.value') > -1)
+  isActiveInCity = (name) => (this.state.rankingCity.indexOf('$city.' + name + '.value') > -1)
+
+  isActive = (name) => (this.isActiveInCity(name) || this.isActiveInUni(name))
+
   render(){
     const {filterObj} = this.props;
     const tags = Object.entries(filterObj).filter((o) => o[1].length);
-    console.log("hallo", this.props);
+
     if (!this.state.showFilters) {
       return (<div className="">
         <div className="underline pointer" onClick={this.toggleFilters}>
@@ -80,124 +115,43 @@ class Filter extends React.Component {
         </div>
         <div className="flex pt3">
           <div className="flex flex-auto flex-column">
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="country">
-              <img src='./static/icons/location.svg' className="w2 h2 mr1" />
-              Country 
-            </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="uniRating">
-              <img src='./static/icons/ranking.svg' className="w2 h2 mr1" />
-              Ranking 
-            </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="main_disciplines">
-               <img src='./static/icons/subject.svg' className="w2 h2 mr1" />
-               Flagship Areas 
-            </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="Languages">
-               <img src='./static/icons/language.svg' className="w2 h2 mr1" />
-               Languages 
-            </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="fees">
-               <img src='./static/icons/money.svg' className="w2 h2 mr1" />
-               Tuition Fees 
-            </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="weekly_hours">
-               <img src='./static/icons/time.svg' className="w2 h2 mr1" />
-               Weekly Hours of Work 
-            </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="difficulty">
-              <img src='./static/icons/difficulty.svg' className="w2 h2 mr1" />
-              Difficulty
-            </div>
+            <FilterIcon name='Country' dataAttrib='country' iconPath='location' isActive={this.isActive('country')}/>
+            <FilterIcon name='Ranking' dataAttrib='uniRating' iconPath='ranking' isActive={this.isActive('uniRating')}/>
+            <FilterIcon name='Flagship Areas ' dataAttrib='main_disciplines' iconPath='subject' isActive={this.isActive('main_disciplines')}/>
+            <FilterIcon name='Languages' dataAttrib='Languages' iconPath='language' isActive={this.isActive('Languages')}/>
+            {/* TODO Tuition Fees needs appropriate scaling when applied to setRanking */}
+            <FilterIcon name='Tuition Fees' dataAttrib='fees' iconPath='money' isActive={this.isActive('money')}/>
+            {/* TODO Weekly Hours of Work needs appropriate scaling when applied to setRanking */}
+            <FilterIcon name='Weekly Hours of Work' dataAttrib='weekly_hours' iconPath='time' isActive={this.isActive('weekly_hours')}/>
+            <FilterIcon name='Difficulty' dataAttrib='difficulty' setRanking={this.setRankingUni} iconPath='difficulty' isActive={this.isActive('difficulty')}/>
           </div>
           <div className="flex flex-auto flex-column">
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="int_orientation">
-              <img src='./static/icons/globe.svg' className="w2 h2 mr1" />
-              International Orientation 
-            </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="openness">
-              <img src='./static/icons/open.svg' className="w2 h2 mr1" />
-              Openness 
-            </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="female_percentage">
-              <img src='./static/icons/gender.svg' className="w2 h2 mr1" />
-              Gender Ratio (Women/Men) 
-            </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="opportunities">
-              <img src='./static/icons/research.svg' className="w2 h2 mr1" />
-              Research Opportunities 
-            </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="opportunities">
-              <img src='./static/icons/job.svg' className="w2 h2 mr1" />
-              Job Opportunities 
-            </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="clubs">
-              <img src='./static/icons/club.svg' className="w2 h2 mr1" />
-              Organizations/Student Clubs 
-            </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="party">
-              <img src='./static/icons/party.svg' className="w2 h2 mr1" />
-              Student Parties 
-            </div>
+            <FilterIcon name='International Orientation' dataAttrib='int_orientation' setRanking={this.setRankingUni} iconPath='globe' isActive={this.isActive('int_orientation')}/>
+            <FilterIcon name='Openness' dataAttrib='openness' setRanking={this.setRankingUni} iconPath='open' isActive={this.isActive('openness')}/>
+            {/* TODO Gender Ratio needs appropriate scaling when applied to setRanking */}
+            <FilterIcon name='Gender Ratio (Women/Men)' dataAttrib='female_percentage' iconPath='gender' isActive={this.isActive('female_percentage')}/>
+            <FilterIcon name='Research Opportunities' dataAttrib='opportunities' setRanking={this.setRankingUni} iconPath='research' isActive={this.isActive('opportunities')}/>
+            <FilterIcon name='Job Opportunities' dataAttrib='opportunities' setRanking={this.setRankingUni} iconPath='job' isActive={this.isActive('opportunities')}/>
+            <FilterIcon name='Organizations/Student Clubs' dataAttrib='clubs' setRanking={this.setRankingUni} iconPath='club' isActive={this.isActive('clubs')}/>
+            <FilterIcon name='Student Parties' dataAttrib='party' setRanking={this.setRankingUni} iconPath='party' isActive={this.isActive('party')}/>
           </div>
           <div className="flex flex-auto flex-column">
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="">
-              <img src='./static/icons/population.svg' className="w2 h2 mr1" />
-              Size 
-            </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="">
-              <img src='./static/icons/temperature.svg' className="w2 h2 mr1" />
-              Weather 
-            </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="monthly_cost">
-              <img src='./static/icons/bill.svg' className="w2 h2 mr1" />
-              Monthly Cost 
-            </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="student_friendliness">
-              <img src='./static/icons/difficulty.svg' className="w2 h2 mr1" />
-             Student Friendliness
-            </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="travel_options">
-              <img src='./static/icons/plane.svg' className="w2 h2 mr1" />
-              Travel Options
-            </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="culture">
-              <img src='./static/icons/culture.svg' className="w2 h2 mr1" />
-              Cultural Offering
-            </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="nightlife">
-              <img src='./static/icons/nightlife.svg' className="w2 h2 mr1" />
-              Nightlife
-            </div>                   
+            <FilterIcon name='Size' dataAttrib='' iconPath='population' isActive={this.isActive('')}/>
+            <FilterIcon name='Weather' dataAttrib='' iconPath='temperature' isActive={this.isActive('')}/>
+            <FilterIcon name='Monthly Cost ' dataAttrib='monthly_cost' iconPath='bill' isActive={this.isActive('monthly_cost')}/>
+            <FilterIcon name='Student Friendliness' dataAttrib='student_friendliness' setRanking={this.setRankingCity} iconPath='difficulty' isActive={this.isActive('student_friendliness')}/>
+            <FilterIcon name='Travel Options' dataAttrib='travel_options' setRanking={this.setRankingCity} iconPath='plane' isActive={this.isActive('travel_options')}/>
+            <FilterIcon name='Cultural Offering' dataAttrib='culture' setRanking={this.setRankingCity} iconPath='culture' isActive={this.isActive('culture')}/>
+            <FilterIcon name='Nightlife' dataAttrib='nightlife' setRanking={this.setRankingCity} iconPath='nightlife' isActive={this.isActive('nightlife')}/>
           </div>
           <div className="flex flex-auto flex-column">
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="gastronomy">
-              <img src='./static/icons/gastronomy.svg' className="w2 h2 mr1" />
-              Gastronomy
-            </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="sports">
-              <img src='./static/icons/sports.svg' className="w2 h2 mr1" />
-              Sports
-            </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="rent_cost">
-              <img src='./static/icons/rent.svg' className="w2 h2 mr1" />
-              Rent
-            </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="beer_cost">
-              <img src='./static/icons/beer.svg' className="w2 h2 mr1" />
-              Beer in a Pub
-            </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="coffee_cost">
-              <img src='./static/icons/cafe.svg' className="w2 h2 mr1" />
-              Coffee
-            </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="kebab_cost">
-              <img src='./static/icons/burger.svg' className="w2 h2 mr1" />
-              Kebab
-            </div>
-            <div className="flex icon-wrapper br-100 pa1 pointer items-center" data-attrib="danceclub_cost">
-              <img src='./static/icons/music.svg' className="w2 h2 mr1" />
-              Entry fee Club
-            </div>                   
+            <FilterIcon name='Gastronomy' dataAttrib='gastronomy' setRanking={this.setRankingCity} iconPath='gastronomy' isActive={this.isActive('gastronomy')} />
+            <FilterIcon name='Sports' dataAttrib='sports' setRanking={this.setRankingCity} iconPath='sports' isActive={this.isActive('sports')} />
+            <FilterIcon name='Rent ' dataAttrib='rent_cost' iconPath='rent' isActive={this.isActive('rent_cost')} />
+            <FilterIcon name='Beer in a Pub' dataAttrib='beer_cost' iconPath='beer' isActive={this.isActive('beer_cost')} />
+            <FilterIcon name='Coffee' dataAttrib='coffee_cost' iconPath='cafe' isActive={this.isActive('coffee_cost')} />
+            <FilterIcon name='Kebab' dataAttrib='kebab_cost' iconPath='burger' isActive={this.isActive('kebab_cost')} />
+            <FilterIcon name='Entry fee Club' dataAttrib='danceclub_cost' iconPath='music' isActive={this.isActive('danceclub_cost')} />
           </div>
         </div>
         <div className="pv2">

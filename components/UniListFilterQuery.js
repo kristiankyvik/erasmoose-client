@@ -20,13 +20,6 @@ module.exports = {
     }
   ],
 
-  // workload: AverageProperty
-  // fees: AverageProperty
-  // main_disciplines: [Property]
-  // languages: [Property]
-  // difficulty: AverageProperty
-  // weekly_hours: AverageProperty
-
   defaultRankingUni : [
     "$int_orientation.value",
     "$difficulty.value",
@@ -34,22 +27,11 @@ module.exports = {
     "$openness.value",
     "$clubs.value",
     "$party.value",
-    "$openness.value",
-    "$female_percentage.value",
     "$uni_recommendation.value",
     "$uni_recommendation.value",
     "$uni_recommendation.value",
     "$uni_recommendation.value"
   ],
-
-
-  // rent_cost: AverageProperty
-  // beer_cost: AverageProperty
-  // coffee_cost: AverageProperty
-  // kebab_cost: AverageProperty
-  // danceclub_cost: AverageProperty
-
-  // monthly_cost: AverageProperty
   
   defaultRankingCity : [
     "$city.travel_options.value",
@@ -58,7 +40,6 @@ module.exports = {
     "$city.sports.value",
     "$city.nightlife.value",
     "$city.gastronomy.value",
-
     "$city.city_recommendation.value",
     "$city.city_recommendation.value",
     "$city.city_recommendation.value",
@@ -76,7 +57,6 @@ module.exports = {
     ];
 
     for (let key in filterObject) {
-      console.log(filterObject, key, filterObject[key]);
       if (filterObject.hasOwnProperty(key) && filterObject[key].length) {
         let dropdown = key;
         let selectedItems = filterObject[dropdown];
