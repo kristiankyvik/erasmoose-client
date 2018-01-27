@@ -1,5 +1,5 @@
-import Autocomplete from 'react-autocomplete'
 import Tag from './Tag'
+import Autocomp from './Autocomp'
 import { gql, graphql } from 'react-apollo'
 const _ = require('lodash'); 
 
@@ -20,7 +20,7 @@ class Filter extends React.Component {
     };
   }
 
-  selectDropdown = (dropdown, value, ) => {
+  selectDropdown = (dropdown, value) => {
     const newState = {};
     newState[dropdown] = value;
     this.setState(newState);
@@ -39,17 +39,10 @@ class Filter extends React.Component {
     this.setState({showFilters: !this.state.showFilters});
   }
 
-  getItems = (value, collection) => {
-    const regex = new RegExp(value,'ig')
-    return this.props[collection]
-      .filter((country) => country.match(regex))
-      .filter((country) => (this.state.tags.indexOf(country) == -1)).sort();
-  }
-
   render(){
     const {filterObj} = this.props;
     const tags = Object.entries(filterObj).filter((o) => o[1].length);
-    console.log("TAGS", tags);
+    console.log("hallo", this.props);
     if (!this.state.showFilters) {
       return (<div className="">
         <div className="underline pointer" onClick={this.toggleFilters}>
@@ -60,90 +53,30 @@ class Filter extends React.Component {
     return (
       <div className="ph5" style={{maxWidth: 980, margin: "0 auto"}}>
         <div className="flex pt3">
-          <div className="flex flex-column">
-            <Autocomplete
-              getItemValue={(item) => item}
-              items={this.getItems(this.state.country, "distinctCountries")}
-              value={this.state.country}
-              onSelect={(val) => this.selectDropdown("country", val)}
-              onChange={(event, country) => { this.setState({ country }) }}
-              renderInput={(props) => (
-                <input 
-                  className='filter-input m0a' 
-                  placeholder='Select country'
-                  {...props} 
-                />
-              )}
-              renderItem={(item, isHighlighted) => (
-                <div
-                  className={`item ${isHighlighted ? 'item-highlighted' : ''}`}
-                  key={item}
-                >{item}</div>
-              )}
-              renderMenu={children => (
-                <div className="menu">
-                  {children}
-                </div>
-              )}
-              wrapperStyle={{ textAlign: 'left' }}
-            />
-          </div>
-          <div className="flex flex-column">
-            <Autocomplete
-              getItemValue={(item) => item}
-              items={this.getItems(this.state.language, "distinctLanguages")}
-              value={this.state.language}
-              onSelect={(val) => {this.selectDropdown("language", val); console.log("kjlklkjlkjkjl", val)}}
-              onChange={(event, language) => { this.setState({ language }) }}
-              renderInput={(props) => (
-                <input 
-                  className='filter-input m0a' 
-                  placeholder='Select language'
-                  {...props} 
-                />
-              )}
-              renderItem={(item, isHighlighted) => (
-                <div
-                  className={`item ${isHighlighted ? 'item-highlighted' : ''}`}
-                  key={item}
-                >{item}</div>
-              )}
-              renderMenu={children => (
-                <div className="menu">
-                  {children}
-                </div>
-              )}
-              wrapperStyle={{ textAlign: 'left' }}
-            />
-          </div>
-          <div className="flex flex-column">
-            <Autocomplete
-              getItemValue={(item) => item}
-              items={this.getItems(this.state.area, "distinctAreas")}
-              value={this.state.area}
-              onSelect={(val) => this.selectDropdown("area", val)}
-              onChange={(event, area) => { this.setState({ area }) }}
-              renderInput={(props) => (
-                <input 
-                  className='filter-input m0a' 
-                  placeholder='Select area'
-                  {...props} 
-                />
-              )}
-              renderItem={(item, isHighlighted) => (
-                <div
-                  className={`item ${isHighlighted ? 'item-highlighted' : ''}`}
-                  key={item}
-                >{item}</div>
-              )}
-              renderMenu={children => (
-                <div className="menu">
-                  {children}
-                </div>
-              )}
-              wrapperStyle={{ textAlign: 'left' }}
-            />
-          </div>
+          <Autocomp
+            value={this.state.country}
+            name='country'
+            setState={this.setState}
+            selectDropdown={this.selectDropdown}
+            collection={this.props.distinctCountries}
+            tags={this.state.tags}
+          />
+          <Autocomp
+            value={this.state.area}
+            name='area'
+            setState={this.setState}
+            selectDropdown={this.selectDropdown}
+            collection={this.props.distinctAreas}
+            tags={this.state.tags}
+          />
+          <Autocomp
+            value={this.state.language}
+            name='language'
+            setState={this.setState}
+            selectDropdown={this.selectDropdown}
+            collection={this.props.distinctLanguages}
+            tags={this.state.tags}
+          />
         </div>
         <div className="flex pt3">
           <div className="flex flex-auto flex-column">
