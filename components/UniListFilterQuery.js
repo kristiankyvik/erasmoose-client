@@ -56,40 +56,48 @@ module.exports = {
       }
     ];
 
-    for (let key in filterObject) {
-      if (filterObject.hasOwnProperty(key) && filterObject[key].length) {
-        let dropdown = key;
-        let selectedItems = filterObject[dropdown];
-        if (["language", "country", "area"].indexOf(dropdown) > -1) {
-          let dropdownFilter = {
-             $or: []
-           }
-          let toInsert = {};
-          if (dropdown === "country") {
-            toInsert[nameToField[dropdown]] = selectedItems;
-          } else {
-            toInsert[`${nameToField[dropdown]}.name`] = selectedItems;
-          }
-          dropdownFilter.$or.push(toInsert);
-          filterArray.push(dropdownFilter);
-        }
-        // OTHER TAGS?
-        // if (selectedItems.length > 0) {
-        //    let dropdownFilter = {
-        //      $or: []
-        //    }
-        //    selectedItems.forEach((item) => {
-        //       let toInsert = {};
-        //       if (dropdown === "countries") {
-        //         toInsert["country"] = item;
-        //       } else {
-        //         toInsert[`${dropdown}.name`] = { $in: selectedItems};
-        //       }
-        //       dropdownFilter.$or.push(toInsert);
-        //    });
-        //    filterArray.push(dropdownFilter);
-        //  }
+    for (let dropdown in filterObject) {
+      const selectedItems = filterObject[dropdown];
+      const dropdownName = nameToField[dropdown];
+      const isDropdownArrayEmpty = !(filterObject.hasOwnProperty(dropdown) && selectedItems.length);
+      const isDropDownWrong = ["language", "country", "area"].indexOf(dropdown) === -1;
+
+      if (isDropdownArrayEmpty || isDropDownWrong){
+        break; 
       }
+      
+      let dropdownFilter = {
+          $or: []
+        }
+
+      selectedItems.forEach((selectedItem) => {
+        let toInsert = {};
+        if (dropdown === "country") {
+          toInsert[dropdownName] = selectedItem;
+        } else {
+          toInsert[`${dropdownName}.name`] = selectedItem;
+        }
+        dropdownFilter.$or.push(toInsert);
+      });
+
+      filterArray.push(dropdownFilter);
+  
+      // OTHER TAGS?
+      // if (selectedItems.length > 0) {
+      //    let dropdownFilter = {
+      //      $or: []
+      //    }
+      //    selectedItems.forEach((item) => {
+      //       let toInsert = {};
+      //       if (dropdown === "countries") {
+      //         toInsert["country"] = item;
+      //       } else {
+      //         toInsert[`${dropdown}.name`] = { $in: selectedItems};
+      //       }
+      //       dropdownFilter.$or.push(toInsert);
+      //    });
+      //    filterArray.push(dropdownFilter);
+      //  }
     }
 
     return {

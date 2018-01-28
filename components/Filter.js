@@ -48,14 +48,19 @@ class Filter extends React.Component {
     const nameWrapper = '$city.' + name + '.value';
     this.setRanking(nameWrapper, 'rankingCity');
     this.props.setRankingCity(this.state.rankingCity);
-  } 
+  }
 
-  removeTag = (o) => {
-    console.log("removeTag", o);
+  setCollectionState = (collectionName, value) => {
     const newState = {};
-    newState[o[0]] = "";
+    newState[collectionName] = value;
     this.setState(newState);
-    this.props.setFilterObj(o[0], "");
+  }
+  
+  removeTag = (collection) => {
+    const collectionName = collection[0];
+    const collectionValue = collection[1];
+    this.setCollectionState(collectionName, '');
+    this.props.setFilterObj(collectionName, collectionValue);
   }
 
   toggleFilters = () => {
@@ -64,12 +69,19 @@ class Filter extends React.Component {
 
   isActiveInUni = (name) => (this.state.rankingUni.indexOf('$' + name + '.value') > -1)
   isActiveInCity = (name) => (this.state.rankingCity.indexOf('$city.' + name + '.value') > -1)
-
   isActive = (name) => (this.isActiveInCity(name) || this.isActiveInUni(name))
 
   render(){
     const {filterObj} = this.props;
-    const tags = Object.entries(filterObj).filter((o) => o[1].length);
+
+    let tags = [];
+    Object.entries(filterObj).forEach((entry) => {
+      const key = entry[0];
+      const values = entry[1];
+      values.forEach((value) => {
+        tags.push([key, value]);
+      });
+    })
 
     if (!this.state.showFilters) {
       return (<div className="">
@@ -84,24 +96,24 @@ class Filter extends React.Component {
           <Autocomp
             value={this.state.country}
             name='country'
-            setState={this.setState}
-            selectFilterObj={this.props.setFilterObj}
+            setCollectionState={this.setCollectionState}
+            setFilterObj={this.props.setFilterObj}
             collection={this.props.distinctCountries}
             tags={this.state.tags}
           />
           <Autocomp
             value={this.state.area}
             name='area'
-            setState={this.setState}
-            selectFilterObj={this.props.setFilterObj}
+            setCollectionState={this.setCollectionState} 
+            setFilterObj={this.props.setFilterObj}
             collection={this.props.distinctAreas}
             tags={this.state.tags}
           />
           <Autocomp
             value={this.state.language}
             name='language'
-            setState={this.setState}
-            selectFilterObj={this.props.setFilterObj}
+            setCollectionState={this.setCollectionState}
+            setFilterObj={this.props.setFilterObj}
             collection={this.props.distinctLanguages}
             tags={this.state.tags}
           />
@@ -150,12 +162,12 @@ class Filter extends React.Component {
         <div className="pv2">
           Here under is where the tags will go
           <div>
-            {tags.map((o, index) =>
+            {tags.map((tag, index) =>
               <Tag
-                key={o[1]}
-                name={o[1]}
+                key={tag[1]}
+                name={tag[1]}
                 index={index}
-                removeTag={() => this.removeTag(o)}
+                removeTag={() => this.removeTag(tag)}
               />
             )}
           </div>

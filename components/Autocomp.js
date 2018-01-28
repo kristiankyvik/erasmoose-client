@@ -4,7 +4,9 @@ export default class Autocomp extends React.Component {
   constructor(props) {
     super(props);
     this.state= {
-      name: this.props.name
+      name: this.props.name,
+      setCollectionState: (value) => {this.props.setCollectionState(this.state.name, value)},
+      setFilterObj: (value) => {this.props.setFilterObj(this.state.name, value)}
     }
   }
 
@@ -18,21 +20,17 @@ export default class Autocomp extends React.Component {
   setValueToState = (e, value) => {
     console.log("name",this.props.name)
     console.log("value",value)
-    const newState = {};
-    newState[this.state.name] = value
-    this.props.setState(newState);  
+    this.state.setCollectionState(value);  
   }
 
   selectDropdown = (value) => {
-    const newState = {};
-    newState[this.state.name] = value;
-    this.props.setState(newState);
+    this.state.setCollectionState(value);  
     console.log("vaule", value);
     this.props.setFilterObj(this.state.name, value);
   }
 
   render() {
-    const { value, name, setState, selectDropdown, collection, tags } = this.props;
+    const { value, name, collection, tags } = this.props;
     return (
       <div className="flex flex-column">
         <Autocomplete

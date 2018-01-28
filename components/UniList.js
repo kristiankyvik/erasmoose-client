@@ -17,9 +17,9 @@ export default class UniList extends React.Component {
       showModal: false,
       searchKey: "",
       filterObj: {
-        country: '',
-        language: '',
-        area: '',
+        country: [],
+        language: [],
+        area: [],
       }, 
       rankingUni: defaultRankingUni, //define the formula that creates the overall uni ranking
       rankingCity: defaultRankingCity //define the formula that creates the overall city ranking
@@ -27,13 +27,17 @@ export default class UniList extends React.Component {
   }
 
   setFilterObj = lodash.debounce((dropdown, value) => {
-    console.log("setFilterObj", value, dropdown);
-    const filterObjTemp = {...this.state.filterObj}
-    filterObjTemp[dropdown] = value;
-    this.setState({filterObj: filterObjTemp})
-    console.log("COJONUDO", this.createSearchObj(this.getSearchKey(), this.state.filterObj, this.state.rankingUni, this.state.rankingCity));
+    let filterObjTemp = { ...this.state.filterObj };
+    let collectionArray = filterObjTemp[dropdown];
+    const idx = filterObjTemp[dropdown].indexOf(value);
 
-  }, DELAY_SEARCH_FOR_UNI_IN_MS);
+    if(idx > -1){
+      collectionArray.splice(idx, 1); 
+    } else {
+      collectionArray.push(value);
+    }
+    this.setState({ filterObj: filterObjTemp });
+  }, DELAY_SEARCH_FOR_UNI_IN_MS); 
 
   setSearchKey = lodash.debounce((searchKey) => {
     this.setState({ searchKey: searchKey });
@@ -47,7 +51,7 @@ export default class UniList extends React.Component {
     this.setState({ rankingCity: rankingCity });
   }, DELAY_SEARCH_FOR_UNI_IN_MS);
 
-  getSearchKey = () =>{
+  getSearchKey = () => {
     return this.props.pathname == '/' ? this.state.searchKey : lodash.get(this.props.query, 'q', '');
   }
 
