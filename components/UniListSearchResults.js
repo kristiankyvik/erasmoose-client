@@ -94,6 +94,7 @@ class UniListSearchResults extends React.Component {
         />
         <Filters
           setFilterObj={this.props.setFilterObj}
+          setBooleanFilter={this.props.setBooleanFilter}
           setRankingCity={this.props.setRankingCity}
           setRankingUni={this.props.setRankingUni} 
           loading={loading}

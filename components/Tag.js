@@ -8,23 +8,24 @@ export default class Tag extends React.Component {
   render() {
     const { removeTag, name, index } = this.props;
     return (
-        <div>
-        <div className="tag flex flex-auto">
-          <div className="country-div"> {name} </div>
-          <div className="x" onClick={() => removeTag(index)}> { 'x '} </div>
+        <div className="pt3 di">
+          <div className="tag flex flex-auto pa2 br3 justify-start items-start">
+            <div className="country-div"> {name} </div>
+            <div className="x pointer ml1" onClick={() => removeTag(index)}> { 'x '} </div>
           </div>
           <style jsx>
             {`
               .tag {
-                background: #ddd;
-                border: 1px solid #ccc;
+                background: #1EC4BC;
+                border: 1px solid white;
                 display: inline-flex;
+                color: white;
               }
               .country-div {
                 padding-right: 5px;
               }
               .x {
-                color: red;
+                color: white;
               }
               `}
           </style>

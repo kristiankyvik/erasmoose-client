@@ -4,7 +4,7 @@ import React from 'react';
 import UniListSearchResultsWithData from './UniListSearchResultsWithData'
 import TypeformButton from './TypeformButton'
 
-const { joinUniCity, defaultRankingUni, defaultRankingCity, getFilterResults, getRankingUniCity,  } = require('./UniListFilterQuery');
+const { joinUniCity, createListOfWeights, getFilterResults, getRankingUniCity, rankingUniOptions, rankingCityOptions} = require('./UniListFilterQuery');
 const lodash = require('lodash'); //get lodash librar
 const DELAY_SEARCH_FOR_UNI_IN_MS = 300;
 
@@ -20,9 +20,27 @@ export default class UniList extends React.Component {
         country: '',
         language: '',
         area: '',
-      }, 
-      rankingUni: defaultRankingUni, //define the formula that creates the overall uni ranking
-      rankingCity: defaultRankingCity //define the formula that creates the overall city ranking
+        uniRating: false,
+        fees: false,
+        weekly_hours: false,
+        int_orientation: false,
+        openness: false,
+        opportunities: false,
+        easiness: false,
+        cheapness: false,
+        free_time: false,
+        uni_cheapness: false,
+        clubs: false,
+        party: false,
+        monthly_cost: false,
+        student_friendliness: false,
+        travel_options: false,
+        culture: false,
+        nightlife: false,
+        gastronomy: false,
+        sports: false,
+        city_cheapness: false
+      }
     };
   }
 
@@ -31,9 +49,17 @@ export default class UniList extends React.Component {
     const filterObjTemp = {...this.state.filterObj}
     filterObjTemp[dropdown] = value;
     this.setState({filterObj: filterObjTemp})
-    console.log("COJONUDO", this.createSearchObj(this.getSearchKey(), this.state.filterObj, this.state.rankingUni, this.state.rankingCity));
+    console.log("COJONUDO", this.createSearchObj(this.getSearchKey(), this.state.filterObj, createListOfWeights(this.state.filterObj, rankingUniOptions), createListOfWeights(this.state.filterObj, rankingCityOptions)));
 
   }, DELAY_SEARCH_FOR_UNI_IN_MS);
+
+  setBooleanFilter = lodash.debounce((attribute) => {
+    console.log("setBooleanFilter", attribute);
+    const filterObjTemp = {...this.state.filterObj}
+    filterObjTemp[attribute] = !this.state.filterObj[attribute];
+    this.setState({filterObj: filterObjTemp})
+  }, DELAY_SEARCH_FOR_UNI_IN_MS);
+
 
   setSearchKey = lodash.debounce((searchKey) => {
     this.setState({ searchKey: searchKey });
@@ -65,8 +91,9 @@ export default class UniList extends React.Component {
           query={this.props.query}
           pathname={this.props.pathname}
           setSearchObj={this.setSearchObj}
-          searchObj={this.createSearchObj(this.getSearchKey(), this.state.filterObj, this.state.rankingUni, this.state.rankingCity)} 
+          searchObj={this.createSearchObj(this.getSearchKey(), this.state.filterObj, createListOfWeights(this.state.filterObj, rankingUniOptions), createListOfWeights(this.state.filterObj, rankingCityOptions))} 
           setFilterObj={this.setFilterObj}
+          setBooleanFilter={this.setBooleanFilter}
           setSearchKey={this.setSearchKey} 
           setRankingCity={this.setRankingCity} 
           setRankingUni={this.setRankingUni} 

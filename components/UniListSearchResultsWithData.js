@@ -66,6 +66,9 @@ const allUnis = gql`
       cityRating
       uniRating
       overallRating 
+      easiness
+      uni_cheapness
+      free_time
       city {
         _id
         name
@@ -135,6 +138,7 @@ const allUnis = gql`
           count
         }
         leisure
+        city_cheapness
       }
     },
     _allUnisMeta {

@@ -9,6 +9,7 @@
     "toolbox": "react-toolbox-themr"
   },
   "dependencies": {
+    "classnames": "^2.2.5",
     "dotenv": "^4.0.0",
     "dotenv-webpack": "^1.5.4",
     "eslint": "^4.11.0",

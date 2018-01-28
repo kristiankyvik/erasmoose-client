@@ -19,51 +19,99 @@ module.exports = {
       $unwind: "$city"
     }
   ],
-
-  // workload: AverageProperty
-  // fees: AverageProperty
-  // main_disciplines: [Property]
-  // languages: [Property]
-  // difficulty: AverageProperty
-  // weekly_hours: AverageProperty
-
-  defaultRankingUni : [
-    "$int_orientation.value",
-    "$difficulty.value",
-    "$opportunities.value",
-    "$openness.value",
-    "$clubs.value",
-    "$party.value",
-    "$openness.value",
-    "$female_percentage.value",
-    "$uni_recommendation.value",
-    "$uni_recommendation.value",
-    "$uni_recommendation.value",
-    "$uni_recommendation.value"
-  ],
-
-
-  // rent_cost: AverageProperty
-  // beer_cost: AverageProperty
-  // coffee_cost: AverageProperty
-  // kebab_cost: AverageProperty
-  // danceclub_cost: AverageProperty
-
-  // monthly_cost: AverageProperty
   
-  defaultRankingCity : [
-    "$city.travel_options.value",
-    "$city.culture.value",
-    "$city.student_friendliness.value",
-    "$city.sports.value",
-    "$city.nightlife.value",
-    "$city.gastronomy.value",
+  rankingUniOptions: {
+    int_orientation: {
+      off: 1,
+      on: 4
+    },
+    opportunities: {
+      off: 1,
+      on: 4
+    },
+    openness: {
+      off: 1,
+      on: 4
+    },
+    clubs: {
+      off: 1,
+      on: 4
+    },
+    party: {
+      off: 1,
+      on: 4
+    },
+    openness: {
+      off: 1,
+      on: 4
+    },
+    uni_recommendation: {
+      off: 4,
+      on: 4
+    },
+    easiness: {
+      off: 1,
+      on: 4
+    },
+    cheapness: {
+      off: 1,
+      on: 4
+    },
+    free_time: {
+      off: 1,
+      on: 4
+    },
+    uni_cheapness: {
+      off: 1,
+      on: 4
+    }
+  },
 
-    "$city.city_recommendation.value",
-    "$city.city_recommendation.value",
-    "$city.city_recommendation.value",
-    "$city.city_recommendation.value"
-  ],
+  rankingCityOptions: {
+    travel_options: {
+      off: 1,
+      on: 4
+    },
+    culture: {
+      off: 1,
+      on: 4
+    },
+    student_friendliness: {
+      off: 1,
+      on: 4
+    },
+    sports: {
+      off: 1,
+      on: 4
+    },
+    nightlife: {
+      off: 1,
+      on: 4
+    },
+    gastronomy: {
+      off: 1,
+      on: 4
+    },
+    city_recommendation: {
+      off: 4,
+      on: 4
+    },
+    city_cheapness: {
+      off: 1,
+      on: 4
+    }
+  },
+
+  createListOfWeights: (filterObject, options) => {
+    const listOfWeights = [];
+    for (var attribute in filterObject) {
+      if (filterObject.hasOwnProperty(attribute) && options.hasOwnProperty(attribute)) {
+        let active = filterObject[attribute];
+        for (var i = 0; i < options[attribute][active ? "off" : "on"]; i++) listOfWeights.push(`$${attribute}.value`);
+      }
+    }
+    return listOfWeights;
+  }, 
 
   getFilterResults: (filterObject, searchKey) => {
     let filterArray = [
@@ -76,7 +124,6 @@ module.exports = {
     ];
 
     for (let key in filterObject) {
-      console.log(filterObject, key, filterObject[key]);
       if (filterObject.hasOwnProperty(key) && filterObject[key].length) {
         let dropdown = key;
         let selectedItems = filterObject[dropdown];
@@ -119,6 +166,15 @@ module.exports = {
     };
   },
       
+  // Defining new fields:
+  // workload: AverageProperty
+  // fees: AverageProperty
+  // main_disciplines: [Property]
+  // languages: [Property]
+  // difficulty: AverageProperty
+  // weekly_hours: AverageProperty
+  // const fieldProjections = [
+
   getRankingUniCity : (rankingUni, rankingCity) => (
     [
       {
@@ -136,7 +192,11 @@ module.exports = {
                 $avg: rankingCity
               }
             }
-          }
+          },
+          easiness: { $subtract: [ 5, "$difficulty.value"] },
+          uni_cheapness: { $subtract: [ 5000, "$fees.value"] },
+          free_time: { $subtract: [ 60, "$weekly_hours.value"] },
+          city_cheapness: { $subtract: [ 2000, "$monthly_cost.value"] }
         }
       },
       {
