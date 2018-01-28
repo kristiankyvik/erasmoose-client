@@ -14,19 +14,16 @@ export default class Autocomp extends React.Component {
     const regex = new RegExp(value, 'ig')
     return collection
       .filter((item) => item.match(regex))
-      .filter((item) => (tags.indexOf(item) == -1)).sort();
+      .filter((item) => (tags.map((tag) => tag[1]).indexOf(item) == -1)).sort();
   }
 
   setValueToState = (e, value) => {
-    console.log("name",this.props.name)
-    console.log("value",value)
     this.state.setCollectionState(value);  
   }
 
   selectDropdown = (value) => {
-    this.state.setCollectionState(value);  
-    console.log("vaule", value);
     this.props.setFilterObj(this.state.name, value);
+    this.state.setCollectionState('');  
   }
 
   render() {

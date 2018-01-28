@@ -18,7 +18,6 @@ class Filter extends React.Component {
         language: '',
         country: '',
         area: '',
-        tags: [],
         showFilters: true,
         rankingUni: defaultRankingUni,
         rankingCity: defaultRankingCity
@@ -99,7 +98,7 @@ class Filter extends React.Component {
             setCollectionState={this.setCollectionState}
             setFilterObj={this.props.setFilterObj}
             collection={this.props.distinctCountries}
-            tags={this.state.tags}
+            tags={tags}
           />
           <Autocomp
             value={this.state.area}
@@ -107,7 +106,7 @@ class Filter extends React.Component {
             setCollectionState={this.setCollectionState} 
             setFilterObj={this.props.setFilterObj}
             collection={this.props.distinctAreas}
-            tags={this.state.tags}
+            tags={tags}
           />
           <Autocomp
             value={this.state.language}
@@ -115,7 +114,7 @@ class Filter extends React.Component {
             setCollectionState={this.setCollectionState}
             setFilterObj={this.props.setFilterObj}
             collection={this.props.distinctLanguages}
-            tags={this.state.tags}
+            tags={tags}
           />
         </div>
         <div className="flex pt3">
