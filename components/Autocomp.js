@@ -3,6 +3,9 @@ import Autocomplete from 'react-autocomplete'
 export default class Autocomp extends React.Component {
   constructor(props) {
     super(props);
+    this.state= {
+      name: this.props.name
+    }
   }
 
   getItems = (value, collection, tags) => {
@@ -10,6 +13,22 @@ export default class Autocomp extends React.Component {
     return collection
       .filter((item) => item.match(regex))
       .filter((item) => (tags.indexOf(item) == -1)).sort();
+  }
+
+  setValueToState = (e, value) => {
+    console.log("name",this.props.name)
+    console.log("value",value)
+    const newState = {};
+    newState[this.state.name] = value
+    this.props.setState(newState);  
+  }
+
+  selectDropdown = (value) => {
+    const newState = {};
+    newState[this.state.name] = value;
+    this.props.setState(newState);
+    console.log("vaule", value);
+    this.props.setFilterObj(this.state.name, value);
   }
 
   render() {
@@ -20,8 +39,8 @@ export default class Autocomp extends React.Component {
           getItemValue={(item) => item}
           items={this.getItems(value, collection, tags)}
           value={value}
-          onSelect={(val) => selectDropdown(name, val)}
-          onChange={(event, item) => { setState({ item }) }}
+          onSelect={this.selectDropdown}
+          onChange={this.setValueToState}
           renderInput={(props) => (
             <input
               className='filter-input m0a'

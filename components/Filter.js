@@ -50,13 +50,6 @@ class Filter extends React.Component {
     this.props.setRankingCity(this.state.rankingCity);
   } 
 
-  selectDropdown = (dropdown, value) => {
-    const newState = {};
-    newState[dropdown] = value;
-    this.setState(newState);
-    this.props.setFilterObj(dropdown, value);
-  }
-
   removeTag = (o) => {
     console.log("removeTag", o);
     const newState = {};
@@ -92,7 +85,7 @@ class Filter extends React.Component {
             value={this.state.country}
             name='country'
             setState={this.setState}
-            selectDropdown={this.selectDropdown}
+            selectFilterObj={this.props.setFilterObj}
             collection={this.props.distinctCountries}
             tags={this.state.tags}
           />
@@ -100,7 +93,7 @@ class Filter extends React.Component {
             value={this.state.area}
             name='area'
             setState={this.setState}
-            selectDropdown={this.selectDropdown}
+            selectFilterObj={this.props.setFilterObj}
             collection={this.props.distinctAreas}
             tags={this.state.tags}
           />
@@ -108,7 +101,7 @@ class Filter extends React.Component {
             value={this.state.language}
             name='language'
             setState={this.setState}
-            selectDropdown={this.selectDropdown}
+            selectFilterObj={this.props.setFilterObj}
             collection={this.props.distinctLanguages}
             tags={this.state.tags}
           />
