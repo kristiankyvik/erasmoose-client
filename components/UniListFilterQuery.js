@@ -56,11 +56,11 @@ module.exports = {
       }
     ];
 
-    for (let dropdown in filterObject) {
-      const selectedItems = filterObject[dropdown];
-      const dropdownName = nameToField[dropdown];
-      const isDropdownArrayEmpty = !(filterObject.hasOwnProperty(dropdown) && selectedItems.length);
-      const isDropDownWrong = ["language", "country", "area"].indexOf(dropdown) === -1;
+    for (let dropdownName in filterObject) {
+      const selectedItems = filterObject[dropdownName];
+      const dropdownField = nameToField[dropdownName];
+      const isDropdownArrayEmpty = !(filterObject.hasOwnProperty(dropdownName) && selectedItems.length);
+      const isDropDownWrong = ["language", "country", "area"].indexOf(dropdownName) === -1;
 
       if (isDropdownArrayEmpty || isDropDownWrong){
         break; 
@@ -72,10 +72,10 @@ module.exports = {
 
       selectedItems.forEach((selectedItem) => {
         let toInsert = {};
-        if (dropdown === "country") {
-          toInsert[dropdownName] = selectedItem;
+        if (dropdownName === "country") {
+          toInsert[dropdownField] = selectedItem;
         } else {
-          toInsert[`${dropdownName}.name`] = selectedItem;
+          toInsert[`${dropdownField}.name`] = selectedItem;
         }
         dropdownFilter.$or.push(toInsert);
       });
