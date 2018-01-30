@@ -44,7 +44,20 @@ const getStars = (v) => {
 	}
 
 	return stars;
-};
+}
+
+const printNbReviews = (nb_reviews) => {
+	let str = "";
+	if (nb_reviews > 1) {
+		str = nb_reviews + " reviews";
+	} else if (nb_reviews == 1) {
+		str = "1 review";
+	} else {
+		str =  "No reviews";
+	}
+	return str;
+}
+;
 
 export default class Card extends React.Component {
 	constructor(props) {
@@ -109,7 +122,7 @@ export default class Card extends React.Component {
 							" trailWidth="5" strokeColor="#F44A4A" />
 						</div>
 						<div className="b f7 f6-m f5-l">
-							{_.get(uni, 'review_count', 0) ? _.get(uni, 'review_count', 0) + " Reviews" : " No Reviews" } 
+							{printNbReviews(_.get(uni, 'review_count', 0))}
 						</div>
 					</div>
 				</div>
