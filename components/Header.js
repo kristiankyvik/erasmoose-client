@@ -9,7 +9,7 @@ export default () => (
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, user-scalable=no"/>
-      <title>  Erasmus universities Ranking  | erasmoose.com </title>
+      <title>  Erasmoose | Universities ranking. </title>
       <meta name="description" content="Erasmoose is a ranking of erasmus universities. We help you choose between european universities." />
       <link rel="stylesheet" href="https://unpkg.com/tachyons@4.7.0/css/tachyons.min.css"/>
       <link rel='shortcut icon' type='image/x-icon' href='/static/favicon.ico'/>

@@ -40,6 +40,10 @@ const getTopProps = (a) => {
 	return a.map((v) => v.name).join(", ");
 }
 
+const spellReview = (x) => {
+	return x > 1 ? 'reviews' : 'review';
+}
+
 class Modal extends React.Component {
 	constructor(props) {
 	  super(props);
@@ -81,8 +85,8 @@ class Modal extends React.Component {
 						</div>
 						<Tabs className="flex flex-column tl f7 no-pad" selectedTabClassName="active">
 							<TabList className="flex">
-								<Tab className="flex justify-center flex-auto f5 b z-1 pv3 bw1 b--light-gray pointer bb ttu moon-gray">University</Tab>
-								<Tab className="flex justify-center flex-auto f5 b z-1 pv3 bw1 b--light-gray pointer bb ttu moon-gray">City</Tab>
+								<Tab className="flex justify-center flex-auto f5 b z-1 pv3 bw1 b--light-gray pointer bb ttu light-red">University</Tab>
+								<Tab className="flex justify-center flex-auto f5 b z-1 pv3 bw1 b--light-gray pointer bb ttu light-red">City</Tab>
 								<Tab disabled className="flex justify-center flex-auto f5 b z-1 pv3 bw1 b--light-gray pointer bb ttu moon-gray">Activities</Tab>
 							</TabList>
 							<TabPanel className="flex flex-auto">
@@ -90,7 +94,7 @@ class Modal extends React.Component {
 
 									{/* Uni */}
 									{/* ---------------------------------- */}
-									<div className="f3 b black pt3 tc tl-l">University Metrics</div>
+									<div className="f3 b black pt3 tc tl-l">University Metrics ({_.get(uni,'review_count',0)} {spellReview(_.get(uni,'review_count',0))})</div>
 									<div className="flex flex-column flex-row-l black">
 										<div className="flex flex-1 flex-column justify-center modal-card mt3 mr3 pv3 ph3">
 											<div className="f4 b circle flex pb4">
