@@ -47,17 +47,10 @@ const getStars = (v) => {
 }
 
 const printNbReviews = (nb_reviews) => {
-	let str = "";
-	if (nb_reviews > 1) {
-		str = nb_reviews + " reviews";
-	} else if (nb_reviews == 1) {
-		str = "1 review";
-	} else {
-		str =  "No reviews";
-	}
-	return str;
-}
-;
+	let str = nb_reviews > 0 ? nb_reviews : "No";
+	return nb_reviews == 1 ? str + " review" : str + " reviews"
+};
+
 
 export default class Card extends React.Component {
 	constructor(props) {

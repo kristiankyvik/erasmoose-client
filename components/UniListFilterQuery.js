@@ -20,6 +20,15 @@ module.exports = {
     }
   ],
 
+  rankingUniDictionary : {
+    "$int_orientation.value" : "International orientation",
+    "$difficulty.value" : "Difficulty",
+    "$opportunities.value" : "Job opportunities",
+    "$openness.value" : "Student openness",
+    "$clubs.value" : "Student clubs",
+    "$party.value": "Student parties",
+  },
+
   defaultRankingUni : [
     "$int_orientation.value",
     "$difficulty.value",

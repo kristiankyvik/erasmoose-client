@@ -119,47 +119,39 @@ class Filter extends React.Component {
         </div>
         <div className="flex pt3">
           <div className="flex flex-auto flex-column">
-            <FilterIcon name='Country' dataAttrib='country' iconPath='location' isActive={this.isActive('country')}/>
             <FilterIcon name='Ranking' dataAttrib='uniRating' iconPath='ranking' isActive={this.isActive('uniRating')}/>
-            <FilterIcon name='Flagship Areas ' dataAttrib='main_disciplines' iconPath='subject' isActive={this.isActive('main_disciplines')}/>
-            <FilterIcon name='Languages' dataAttrib='Languages' iconPath='language' isActive={this.isActive('Languages')}/>
             {/* TODO Tuition Fees needs appropriate scaling when applied to setRanking */}
             <FilterIcon name='Tuition Fees' dataAttrib='fees' iconPath='money' isActive={this.isActive('money')}/>
             {/* TODO Weekly Hours of Work needs appropriate scaling when applied to setRanking */}
             <FilterIcon name='Weekly Hours of Work' dataAttrib='weekly_hours' iconPath='time' isActive={this.isActive('weekly_hours')}/>
             <FilterIcon name='Difficulty' dataAttrib='difficulty' setRanking={this.setRankingUni} iconPath='difficulty' isActive={this.isActive('difficulty')}/>
+            <FilterIcon name='International Orientation' dataAttrib='int_orientation' setRanking={this.setRankingUni} iconPath='globe' isActive={this.isActive('int_orientation')}/>
           </div>
           <div className="flex flex-auto flex-column">
-            <FilterIcon name='International Orientation' dataAttrib='int_orientation' setRanking={this.setRankingUni} iconPath='globe' isActive={this.isActive('int_orientation')}/>
             <FilterIcon name='Openness' dataAttrib='openness' setRanking={this.setRankingUni} iconPath='open' isActive={this.isActive('openness')}/>
             {/* TODO Gender Ratio needs appropriate scaling when applied to setRanking */}
             <FilterIcon name='Gender Ratio (Women/Men)' dataAttrib='female_percentage' iconPath='gender' isActive={this.isActive('female_percentage')}/>
+            {/* TODO JOB and Research Opportunity have the same dataAttrib */}
             <FilterIcon name='Research Opportunities' dataAttrib='opportunities' setRanking={this.setRankingUni} iconPath='research' isActive={this.isActive('opportunities')}/>
             <FilterIcon name='Job Opportunities' dataAttrib='opportunities' setRanking={this.setRankingUni} iconPath='job' isActive={this.isActive('opportunities')}/>
             <FilterIcon name='Organizations/Student Clubs' dataAttrib='clubs' setRanking={this.setRankingUni} iconPath='club' isActive={this.isActive('clubs')}/>
-            <FilterIcon name='Student Parties' dataAttrib='party' setRanking={this.setRankingUni} iconPath='party' isActive={this.isActive('party')}/>
           </div>
           <div className="flex flex-auto flex-column">
+            <FilterIcon name='Student Parties' dataAttrib='party' setRanking={this.setRankingUni} iconPath='party' isActive={this.isActive('party')}/>
             <FilterIcon name='Size' dataAttrib='' iconPath='population' isActive={this.isActive('')}/>
             <FilterIcon name='Weather' dataAttrib='' iconPath='temperature' isActive={this.isActive('')}/>
             <FilterIcon name='Monthly Cost ' dataAttrib='monthly_cost' iconPath='bill' isActive={this.isActive('monthly_cost')}/>
             <FilterIcon name='Student Friendliness' dataAttrib='student_friendliness' setRanking={this.setRankingCity} iconPath='difficulty' isActive={this.isActive('student_friendliness')}/>
+          </div>
+          <div className="flex flex-auto flex-column">
             <FilterIcon name='Travel Options' dataAttrib='travel_options' setRanking={this.setRankingCity} iconPath='plane' isActive={this.isActive('travel_options')}/>
             <FilterIcon name='Cultural Offering' dataAttrib='culture' setRanking={this.setRankingCity} iconPath='culture' isActive={this.isActive('culture')}/>
             <FilterIcon name='Nightlife' dataAttrib='nightlife' setRanking={this.setRankingCity} iconPath='nightlife' isActive={this.isActive('nightlife')}/>
-          </div>
-          <div className="flex flex-auto flex-column">
             <FilterIcon name='Gastronomy' dataAttrib='gastronomy' setRanking={this.setRankingCity} iconPath='gastronomy' isActive={this.isActive('gastronomy')} />
             <FilterIcon name='Sports' dataAttrib='sports' setRanking={this.setRankingCity} iconPath='sports' isActive={this.isActive('sports')} />
-            <FilterIcon name='Rent ' dataAttrib='rent_cost' iconPath='rent' isActive={this.isActive('rent_cost')} />
-            <FilterIcon name='Beer in a Pub' dataAttrib='beer_cost' iconPath='beer' isActive={this.isActive('beer_cost')} />
-            <FilterIcon name='Coffee' dataAttrib='coffee_cost' iconPath='cafe' isActive={this.isActive('coffee_cost')} />
-            <FilterIcon name='Kebab' dataAttrib='kebab_cost' iconPath='burger' isActive={this.isActive('kebab_cost')} />
-            <FilterIcon name='Entry fee Club' dataAttrib='danceclub_cost' iconPath='music' isActive={this.isActive('danceclub_cost')} />
           </div>
         </div>
         <div className="pv2">
-          Here under is where the tags will go
           <div>
             {tags.map((tag, index) =>
               <Tag
