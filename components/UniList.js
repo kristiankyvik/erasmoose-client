@@ -74,6 +74,7 @@ export default class UniList extends React.Component {
           setSearchKey={this.setSearchKey} 
           setRankingCity={this.setRankingCity} 
           rankingUni={this.state.rankingUni}
+          rankingCity={this.state.rankingCity}
           setRankingUni={this.setRankingUni} 
           filterObj={this.state.filterObj}
         />

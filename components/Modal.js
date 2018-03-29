@@ -7,12 +7,9 @@ import Reviews from '../components/Reviews'
 import ModalInfoDiv from '../components/ModalInfoDiv'
 
 
-const { rankingUniDictionary } = require('./UniListFilterQuery');
+const { rankingUniDictionary, rankingCityDictionary} = require('./UniListFilterQuery');
 
 const _ = require('lodash'); //get lodash library
-
-const cityFormulaDescription = 'The city rating is calculated according to the following formula: (needs formula and I know style is not the best)'
-const uniFormulaDescription = 'The uni rating is calculated according to the following formula: (needs formula and I know style is not the best)' 
 
 const round = (v) =>  {
 	if (v) {
@@ -46,12 +43,12 @@ const spellReview = (x) => {
 	return x > 1 ? 'reviews' : 'review';
 }
 
-const getRankingUniDescription = (rankingUni) => {
+const getRankingDescription = (ranking, rankingDictionary) => {
 	let str = "The score is derived from selected preferences of: "
-	console.log("holla", rankingUni);
+	console.log("holla", ranking);
 
-	rankingUni.forEach((preference, idx, array) => {
-		let nameOfPreference = _.get(rankingUniDictionary,preference,"");
+	ranking.forEach((preference, idx, array) => {
+		let nameOfPreference = _.get(rankingDictionary, preference,"");
 		let isLastItemOrNotDefined = idx === array.length - 1 || nameOfPreference === "";
 		str += isLastItemOrNotDefined ?  nameOfPreference + '' : nameOfPreference + ', ';
 	});
@@ -79,6 +76,7 @@ class Modal extends React.Component {
 		const city = uni.city;
 		const i = this.state.tabIndex;
 		const rankingUni = this.props.rankingUni
+		const rankingCity = this.props.rankingCity
 
 	  return (
 			<div 
@@ -117,7 +115,7 @@ class Modal extends React.Component {
 												<span className='inside-circle'>{`${setProgProp(uni.uniRating)}/100`}</span>
 												<span className='info-wrap next-circle'>
 													<span className="fa fa-info-circle"></span>
-													<p className='info-description'> {getRankingUniDescription(rankingUni)} </p>	
+													<p className='info-description'> {getRankingDescription(rankingUni, rankingUniDictionary)} </p>	
 												</span>
 												<Circle className="pv2 mr3 w-100" percent={setProgProp(uni.uniRating)} strokeWidth="5
 													" trailWidth="5" strokeColor="#F44A4A" />
@@ -157,7 +155,7 @@ class Modal extends React.Component {
 												<span className='inside-circle'>{`${setProgProp(uni.cityRating)}/100`}</span>
 												<span className='info-wrap next-circle'>
 													<span className="fa fa-info-circle"></span>
-													<p className='info-description'> {cityFormulaDescription} </p>
+													<p className='info-description'> {getRankingDescription(rankingCity, rankingCityDictionary)} </p>
 												</span>
 												<Circle className="pv2 mr3 w-100" percent={setProgProp(uni.cityRating)} strokeWidth="5
 													" trailWidth="5" strokeColor="#F44A4A" />

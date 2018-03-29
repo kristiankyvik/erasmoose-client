@@ -115,6 +115,7 @@ class UniListSearchResults extends React.Component {
           (!this.state.showModal ) ? null : (<Modal
               ref={(el) => { this.modal = el; }}
               rankingUni={this.props.rankingUni}
+              rankingCity={this.props.rankingCity}
               loading={loading}
               showModal={this.state.showModal}
               uni={this.state.uni}

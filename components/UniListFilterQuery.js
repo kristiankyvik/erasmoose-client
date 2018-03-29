@@ -29,6 +29,16 @@ module.exports = {
     "$party.value": "Student parties",
   },
 
+  rankingCityDictionary: {
+    "$city.travel_options.value" : "Travel Opportunities",
+    "$city.culture.value" : "Culture",
+    "$city.student_friendliness.value" : "Student friendliness",
+    "$city.sports.value" : "Sports",
+    "$city.nightlife.value" : "Nightlife",
+    "$city.gastronomy.value" : "Gastronomy"
+
+  },
+
   defaultRankingUni : [
     "$int_orientation.value",
     "$difficulty.value",
@@ -90,23 +100,6 @@ module.exports = {
       });
 
       filterArray.push(dropdownFilter);
-  
-      // OTHER TAGS?
-      // if (selectedItems.length > 0) {
-      //    let dropdownFilter = {
-      //      $or: []
-      //    }
-      //    selectedItems.forEach((item) => {
-      //       let toInsert = {};
-      //       if (dropdown === "countries") {
-      //         toInsert["country"] = item;
-      //       } else {
-      //         toInsert[`${dropdown}.name`] = { $in: selectedItems};
-      //       }
-      //       dropdownFilter.$or.push(toInsert);
-      //    });
-      //    filterArray.push(dropdownFilter);
-      //  }
     }
 
     return {
