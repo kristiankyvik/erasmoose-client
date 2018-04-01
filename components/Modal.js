@@ -45,7 +45,6 @@ const spellReview = (x) => {
 
 const getRankingDescription = (ranking, rankingDictionary) => {
 	let str = "The score is derived from selected preferences of: "
-	console.log("holla", ranking);
 
 	ranking.forEach((preference, idx, array) => {
 		let nameOfPreference = _.get(rankingDictionary, preference,"");
@@ -59,7 +58,9 @@ class Modal extends React.Component {
 	constructor(props) {
 	  super(props);
 	  this.state = {
-	    tabIndex: 0
+			tabIndex: 0,
+			temperature: "",
+			weatherDescription: ""
 	  };
 	}
 
@@ -67,8 +68,36 @@ class Modal extends React.Component {
 		document.addEventListener('mousedown', this._handleClick, false);
 	}
 
+	componentWillMount() {
+		const city = _.get(this.props,'uni.city.name')
+		this.getWeatherForecast(city)
+	}
+
 	componentWillUnmount() {
 		document.removeEventListener('mousedown', this._handleClick, false);
+	}
+
+	getWeatherForecast(city) {
+		var xhr = new XMLHttpRequest();
+		const url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=796d6ae51449b3531c9a4df53a4f6413";
+		xhr.open("GET", url , true);
+		xhr.send();
+		
+		var self = this
+
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == XMLHttpRequest.DONE) {
+
+				const weatherData = JSON.parse(xhr.responseText);
+				const transformKelvinToCelsius = (tempK) => (Math.round(tempK - 273.15));
+				const temperature = transformKelvinToCelsius(_.get(weatherData, 'main.temp')) || "No data";
+				const weatherDescription = _.get(weatherData, 'weather[0].main', "No description");
+
+				self.setState({ temperature: temperature });
+				self.setState({ weatherDescription: weatherDescription });
+			}
+		}
+    
 	}
 
 	render() {
@@ -77,6 +106,8 @@ class Modal extends React.Component {
 		const i = this.state.tabIndex;
 		const rankingUni = this.props.rankingUni
 		const rankingCity = this.props.rankingCity
+		console.log("Temp", this.state.temperature)
+		console.log("Weather", this.state.weatherDescription)
 
 	  return (
 			<div 
@@ -162,7 +193,7 @@ class Modal extends React.Component {
 											</div>
 
 											<ModalInfoDiv name='Size:' divProperty='coming soon' srcName='./static/icons/population.svg' />
-											<ModalInfoDiv name='Weather (Winter/Spring):' divProperty='coming soon' srcName='./static/icons/temperature.svg' />
+											<ModalInfoDiv name='Weather:' divProperty={this.state.temperature + ' °C  / ' + this.state.weatherDescription} srcName='./static/icons/temperature.svg' />
 											<ModalInfoDiv name='Monthly Cost:' divProperty={round(_.get(city, 'monthly_cost.value', 0)) + '€/m'} srcName='./static/icons/bill.svg' />
 											
 											<ProgressBar name="Student Friendliness" value={setProgProp(_.get(city,'student_friendliness.value',0))} icon="difficulty"/>
