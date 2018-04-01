@@ -106,8 +106,6 @@ class Modal extends React.Component {
 		const i = this.state.tabIndex;
 		const rankingUni = this.props.rankingUni
 		const rankingCity = this.props.rankingCity
-		console.log("Temp", this.state.temperature)
-		console.log("Weather", this.state.weatherDescription)
 
 	  return (
 			<div 
