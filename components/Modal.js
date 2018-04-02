@@ -89,21 +89,6 @@ class Modal extends React.Component {
 			    	.hidden {
 			    		display: none;
 			    	}
-			    	.upvote {
-			    		background-color: transparent;
-			    	}
-			    	.upvote::before {
-			    		-webkit-align-self: center;
-			    		-ms-flex-item-align: center;
-			    		align-self: center;
-			    		border-color: transparent transparent #fff transparent;
-			    		border-style: solid;
-			    		border-width: 0 4px 6px 4px;
-			    		content: "";
-			    		height: 0;
-			    		margin-right: 5px;
-			    		width: 0;
-			    	}
 			    	.bg-oj {
 			    		background-color: #ED6863;
 			    		color: white;
