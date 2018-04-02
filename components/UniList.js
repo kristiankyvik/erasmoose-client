@@ -4,7 +4,7 @@ import React from 'react';
 import UniListSearchResultsWithData from './UniListSearchResultsWithData'
 import TypeformButton from './TypeformButton'
 
-const { joinUniCity, defaultRankingUni, defaultRankingCity, getFilterResults, getRankingUniCity,  } = require('./UniListFilterQuery');
+const { joinUniCity, defaultRankingUni, defaultRankingCity, getFilterResults, getRankingUniCity,  } = require('./UniListQueryUtils');
 const lodash = require('lodash'); //get lodash librar
 const DELAY_SEARCH_FOR_UNI_IN_MS = 300;
 

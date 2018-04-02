@@ -4,7 +4,7 @@ import FilterIcon from './FilterIcon'
 import { gql, graphql } from 'react-apollo'
 const _ = require('lodash');
 
-const { defaultRankingUni, defaultRankingCity } = require('./UniListFilterQuery');
+const { defaultRankingUni, defaultRankingCity } = require('./UniListQueryUtils');
 
 const remove = (array, element) => {
     const index = array.indexOf(element);

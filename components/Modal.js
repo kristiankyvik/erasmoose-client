@@ -1,58 +1,11 @@
 import ReactDOM from 'react-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { Line, Circle } from 'rc-progress';
 import TypeformButton from '../components/TypeformButton'
-import ProgressBar from '../components/ProgressBar'
-import Reviews from '../components/Reviews'
-import ModalInfoDiv from '../components/ModalInfoDiv'
-
-
-const { rankingUniDictionary, rankingCityDictionary} = require('./UniListFilterQuery');
+import ModalUni from './ModalUni'
+import ModalCity from './ModalCity'
 
 const _ = require('lodash'); //get lodash library
-
-const round = (v) =>  {
-	if (v) {
-		return Number((v).toFixed(0));		
-	}
-}
-
-const setProgProp = (v) => {
-	if (v) {
-		return round(v/5 * 100);
-	}
-	return 0;
-}
-
-const setCostProgProp = (v, max) => {
-	if (v) {
-		return round(v/max*100);
-	}
-	return 0;
-}
-
-const showProps = (v) => {
-	return v.join(' ');
-}
-
-const getTopProps = (a) => {
-	return a.map((v) => v.name).join(", ");
-}
-
-const spellReview = (x) => {
-	return x > 1 ? 'reviews' : 'review';
-}
-
-const getRankingDescription = (ranking, rankingDictionary) => {
-	let str = "The score is derived from selected preferences of: "
-
-	ranking.forEach((preference, idx, array) => {
-		let nameOfPreference = _.get(rankingDictionary, preference,"");
-		let isLastItemOrNotDefined = idx === array.length - 1 || nameOfPreference === "";
-		str += isLastItemOrNotDefined ?  nameOfPreference + '' : nameOfPreference + ', ';
-	});
-	return str;
-}
+const { rankingUniDictionary, rankingCityDictionary} = require('./UniListQueryUtils');
 
 class Modal extends React.Component {
 	constructor(props) {
@@ -101,11 +54,9 @@ class Modal extends React.Component {
 	}
 
 	render() {
-		const { uni } = this.props;
+		const { uni, rankingUni, rankingCity } = this.props;
 		const city = uni.city;
 		const i = this.state.tabIndex;
-		const rankingUni = this.props.rankingUni
-		const rankingCity = this.props.rankingCity
 
 	  return (
 			<div 
@@ -133,85 +84,17 @@ class Modal extends React.Component {
 								<Tab disabled className="flex justify-center flex-auto f5 b z-1 pv3 bw1 b--light-gray pointer bb ttu moon-gray">Activities</Tab>
 							</TabList>
 							<TabPanel className="flex flex-auto">
-								<div className="flex flex-auto pv4 ph4 flex-column white">
-
-									{/* Uni */}
-									{/* ---------------------------------- */}
-									<div className="f3 b black pt3 tc tl-l">University Metrics ({_.get(uni,'review_count',0)} {spellReview(_.get(uni,'review_count',0))})</div>
-									<div className="flex flex-column flex-row-l black">
-										<div className="flex flex-1 flex-column justify-center modal-card mt3 mr3 pv3 ph3">
-											<div className="f4 b circle flex pb4">
-												<span className='inside-circle'>{`${setProgProp(uni.uniRating)}/100`}</span>
-												<span className='info-wrap next-circle'>
-													<span className="fa fa-info-circle"></span>
-													<p className='info-description'> {getRankingDescription(rankingUni, rankingUniDictionary)} </p>	
-												</span>
-												<Circle className="pv2 mr3 w-100" percent={setProgProp(uni.uniRating)} strokeWidth="5
-													" trailWidth="5" strokeColor="#F44A4A" />
-											</div>
-											
-											<p data-tip='' data-for='test'></p>
-											<ModalInfoDiv name='Country' divProperty={uni.country} srcName='./static/icons/location.svg' />
-											<ModalInfoDiv name='Ranking (Int/Nat):' divProperty='Coming soon' srcName='./static/icons/ranking.svg' />
-											<ModalInfoDiv name='Flagship Areas:' divProperty={getTopProps(uni.main_disciplines)} srcName='./static/icons/subject.svg' />
-										  <ModalInfoDiv name='Languages:' divProperty={getTopProps(uni.languages)} srcName='./static/icons/language.svg' />
-											<ModalInfoDiv name='Tuition Fees:' divProperty={uni.fees.value ? round(uni.fees.value) + " €" : "coming soon"} srcName='./static/icons/money.svg' />
-											<ModalInfoDiv name='Weekly Hours of Work:' divProperty={uni.weekly_hours.value ? round(uni.weekly_hours.value) + " hours" : "coming soon"} srcName='./static/icons/time.svg' />
-										</div>
-										<div className="flex flex-1 flex-column justify-end modal-card mt3 mr3 pv3 ph3">
-											<ProgressBar name="difficulty" value={setProgProp(_.get(uni,'difficulty.value',0))} icon="difficulty"/>
-											<ProgressBar name="International Orientation" value={setProgProp(_.get(uni,'int_orientation.value',0))} icon="globe"/>
-											<ProgressBar name="Openness" value={setProgProp(_.get(uni,'openness.value',0))} icon="open"/>
-											<ProgressBar name="Gender Ratio (Women/Men)" value={round(_.get(uni,'female_percentage.value',0))} icon="gender"/>
-											<ProgressBar name="Research Opportunities" value={setProgProp(_.get(uni,'opportunities.value',0))} icon="research"/>
-											<ProgressBar name="Job/Internship Opportunities" value={setProgProp(_.get(uni,'opportunities.value',0))} icon="job"/>
-											<ProgressBar name="Organizations and Student Clubs" value={setProgProp(_.get(uni,'clubs.value',0))} icon="club"/>
-											<ProgressBar name="Student Parties" value={setProgProp(_.get(uni,'party.value',0))} icon="party"/>
-										</div>
-									</div>
-									<Reviews uni={uni} university_id={this.props.loading ? null : uni._id}/>
-								</div>
-							</TabPanel>	
+								<ModalUni
+									uni={uni}
+									rankingUni={rankingUni}
+								/>
+							</TabPanel>
 							<TabPanel className="flex flex-auto">
-								<div className="flex flex-auto pv4 ph4 flex-column white">
-
-									{/* City */}
-									{/* ---------------------------------- */}
-									<div className="f3 b black pt3 tc tl-l">{this.props.loading ? null : city.name} City Metrics</div>
-									<div className="flex flex-column flex-row-l black">
-										<div className="flex flex-1 flex-column justify-end modal-card mt3 mr2 pv3 ph3">
-											<div className="f4 b circle pb4 flex">
-												<span className='inside-circle'>{`${setProgProp(uni.cityRating)}/100`}</span>
-												<span className='info-wrap next-circle'>
-													<span className="fa fa-info-circle"></span>
-													<p className='info-description'> {getRankingDescription(rankingCity, rankingCityDictionary)} </p>
-												</span>
-												<Circle className="pv2 mr3 w-100" percent={setProgProp(uni.cityRating)} strokeWidth="5
-													" trailWidth="5" strokeColor="#F44A4A" />
-											</div>
-
-											<ModalInfoDiv name='Size:' divProperty='coming soon' srcName='./static/icons/population.svg' />
-											<ModalInfoDiv name='Weather:' divProperty={this.state.temperature + ' °C  / ' + this.state.weatherDescription} srcName='./static/icons/temperature.svg' />
-											<ModalInfoDiv name='Monthly Cost:' divProperty={round(_.get(city, 'monthly_cost.value', 0)) + '€/m'} srcName='./static/icons/bill.svg' />
-											
-											<ProgressBar name="Student Friendliness" value={setProgProp(_.get(city,'student_friendliness.value',0))} icon="difficulty"/>
-											<ProgressBar name="Travel Options" value={setProgProp(_.get(city,'travel_options.value',0))} icon="plane"/>
-											<ProgressBar name="Cultural Offering" value={setProgProp(_.get(city,'culture.value',0))} icon="culture"/>
-										</div>
-										<div className="flex flex-1 flex-column justify-end modal-card mt3 mr2 pv3 ph3">
-											<ProgressBar name="Nightlife" value={setProgProp(_.get(city,'nightlife.value',0))} icon="nightlife"/>
-											<ProgressBar name="Gastronomy" value={setProgProp(_.get(city,'gastronomy.value',0))} icon="gastronomy"/>
-											<ProgressBar name="Sports" value={setProgProp(_.get(city,'sports.value',0))} icon="sports"/>
-											<div className="f5 b pt4">Student Cost of life</div>
-											<ProgressBar name="Rent" cost={round(_.get(city,'rent_cost.value',0))} value={setCostProgProp(_.get(city,'rent_cost.value',0), 800)} icon="rent"/>
-											<ProgressBar name="Beer in a Pub" cost={round(_.get(city,'beer_cost.value',0))} value={setCostProgProp(_.get(city,'beer_cost.value',0), 10)} icon="beer"/>
-											<ProgressBar name="Coffee" cost={round(_.get(city,'coffee_cost.value',0))} value={setCostProgProp(_.get(city,'coffee_cost.value',0), 10)} icon="cafe"/>
-											<ProgressBar name="Kebab" cost={round(_.get(city,'kebab_cost.value',0))} value={setCostProgProp(_.get(city,'kebab_cost.value',0), 15)} icon="burger"/>
-											<ProgressBar name="Entry fee Club" cost={round(_.get(city,'danceclub_cost.value',0))} value={setCostProgProp(_.get(city,'danceclub_cost.value',0), 30)} icon="music"/>
-										</div>
-									</div>
-									<Reviews uni={uni} city_id={this.props.loading ? null : city._id}/>
-								</div>
+								<ModalCity
+									cityRating={uni.cityRating}
+									city={city}
+									rankingCity={rankingCity}
+								/>
 							</TabPanel>
 							<TabPanel>		
 							</TabPanel>						
@@ -231,25 +114,6 @@ class Modal extends React.Component {
 				</div>
 			  <style jsx>
 					{`
-						.circle {
-							position: relative;
-						}
-						.inside-circle {
-			    	  position: absolute;
-			    	  top: 43%;
-			    	  left: 50%;
-			    	  transform: translate(-50%, -50%);
-						}
-						.info-wrap:hover .info-description {
-							visibility: visible;
-							opacity: 1;
-						}
-						.next-circle {
-							position: absolute;
-			    	  top: 0%;
-			    	  left: 68%;
-			    	  transform: translate(-50%, -50%);
-						}
 						.info-description {
 							position: absolute;
 							top: 10%;
