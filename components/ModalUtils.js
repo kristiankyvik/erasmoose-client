@@ -38,6 +38,7 @@ const getRankingDescription = (ranking, rankingDictionary) => {
     let isLastItemOrNotDefined = idx === array.length - 1 || nameOfPreference === "";
     str += isLastItemOrNotDefined ? nameOfPreference + '' : nameOfPreference + ', ';
   });
+  str += 'and 4x recommendation (by default).'
   return str;
 }
 

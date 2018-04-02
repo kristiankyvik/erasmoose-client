@@ -1,6 +1,6 @@
 import { Line, Circle } from 'rc-progress';
 
-export default ({ name, value, icon, cost }) => (
+export default ({ name, value, icon, cost, color = "#25d6c9" }) => (
 	<div className="flex items-stretch pv1">
 		<div className="flex items-center justify-center">
 			<div className="flex icon-wrapper br-100 pa1 items-center justify-center">
@@ -16,7 +16,7 @@ export default ({ name, value, icon, cost }) => (
 					{cost !== undefined ? cost +  " €" : value + " %"}
 				</div>
 			</div>
-			<Line className="flex pv1" percent={value} strokeWidth="3" trailWidth="3" strokeColor="#25d6c9" />
+			<Line className="flex pv1" percent={value} strokeWidth="3" trailWidth="3" strokeColor={color} />
 		</div>
 		<style jsx>{`
 			.icon-wrapper {

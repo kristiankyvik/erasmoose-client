@@ -18,6 +18,8 @@ export default class ModalUni extends React.Component {
 
 		const { uni, rankingUni } = this.props;
 
+		console.log(uni)
+
     return (
         <div className="flex flex-auto pv4 ph4 flex-column white">
           <div className="f3 b black pt3 tc tl-l">University Metrics ({_.get(uni,'review_count',0)} {spellReview(_.get(uni,'review_count',0))})</div>
@@ -31,8 +33,11 @@ export default class ModalUni extends React.Component {
                 </span>
                 <Circle className="pv2 mr3 w-100" percent={setProgProp(uni.uniRating)} strokeWidth="5
                   " trailWidth="5" strokeColor="#F44A4A" />
+							  <span className='under-circle'>
+							    <ProgressBar name="Recommendation" value={setProgProp(_.get(uni, 'uni_recommendation.value', 0))} icon="heart" color='#F44A4A'/>
+								</span>
               </div>
-              
+
               <p data-tip='' data-for='test'></p>
               <ModalInfoDiv name='Country' divProperty={uni.country} srcName='./static/icons/location.svg' />
               <ModalInfoDiv name='Ranking (Int/Nat):' divProperty='Coming soon' srcName='./static/icons/ranking.svg' />
@@ -63,6 +68,11 @@ export default class ModalUni extends React.Component {
 			    	  top: 43%;
 			    	  left: 50%;
 			    	  transform: translate(-50%, -50%);
+						}
+						.under-circle {
+							position: absolute;
+							bottom: -5%;
+							right: 29%;
 						}
 						.info-wrap:hover .info-description {
 							visibility: visible;

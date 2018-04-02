@@ -61,6 +61,9 @@ export default class ModalCity extends React.Component {
 								</span>
 								<Circle className="pv2 mr3 w-100" percent={setProgProp(cityRating)} strokeWidth="5
 									" trailWidth="5" strokeColor="#F44A4A" />
+								<span className='under-circle'>
+									<ProgressBar name="Recommendation" value={setProgProp(_.get(city, 'city_recommendation.value', 0))} icon="heart" color='#F44A4A' />
+								</span>
 							</div>
 							<ModalInfoDiv name='Size:' divProperty='coming soon' srcName='./static/icons/population.svg' />
 							<ModalInfoDiv name='Weather:' divProperty={this.state.temperature + ' °C  / ' + this.state.weatherDescription} srcName='./static/icons/temperature.svg' />
@@ -103,6 +106,11 @@ export default class ModalCity extends React.Component {
 			    	  top: 0%;
 			    	  left: 68%;
 			    	  transform: translate(-50%, -50%);
+						}
+						.under-circle {
+							position: absolute;
+							bottom: -5%;
+							right: 29%;
 						}
 						.info-description {
 							position: absolute;
