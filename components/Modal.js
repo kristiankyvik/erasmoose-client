@@ -5,15 +5,12 @@ import ModalUni from './ModalUni'
 import ModalCity from './ModalCity'
 
 const _ = require('lodash'); //get lodash library
-const { rankingUniDictionary, rankingCityDictionary} = require('./UniListQueryUtils');
 
 class Modal extends React.Component {
 	constructor(props) {
 	  super(props);
 	  this.state = {
 			tabIndex: 0,
-			temperature: "",
-			weatherDescription: ""
 	  };
 	}
 
@@ -21,36 +18,8 @@ class Modal extends React.Component {
 		document.addEventListener('mousedown', this._handleClick, false);
 	}
 
-	componentWillMount() {
-		const city = _.get(this.props,'uni.city.name')
-		this.getWeatherForecast(city)
-	}
-
 	componentWillUnmount() {
 		document.removeEventListener('mousedown', this._handleClick, false);
-	}
-
-	getWeatherForecast(city) {
-		var xhr = new XMLHttpRequest();
-		const url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=796d6ae51449b3531c9a4df53a4f6413";
-		xhr.open("GET", url , true);
-		xhr.send();
-		
-		var self = this
-
-		xhr.onreadystatechange = function () {
-			if (xhr.readyState == XMLHttpRequest.DONE) {
-
-				const weatherData = JSON.parse(xhr.responseText);
-				const transformKelvinToCelsius = (tempK) => (Math.round(tempK - 273.15));
-				const temperature = transformKelvinToCelsius(_.get(weatherData, 'main.temp')) || "No data";
-				const weatherDescription = _.get(weatherData, 'weather[0].main', "No description");
-
-				self.setState({ temperature: temperature });
-				self.setState({ weatherDescription: weatherDescription });
-			}
-		}
-    
 	}
 
 	render() {
@@ -114,16 +83,6 @@ class Modal extends React.Component {
 				</div>
 			  <style jsx>
 					{`
-						.info-description {
-							position: absolute;
-							top: 10%;
-							left: 100%;
-							visibility: hidden;
-							opacity: 0;
-							width: 100px;
-							font-size: 10px;
-							line-height: 10px;
-						}
 			    	.blue {
 			    		color: #F44A4A;
 			    	}
