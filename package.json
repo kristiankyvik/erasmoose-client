@@ -9,6 +9,7 @@
     "toolbox": "react-toolbox-themr"
   },
   "dependencies": {
+    "apollo-cache-inmemory": "^1.2.2",
     "dotenv": "^4.0.0",
     "dotenv-webpack": "^1.5.4",
     "eslint": "^4.11.0",

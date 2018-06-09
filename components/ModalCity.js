@@ -85,7 +85,7 @@ export default class ModalCity extends React.Component {
 						</div>
 					</div>
 					{/* Reviews should not take {uni} as props -> but only the city itself */}
-					{/* <Reviews uni={uni} city_id={this.props.loading ? null : city._id}/> */}
+					{<Reviews entity={city} type="cities" />}
 				<style jsx>
 					{`
 						.circle {

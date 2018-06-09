@@ -57,7 +57,7 @@ export default class ModalUni extends React.Component {
               <ProgressBar name="Student Parties" value={setProgProp(_.get(uni,'party.value',0))} icon="party"/>
             </div>
           </div>
-          <Reviews uni={uni} university_id={this.props.loading ? null : uni._id}/>
+          <Reviews entity={uni} type='universities'/>
 				<style jsx>
 					{`
 						.circle {

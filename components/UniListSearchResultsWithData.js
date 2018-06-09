@@ -136,6 +136,12 @@ const allUnis = gql`
         }
         leisure
       }
+      reviews {
+        _id
+        text
+        votes
+        date
+      }
     },
     _allUnisMeta {
       count
