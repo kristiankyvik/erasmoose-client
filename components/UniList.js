@@ -1,10 +1,10 @@
 import ErrorMessage from './ErrorMessage'
 import Modal from './Modal'
 import React from 'react';
-import UniListSearchResultsWithData from './UniListSearchResultsWithData'
+import UniListSearchResults from './UniListSearchResults'
 import TypeformButton from './TypeformButton'
 
-const { joinUniCity, defaultRankingUni, defaultRankingCity, getFilterResults, getRankingUniCity,  } = require('./UniListQueryUtils');
+const { joinUniCity, defaultRankingUni, defaultRankingCity, getFilterResults, getRankingUniCity,  } = require('../utils/UniListQueryUtils');
 const lodash = require('lodash'); //get lodash librar
 const DELAY_SEARCH_FOR_UNI_IN_MS = 300;
 
@@ -64,7 +64,7 @@ export default class UniList extends React.Component {
     console.log("THIS STATE FILTEROBJS CHANGES", this.state.filterObj)
     return (
       <section className="tc pt5">
-        <UniListSearchResultsWithData
+        <UniListSearchResults
           liveFilter={this.props.liveFilter} 
           query={this.props.query}
           pathname={this.props.pathname}

@@ -6,8 +6,8 @@ import Reviews from '../components/Reviews'
 import ModalInfoDiv from '../components/ModalInfoDiv'
 
 const _ = require('lodash'); //get lodash library
-const { round, setProgProp, setCostProgProp, showProps, getTopProps, spellReview, getRankingDescription } = require('./ModalUtils');
-const { rankingCityDictionary } = require('./UniListQueryUtils');
+const { round, setProgProp, setCostProgProp, showProps, getTopProps, spellReview, getRankingDescription } = require('../utils/ModalUtils');
+const { rankingCityDictionary } = require('../utils/UniListQueryUtils');
 
 export default class ModalCity extends React.Component {
   constructor(props) {

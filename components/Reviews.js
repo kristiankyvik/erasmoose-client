@@ -1,7 +1,10 @@
 import React from 'react'
-import { gql, graphql } from 'react-apollo'
+import { gql, compose, graphql } from 'react-apollo'
 import TypeformButton from '../components/TypeformButton'
+import ReviewPlaceholder from '../components/ReviewPlaceholder'
 import Slider from 'react-slick'
+import { allUnis, updateVotes, reviews } from '../graphql/queries'
+
 const _ = require('lodash'); //get lodash library
 
 const settings = {
@@ -31,23 +34,25 @@ class Reviews extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			entity: props.entity,
 			id: props.entity._id,
 			type: props.type
 		};
 	}
 
+
 	vote = (id, updatedVotes) => {
-		console.log('jo',id)
-		var updatedReviews = this.props.updateVotes(id, updatedVotes, this.state.id, this.state.type)
-	};
+		console.log('hallo',updatedVotes)
+		console.log('this.id',id)
+		console.log('this.state.type',this.state.type)
+		this.props.updateVotes(id, updatedVotes, this.state.id, this.state.type)
+	}
 
 	upvote = ( id, vote) => this.vote(id, vote + 1)
-	downvote = ( id, vote) => this.vote(id, Math.min(vote -1,0))
+	downvote = ( id, vote) => this.vote(id, Math.max(vote - 1,0))
 
 	render() {
-		const reviews = this.state.entity.reviews
-		console.log("Props",this.props)
+		const { reviews } = this.props
+		console.log(this.props)
 		return (
 			<div>
 				<div className="black pb0 pt3">
@@ -57,7 +62,7 @@ class Reviews extends React.Component {
 
 				<div className="flex black pt3 justify-between relative">
 					{	
-						_.get(reviews,'length',0) > 0 ? (
+						_.get(reviews,'length',0) > 0 && !this.props.loading ? (
 							<Slider {...settings} className="flex w-100 justify-between">
 								{
 									reviews.slice().sort((a,b) => b.votes - a.votes).map((review) => (
@@ -88,60 +93,27 @@ class Reviews extends React.Component {
 							</Slider>
 						) : (
 							<div className="flex w-100 justify-between">
-								<div className="review-placeholder w-50 w-30-ns">
-									<div className="h-200 animated-background">
-										<div className="background-masker white-line first"></div>
-										<div className="background-masker white-line second"></div>
-										<div className="background-masker white-line third"></div>
-										<div className="background-masker white-line fourth"></div>
-										<div className="background-masker white-line fifth"></div>
-										<div className="background-masker white-line large"></div>
-										<div className="background-masker white-line large"></div>
-										<div className="background-masker white-line small-l"></div>
-										<div className="background-masker white-line small-r"></div>
-									</div>
-								</div>
-								<div className="review-placeholder w-50 w-30-ns">
-									<div className="h-200 animated-background">
-										<div className="background-masker white-line first"></div>
-										<div className="background-masker white-line second"></div>
-										<div className="background-masker white-line third"></div>
-										<div className="background-masker white-line fourth"></div>
-										<div className="background-masker white-line fifth"></div>
-										<div className="background-masker white-line large"></div>
-										<div className="background-masker white-line large"></div>
-										<div className="background-masker white-line small-l"></div>
-										<div className="background-masker white-line small-r"></div>
-									</div>
-								</div>
-								<div className="review-placeholder w-50 w-30-ns">
-									<div className="h-200 animated-background">
-										<div className="background-masker white-line first"></div>
-										<div className="background-masker white-line second"></div>
-										<div className="background-masker white-line third"></div>
-										<div className="background-masker white-line fourth"></div>
-										<div className="background-masker white-line fifth"></div>
-										<div className="background-masker white-line large"></div>
-										<div className="background-masker white-line large"></div>
-										<div className="background-masker white-line small-l"></div>
-										<div className="background-masker white-line small-r"></div>
-									</div>
-								</div>
-								<div className="absolute top-0 bottom-0 right-0 left-0 flex justify-center items-center z-1 no-reviews-bg">
-									<div className="relative flex w-80 tc flex-column bg-white pa4 no-reviews-box">
-										<div className=" f5 f4-ns f3-l b tc z-2">
-											Sadly, there are still no reviews
-									</div>
-										<div className="f6 f5-ns pt1 pb3">
-											Be the first one to add a review
-									</div>
-										{/* <TypeformButton id={uni._id} cityid={uni.city_id} className="ur-btn tc flex justify-center content-center items-center" /> */}
-									</div>
-								</div>
+								<ReviewPlaceholder/>
+								<ReviewPlaceholder />	
+								<ReviewPlaceholder />
 							</div>
 						)
 					}
-
+					{
+						_.get(reviews,'length',0) == 0 && !this.props.loading ? (
+							<div className="absolute top-0 bottom-0 right-0 left-0 flex justify-center items-center z-1 no-reviews-bg">
+								<div className="relative flex w-80 tc flex-column bg-white pa4 no-reviews-box">
+									<div className=" f5 f4-ns f3-l b tc z-2">
+										Sadly, there are still no reviews
+								</div>
+									<div className="f6 f5-ns pt1 pb3">
+										Be the first one to add a review
+								</div>
+									{/* <TypeformButton id={uni._id} cityid={uni.city_id} className="ur-btn tc flex justify-center content-center items-center" /> */}
+								</div>
+							</div>
+						) : null
+					}
 				</div>
 				<style jsx>
 					{`
@@ -239,23 +211,37 @@ class Reviews extends React.Component {
 	}
 }
 
-const updateVotes = gql`
-  mutation updateVotes($_id: String, $votes: Int, $entity_id: String, $type: String) {
-		updateVotes(_id: $_id, votes: $votes, entity_id: $entity_id, type: $type)
-			reviews {
-        _id
-        text
-        votes
-        date
-      }
-  }
-`
-
-export default graphql(updateVotes, {
-	props: ({ ownProps, mutate }) => ({
-		updateVotes: (_id, votes, entity_id, type) => mutate({
-			variables: { _id, votes, entity_id, type }	
+export default compose(
+	graphql(reviews, {
+		options: (ownProps) => {
+			return {
+				notifyOnNetworkStatusChange: true,
+				variables: {
+					entity_id: ownProps.entity._id,
+					type: ownProps.type
+				},
+			};
+		},
+		props: (props) => props.data
+	}),
+	graphql(updateVotes, {
+		props: (props) => ({
+			updateVotes: (_id, votes, entity_id, type) => props.mutate({
+				variables: { _id, votes, entity_id, type},
+				update: (store, mutationResult) => {
+					let data = store.readQuery(
+						{ 
+							query: reviews,
+							variables: {
+								entity_id: entity_id,
+								type: type	
+							} 
+						},
+					);
+					data.reviews.find(review => review._id == _id).votes = votes;
+					store.writeQuery({ query: reviews, data });
+				}	
+			})
 		})
 	})
-})(Reviews)
-
+)(Reviews)

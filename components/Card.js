@@ -1,4 +1,5 @@
 import { Line, Circle } from 'rc-progress';
+const { round, setProgProp } = require('../utils/ModalUtils');
 import Img from 'react-image'
 const _ = require('lodash'); 
 
@@ -10,19 +11,6 @@ const UniLogoFallback = (
 	</div>
 );
 
-const round = (v) =>  {
-	if (v) {
-		return Number((v).toFixed(0));		
-	}
-}
-
-const setProgProp = (v) => {
-	if (v) {
-		return round(v/5 * 100);
-	}
-	return 0
-}
-
 const getStars = (v) => {
 	const fullStars = Math.floor(v);
 	const leftOverStars = v - Math.floor(v);
@@ -30,8 +18,8 @@ const getStars = (v) => {
 		full: fullStars + (leftOverStars > 0.75 ? 1 : 0), 
 		half: (leftOverStars <= 0.75) && (leftOverStars > 0.25) ? 1 : 0
 	};
-
 	let stars = [];
+
 	for(let i= 0; i < starSettings.full; i++) {
 	  stars.push(<i key={i} className="fa fa-star" aria-hidden="true"></i>);
 	}
@@ -40,7 +28,6 @@ const getStars = (v) => {
 
 	for(let i= 0; i < 5 - starSettings.full - starSettings.half; i++) {
 	  stars.push(<i key={5+i} className="fa fa-star-o" aria-hidden="true"></i>);
-
 	}
 
 	return stars;

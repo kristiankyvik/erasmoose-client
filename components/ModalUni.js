@@ -6,8 +6,8 @@ import Reviews from '../components/Reviews'
 import ModalInfoDiv from '../components/ModalInfoDiv'
 
 const _ = require('lodash'); //get lodash library
-const { round, setProgProp, setCostProgProp, showProps, getTopProps, spellReview, getRankingDescription } = require('./ModalUtils');
-const { rankingUniDictionary } = require('./UniListQueryUtils');
+const { round, setProgProp, setCostProgProp, showProps, getTopProps, spellReview, getRankingDescription } = require('../utils/ModalUtils');
+const { rankingUniDictionary } = require('../utils/UniListQueryUtils');
 
 export default class ModalUni extends React.Component {
   constructor(props) {
@@ -18,7 +18,7 @@ export default class ModalUni extends React.Component {
 
 		const { uni, rankingUni } = this.props;
 
-		console.log(uni)
+		// console.log(uni)
 
     return (
         <div className="flex flex-auto pv4 ph4 flex-column white">
