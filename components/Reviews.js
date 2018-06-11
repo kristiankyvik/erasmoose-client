@@ -48,7 +48,7 @@ class Reviews extends React.Component {
 	}
 
 	upvote = ( id, vote) => this.vote(id, vote + 1)
-	downvote = ( id, vote) => this.vote(id, Math.max(vote - 1,0))
+	downvote = ( id, vote) => this.vote(id, vote - 1,0)
 
 	render() {
 		const { reviews } = this.props
@@ -245,3 +245,5 @@ export default compose(
 		})
 	})
 )(Reviews)
+
+
