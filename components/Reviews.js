@@ -41,9 +41,6 @@ class Reviews extends React.Component {
 
 
 	vote = (id, updatedVotes) => {
-		console.log('hallo',updatedVotes)
-		console.log('this.id',id)
-		console.log('this.state.type',this.state.type)
 		this.props.updateVotes(id, updatedVotes, this.state.id, this.state.type)
 	}
 
@@ -52,7 +49,6 @@ class Reviews extends React.Component {
 
 	render() {
 		const { reviews } = this.props
-		console.log(this.props)
 		return (
 			<div>
 				<div className="black pb0 pt3">
