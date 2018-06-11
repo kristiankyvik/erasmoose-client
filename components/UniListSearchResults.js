@@ -5,8 +5,11 @@ import React from 'react';
 import UniListResults from './UniListResults'
 import Modal from './Modal'
 import Filters from './Filters'
+import { allUnis } from '../graphql/queries'
+import { graphql } from 'react-apollo'
 
-const _ = require('lodash'); //get lodash librar
+const _ = require('lodash'); //get lodash library
+const POSTS_PER_PAGE = 51;
 
 class UniListSearchResults extends React.Component {
   constructor(props) {
@@ -131,4 +134,23 @@ class UniListSearchResults extends React.Component {
   }
 }
 
-export default UniListSearchResults;
+export default graphql(allUnis, {
+  options: (ownProps) => {
+    return {
+      notifyOnNetworkStatusChange: true,
+      variables: {
+        skip: 0,
+        first: POSTS_PER_PAGE,
+        searchObj: JSON.stringify(ownProps.searchObj)
+      },
+    };
+  },
+  props: ({ data: { loading, error, allUnis, _allUnisMeta, fetchMore } }) => ({
+    allUnis,
+    _allUnisMeta,
+    error,
+    loading,
+    fetchMore,
+    postPerPage: POSTS_PER_PAGE
+  })
+})(UniListSearchResults);

@@ -1,5 +1,6 @@
 import React from 'react'
 import { gql, graphql } from 'react-apollo'
+import { getUnisWithReview } from '../graphql/queries'
 
 function countReviews(data) {
   if (data.loading || data._allReviewsMeta == undefined) return null;
@@ -25,15 +26,6 @@ function countReviews(data) {
     </div>
   );
 }
-
-const getUnisWithReview = gql`
-  query {
-    _allReviewsMeta {
-      unisCount
-      reviewCount
-    }
-  }
-`
 
 export default graphql(getUnisWithReview, {
   options: {

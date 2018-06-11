@@ -2,9 +2,10 @@ import Tag from './Tag'
 import Autocomp from './Autocomp'
 import FilterIcon from './FilterIcon'
 import { gql, graphql } from 'react-apollo'
+import { dropdownValues } from '../graphql/queries'
 const _ = require('lodash');
 
-const { defaultRankingUni, defaultRankingCity } = require('./UniListQueryUtils');
+const { defaultRankingUni, defaultRankingCity } = require('../utils/UniListQueryUtils');
 
 const remove = (array, element) => {
     const index = array.indexOf(element);
@@ -206,14 +207,6 @@ class Filter extends React.Component {
     );
   }
 }
-
-const dropdownValues = gql`
-  query {
-    distinctCountries
-    distinctLanguages
-    distinctAreas
-  }
-`
 
 export default graphql(dropdownValues, {
   options: {

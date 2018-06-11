@@ -1,4 +1,5 @@
 import { gql, graphql } from 'react-apollo'
+import { createPost } from '../graphql/queries'
 
 function Submit ({ createPost }) {
   function handleSubmit (e) {
@@ -47,18 +48,6 @@ function Submit ({ createPost }) {
     </form>
   )
 }
-
-const createPost = gql`
-  mutation createPost($title: String!, $url: String!) {
-    createPost(title: $title, url: $url) {
-      id
-      title
-      votes
-      url
-      createdAt
-    }
-  }
-`
 
 export default graphql(createPost, {
   props: ({ mutate }) => ({

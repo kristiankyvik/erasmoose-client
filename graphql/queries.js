@@ -1,9 +1,6 @@
 import { gql, graphql } from 'react-apollo'
-import UniListSearchResults from './UniListSearchResults'
 
-const POSTS_PER_PAGE = 51;
-
-const allUnis = gql`
+export const allUnis = gql`
   query allUnis($first: Int!, $skip: Int!, $searchObj: String!) {
     allUnis(first: $first, skip: $skip, searchObj: $searchObj) {
       _id
@@ -142,26 +139,59 @@ const allUnis = gql`
     }
   }
 `
+export const getUnisWithReview = gql`
+  query {
+    _allReviewsMeta {
+      unisCount
+      reviewCount
+    }
+  }
+`
+export const updateVotes = gql`
+  mutation updateVotes($_id: String, $votes: Int, $entity_id: String, $type: String) {
+		updateVotes(_id: $_id, votes: $votes, entity_id: $entity_id, type: $type) {
+      entity_id
+      votes
+      type
+    }
+  }
+`
 
-// The `graphql` wrapper executes a GraphQL query and makes the results
-// available on the `data` prop of the wrapped component (UniList)
-export default graphql(allUnis, {
-    options: (ownProps) => {  
-      return {
-        notifyOnNetworkStatusChange: true,
-        variables: {
-          skip: 0,
-          first: POSTS_PER_PAGE,
-          searchObj: JSON.stringify(ownProps.searchObj)
-        },
-      };  
-    },
-    props: ({ data: { loading, error, allUnis, _allUnisMeta, fetchMore} }) => ({
-        allUnis,
-        _allUnisMeta,
-        error,
-        loading,
-        fetchMore,
-        postPerPage: POSTS_PER_PAGE
-    })
-})(UniListSearchResults);
+export const reviews = gql`
+  query reviews($entity_id: String!, $type: String!) {
+    reviews(entity_id: $entity_id, type: $type) {
+      _id
+      text
+      votes
+      date
+    }
+  }
+`
+
+export const sendFeedback = gql`
+  mutation sendFeedback($email: String, $message: String) {
+    sendFeedback(email: $email, message: $message) {
+      ok   
+    }
+  }
+`
+
+export const dropdownValues = gql`
+  query {
+    distinctCountries
+    distinctLanguages
+    distinctAreas
+  }
+`
+
+export const createPost = gql`
+  mutation createPost($title: String!, $url: String!) {
+    createPost(title: $title, url: $url) {
+      id
+      title
+      votes
+      url
+      createdAt
+    }
+  }
+`
